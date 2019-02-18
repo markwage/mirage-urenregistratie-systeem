@@ -6,7 +6,7 @@ include ("./config.php");
 include ("./db.php");
 include ("./function.php");
 
-// Connectie met de database maken en database selecteren
+// Connectie met de database maken en database selecteren.
 mysql_connect($dbhost, $dbuser, $dbpassw) or die ("Kan de connectie met de database niet maken");
 mysql_select_db($dbname) or die ("Kan de database niet openen");
 
