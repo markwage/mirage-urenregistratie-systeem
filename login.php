@@ -1,0 +1,90 @@
+<?php
+session_start();
+include ("./config.php");
+include ("./db.php");
+include ("./function.php");
+
+// Connectie met de database maken en database selecteren
+mysql_connect($dbhost, $dbuser, $dbpassw) or die ("Kan de connectie met de database niet maken");
+mysql_select_db($dbname) or die ("Kan de database niet openen");
+
+include ("header.php");
+
+?>
+
+
+		<div id="main">		
+			<h1>Urenregistratie</h1>
+			<p>Dit is de urenregistratie van Mirage Automatisering BV. 
+			Heb je een account dan kun je inloggen. 
+			Zo niet dan kun je een account aanvragen via het contactformulier.</p>
+			
+<?php
+// Indien het Login form is submitted
+if (isset($_POST['submit'])) {
+	//controleer of het ingevuld is
+	if (!$_POST['username'] | !$_POST['pass']) {
+		echo '<p class="errmsg"> ERROR: Niet alle velden zijn ingevuld</p>';
+	}
+	// Controleer het met de database
+	if (!get_magic_quotes_gpc()) {
+		$_POST['username'] = addslashes($_POST['username']);
+	}
+	$check = mysql_query("SELECT * FROM users WHERE username = '".$_POST['username']."'") or die(mysql_error());
+	// Error indien username wel ingevuld maar onbekend
+	$check2 = mysql_num_rows($check);
+	if ($check2 == 0 & $_POST['username'] <> '') {
+		echo '<p class="errmsg"> ERROR: Username is onbekend</p>';
+	}
+	while ($info = mysql_fetch_array($check)) {
+		$_POST['pass']     = stripslashes($_POST['pass']);
+		$info['password']  = stripslashes($info['password']);
+		$_POST['pass']     = md5($_POST['pass']);
+		$_POST['admin']    = $info['admin'];
+		$_POST['voornaam'] = $info['voornaam'];
+		//Error indien password fout
+		if ($_POST['pass'] != $info['password']) {
+			echo '<p class="errmsg"> ERROR: Foutief password, probeer het nogmaals</p>';
+		}
+		else {
+			// Toevoegen cookie indien username-password correct
+			$_POST['username'] = stripslashes($_POST['username']);
+			$hour = time() + 10800;
+			setcookie('ID_mus', $_POST['username'], $hour);
+			setcookie('Key_mus', $_POST['pass'], $hour);
+			$_SESSION['username'] = $_POST['username'];
+			$_SESSION['admin']    = $_POST['admin'];
+			$_SESSION['voornaam'] = $_POST['voornaam'];
+			// update lastloggedin in de tabel
+			$update = "UPDATE users SET 
+				lastloggedin = '".date('Y-m-d h:m:s')."' WHERE username = '".$_POST['username']."'";
+			$check_upd_users = mysql_query($update) or die ("Error in query: $update. ".mysql_error());
+			header("location: index.php");
+		}
+	}
+}
+// else {
+	// indien niet ingelogd het inlogform displayen
+	?>
+	
+			<h3>Login</h3>
+			<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">			
+				<p>			
+				<label>Name</label>
+				<input name="username" type="text" maxlength="40" />
+				<label>Password</label>
+				<input name="pass" type="password" maxlength="50" />
+				<br /><br />	
+				<input class="button" name="submit" type="submit" value="login" />		
+				</p>		
+			</form>	
+			<br />				
+		</div>					
+		
+		<!-- content-wrap ends here -->		
+		</div></div>
+
+
+<?php 
+	include ("footer.php");
+?>
