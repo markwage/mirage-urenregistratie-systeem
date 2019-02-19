@@ -5,8 +5,15 @@ include ("./db.php");
 include ("./function.php");
 
 // Connectie met de database maken en database selecteren
-mysql_connect($dbhost, $dbuser, $dbpassw) or die ("Kan de connectie met de database niet maken");
-mysql_select_db($dbname) or die ("Kan de database niet openen");
+$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw);
+if (!$dbconn) {
+    die("Kan de connectie met de database niet maken");
+}
+
+$dbselect = mysqli_select_db($dbconn, $dbname);
+if (!$dbselect) {
+    die("Kan de database niet openen : " . mysqli_error());
+}
 
 include ("header.php");
 
@@ -58,7 +65,7 @@ if (isset($_POST['submit'])) {
 			// update lastloggedin in de tabel
 			$update = "UPDATE users SET 
 				lastloggedin = '".date('Y-m-d h:m:s')."' WHERE username = '".$_POST['username']."'";
-			$check_upd_users = mysql_query($update) or die ("Error in query: $update. ".mysql_error());
+			$check_upd_users = mysql_query($update) or die ("Error in query: $update. ".mysqli_error());
 			header("location: index.php");
 		}
 	}

@@ -1,4 +1,5 @@
 <?php
+
 //------------------------------------------------------------------------
 // functie om een error-message te displayen met standaard
 // header en kleuren
