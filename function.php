@@ -78,12 +78,15 @@ function setfocus($formnaam, $veldnaam) {
 //------------------------------------------------------------------------
 function form_user_fill($btn_aktie) {
 	if ($btn_aktie == "save" || $btn_aktie == "toevoegen") {
-		global $frm_username, $frm_pass, $frm_pass2, $frm_voornaam, $frm_tussenvoegsel, $frm_achternaam, 
+		global $frm_username, $frm_pass, $frm_pass2, $frm_admin, $frm_voornaam, $frm_tussenvoegsel, $frm_achternaam, 
 			$frm_email, $frm_indienst, $formerror;
 		$formerror = 0;
 		$frm_username      = $_POST['username'];
 		$frm_pass          = $_POST['pass'];
 		$frm_pass2         = $_POST['pass2'];
+		if (isset($_POST['admin'])) $frm_admin = $_POST['admin'];
+		else $frm_admin = "";
+		//$frm_admin         = $_POST['admin'];
 		$frm_voornaam      = $_POST['voornaam'];
 		$frm_tussenvoegsel = $_POST['tussenvoegsel'];
 		$frm_achternaam    = $_POST['achternaam'];
@@ -148,6 +151,16 @@ function cnv_dateToWeek($datum) {
     $buildDatum = mktime(0, 0, 0, $dat_maand, $dat_dag, $dat_jaar);
 	$weekNumber = date('W', $buildDatum); 
 	return $weekNumber;
+}
+
+//------------------------------------------------------------------------
+// Write logrecord to file 
+//------------------------------------------------------------------------
+function writeLogRecord($phpProg, $logRecord) {
+    $username = $_SESSION['username'];
+    $fileName = "C:\\wamp64\\www\\mirage-urenregistratie-systeem\\logs\\systemlogMUS.log";
+    $datumlog = date('Ymd H:i:s')." ";
+    file_put_contents($fileName, PHP_EOL.$datumlog."PHP program: ".$phpProg." - Gebruiker: ".$username." - ".$logRecord, FILE_APPEND);
 }
 
 ?>

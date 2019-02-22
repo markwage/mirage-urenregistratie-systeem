@@ -31,28 +31,36 @@ include ("header.php");
 if (isset($_POST['cancel'])) {
 	header("location: edit_users.php?aktie=disp");
 }
+
 if (isset($_POST['delete'])) {
 	$deluser = $_POST['username'];
 	$sql_deluser = mysqli_query($dbconn, "DELETE FROM users WHERE username = '$deluser'");
+	writeLogRecord("edit_users","User ".$deluser." is verwijderd.");
 	header("location: edit_users.php?aktie=disp");
 }
+
 if (isset($_POST['save'])) {
 	form_user_fill('save');
+	writeLogRecord("edit_users","Button save is op geklikt voor user: ".$frm_username." form_user_fill is uitgevoerd.");
+	writelogrecord("edit_users","formerror:".$formerror." frm_username:".$frm_username." frm_admin:".$frm_admin." frm_indienst:".$frm_indienst);
+	
+	// Checks wanneer password OF verificatiepassword niet leeg zijn
 	if (($_POST['pass']) != "" || ($_POST['pass2']) != "") {
-		if (($_POST['pass'] != $_POST['pass2']) && (!$formerror)) {
-			echo '<p class="errmsg"> ERROR: De wachtwoorden zijn niet gelijk</p>';
-			$focus     = 'pass2';
-			$formerror = 1;
-		}
-		if (!$_POST['pass'] && (!$formerror)) {
-			echo '<p class="errmsg"> ERROR: Password is een verplicht veld</p>';
+	    if (!$_POST['pass'] && (!$formerror)) {
+			echo '<p class="errmsg"> ERROR: Wachtwoord is een verplicht veld</p>';
 			$focus     = 'pass';
 			$formerror = 1;
 		}
 		if (!$_POST['pass2'] && (!$formerror)) {
-			echo '<p class="errmsg"> ERROR: Password voor verificatie is een verplicht veld</p>';
+			echo '<p class="errmsg"> ERROR: Wachtwoord voor verificatie is een verplicht veld</p>';
 			$focus     = 'pass2';
 			$formerror = 1;
+		}
+		// Check of de wachtwoorden gelijk zijn
+		if (($_POST['pass'] != $_POST['pass2']) && (!$formerror)) {
+		    echo '<p class="errmsg"> ERROR: De wachtwoorden zijn niet gelijk</p>';
+		    $focus     = 'pass';
+		    $formerror = 1;
 		}
 	}
 	if ((!$_POST['voornaam'] || $_POST['voornaam'] == "") && (!$formerror)) {
@@ -87,24 +95,27 @@ if (isset($_POST['save'])) {
 	
 	// here we encrypt the password and add slashes if needed
 	if (!$formerror) {
+	    writeLogRecord("edit_users","Indien fromerror=0 zou nu het update-statement uitgevoerd moeten worden. formerror=".$formerror);
 	    // $_POST['indienst'] = 1;
-	    $update = "UPDATE users SET";
+	    $update = "UPDATE users SET ";
 	    if (!$_POST['pass'] = "") {
 	        $_POST['pass'] = md5($_POST['pass']);
 	        if (!get_magic_quotes_gpc()) {
 	            $_POST['pass'] = addslashes($_POST['pass']);
 	            $_POST['username'] = addslashes($_POST['username']);
 	        }
-	    } else {
+	    //} else {
 	        $update .= "password='".$_POST['pass']."',";
 	    }
-	    
+	    writeLogRecord("edit_users","Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5");
 	    $update .= "admin='".$_POST['admin']."',
 		voornaam='".$_POST['voornaam']."',
 		tussenvoegsel='".$_POST['tussenvoegsel']."',
 		achternaam='".$_POST['achternaam']."',
 		emailadres='".$_POST['email']."',
 		indienst='".$_POST['indienst']."' WHERE username = '".$_POST['username']."'";
+	    writeLogRecord("edit_users","Het update-statement: ".$update);
+	    writeLogRecord("edit_users","Deze wordt nu uitgevoerd op de database");
 	    $check_upd_user = mysqli_query($dbconn, $update);
 		if ($check_upd_user) { 
 			echo '<p class="infmsg">User <b>'.$_POST['username'].'</b> is gewijzigd</p>.';
