@@ -1,7 +1,7 @@
 PHP Calendar StyleSheet*/
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
+	font-size: 13px;
 	margin: 3px 0 0 15px;
 	padding: 0;
   color: #000000;
@@ -55,7 +55,7 @@ img {
 }
 
 .day, .day_today {
-	font-size: 10px;
+	font-size: 11px;
   float:left;
   width: 18px;
   height: 18px;

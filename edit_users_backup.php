@@ -12,10 +12,11 @@ else {
 }
 
 // Controleren of gebruiker admin-rechten heeft
-// Indien het het wijzigen van het eigen profiel betreft hoeft hij geen admin-rechten te hebben
-if (!$aktie == "editprof") {
-    check_admin();
-}
+check_admin();
+
+// Connectie met de database maken en database selecteren
+//mysql_connect($dbhost, $dbuser, $dbpassw) or die ("Kan de connectie met de database niet maken");
+//mysql_select_db($dbname) or die ("Kan de database niet openen");
 
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
@@ -86,26 +87,22 @@ if (isset($_POST['save'])) {
 	}
 	
 	// here we encrypt the password and add slashes if needed
-	if (!$formerror) {
-	    // $_POST['indienst'] = 1;
-	    $update = "UPDATE users SET";
-	    if (!$_POST['pass'] = "") {
-	        $_POST['pass'] = md5($_POST['pass']);
-	        if (!get_magic_quotes_gpc()) {
-	            $_POST['pass'] = addslashes($_POST['pass']);
-	            $_POST['username'] = addslashes($_POST['username']);
-	        }
-	    } else {
-	        $update .= "password='".$_POST['pass']."',";
-	    }
-	    
-	    $update .= "admin='".$_POST['admin']."',
+	if (!$formerror) { 
+		// $_POST['indienst'] = 1;
+		$_POST['pass'] = md5($_POST['pass']);
+		if (!get_magic_quotes_gpc()) {
+			$_POST['pass'] = addslashes($_POST['pass']);
+			$_POST['username'] = addslashes($_POST['username']);
+		}
+		$update = "UPDATE users SET 
+		password='".$_POST['pass']."', 
+		admin='".$_POST['admin']."',
 		voornaam='".$_POST['voornaam']."',
 		tussenvoegsel='".$_POST['tussenvoegsel']."',
 		achternaam='".$_POST['achternaam']."',
 		emailadres='".$_POST['email']."',
 		indienst='".$_POST['indienst']."' WHERE username = '".$_POST['username']."'";
-	    $check_upd_user = mysqli_query($dbconn, $update);
+		$check_upd_user = mysqli_query($dbconn, $update);
 		if ($check_upd_user) { 
 			echo '<p class="infmsg">User <b>'.$_POST['username'].'</b> is gewijzigd</p>.';
 			$frm_username      = "";
@@ -155,7 +152,7 @@ if ($aktie == 'disp') {
 	echo "</table></center>";
 }
 
-if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
+if ($aktie == 'edit' || $aktie == 'delete') {
 	$edtuser = $_GET['edtuser'];
 	$focus = "pass";
 	$sql_dspuser = mysqli_query($dbconn, "SELECT * FROM users WHERE username = '$edtuser'");
@@ -165,6 +162,11 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 		$frm_tussenvoegsel = $row_dspuser['tussenvoegsel'];
 		$frm_achternaam = $row_dspuser['achternaam'];
 		$frm_email = $row_dspuser['emailadres'];
+		//if ($row_dspuser['admin'] == 1) { 
+		//    $frm_admin = "checked";
+		//} else {
+		//    $frm_admin = "";
+		//}
 		if ($row_dspuser['admin'] == 1) $frm_admin = "checked";
 		else $frm_admin = "";
 		if ($row_dspuser['indienst'] == 1) $frm_indienst = "checked";
@@ -178,7 +180,7 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 	<table>
 		<tr>
 			<td><b>Username</b></td>
-			<td><input <?php if ($aktie == "edit" || $aktie == "editprof") { echo "readonly"; } ?> type="text" name="username" maxlength="40" value="<?php if (isset($frm_username)) { echo $frm_username; } ?>"></td>
+			<td><input <?php if ($aktie == "edit") { echo "readonly"; } ?> type="text" name="username" maxlength="40" value="<?php if (isset($frm_username)) { echo $frm_username; } ?>"></td>
 		</tr>
 		<tr>
 			<td>Wachtwoord</td>
@@ -210,7 +212,7 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 		</tr>
 	</table>
 	<br />
-	<?php if ($aktie == 'edit' || $aktie == 'editprof') echo '<input class="button" type="submit" name="save" value="save">'; ?>
+	<?php if ($aktie == 'edit') echo '<input class="button" type="submit" name="save" value="save">'; ?>
 	<?php if ($aktie == 'delete') echo '<input class="button" type="submit" name="delete" value="delete" onClick="return confirmDelUser()">'; ?>
 	<input class="button" type="submit" name="cancel" value="cancel">
 	</p>

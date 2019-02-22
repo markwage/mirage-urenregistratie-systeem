@@ -1,6 +1,27 @@
 <?php
 
 //------------------------------------------------------------------------
+// functie om een connectie met de database te maken
+//------------------------------------------------------------------------
+function makedbconnection() {
+    if (!isset($dbconn))
+        include ("./db.php");
+    //include ("./db.php");
+    
+    //$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw);
+    //$dbconn = mysqli_connect("localhost","root","","mus");
+    
+    if (mysqli_connect_errno()) {
+    //if (!$dbconn) {
+        die("Kan de connectie met de database niet maken");
+    }
+    $dbselect = mysqli_select_db($dbconn, $dbname);
+    if (!$dbselect) {
+        die("Kan de database niet openen : " . mysqli_error());
+    }
+}
+
+//------------------------------------------------------------------------
 // functie om een error-message te displayen met standaard
 // header en kleuren
 //------------------------------------------------------------------------
@@ -18,10 +39,12 @@ function errormessage($error_header, $error_message) {
 function check_cookies() {
 	if(isset($_COOKIE['ID_mus'])) {
 		// Indien aanwezig word je naar de volgende page ge-redirect
+		include ("./db.php");
+	    $dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
 		$username = $_COOKIE['ID_mus'];
 		$pass = $_COOKIE['Key_mus'];
-		$check = mysql_query("SELECT * FROM users WHERE username = '$username'") or die(mysql_error());
-		while ($info = mysql_fetch_array($check)) {
+		$check = mysqli_query($dbconn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($dbconn));
+		while ($info = mysqli_fetch_array($check)) {
 			if ($pass != $info['password']) {
 				header("location: login.php");
 			}
@@ -53,8 +76,8 @@ function setfocus($formnaam, $veldnaam) {
 //------------------------------------------------------------------------
 // Vullen van de frm_variabelen voor invullen van usermanagement-scherm
 //------------------------------------------------------------------------
-function form_user_fill($aktie) {
-	if ($aktie == "save" || $aktie == "toevoegen") {
+function form_user_fill($btn_aktie) {
+	if ($btn_aktie == "save" || $btn_aktie == "toevoegen") {
 		global $frm_username, $frm_pass, $frm_pass2, $frm_voornaam, $frm_tussenvoegsel, $frm_achternaam, 
 			$frm_email, $frm_indienst, $formerror;
 		$formerror = 0;
@@ -87,8 +110,10 @@ function displayUserGegevens() {
 	global $username, $user_id, $voornaam, $tussenvoegsel, $achternaam, $emailadres, $datum_laatste_mutatie, $weekNumber;
 	echo "<p><table>";
 	$username = $_SESSION['username'];
-	$sql_user = mysql_query("SELECT * FROM users WHERE username = '$username'");
-	while($row_user = mysql_fetch_array($sql_user)) {
+	include ("./db.php");
+	$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
+	$sql_user = mysqli_query($dbconn, "SELECT * FROM users WHERE username = '$username'");
+	while($row_user = mysqli_fetch_array($sql_user)) {
 		$user_id       = $row_user['ID'];
 		$username      = $row_user['username'];
 		$voornaam      = $row_user['voornaam'];
@@ -98,20 +123,26 @@ function displayUserGegevens() {
 		echo '<tr><td align="right">Gebruikersnaam: </td><td>'.$username.'</td></tr>
 			<tr><td align="right">Medewerker: </td><td>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</td></tr>' ;
 	}
-	$sql_laatste = mysql_query("SELECT * FROM uren WHERE userID = '$user_id' AND terapprovalaangeboden = 1 ORDER BY datum DESC LIMIT 1") or die ("Error in query: $sql_laatste. ".mysql_error());
-	$row_laatste = mysql_fetch_array($sql_laatste);
-	$datum_laatste_mutatie = $row_laatste['datum'];
-	echo '<tr><td align="right">Laatste week voor approval aangeboden: </td><td>week '.cnv_dateToWeek($datum_laatste_mutatie).'</td</tr>';
-	$weekNumber = date("W");
-	echo '<tr><td align="right">Huidige weeknummer: </td><td>'.$weekNumber.'</td</tr>';
-	echo "</table></p>";
+	$sql_laatste = mysqli_query($dbconn, "SELECT * FROM uren WHERE userID = '$user_id' AND terapprovalaangeboden = 1 ORDER BY datum DESC LIMIT 1") or die ("Error in query: $sql_laatste. ".mysql_error());
+	$checknumrows = mysqli_num_rows($sql_laatste);
+	if ($checknumrows <> 0) {
+	    $row_laatste = mysqli_fetch_array($sql_laatste);
+	    $datum_laatste_mutatie = $row_laatste['datum'];
+	    echo '<tr><td align="right">Laatste week voor approval aangeboden: </td><td>week '.cnv_dateToWeek($datum_laatste_mutatie).'</td</tr>';
+	    $weekNumber = date("W");
+	    echo '<tr><td align="right">Huidige weeknummer: </td><td>'.$weekNumber.'</td</tr>';
+	    echo "</table></p>";
+	} else {
+	    echo '<tr><td align="right"><br>Er zijn nog geen weken ter approval aangeboden</td</tr>';
+	    echo "</table></p>";
+	}
 }
 
 //------------------------------------------------------------------------
 // Converteren datum (JJJJ-MM-DD) naar een weeknummer
 //------------------------------------------------------------------------
 function cnv_dateToWeek($datum) {
-	$dat_jaar  = substr($datum, 0, 4); // jaren     (Y)
+    $dat_jaar  = substr($datum, 0, 4); // jaren     (Y)
     $dat_maand = substr($datum, 5, 2); // maanden   (m)
     $dat_dag   = substr($datum, 8, 2); // dagen     (d)
     $buildDatum = mktime(0, 0, 0, $dat_maand, $dat_dag, $dat_jaar);

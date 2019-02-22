@@ -17,8 +17,7 @@ else {
 check_admin();
 
 // Connectie met de database maken en database selecteren
-mysql_connect($dbhost, $dbuser, $dbpassw) or die ("Kan de connectie met de database niet maken");
-mysql_select_db($dbname) or die ("Kan de database niet openen");
+$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
 
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
@@ -37,7 +36,7 @@ if (isset($_POST['cancel'])) {
 }
 if (isset($_POST['delete'])) {
 	$delcode = $_POST['code'];
-	$sql_delsoortuur = mysql_query("DELETE FROM soorturen WHERE code = '$delcode'");
+	$sql_delsoortuur = mysqli_query($dbconn, "DELETE FROM soorturen WHERE code = '$delcode'");
 	header("location: edit_soorturen.php?aktie=disp");
 }
 if (isset($_POST['save'])) {
@@ -59,7 +58,7 @@ if (isset($_POST['save'])) {
 		$update = "UPDATE soorturen SET 
 		code = '".$_POST['code']."', 
 		omschrijving = '".$_POST['omschrijving']."' WHERE ID = '".$_POST['ID']."'";
-		$check_upd_soorturen = mysql_query($update) or die ("Error in query: $update. ".mysql_error());
+		$check_upd_soorturen = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error($dbconn));
 		if ($check_upd_soorturen) { 
 			echo '<p class="infmsg">Soort uur <b>'.$_POST['cude'].'</b> is gewijzigd</p>.';
 			$frm_code          = "";
@@ -74,11 +73,11 @@ if (isset($_POST['save'])) {
 }
 
 if ($aktie == 'disp') {
-	$sql_soorturen = mysql_query("SELECT * FROM soorturen ORDER BY code");
+	$sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
 	echo "<center><table>";
 	echo "<tr><th>ID</th><th>Code</th><th>Omschrijving</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
 	$rowcolor = 'row-a';
-	while($row_soorturen = mysql_fetch_array($sql_soorturen)) {
+	while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
 		$id           = $row_soorturen['ID'];
 		$code         = $row_soorturen['code'];
 		$omschrijving = $row_soorturen['omschrijving'];
@@ -99,8 +98,8 @@ if ($aktie == 'disp') {
 if ($aktie == 'edit' || $aktie=='delete') {
 	$edtcode = $_GET['edtcode'];
 	$focus = "code";
-	$sql_dspsoorturen = mysql_query("SELECT * FROM soorturen WHERE code = '$edtcode'");
-	while($row_dspsoorturen = mysql_fetch_array($sql_dspsoorturen)) {
+	$sql_dspsoorturen = mysqli_query($dbconn, "SELECT * FROM soorturen WHERE code = '$edtcode'");
+	while($row_dspsoorturen = mysqli_fetch_array($sql_dspsoorturen)) {
 		$frm_ID   = $row_dspsoorturen['ID'];
 		$frm_code = $row_dspsoorturen['code'];
 		$frm_omschrijving = $row_dspsoorturen['omschrijving'];

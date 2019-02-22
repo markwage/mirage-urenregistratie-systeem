@@ -8,7 +8,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	font: normal 12px 'Trebuchet MS', Tahoma, sans-serif;
+	font: normal 13px verdana, arial, sans-serif;
 	color: black;
 	background: #FFF url(../img/bg.jpg) repeat-x;
 	text-align: center;
@@ -27,7 +27,7 @@ a:hover {
 }
 
 /* headers */
-h1, h2, h3 { font: bold 'Trebuchet MS', Tahoma, Sans-serif; }
+h1, h2, h3 { font: bold verdana, arial, sans-serif; }
 h1 { font-size: 24px; color: #65944A; }
 h2 { font-size: 20px; text-transform: uppercase; }
 h3 { font-size: 16px; }
@@ -42,19 +42,7 @@ ul, ol {
 }
 
 /* images */
-/*
-img {
-	border: 1px solid #DADADA;
-	padding: 5px;
-	background: #FAFAFA;
-}
-img.float-right {
-  margin: 5px 0px 5px 15px;  
-}
-img.float-left {
-  margin: 5px 15px 5px 0px;
-}
-*/
+
 img {
 	border: 0px;
 	width: 16px;
@@ -66,12 +54,13 @@ acronym {
   border-bottom: 1px solid #777;
 }
 blockquote {
-	margin: 15px; 	padding: 0 0 0 20px;  	
+	margin: 15px; 	
+	padding: 0 0 0 20px;  	
   	background-color: #FAFAFA; 
 	background-position: 8px 10px;
 	border: 1px solid #f2f2f2; 
 	border-left: 3px solid #72A545;  
-	font: 12px "Trebuchet MS", Tahoma, sans-serif; 
+	font: 13px verdana, arial, sans-serif; 
 	color: #666666;	
 }
 
@@ -88,6 +77,8 @@ th {
 	height: 20px;
 	padding-left: 11px;
 	padding-right: 11px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	color: #fff;
 	text-align: left;
 	border-left: 1px solid #B6D59A;
@@ -99,6 +90,8 @@ tr {
 td {
 	padding-left: 11px;
 	padding-right: 11px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	/* border-left: 1px solid #FFE1C3; */
 	/* border-left: 1px solid #FFF;
 	border-bottom: solid 1px #ffffff; */
@@ -127,11 +120,16 @@ label {
 	margin:5px 0;
 }
 input {
-	padding: 0px 2px 0px 2px;
+	padding: 5px 5px 5px 5px;
 	border: 1px solid #333;
-	font: normal 12px "Trebuchet MS", Tahoma, sans-serif;
+	font: normal 13px verdana, arial, sans-serif;
 	/* color:#777; */
 	margin-bottom: 4px;
+}
+
+input[type="checkbox"]{
+  width: 18px; /*Desired width*/
+  height: 18px; /*Desired height*/
 }
 
 input:focus {
@@ -140,7 +138,7 @@ input:focus {
 textarea {
 	width: 400px;
 	padding: 2px;
-	font: normal 12px "Trebuchet MS", Tahoma, sans-serif;
+	font: normal 13px verdana, arial, sans-serif;
 	border: 1px solid #eee;
 	height: 100px;
 	display: block;
@@ -148,9 +146,9 @@ textarea {
 }
 input.button {
 	margin-left: 5px;
-	font: bold 12px Arial, Sans-serif;
+	font: bold 13px verdana, arial, sans-serif;
 	background: #FFF url(../img/gradientbg.jpg) repeat-x;
-	padding: 2px 5px 2px 5px;
+	padding: 5px 8px 5px 8px;
 	color: black;
 	cursor: pointer;
 	border: 1px solid #DADADA;
@@ -162,7 +160,7 @@ input.button {
 ************************/
 
 #header-content, #content, #footer-content {
-	width: 80%;
+	width: 95%;
 }
 
 /* header */
@@ -176,7 +174,7 @@ input.button {
 }
 #header-content h1#logo {
 	position: absolute;	
-	font: bold 45px 'Trebuchet MS', Sans-serif;
+	font: bold 45px verdana, arial, sans-serif;
 	letter-spacing: -2px; 
 	color: #FFF;
 	margin: 0; padding: 0;		
@@ -190,7 +188,7 @@ input.button {
 }
 #header-content #slogan {
 	position: absolute;	
-	font: bold 12px 'Trebuchet Ms', Sans-serif;
+	font: bold 13px verdana, arial, sans-serif;
 	text-transform: none;
 	color: #FFF;	
 	margin: 0; padding: 0;
@@ -205,7 +203,7 @@ input.button {
 	/* right: 0px; top: 15px; */
 	left: 27%;
 	top: 55px;
-	font: bolder 14px 'Trebuchet MS', sans-serif;
+	font: bolder 17px verdana, arial, sans-serif;
 	color: #FFF;
 	list-style: none;
 	margin: 0;
@@ -250,12 +248,13 @@ input.button {
 #sidebar {
 	float: left;
 	width: 25%;
-	margin: 0 10px 10px 0; padding: 0;	
+	margin: 0 10px 10px 0; 
+	padding: 0;	
 }	
 #sidebar h1 {
 	padding: 10px 0px 5px 10px;
 	margin: 0;	
-	font: bold 18px 'Trebuchet MS', Tahoma, Sans-serif;
+	font: bold 18px verdana, arial, sans-serif;
 }
 .sidebox {
 	background: #F5F5F5;
@@ -304,7 +303,7 @@ input.button {
 	padding: 10px 0px 0px 5px;
 	margin: 0 0 0 10px;
 	border-bottom: 1px solid #f2f2f2;
-	font: bold 24px 'Trebuchet MS', Tahoma, Sans-serif;
+	font: bold 24px verdana, arial, sans-serif;
 }
 #main ul li {
 	list-style-image: url(../img/bullet.gif);
@@ -317,7 +316,7 @@ input.button {
 	background-position: 8px 10px;
 	border: 1px solid #f2f2f2;
 	border-left: 3px solid red;
-	font: 12px "Trebuchet MS", Tahoma, sans-serif;
+	font: 13px verdana, arial, sans-serif;
 	color: red;
 }
 
@@ -328,7 +327,7 @@ input.button {
 	background-position: 8px 10px;
 	border: 1px solid #f2f2f2;
 	border-left: 3px solid #65944A;
-	font: 12px "Trebuchet MS", Tahoma, sans-serif;
+	font: 13px verdana, arial, sans-serif;
 	font-weight: bold;
 }
 
@@ -337,7 +336,7 @@ input.button {
 	float: right;
 	clear: both;
 	margin: 0; padding: 0;
-	font: normal 12px/16px 'Trebuchet MS', Tahoma, Arial, sans-serif;
+	font: normal 11px/12px verdana, arial, sans-serif;
 	text-align: right;	width: 33%;
 	padding: 0 0 30px 0;
 }

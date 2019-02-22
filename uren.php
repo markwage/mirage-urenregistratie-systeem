@@ -15,8 +15,7 @@ else {
 //$aktie = $_GET['aktie'];
 
 // Connectie met de database maken en database selecteren
-mysql_connect($dbhost, $dbuser, $dbpassw) or die ("Kan de connectie met de database niet maken");
-mysql_select_db($dbname) or die ("Kan de database niet openen");
+$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
 
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();

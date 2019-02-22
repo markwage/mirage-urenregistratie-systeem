@@ -8,8 +8,7 @@ include ("function.php");
 check_admin();
 
 // Connectie met de database maken en database selecteren
-mysql_connect($dbhost, $dbuser, $dbpassw) or die ("Kan de connectie met de database niet maken");
-mysql_select_db($dbname) or die ("Kan de database niet openen");
+$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
 
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
@@ -56,8 +55,8 @@ if (isset($_POST['submit'])) {
 		$_POST['username'] = addslashes($_POST['username']);
 	}
 	$usercheck = $_POST['username'];
-	$check = mysql_query("SELECT username FROM users WHERE username = '$usercheck'") or die(mysql_error());
-	$check2 = mysql_num_rows($check);
+	$check = mysqli_query($dbconn, "SELECT username FROM users WHERE username = '$usercheck'") or die(mysql_error());
+	$check2 = mysqli_num_rows($check);
 
 	//if the name exists it gives an error
 	if ($check2 != 0) {
@@ -106,7 +105,7 @@ if (isset($_POST['submit'])) {
 					'".$_POST['achternaam']."',
 					'".$_POST['email']."',
 					'".$_POST['indienst']."')";
-		$check_add_member = mysql_query($insert);
+		$check_add_member = mysqli_query($dbconn, $insert);
 	
 		if ($check_add_member) { 
 			echo '<p class="infmsg">User <b>'.$_POST['username'].'</b> is opgenomen</p>.';

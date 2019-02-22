@@ -14,7 +14,8 @@ if (isset($_COOKIE['ID_mus'])) {
 	echo '<li><a href="uren.php?aktie=disp">Weken wachtend op approval</a></li>';
 	echo '<li><a href="uren.php?aktie=disp">Vakantie-uren per kalenderjaar</a></li>';
 	echo '<li><a href="rapportage.php">Overzicht periode</a></li>';
-	echo '<li><a href="edit_users.php?aktie=edit&edtuser='.$_SESSION["username"].'">Mijn profiel</a></li>';
+	//echo '<li><a href="edit_users.php?aktie=edit&edtuser='.$_SESSION["username"].'">Mijn profiel</a></li>';
+	echo '<li><a href="edit_users.php?aktie=editprof&edtuser='.$_SESSION["username"].'">Mijn profiel</a></li>';
 	echo '</ul>';	
 	echo '</div>';	
 	

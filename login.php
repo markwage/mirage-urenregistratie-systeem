@@ -4,46 +4,33 @@ include ("./config.php");
 include ("./db.php");
 include ("./function.php");
 
-// Connectie met de database maken en database selecteren
-$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw);
-if (!$dbconn) {
-    die("Kan de connectie met de database niet maken");
-}
-
-$dbselect = mysqli_select_db($dbconn, $dbname);
-if (!$dbselect) {
-    die("Kan de database niet openen : " . mysqli_error());
-}
-
 include ("header.php");
 
 ?>
-
-
-		<div id="main">		
-			<h1>Urenregistratie</h1>
-			<p>Dit is de urenregistratie van Mirage Automatisering BV. 
-			Heb je een account dan kun je inloggen. 
-			Zo niet dan kun je een account aanvragen via het contactformulier.</p>
+<div id="main">		
+	<h1>Urenregistratie</h1>
+	<p>Dit is de urenregistratie van Mirage Automatisering BV. 
+	Heb je een account dan kun je inloggen. 
+	Zo niet dan kun je een account aanvragen via het contactformulier.</p>
 			
 <?php
 // Indien het Login form is submitted
 if (isset($_POST['submit'])) {
 	//controleer of het ingevuld is
-	if (!$_POST['username'] | !$_POST['pass']) {
+	if (!$_POST['username'] || !$_POST['pass']) {
 		echo '<p class="errmsg"> ERROR: Niet alle velden zijn ingevuld</p>';
 	}
 	// Controleer het met de database
 	if (!get_magic_quotes_gpc()) {
 		$_POST['username'] = addslashes($_POST['username']);
 	}
-	$check = mysql_query("SELECT * FROM users WHERE username = '".$_POST['username']."'") or die(mysql_error());
+	$check = mysqli_query($dbconn, "SELECT * FROM users WHERE username = '".$_POST['username']."'") or die(mysqli_error($dbconn));
 	// Error indien username wel ingevuld maar onbekend
-	$check2 = mysql_num_rows($check);
-	if ($check2 == 0 & $_POST['username'] <> '') {
+	$check2 = mysqli_num_rows($check);
+	if ($check2 == 0 && $_POST['username'] <> '') {
 		echo '<p class="errmsg"> ERROR: Username is onbekend</p>';
 	}
-	while ($info = mysql_fetch_array($check)) {
+	while ($info = mysqli_fetch_array($check)) {
 		$_POST['pass']     = stripslashes($_POST['pass']);
 		$info['password']  = stripslashes($info['password']);
 		$_POST['pass']     = md5($_POST['pass']);
@@ -65,7 +52,7 @@ if (isset($_POST['submit'])) {
 			// update lastloggedin in de tabel
 			$update = "UPDATE users SET 
 				lastloggedin = '".date('Y-m-d h:m:s')."' WHERE username = '".$_POST['username']."'";
-			$check_upd_users = mysql_query($update) or die ("Error in query: $update. ".mysqli_error());
+			$check_upd_users = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error());
 			header("location: index.php");
 		}
 	}
