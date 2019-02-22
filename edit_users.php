@@ -95,7 +95,6 @@ if (isset($_POST['save'])) {
 	
 	// here we encrypt the password and add slashes if needed
 	if (!$formerror) {
-	    writeLogRecord("edit_users","Indien fromerror=0 zou nu het update-statement uitgevoerd moeten worden. formerror=".$formerror);
 	    // $_POST['indienst'] = 1;
 	    $update = "UPDATE users SET ";
 	    if (!$_POST['pass'] = "") {

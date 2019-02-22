@@ -1,0 +1,34 @@
+20190222 16:45:39 PHP program: edit_users - Gebruiker: mwage - Deze wordt nu uitgevoerd op de database
+20190222 16:51:46 PHP program: edit_users - Gebruiker: mwage - Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190222 16:51:46 PHP program: edit_users - Gebruiker: mwage - formerror:0 frm_username:demo frm_admin:on frm_indienst:
+20190222 16:51:46 PHP program: edit_users - Gebruiker: mwage - Indien fromerror=0 zou nu het update-statement uitgevoerd moeten worden. formerror=0
+20190222 16:51:46 PHP program: edit_users - Gebruiker: mwage - Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190222 16:51:46 PHP program: edit_users - Gebruiker: mwage - Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='1',
+		voornaam='Demovoor',
+		tussenvoegsel='van der',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190222 16:51:46 PHP program: edit_users - Gebruiker: mwage - Deze wordt nu uitgevoerd op de database
+20190222 19:31:49 PHP program: edit_users - Gebruiker: mwage - Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190222 19:31:49 PHP program: edit_users - Gebruiker: mwage - formerror:0 frm_username:demo frm_admin:on frm_indienst:
+20190222 19:31:49 PHP program: edit_users - Gebruiker: mwage - Indien fromerror=0 zou nu het update-statement uitgevoerd moeten worden. formerror=0
+20190222 19:31:49 PHP program: edit_users - Gebruiker: mwage - Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190222 19:31:49 PHP program: edit_users - Gebruiker: mwage - Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='1',
+		voornaam='Demovoor',
+		tussenvoegsel='van',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190222 19:31:49 PHP program: edit_users - Gebruiker: mwage - Deze wordt nu uitgevoerd op de database
+20190222 19:33:17 PHP program: edit_users - Gebruiker: mwage - Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190222 19:33:17 PHP program: edit_users - Gebruiker: mwage - formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190222 19:33:17 PHP program: edit_users - Gebruiker: mwage - Indien fromerror=0 zou nu het update-statement uitgevoerd moeten worden. formerror=0
+20190222 19:33:17 PHP program: edit_users - Gebruiker: mwage - Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190222 19:33:17 PHP program: edit_users - Gebruiker: mwage - Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demovoor',
+		tussenvoegsel='van',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190222 19:33:17 PHP program: edit_users - Gebruiker: mwage - Deze wordt nu uitgevoerd op de database

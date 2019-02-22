@@ -11,8 +11,6 @@ else {
 	$aktie = "";
 }
 
-//$aktie = $_GET['aktie'];
-
 // Controleren of gebruiker admin-rechten heeft
 check_admin();
 

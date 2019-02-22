@@ -27,6 +27,7 @@ if (isset($_COOKIE['ID_mus'])) {
 		// echo '<li><a href="add_user.php">Add user</a></li>';
 		echo '<li><a href="edit_users.php?aktie=disp">Usermanagement</a></li>';
 		echo '<li><a href="edit_soorturen.php?aktie=disp">Onderhoud soort uren</a></li>';
+		echo '<li><a href="nieuws.php?aktie=disp">Onderhoud nieuwsartikelen</a></li>';
 		echo '</ul>';	
 		echo '</div>';
 	}

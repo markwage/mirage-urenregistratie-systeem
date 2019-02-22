@@ -5,28 +5,6 @@ include ("./config.php");
 include ("./db.php");
 include ("./function.php");
 
-//db_connect();
-
-
-// Connectie met de database maken en database selecteren.
-//mysql_connect($dbhost, $dbuser, $dbpassw) or die ("Kan de connectie met de database niet maken");
-//mysql_select_db($dbname) or die ("Kan de database niet openen");
-
-//------------------------------------------------------------------------------
-// Connectie met de database maken en database selecteren.
-
-//$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw);
-//if (!$dbconn) {
-//    die("Kan de connectie met de database niet maken");
-//}
-
-//$dbselect = mysqli_select_db($dbconn, $dbname);
-//if (!$dbselect) {
-//    die("Kan de database niet openen : " . mysqli_error());
-//}
-//makedbconnection();
-//$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
-
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
 
