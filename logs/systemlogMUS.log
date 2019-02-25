@@ -1,34 +1,456 @@
-20190222 16:45:39 PHP program: edit_users - Gebruiker: mwage - Deze wordt nu uitgevoerd op de database
-20190222 16:51:46 PHP program: edit_users - Gebruiker: mwage - Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
-20190222 16:51:46 PHP program: edit_users - Gebruiker: mwage - formerror:0 frm_username:demo frm_admin:on frm_indienst:
-20190222 16:51:46 PHP program: edit_users - Gebruiker: mwage - Indien fromerror=0 zou nu het update-statement uitgevoerd moeten worden. formerror=0
-20190222 16:51:46 PHP program: edit_users - Gebruiker: mwage - Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
-20190222 16:51:46 PHP program: edit_users - Gebruiker: mwage - Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='1',
+20190222 22:58:14 ;login;mwage;User demo probeerde in te loggen met een foutief wachtwoord
+20190222 22:58:20 ;login;mwage;User demo probeerde in te loggen met een foutief wachtwoord
+20190222 22:58:27 ;login;mwage;User mwage is succesvol ingelogd.
+20190222 22:58:40 ;edit_users;mwage;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190222 22:58:40 ;edit_users;mwage;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190222 22:58:40 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190222 22:58:40 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demovoor',
+		tussenvoegsel='van',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190222 22:58:40 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190222 22:58:48 ;login;mwage;User demo probeerde in te loggen met een foutief wachtwoord
+20190222 22:58:59 ;login;mwage;User demo probeerde in te loggen met een foutief wachtwoord
+20190222 22:59:12 ;login;mwage;User admin probeerde in te loggen met een foutief wachtwoord
+20190222 22:59:20 ;login;mwage;User mwage is succesvol ingelogd.
+20190225 08:01:48 ;login;mwage;User mwage is succesvol ingelogd.
+20190225 08:33:29 ;edit_users;mwage;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 08:33:29 ;edit_users;mwage;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 08:33:29 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 08:33:29 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
 		voornaam='Demovoor',
 		tussenvoegsel='van der',
 		achternaam='Demoachter',
 		emailadres='demo@email.com',
 		indienst='0' WHERE username = 'demo'
-20190222 16:51:46 PHP program: edit_users - Gebruiker: mwage - Deze wordt nu uitgevoerd op de database
-20190222 19:31:49 PHP program: edit_users - Gebruiker: mwage - Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
-20190222 19:31:49 PHP program: edit_users - Gebruiker: mwage - formerror:0 frm_username:demo frm_admin:on frm_indienst:
-20190222 19:31:49 PHP program: edit_users - Gebruiker: mwage - Indien fromerror=0 zou nu het update-statement uitgevoerd moeten worden. formerror=0
-20190222 19:31:49 PHP program: edit_users - Gebruiker: mwage - Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
-20190222 19:31:49 PHP program: edit_users - Gebruiker: mwage - Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='1',
+20190225 08:33:29 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 14:56:39 ;login;mwage;User demo probeerde in te loggen met een foutief wachtwoord
+20190225 14:56:46 ;login;mwage;User demo probeerde in te loggen met een foutief wachtwoord
+20190225 14:56:56 ;login;mwage;User mwage is succesvol ingelogd.
+20190225 14:57:07 ;edit_users;mwage;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 14:57:07 ;edit_users;mwage;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 14:57:07 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 14:57:07 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
 		voornaam='Demovoor',
-		tussenvoegsel='van',
+		tussenvoegsel='van der',
 		achternaam='Demoachter',
 		emailadres='demo@email.com',
 		indienst='0' WHERE username = 'demo'
-20190222 19:31:49 PHP program: edit_users - Gebruiker: mwage - Deze wordt nu uitgevoerd op de database
-20190222 19:33:17 PHP program: edit_users - Gebruiker: mwage - Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
-20190222 19:33:17 PHP program: edit_users - Gebruiker: mwage - formerror:0 frm_username:demo frm_admin: frm_indienst:
-20190222 19:33:17 PHP program: edit_users - Gebruiker: mwage - Indien fromerror=0 zou nu het update-statement uitgevoerd moeten worden. formerror=0
-20190222 19:33:17 PHP program: edit_users - Gebruiker: mwage - Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
-20190222 19:33:17 PHP program: edit_users - Gebruiker: mwage - Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+20190225 14:57:07 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 14:57:17 ;login;mwage;User demo probeerde in te loggen met een foutief wachtwoord
+20190225 14:57:23 ;login;mwage;User demo probeerde in te loggen met een foutief wachtwoord
+20190225 14:57:53 ;login;mwage;User demo probeerde in te loggen met een foutief wachtwoord
+20190225 14:57:57 ;login;demo;User demo is succesvol ingelogd.
+20190225 14:58:16 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 14:58:16 ;edit_users;demo;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 14:58:16 ;edit_users;demo;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 14:58:16 ;edit_users;demo;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='',
 		voornaam='Demovoor',
-		tussenvoegsel='van',
+		tussenvoegsel='van der',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='' WHERE username = 'demo'
+20190225 14:58:16 ;edit_users;demo;Deze wordt nu uitgevoerd op de database
+20190225 14:59:13 ;login;demo;User demo is succesvol ingelogd.
+20190225 14:59:36 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 14:59:36 ;edit_users;demo;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 14:59:36 ;edit_users;demo;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 14:59:36 ;edit_users;demo;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='',
+		voornaam='Demovoor',
+		tussenvoegsel='van de',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='' WHERE username = 'demo'
+20190225 14:59:36 ;edit_users;demo;Deze wordt nu uitgevoerd op de database
+20190225 15:15:10 ;login;mwage;User mwage is succesvol ingelogd.
+20190225 15:16:04 ;edit_users;mwage;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:16:04 ;edit_users;mwage;formerror:0 frm_username:demo frm_admin:on frm_indienst:
+20190225 15:16:04 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:16:04 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='1',
+		voornaam='Demovoor',
+		tussenvoegsel='van der',
 		achternaam='Demoachter',
 		emailadres='demo@email.com',
 		indienst='0' WHERE username = 'demo'
-20190222 19:33:17 PHP program: edit_users - Gebruiker: mwage - Deze wordt nu uitgevoerd op de database
+20190225 15:16:04 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 15:16:13 ;login;demo;User demo is succesvol ingelogd.
+20190225 15:16:24 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:16:24 ;edit_users;demo;formerror:0 frm_username:demo frm_admin:on frm_indienst:
+20190225 15:16:24 ;edit_users;demo;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:16:24 ;edit_users;demo;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='1',
+		voornaam='Demovoor',
+		tussenvoegsel='van der',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190225 15:16:24 ;edit_users;demo;Deze wordt nu uitgevoerd op de database
+20190225 15:16:33 ;login;demo;User demo probeerde in te loggen met een foutief wachtwoord
+20190225 15:16:41 ;login;demo;User demo is succesvol ingelogd.
+20190225 15:18:37 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:18:37 ;edit_users;demo;formerror:0 frm_username:demo frm_admin:on frm_indienst:
+20190225 15:18:37 ;edit_users;demo;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:18:37 ;edit_users;demo;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='1',
+		voornaam='Demovoor',
+		tussenvoegsel='van de',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190225 15:18:37 ;edit_users;demo;Deze wordt nu uitgevoerd op de database
+20190225 15:18:43 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:18:43 ;edit_users;demo;formerror:0 frm_username:demo frm_admin:on frm_indienst:
+20190225 15:18:43 ;edit_users;demo;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:18:43 ;edit_users;demo;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='1',
+		voornaam='Demovoor',
+		tussenvoegsel='van de',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190225 15:18:43 ;edit_users;demo;Deze wordt nu uitgevoerd op de database
+20190225 15:22:06 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:22:06 ;edit_users;demo;formerror:0 frm_username:demo frm_admin:on frm_indienst:
+20190225 15:22:06 ;edit_users;demo;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:22:06 ;edit_users;demo;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='1',
+		voornaam='Demovoor',
+		tussenvoegsel='van de',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190225 15:22:06 ;edit_users;demo;Deze wordt nu uitgevoerd op de database
+20190225 15:32:24 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:32:24 ;edit_users;demo;formerror:0 frm_username:demo frm_admin:on frm_indienst:
+20190225 15:37:22 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:37:22 ;edit_users;demo;formerror:0 frm_username:demo frm_admin:on frm_indienst:
+20190225 15:41:59 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:41:59 ;edit_users;demo;formerror:0 frm_username:demo frm_admin:on frm_indienst:
+20190225 15:44:34 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:44:34 ;edit_users;demo;formerror:0 frm_username:demo frm_admin:on frm_indienst:on
+20190225 15:44:51 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:44:51 ;edit_users;demo;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 15:44:51 ;edit_users;demo;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:44:51 ;edit_users;demo;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demovoor',
+		tussenvoegsel='van de',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190225 15:44:51 ;edit_users;demo;Deze wordt nu uitgevoerd op de database
+20190225 15:44:59 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:44:59 ;edit_users;demo;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 15:47:13 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:47:13 ;edit_users;demo;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 15:47:13 ;edit_users;demo;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:47:13 ;edit_users;demo;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demovoor',
+		tussenvoegsel='van de',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190225 15:47:13 ;edit_users;demo;Deze wordt nu uitgevoerd op de database
+20190225 15:47:59 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:47:59 ;edit_users;demo;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 15:48:49 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:48:49 ;edit_users;demo;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 15:48:49 ;edit_users;demo;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:48:49 ;edit_users;demo;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demovoor',
+		tussenvoegsel='van de',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190225 15:48:49 ;edit_users;demo;Deze wordt nu uitgevoerd op de database
+20190225 15:48:55 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:48:55 ;edit_users;demo;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 15:51:06 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:51:06 ;edit_users;demo;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 15:53:18 ;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:53:18 ;edit_users;demo;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 15:53:18 ;edit_users;demo;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:53:18 ;edit_users;demo;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demovoor',
+		tussenvoegsel='van de',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190225 15:53:18 ;edit_users;demo;Deze wordt nu uitgevoerd op de database
+20190225 15:53:51 ;login;demo;User demo probeerde in te loggen met een foutief wachtwoord
+20190225 15:53:55 ;login;demo;User demo is succesvol ingelogd.
+20190225 15:54:17 ;login;mwage;User mwage is succesvol ingelogd.
+20190225 15:55:15 ;edit_users;mwage;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:55:15 ;edit_users;mwage;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 15:55:15 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:55:15 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demovoor',
+		tussenvoegsel='van de',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190225 15:55:15 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 15:56:56 ;edit_users;mwage;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:56:56 ;edit_users;mwage;formerror:0 frm_username:demo frm_admin: frm_indienst:
+20190225 15:56:56 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:56:56 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demovoor',
+		tussenvoegsel='van der',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='0' WHERE username = 'demo'
+20190225 15:56:56 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 15:57:11 ;edit_users;mwage;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:57:11 ;edit_users;mwage;formerror:0 frm_username:demo frm_admin:on frm_indienst:on
+20190225 15:57:11 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:57:11 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='1',
+		voornaam='Demovoor',
+		tussenvoegsel='van der',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='1' WHERE username = 'demo'
+20190225 15:57:11 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 15:57:21 ;edit_users;mwage;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 15:57:21 ;edit_users;mwage;formerror:0 frm_username:demo frm_admin:on frm_indienst:on
+20190225 15:57:21 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 15:57:21 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='1',
+		voornaam='Demovoor',
+		tussenvoegsel='van der',
+		achternaam='Demoachter',
+		emailadres='demo@email.com',
+		indienst='1' WHERE username = 'demo'
+20190225 15:57:21 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 15:57:30 ;login;mwage;User demo probeerde in te loggen met een foutief wachtwoord
+20190225 15:57:34 ;login;demo;User demo is succesvol ingelogd.
+20190225 15:59:12 ;login;demo;User mwage probeerde in te loggen met een foutief wachtwoord
+20190225 15:59:18 ;login;demo;User mwage probeerde in te loggen met een foutief wachtwoord
+20190225 15:59:28 ;login;mwage;User mwage is succesvol ingelogd.
+20190225 16:03:54 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 16:03:54 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 16:03:54 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on Wachtwoord: demo3
+20190225 16:03:54 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 16:03:54 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demo',
+		tussenvoegsel='van het',
+		achternaam='Demo2',
+		emailadres='email@email.com',
+		indienst='1' WHERE username = 'demo2'
+20190225 16:03:54 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 16:09:43 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 16:09:43 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 16:09:43 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on Wachtwoord: demo3 Post wachtwoord: demo3
+20190225 16:09:43 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_pass: frm_indienst:on
+20190225 16:09:43 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 16:09:43 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demo',
+		tussenvoegsel='van het',
+		achternaam='Demo2',
+		emailadres='email@email.com',
+		indienst='1' WHERE username = 'demo2'
+20190225 16:09:43 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 16:12:51 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 16:12:51 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 16:12:51 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on Wachtwoord: demo3 Post wachtwoord: demo3
+20190225 16:12:51 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_pass(md5):  frm_indienst:on
+20190225 16:12:51 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 16:12:51 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demo',
+		tussenvoegsel='van het',
+		achternaam='Demo2',
+		emailadres='email@email.com',
+		indienst='1' WHERE username = 'demo2'
+20190225 16:12:51 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 16:14:21 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 16:14:21 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 16:14:21 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on Wachtwoord: demo3 Post wachtwoord: demo3
+20190225 16:14:21 ;edit_users;mwage;formerror:0 frm_username:demo2 Waarde na md5 : d41d8cd98f00b204e9800998ecf8427e frm_indienst:on
+20190225 16:14:21 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 16:14:21 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demo',
+		tussenvoegsel='van het',
+		achternaam='Demo2',
+		emailadres='email@email.com',
+		indienst='1' WHERE username = 'demo2'
+20190225 16:14:21 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 16:19:43 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 16:19:43 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 16:19:43 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on Wachtwoord: demo3 Post wachtwoord: demo3
+20190225 16:19:43 ;edit_users;mwage;demo2 Waarde POST(pass) voor md5 :  frm_indienst:on
+20190225 16:19:43 ;edit_users;mwage;formerror:0 frm_username:demo2 Waarde POST(pass) na md5 : d41d8cd98f00b204e9800998ecf8427e frm_indienst:on
+20190225 16:19:43 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 16:19:43 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demo',
+		tussenvoegsel='van het',
+		achternaam='Demo2',
+		emailadres='email@email.com',
+		indienst='1' WHERE username = 'demo2'
+20190225 16:19:43 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 19:01:30 ;login;mwage;User mwage is succesvol ingelogd.
+20190225 19:01:46 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 19:01:46 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 19:01:46 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on Wachtwoord: demo2 Post wachtwoord: demo2
+20190225 19:01:46 ;edit_users;mwage;demo2 Waarde POST(pass) voor md5 :  frm_indienst:on
+20190225 19:01:46 ;edit_users;mwage;formerror:0 frm_username:demo2 Waarde POST(pass) na md5 : d41d8cd98f00b204e9800998ecf8427e frm_indienst:on
+20190225 19:01:46 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 19:01:46 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demo',
+		tussenvoegsel='van het',
+		achternaam='Demo2',
+		emailadres='email@email.com',
+		indienst='1' WHERE username = 'demo2'
+20190225 19:01:46 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 19:09:08 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 19:09:08 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 19:09:08 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on Wachtwoord: demo99 Post wachtwoord: demo99
+20190225 19:09:08 ;edit_users;mwage;demo2 Waarde POST(pass) voor md5 :  frm_pass: demo99
+20190225 19:09:08 ;edit_users;mwage;formerror:0 frm_username:demo2 Waarde POST(pass) na md5 : d41d8cd98f00b204e9800998ecf8427e frm_pass:demo99
+20190225 19:09:08 ;edit_users;mwage;Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5
+20190225 19:09:08 ;edit_users;mwage;Het update-statement: UPDATE users SET password='d41d8cd98f00b204e9800998ecf8427e',admin='0',
+		voornaam='Demo',
+		tussenvoegsel='van het',
+		achternaam='Demo2',
+		emailadres='email@email.com',
+		indienst='1' WHERE username = 'demo2'
+20190225 19:09:08 ;edit_users;mwage;Deze wordt nu uitgevoerd op de database
+20190225 19:46:48 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 19:46:48 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 19:46:48 ;edit_users;mwage;SAVEBUTTON - POST ['pass']: demo456 frm_pass: demo456
+20190225 19:46:48 ;edit_users;mwage;CHECKPASS - Waarde na controle inhoud wachtwoorden - POST ['pass']: demo456 frm_pass: demo456
+20190225 19:46:48 ;edit_users;mwage;CREATEQRY - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: demo456 frm_pass: demo456
+20190225 19:46:48 ;edit_users;mwage;CREATEQRY2 - Waarde van de wachtwoorden tijdens aanmaken query - POST ['pass']:  frm_pass: demo456
+20190225 19:46:48 ;edit_users;mwage;PASS_MD5 - Waarde van de wachtwoorden na md5 encryptie - POST ['pass']: d41d8cd98f00b204e9800998ecf8427e frm_pass: demo456
+20190225 19:46:48 ;edit_users;mwage;PASS_SLAHES - Waarde van de wachtwoorden na add slashes - POST ['pass']: d41d8cd98f00b204e9800998ecf8427e frm_pass: demo456
+20190225 19:46:48 ;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database
+20190225 20:15:28 ;login;mwage;User mwage is succesvol ingelogd.
+20190225 20:15:54 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 20:15:54 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 20:15:54 ;edit_users;mwage;SAVEBUTTON - POST ['pass']: DEMO987 frm_pass: DEMO987
+20190225 20:15:54 ;edit_users;mwage;CHECKPASS - Waarde na controle inhoud wachtwoorden - POST ['pass']: DEMO987 frm_pass: DEMO987
+20190225 20:15:54 ;edit_users;mwage;CREATEQRY - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: DEMO987 frm_pass: DEMO987
+20190225 20:15:54 ;edit_users;mwage;CREATEQRY2 - Waarde van de wachtwoorden tijdens aanmaken query - POST ['pass']:  frm_pass: DEMO987
+20190225 20:15:54 ;edit_users;mwage;PASS_MD5 - Waarde van de wachtwoorden na md5 encryptie - POST ['pass']: d41d8cd98f00b204e9800998ecf8427e frm_pass: DEMO987
+20190225 20:15:54 ;edit_users;mwage;PASS_SLASHES - Waarde van de wachtwoorden na add slashes - POST ['pass']: d41d8cd98f00b204e9800998ecf8427e frm_pass: DEMO987
+20190225 20:15:54 ;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database
+20190225 20:25:12 ;login;mwage;User mwage is succesvol ingelogd.
+20190225 20:25:30 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 20:25:30 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 20:25:30 ;edit_users;mwage;SAVEBUTTON - POST ['pass']: DEMO345 frm_pass: DEMO345
+20190225 20:25:30 ;edit_users;mwage;CHECKPASS - Waarde na controle inhoud wachtwoorden - POST ['pass']: DEMO345 frm_pass: DEMO345
+20190225 20:25:58 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 20:25:58 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 20:25:58 ;edit_users;mwage;SAVEBUTTON - POST ['pass']: DEMO345 frm_pass: DEMO345
+20190225 20:25:58 ;edit_users;mwage;CHECKPASS - Waarde na controle inhoud wachtwoorden - POST ['pass']: DEMO345 frm_pass: DEMO345
+20190225 20:25:58 ;edit_users;mwage;CREATEQRY - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: DEMO345 frm_pass: DEMO345
+20190225 20:25:58 ;edit_users;mwage;CREATEQRY1A - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: DEMO345 frm_pass: DEMO345
+20190225 20:25:58 ;edit_users;mwage;CREATEQRY1B - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: DEMO345 frm_pass: DEMO345
+20190225 20:25:58 ;edit_users;mwage;CREATEQRY2 - Waarde van de wachtwoorden tijdens aanmaken query - POST ['pass']:  frm_pass: DEMO345
+20190225 20:25:58 ;edit_users;mwage;PASS_MD5 - Waarde van de wachtwoorden na md5 encryptie - POST ['pass']: d41d8cd98f00b204e9800998ecf8427e frm_pass: DEMO345
+20190225 20:25:58 ;edit_users;mwage;PASS_SLASHES - Waarde van de wachtwoorden na add slashes - POST ['pass']: d41d8cd98f00b204e9800998ecf8427e frm_pass: DEMO345
+20190225 20:25:58 ;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database
+20190225 20:34:24 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 20:34:24 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 20:34:24 ;edit_users;mwage;SAVEBUTTON - POST ['pass']: DEMO999 frm_pass: DEMO999
+20190225 20:34:24 ;edit_users;mwage;CHECKPASS - Waarde na controle inhoud wachtwoorden - POST ['pass']: DEMO999 frm_pass: DEMO999
+20190225 20:34:24 ;edit_users;mwage;CREATEQRY - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: DEMO999 frm_pass: DEMO999
+20190225 20:34:24 ;edit_users;mwage;CREATEQRY1A - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: DEMO999 frm_pass: DEMO999
+20190225 20:34:24 ;edit_users;mwage;CREATEQRY1B - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: DEMO999 frm_pass: DEMO999
+20190225 20:34:24 ;edit_users;mwage;CREATEQRY2A - Waarde van de wachtwoorden tijdens aanmaken query - POST ['pass']:  frm_pass: DEMO999
+20190225 20:34:24 ;edit_users;mwage;PASS_MD5 - Waarde van de wachtwoorden na md5 encryptie - POST ['pass']: 2d1b46e42ea7623d7316d70a8394c881 frm_pass: DEMO999
+20190225 20:34:24 ;edit_users;mwage;PASS_SLASHES - Waarde van de wachtwoorden na add slashes - POST ['pass']: 2d1b46e42ea7623d7316d70a8394c881 frm_pass: DEMO999
+20190225 20:34:24 ;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database
+20190225 20:41:10 ;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 20:41:10 ;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 20:41:10 ;edit_users;mwage;SAVEBUTTON - POST ['pass']: PASS999 frm_pass: PASS999
+20190225 20:41:10 ;edit_users;mwage;CHECKPASS - Waarde na controle inhoud wachtwoorden - POST ['pass']: PASS999 frm_pass: PASS999
+20190225 20:41:10 ;edit_users;mwage;CREATEQRY - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: PASS999 frm_pass: PASS999
+20190225 20:41:10 ;edit_users;mwage;CREATEQRY1A - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: PASS999 frm_pass: PASS999
+20190225 20:41:10 ;edit_users;mwage;CREATEQRY1B - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: PASS999 frm_pass: PASS999
+20190225 20:41:10 ;edit_users;mwage;CREATEQRY2A - Waarde van de wachtwoorden tijdens aanmaken query - POST ['pass']: PASS999 frm_pass: PASS999
+20190225 20:41:10 ;edit_users;mwage;PASS_MD5 - Waarde van de wachtwoorden na md5 encryptie - POST ['pass']: fbed7e181de5ad4472d3bd8d6e2d212a frm_pass: PASS999
+20190225 20:41:10 ;edit_users;mwage;PASS_SLASHES - Waarde van de wachtwoorden na add slashes - POST ['pass']: fbed7e181de5ad4472d3bd8d6e2d212a frm_pass: PASS999
+20190225 20:41:11 ;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database
+20190225 20:49:04;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 20:49:04;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 20:49:04;edit_users;mwage;SAVEBUTTON - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:49:04;edit_users;mwage;CHECKPASS - Waarde na controle inhoud wachtwoorden - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:49:04;edit_users;mwage;CREATEQRY1A - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:49:04;edit_users;mwage;CREATEQRY1B - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:49:04;edit_users;mwage;CREATEQRY2A - Waarde van de wachtwoorden tijdens aanmaken query - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:49:04;edit_users;mwage;PASS_MD5 - Waarde van de wachtwoorden na md5 encryptie - POST ['pass']: 1066726e7160bd9c987c9968e0cc275a frm_pass: demo2
+20190225 20:49:04;edit_users;mwage;PASS_SLASHES - Waarde van de wachtwoorden na add slashes - POST ['pass']: 1066726e7160bd9c987c9968e0cc275a frm_pass: demo2
+20190225 20:49:04;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database
+20190225 20:50:38;login;mwage;User demo probeerde in te loggen met een foutief wachtwoord
+20190225 20:50:48;login;demo;User demo is succesvol ingelogd.
+20190225 20:51:02;login;demo;User mwage probeerde in te loggen met een foutief wachtwoord
+20190225 20:51:23;login;mwage;User mwage is succesvol ingelogd.
+20190225 20:51:40;edit_users;mwage;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 20:51:40;edit_users;mwage;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 20:51:40;edit_users;mwage;SAVEBUTTON - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:51:40;edit_users;mwage;CHECKPASS - Waarde na controle inhoud wachtwoorden - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:51:40;edit_users;mwage;CREATEQRY1A - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:51:40;edit_users;mwage;CREATEQRY1B - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:51:40;edit_users;mwage;CREATEQRY2A - Waarde van de wachtwoorden tijdens aanmaken query - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:51:40;edit_users;mwage;PASS_MD5 - Waarde van de wachtwoorden na md5 encryptie - POST ['pass']: 1066726e7160bd9c987c9968e0cc275a frm_pass: demo2
+20190225 20:51:40;edit_users;mwage;PASS_SLASHES - Waarde van de wachtwoorden na add slashes - POST ['pass']: 1066726e7160bd9c987c9968e0cc275a frm_pass: demo2
+20190225 20:51:40;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database
+20190225 20:53:55;login;demo;User demo is succesvol ingelogd.
+20190225 20:58:31;edit_users;demo;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 20:58:31;edit_users;demo;formerror:0 frm_username:demo frm_admin:on frm_indienst:on
+20190225 20:58:31;edit_users;demo;SAVEBUTTON - POST ['pass']: demo frm_pass: demo
+20190225 20:58:31;edit_users;demo;CHECKPASS - Waarde na controle inhoud wachtwoorden - POST ['pass']: demo frm_pass: demo
+20190225 20:58:31;edit_users;demo;CREATEQRY1A - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: demo frm_pass: demo
+20190225 20:58:31;edit_users;demo;CREATEQRY1B - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: demo frm_pass: demo
+20190225 20:58:31;edit_users;demo;CREATEQRY2A - Waarde van de wachtwoorden tijdens aanmaken query - POST ['pass']: demo frm_pass: demo
+20190225 20:58:31;edit_users;demo;PASS_MD5 - Waarde van de wachtwoorden na md5 encryptie - POST ['pass']: fe01ce2a7fbac8fafaed7c982a04e229 frm_pass: demo
+20190225 20:58:31;edit_users;demo;PASS_SLASHES - Waarde van de wachtwoorden na add slashes - POST ['pass']: fe01ce2a7fbac8fafaed7c982a04e229 frm_pass: demo
+20190225 20:58:31;edit_users;demo;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database
+20190225 20:58:43;login;demo;User demo probeerde in te loggen met een foutief wachtwoord
+20190225 20:58:49;login;demo;User demo is succesvol ingelogd.
+20190225 20:59:06;edit_users;demo;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 20:59:06;edit_users;demo;formerror:0 frm_username:demo2 frm_admin: frm_indienst:on
+20190225 20:59:06;edit_users;demo;SAVEBUTTON - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:59:06;edit_users;demo;CHECKPASS - Waarde na controle inhoud wachtwoorden - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:59:06;edit_users;demo;CREATEQRY1A - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:59:06;edit_users;demo;CREATEQRY1B - Waarde van de wachtwoorden voor aanmaken UPDATE query - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:59:06;edit_users;demo;CREATEQRY2A - Waarde van de wachtwoorden tijdens aanmaken query - POST ['pass']: demo2 frm_pass: demo2
+20190225 20:59:06;edit_users;demo;PASS_MD5 - Waarde van de wachtwoorden na md5 encryptie - POST ['pass']: 1066726e7160bd9c987c9968e0cc275a frm_pass: demo2
+20190225 20:59:06;edit_users;demo;PASS_SLASHES - Waarde van de wachtwoorden na add slashes - POST ['pass']: 1066726e7160bd9c987c9968e0cc275a frm_pass: demo2
+20190225 20:59:06;edit_users;demo;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database
+20190225 21:13:31;login;mwage;User mwage is succesvol ingelogd.
+20190225 21:14:40;edit_users;mwage;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 21:14:40;edit_users;mwage;formerror:0 frm_username:demo frm_admin:on frm_indienst:on
+20190225 21:14:40;edit_users;mwage;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190225 21:14:40;edit_users;mwage;CHECKFIELDS - Overige velden worden gecontroleerd
+20190225 21:14:40;edit_users;mwage;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user demot e updaten
+20190225 21:14:40;edit_users;mwage;CREATEQRY2A - Waarde van de wachtwoorden tijdens aanmaken query - POST ['pass']: demo99 frm_pass: demo99
+20190225 21:14:40;edit_users;mwage;PASS_MD5 - Waarde van de wachtwoorden na md5 encryptie - POST ['pass']: 06a926a8a48a5feff8b1bd581f390917 frm_pass: demo99
+20190225 21:14:40;edit_users;mwage;PASS_SLASHES - Waarde van de wachtwoorden na add slashes - POST ['pass']: 06a926a8a48a5feff8b1bd581f390917 frm_pass: demo99
+20190225 21:14:40;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database
+20190225 21:20:23;edit_users;mwage;Button save is op geklikt voor user: demo form_user_fill is uitgevoerd.
+20190225 21:20:23;edit_users;mwage;formerror:0 frm_username:demo frm_admin:on frm_indienst:on
+20190225 21:20:23;edit_users;mwage;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190225 21:20:23;edit_users;mwage;CHECKFIELDS - Overige velden worden gecontroleerd
+20190225 21:20:23;edit_users;mwage;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user demote updaten
+20190225 21:20:23;edit_users;mwage;PASS_MD5 - Wachtwoord is middels md5 encrypted
+20190225 21:20:23;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor userdemo
+20190225 21:23:02;login;demo2;User demo2 is succesvol ingelogd.
+20190225 21:23:19;edit_users;demo2;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 21:23:19;edit_users;demo2;formerror:0 frm_username:demo2 frm_admin: frm_indienst:
+20190225 21:23:19;edit_users;demo2;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190225 21:23:19;edit_users;demo2;CHECKFIELDS - Overige velden worden gecontroleerd
+20190225 21:23:19;edit_users;demo2;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user demo2te updaten
+20190225 21:23:19;edit_users;demo2;PASS_MD5 - Wachtwoord is middels md5 encrypted
+20190225 21:23:19;edit_users;demo2;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor userdemo2
+20190225 21:23:41;edit_users;demo2;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 21:23:42;edit_users;demo2;formerror:0 frm_username:demo2 frm_admin: frm_indienst:
+20190225 21:23:42;edit_users;demo2;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190225 21:23:42;edit_users;demo2;CHECKFIELDS - Overige velden worden gecontroleerd
+20190225 21:23:42;edit_users;demo2;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user demo2te updaten
+20190225 21:23:42;edit_users;demo2;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor userdemo2
+20190225 21:32:12;login;demo;User demo is succesvol ingelogd.
+20190225 21:32:30;login;demo2;User demo2 is succesvol ingelogd.
+20190225 21:34:30;login;mwage;User mwage is succesvol ingelogd.
+20190225 21:34:54;login;demo2;User demo2 is succesvol ingelogd.
+20190225 21:38:26;edit_users;demo2;Button save is op geklikt voor user: demo2 form_user_fill is uitgevoerd.
+20190225 21:38:26;edit_users;demo2;formerror:0 frm_username:demo2 frm_admin: frm_indienst:
+20190225 21:38:26;edit_users;demo2;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190225 21:38:26;edit_users;demo2;CHECKFIELDS - Overige velden worden gecontroleerd
+20190225 21:38:26;edit_users;demo2;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user demo2te updaten
+20190225 21:38:26;edit_users;demo2;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor userdemo2

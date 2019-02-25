@@ -86,12 +86,12 @@ function form_user_fill($btn_aktie) {
 		$frm_pass2         = $_POST['pass2'];
 		if (isset($_POST['admin'])) $frm_admin = $_POST['admin'];
 		else $frm_admin = "";
-		//$frm_admin         = $_POST['admin'];
 		$frm_voornaam      = $_POST['voornaam'];
 		$frm_tussenvoegsel = $_POST['tussenvoegsel'];
 		$frm_achternaam    = $_POST['achternaam'];
 		$frm_email         = $_POST['email'];
-		$frm_indienst      = $_POST['indienst'];
+		if (isset($_POST['indienst'])) $frm_indienst = $_POST['indienst'];
+		else $frm_indienst = "";
 	}
 }
 //------------------------------------------------------------------------
@@ -157,10 +157,11 @@ function cnv_dateToWeek($datum) {
 // Write logrecord to file 
 //------------------------------------------------------------------------
 function writeLogRecord($phpProg, $logRecord) {
-    $username = $_SESSION['username'];
+    if (isset($_SESSION['username'])) $username = $_SESSION['username'];
+    else $username = "";
     $fileName = "C:\\wamp64\\www\\mirage-urenregistratie-systeem\\logs\\systemlogMUS.log";
-    $datumlog = date('Ymd H:i:s')." ";
-    file_put_contents($fileName, PHP_EOL.$datumlog."PHP program: ".$phpProg." - Gebruiker: ".$username." - ".$logRecord, FILE_APPEND);
+    $datumlog = date('Ymd H:i:s');
+    file_put_contents($fileName, PHP_EOL.$datumlog.";".$phpProg.";".$username.";".$logRecord, FILE_APPEND);
 }
 
 ?>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include ("./config.php");
 include ("./db.php");
 include ("./function.php");
@@ -39,6 +40,7 @@ if (isset($_POST['submit'])) {
 		//Error indien password fout
 		if ($_POST['pass'] != $info['password']) {
 			echo '<p class="errmsg"> ERROR: Foutief password, probeer het nogmaals</p>';
+			writeLogRecord("login","User ".$_POST['username']." probeerde in te loggen met een foutief wachtwoord");
 		}
 		else {
 			// Toevoegen cookie indien username-password correct
@@ -51,9 +53,10 @@ if (isset($_POST['submit'])) {
 			$_SESSION['voornaam'] = $_POST['voornaam'];
 			// update lastloggedin in de tabel
 			$update = "UPDATE users SET 
-				lastloggedin = '".date('Y-m-d h:m:s')."' WHERE username = '".$_POST['username']."'";
+				lastloggedin = '".date('Y-m-d h:i:s')."' WHERE username = '".$_POST['username']."'";
 			$check_upd_users = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error());
 			header("location: index.php");
+			writeLogRecord("login","User ".$_POST['username']." is succesvol ingelogd.");
 		}
 	}
 }

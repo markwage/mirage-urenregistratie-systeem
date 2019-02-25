@@ -35,7 +35,7 @@ if (isset($_POST['cancel'])) {
 if (isset($_POST['delete'])) {
 	$deluser = $_POST['username'];
 	$sql_deluser = mysqli_query($dbconn, "DELETE FROM users WHERE username = '$deluser'");
-	writeLogRecord("edit_users","User ".$deluser." is verwijderd.");
+	writeLogRecord("edit_users","User ".$deluser." is succesvol verwijderd.");
 	header("location: edit_users.php?aktie=disp");
 }
 
@@ -43,7 +43,7 @@ if (isset($_POST['save'])) {
 	form_user_fill('save');
 	writeLogRecord("edit_users","Button save is op geklikt voor user: ".$frm_username." form_user_fill is uitgevoerd.");
 	writelogrecord("edit_users","formerror:".$formerror." frm_username:".$frm_username." frm_admin:".$frm_admin." frm_indienst:".$frm_indienst);
-	
+	writelogrecord("edit_users", "SAVEBUTTON - Wachtwoorden worden gecontroleerd");
 	// Checks wanneer password OF verificatiepassword niet leeg zijn
 	if (($_POST['pass']) != "" || ($_POST['pass2']) != "") {
 	    if (!$_POST['pass'] && (!$formerror)) {
@@ -63,6 +63,7 @@ if (isset($_POST['save'])) {
 		    $formerror = 1;
 		}
 	}
+	writelogrecord("edit_users", "CHECKFIELDS - Overige velden worden gecontroleerd");
 	if ((!$_POST['voornaam'] || $_POST['voornaam'] == "") && (!$formerror)) {
 		echo '<p class="errmsg"> ERROR: Voornaam is een verplicht veld</p>';
 		$focus     = 'voornaam';
@@ -78,7 +79,7 @@ if (isset($_POST['save'])) {
 		$focus     = 'email';
 		$formerror = 1;
 	}
-	if ($_SESSION['admin']) {
+	if ($_SESSION['admin'] && (!$formerror)) {
 		if (!isset($_POST['admin'])) {
 			$_POST['admin'] = 0;
 		}
@@ -95,26 +96,25 @@ if (isset($_POST['save'])) {
 	
 	// here we encrypt the password and add slashes if needed
 	if (!$formerror) {
-	    // $_POST['indienst'] = 1;
+	    writelogrecord("edit_users", "CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user ".$_POST['username']."te updaten");
 	    $update = "UPDATE users SET ";
-	    if (!$_POST['pass'] = "") {
+	    if (!$_POST['pass'] == "") {
 	        $_POST['pass'] = md5($_POST['pass']);
+	        writelogrecord("edit_users", "PASS_MD5 - Wachtwoord is middels md5 encrypted");
 	        if (!get_magic_quotes_gpc()) {
 	            $_POST['pass'] = addslashes($_POST['pass']);
 	            $_POST['username'] = addslashes($_POST['username']);
 	        }
-	    //} else {
 	        $update .= "password='".$_POST['pass']."',";
 	    }
-	    writeLogRecord("edit_users","Er is gecontroleerd of het wachtwoord gevuld was en zo ja is het encrypted md5");
+	    
 	    $update .= "admin='".$_POST['admin']."',
 		voornaam='".$_POST['voornaam']."',
 		tussenvoegsel='".$_POST['tussenvoegsel']."',
 		achternaam='".$_POST['achternaam']."',
 		emailadres='".$_POST['email']."',
 		indienst='".$_POST['indienst']."' WHERE username = '".$_POST['username']."'";
-	    writeLogRecord("edit_users","Het update-statement: ".$update);
-	    writeLogRecord("edit_users","Deze wordt nu uitgevoerd op de database");
+	    writeLogRecord("edit_users","UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor user".$frm_username);
 	    $check_upd_user = mysqli_query($dbconn, $update);
 		if ($check_upd_user) { 
 			echo '<p class="infmsg">User <b>'.$_POST['username'].'</b> is gewijzigd</p>.';
@@ -198,7 +198,7 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 		</tr>
 		<tr>
 			<td>Admin</td>
-			<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "readonly"; } ?>name="admin" <?php { echo $frm_admin; } ?>></td>
+			<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="admin" <?php { echo $frm_admin; } ?>></td>
 		</tr>
 		<tr>
 			<td>Voornaam</td>
@@ -216,7 +216,7 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 		</tr>
 		<tr>
 			<td>In dienst</td>
-			<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "readonly"; } ?>name="indienst" <?php { echo $frm_indienst; } ?>></td>
+			<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="indienst" <?php { echo $frm_indienst; } ?>></td>
 		</tr>
 	</table>
 	<br />
