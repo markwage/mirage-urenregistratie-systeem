@@ -41,8 +41,6 @@ if (isset($_POST['delete'])) {
 
 if (isset($_POST['save'])) {
 	form_user_fill('save');
-	writeLogRecord("edit_users","Button save is op geklikt voor user: ".$frm_username." form_user_fill is uitgevoerd.");
-	writelogrecord("edit_users","formerror:".$formerror." frm_username:".$frm_username." frm_admin:".$frm_admin." frm_indienst:".$frm_indienst);
 	writelogrecord("edit_users", "SAVEBUTTON - Wachtwoorden worden gecontroleerd");
 	// Checks wanneer password OF verificatiepassword niet leeg zijn
 	if (($_POST['pass']) != "" || ($_POST['pass2']) != "") {
@@ -154,9 +152,9 @@ if ($aktie == 'disp') {
 			<td>'.$emailadres.'</td>
 			<td align="center">'.$admin.'</td>
 			<td align="center">'.$indienst.'</td>
-			<td><a href="edit_users.php?aktie=edit&edtuser='.$username.'"><img src="./img/buttons/user-edit.gif" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
-			<td><a href="edit_users.php?aktie=delete&edtuser='.$username.'"><img src="./img/buttons/user-delete.gif" alt="delete user" title="delete user '.$username.'" /></a></td>
-			<td><a href="add_user.php"><img src="./img/buttons/user-plus.gif" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>
+			<td><a href="edit_users.php?aktie=edit&edtuser='.$username.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
+			<td><a href="edit_users.php?aktie=delete&edtuser='.$username.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>
+			<td><a href="add_user.php"><img src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>
 			</tr>';
 		// <td><a href="edit_users.php?aktie=delete&deluser='.$username.'"><img src="./img/buttons/user-delete.gif" alt="delete user" title="delete user '.$username.'" onClick="return confirmDelete()" /></a></td>
 		if ($rowcolor == 'row-a') $rowcolor = 'row-b';

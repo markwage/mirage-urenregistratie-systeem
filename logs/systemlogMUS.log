@@ -454,3 +454,149 @@
 20190225 21:38:26;edit_users;demo2;CHECKFIELDS - Overige velden worden gecontroleerd
 20190225 21:38:26;edit_users;demo2;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user demo2te updaten
 20190225 21:38:26;edit_users;demo2;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor userdemo2
+20190226 06:44:42;login;mwage;User mwage is succesvol ingelogd.
+20190226 06:55:33;login;mwage;User mwage is succesvol ingelogd.
+20190226 07:08:18;login;mwage;User mwage is succesvol ingelogd.
+20190226 07:08:56;login;mwage;User mwage is succesvol ingelogd.
+20190226 07:10:25;login;mwage;User mwage is succesvol ingelogd.
+20190226 07:18:27;login;demo;User demo is succesvol ingelogd.
+20190226 07:18:49;login;demo2;User demo2 is succesvol ingelogd.
+20190226 18:37:34;login;;User mwage probeerde in te loggen met een foutief wachtwoord
+20190226 18:37:44;login;mwage;User mwage is succesvol ingelogd.
+20190226 21:01:02;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190226 21:04:07;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190226 21:04:07;edit_nieuws;mwage;SELBERICHT2 De output van de SELECT query 
+20190226 21:05:41;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190226 21:05:41;edit_nieuws;mwage;SELBERICHT2 De output van de SELECT query Dit is het lange gedeelte van het bericht. Nog even uitzoeken of we ook tekst bold kunnen maken en eventueel plaatsjes kunnen toevoegen aan het berich.
+
+Deze regel is twee regels naar beneden
+20190226 21:22:33;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190226 21:22:33;edit_nieuws;mwage;SELBERICHT2 De output van de SELECT query Dit is het lange gedeelte van het bericht. Nog even uitzoeken of we ook tekst bold kunnen maken en eventueel plaatsjes kunnen toevoegen aan het berich.
+
+Deze regel is twee regels naar beneden
+20190226 21:40:54;login;demo2;User demo2 is succesvol ingelogd.
+20190227 06:05:41;login;demo2;User demo2 is succesvol ingelogd.
+20190227 06:05:58;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 06:05:58;edit_nieuws;demo2;SELBERICHT2 De output van de SELECT query Dit is het lange gedeelte van het bericht. Nog even uitzoeken of we ook tekst bold kunnen maken en eventueel plaatsjes kunnen toevoegen aan het berich.
+
+Deze regel is twee regels naar beneden
+20190227 06:06:54;login;demo2;User demo2 is succesvol ingelogd.
+20190227 06:06:59;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 06:06:59;edit_nieuws;demo2;SELBERICHT2 De output van de SELECT query Dit is het lange gedeelte van het bericht. Nog even uitzoeken of we ook tekst bold kunnen maken en eventueel plaatsjes kunnen toevoegen aan het berich.
+
+Deze regel is twee regels naar beneden
+20190227 06:07:06;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 06:07:06;edit_nieuws;demo2;SELBERICHT2 De output van de SELECT query Dit is het lange gedeelte van het bericht. Nog even uitzoeken of we ook tekst bold kunnen maken en eventueel plaatsjes kunnen toevoegen aan het berich.
+
+Deze regel is twee regels naar beneden
+20190227 06:34:28;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 06:35:01;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 06:38:40;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 06:38:59;login;mwage;User mwage is succesvol ingelogd.
+20190227 06:39:05;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 06:42:00;login;demo2;User demo2 is succesvol ingelogd.
+20190227 06:42:04;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 06:42:15;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 06:42:29;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 06:44:43;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 06:44:45;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 06:45:05;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 06:53:44;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 06:54:38;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 06:54:48;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 06:54:50;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 06:54:52;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 07:36:47;login;mwage;User mwage is succesvol ingelogd.
+20190227 07:49:42;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 07:53:58;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 07:56:28;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 07:59:10;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 08:54:20;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 08:56:28;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 08:56:56;login;mwage;User mwage is succesvol ingelogd.
+20190227 08:57:10;login;demo2;User demo2 is succesvol ingelogd.
+20190227 08:57:12;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 08:57:14;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 08:57:31;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 09:00:07;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 09:00:09;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 09:00:20;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 09:07:29;login;mwage;User mwage is succesvol ingelogd.
+20190227 09:07:55;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 09:15:00;login;mwage;User mwage is succesvol ingelogd.
+20190227 09:15:05;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 09:15:18;login;demo;User demo is succesvol ingelogd.
+20190227 09:15:28;login;demo2;User demo2 is succesvol ingelogd.
+20190227 09:15:31;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 09:15:32;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 09:15:51;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 09:16:06;login;mwage;User mwage is succesvol ingelogd.
+20190227 09:16:12;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 09:22:39;login;mwage;User mwage is succesvol ingelogd.
+20190227 09:22:44;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 19:53:23;login;demo2;User demo2 is succesvol ingelogd.
+20190227 19:53:26;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 19:53:29;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 19:53:35;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 19:55:11;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 19:55:19;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 19:55:40;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 19:56:34;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 20:25:18;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 20:25:32;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 20:25:35;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 20:26:04;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 20:26:16;login;mwage;User mwage is succesvol ingelogd.
+20190227 20:26:21;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 20:31:36;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 20:35:35;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 20:50:42;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 20:56:56;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 20:57:33;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 20:57:42;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:08:02;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:08:31;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:08:37;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:09:29;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:09:55;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:21:16;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:21:29;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:21:33;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:24:47;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:26:50;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:27:15;login;demo2;User demo2 is succesvol ingelogd.
+20190227 21:27:18;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190227 21:27:19;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:27:40;login;mwage;User mwage is succesvol ingelogd.
+20190227 21:27:45;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:56:35;login;mwage;User mwage is succesvol ingelogd.
+20190227 21:56:40;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190227 21:57:01;login;mwage;User mwage is succesvol ingelogd.
+20190228 06:51:44;login;mwage;User mwage is succesvol ingelogd.
+20190228 06:51:56;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190228 06:53:10;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190228 06:53:48;login;mwage;User mwage is succesvol ingelogd.
+20190228 06:53:54;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190228 07:12:46;login;mwage;User mwage is succesvol ingelogd.
+20190228 07:12:49;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190228 07:33:00;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190228 07:33:35;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190228 07:33:44;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190228 07:50:49;login;mwage;User mwage is succesvol ingelogd.
+20190228 07:50:53;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190228 07:51:16;login;demo2;User demo2 is succesvol ingelogd.
+20190228 07:51:18;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190228 07:51:20;edit_nieuws;demo2;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190228 07:51:27;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190304 10:57:51;login;mwage;User mwage is succesvol ingelogd.
+20190304 10:57:58;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190304 15:13:37;login;mwage;User mwage is succesvol ingelogd.
+20190304 15:13:42;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190304 15:14:02;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190304 15:40:20;login;mwage;User mwage is succesvol ingelogd.
+20190304 16:40:41;login;mwage;User mwage is succesvol ingelogd.
+20190304 16:41:12;edit_nieuws;mwage;SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id 1
+20190304 16:42:59;login;mwage;User mwage is succesvol ingelogd.
+20190304 16:55:13;login;mwage;User mwage is succesvol ingelogd.
+20190304 19:30:23;login;mwage;User mwage is succesvol ingelogd.
+20190304 19:38:18;login;mwage;User mwage is succesvol ingelogd.

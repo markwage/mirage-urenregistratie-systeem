@@ -82,18 +82,18 @@ if ($aktie == 'disp') {
 		echo '<tr class="'.$rowcolor.'">
 			<td>'.$id.'</td><td><b>'.$code.'</b></td><td>'.$omschrijving.'</td>
 
-			<td><a href="edit_soorturen.php?aktie=edit&edtcode='.$code.'"><img src="./img/buttons/pencil.gif" alt="wijzigen soort uur" title="wijzig soort uur '.$code.'" /></a></td>
-			<td><a href="edit_soorturen.php?aktie=delete&edtcode='.$code.'"><img src="./img/buttons/x-red.gif" alt="delete soort uur" title="delete soort uur '.$code.'" /></a></td>
-			<td><a href="add_soortuur.php"><img src="./img/buttons/plus-green.gif" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
+			<td><a href="edit_soorturen.php?aktie=edit&edtcode='.$code.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen soort uur" title="wijzig soort uur '.$code.'" /></a></td>
+			<td><a href="edit_soorturen.php?aktie=delete&edtcode='.$code.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete soort uur" title="delete soort uur '.$code.'" /></a></td>
+			<td><a href="add_soortuur.php"><img src="./img/buttons/icons8-plus-48.png" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
 			</tr>';
-		// <td><a href="edit_users.php?aktie=delete&deluser='.$username.'"><img src="./img/buttons/user-delete.gif" alt="delete user" title="delete user '.$username.'" onClick="return confirmDelete()" /></a></td>
+		    //<td><a href="add_soortuur.php"><img src="./img/buttons/plus-green.gif" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
 		if ($rowcolor == 'row-a') $rowcolor = 'row-b';
 		else $rowcolor = 'row-a';
 	}
 	echo "</table></center>";
 }
 
-if ($aktie == 'edit' || $aktie=='delete') {
+if ($aktie == 'edit' || $aktie == 'delete') {
 	$edtcode = $_GET['edtcode'];
 	$focus = "code";
 	$sql_dspsoorturen = mysqli_query($dbconn, "SELECT * FROM soorturen WHERE code = '$edtcode'");

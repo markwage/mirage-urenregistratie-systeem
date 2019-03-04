@@ -133,17 +133,35 @@ input[type="checkbox"]{
 }
 
 input:focus {
-	background-color: #fafafa;
+	background-color: #e8ffe8;
+}
+/* Selects any <input> element that is read-only */
+/* Supported in Firefox with a prefix */
+input:-moz-read-only {
+  background-color: #e4e4e4;
+}
+
+/* Supported in Blink/WebKit/Edge without a prefix */
+input:read-only {
+  background-color: #e4e4e4;
 }
 textarea {
-	width: 400px;
-	padding: 2px;
+	width: 100%;
+	padding: 5px;
 	font: normal 13px verdana, arial, sans-serif;
-	border: 1px solid #eee;
-	height: 100px;
-	display: block;
+	border: 1px solid #333;
+	min-height: 100px;
+	overflow: hidden;
+	/*vdisplay: block;v*/
 	color: black;
 }
+textarea:read-only {
+  background-color: #e4e4e4;
+}
+textarea:focus {
+	background-color: #e8ffe8;
+}
+
 input.button {
 	margin-left: 5px;
 	font: bold 13px verdana, arial, sans-serif;

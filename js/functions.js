@@ -5,3 +5,6 @@ function confirmDelSoortuur() {
 	return confirm("Weet je zeker dat deze uurcode verwijderd moet worden?");
 }
 
+function confirmDelNieuwsbericht() {
+	return confirm("Weet je zeker dat dit bericht verwijderd moet worden?");
+}
