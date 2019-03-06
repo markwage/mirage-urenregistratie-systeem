@@ -34,10 +34,8 @@ if (isset($_POST['cancel'])) {
 }
 if (isset($_POST['delete'])) {
     $delid = $_POST['id'];
-    $sql_delnieuwsheader = mysqli_query($dbconn, "DELETE FROM nieuwsheader WHERE ID = '$delid'");
-    writeLogRecord("edit_nieuws","DELETE1 Nieuwsheader ".$delid." is verwijderd uit tabel nieuwsheader");
-    $sql_delnieuwsbericht = mysqli_query($dbconn, "DELETE FROM nieuwsbericht WHERE nieuwsheaderID = '$delid'");
-    writeLogRecord("edit_nieuws","DELETE2 Nieuwsbericht waarvan nieuwsheaderID is ".$delid.", is verwijderd uit tabel nieuwsbericht");
+    $sql_delnieuwsheader = mysqli_query($dbconn, "DELETE FROM nieuws WHERE ID = '$delid'");
+    writeLogRecord("edit_nieuws","DELETE1 Het nieuwsbericht met id ".$delid." is verwijderd uit tabel nieuws");
     header("location: edit_nieuws.php?aktie=disp");
 }
 
@@ -46,7 +44,7 @@ if (isset($_POST['delete'])) {
 //
 
 if ($aktie == 'disp') {
-    $sql_nieuwsheaders = mysqli_query($dbconn, "SELECT * FROM nieuwsheader ORDER BY datum desc");
+    $sql_nieuwsheaders = mysqli_query($dbconn, "SELECT * FROM nieuws ORDER BY datum desc");
     echo "<center><table>";
     echo "<tr><th>ID</th><th>Datum</th><th>Nieuwsheader</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
     $rowcolor = 'row-a';
@@ -57,8 +55,8 @@ if ($aktie == 'disp') {
         echo '<tr class="'.$rowcolor.'">
 			<td>'.$id.'</td><td>'.$datum.'</td><td>'.$nieuwsheader.'</td>';
         if (!isset($_SESSION['admin']) || (!$_SESSION['admin'])) {
-            writeLogRecord("edit_nieuws","BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond");
-            echo '<td><a href="edit_nieuws.php?aktie=dispbericht&edtid='.$id.'"><img src="./img/buttons/arrow-right.gif" alt="display nieuwsbericht" title="display nieuwsbericht '.$id.'" /></a></td>';
+            writeLogRecord("edit_nieuws","BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond");
+            echo '<td><a href="edit_nieuws.php?aktie=dispbericht&edtid='.$id.'"><img src="./img/buttons/icons8-glasses-48.png" alt="display nieuwsbericht" title="display nieuwsbericht '.$id.'" /></a></td>';
         } else {
 			echo '<td><a href="edit_nieuws.php?aktie=edit&edtid='.$id.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen nieuwsbericht" title="wijzig nieuwsbericht '.$id.'" /></a></td>
 			<td><a href="edit_nieuws.php?aktie=delete&edtid='.$id.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete nieuwsbericht" title="delete nieuwsbericht '.$id.'" /></a></td>
@@ -78,18 +76,14 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'dispbericht') {
     }
     $edtid = $_GET['edtid'];
     $focus = "nieuwsheader";
-    $sql_dspnieuwsheader = mysqli_query($dbconn, "SELECT * FROM nieuwsheader WHERE id = '$edtid'");
-    while($row_dspnieuwsheader = mysqli_fetch_array($sql_dspnieuwsheader)) {
-        $frm_ID           = $row_dspnieuwsheader['ID'];
-        $frm_datum        = $row_dspnieuwsheader['datum'];
-        $frm_nieuwsheader = $row_dspnieuwsheader['nieuwsheader'];
+    $sql_dspnieuws = mysqli_query($dbconn, "SELECT * FROM nieuws WHERE id = '$edtid'");
+    while($row_dspnieuws = mysqli_fetch_array($sql_dspnieuws)) {
+        $frm_ID            = $row_dspnieuws['ID'];
+        $frm_datum         = $row_dspnieuws['datum'];
+        $frm_nieuwsheader  = $row_dspnieuws['nieuwsheader'];
+        $frm_nieuwsbericht = $row_dspnieuws['nieuwsbericht'];
     }
-    writeLogRecord("edit_nieuws","SELBERICHT De SELECT-query op nieuwsbericht wordt nu uitgevoerd op de database voor id ".$frm_ID);
-    $sql_dspnieuwsbericht = mysqli_query($dbconn, "SELECT * FROM nieuwsbericht WHERE nieuwsheaderID = '$frm_ID'");
-    while($row_dspnieuwsbericht = mysqli_fetch_array($sql_dspnieuwsbericht)) {
-        $frm_nieuwsbericht = $row_dspnieuwsbericht['bericht'];
-    }
-    
+        
     ?>
 
 	<form name="nieuwsartikelen" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

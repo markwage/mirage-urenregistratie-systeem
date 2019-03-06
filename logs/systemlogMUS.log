@@ -600,3 +600,28 @@ Deze regel is twee regels naar beneden
 20190304 16:55:13;login;mwage;User mwage is succesvol ingelogd.
 20190304 19:30:23;login;mwage;User mwage is succesvol ingelogd.
 20190304 19:38:18;login;mwage;User mwage is succesvol ingelogd.
+20190305 19:46:25;login;mwage;User mwage is succesvol ingelogd.
+20190305 19:49:34;login;demo2;User demo2 is succesvol ingelogd.
+20190305 19:49:41;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190305 19:50:44;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190305 20:00:42;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190305 20:01:08;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190305 20:13:38;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190305 20:26:28;login;mwage;User mwage is succesvol ingelogd.
+20190305 20:29:35;login;demo2;User demo2 is succesvol ingelogd.
+20190305 20:32:47;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190305 20:34:12;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190305 20:34:16;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190305 20:34:21;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190305 20:34:40;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de groene pijl naar rechts wordt getoond
+20190305 20:52:58;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190305 20:53:06;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190306 06:09:55;login;mwage;User mwage is succesvol ingelogd.
+20190306 06:21:31;edit_users;mwage;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190306 06:21:31;edit_users;mwage;CHECKFIELDS - Overige velden worden gecontroleerd
+20190306 06:21:31;edit_users;mwage;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user demote updaten
+20190306 06:21:31;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor user
+20190306 06:21:49;edit_users;mwage;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190306 06:21:49;edit_users;mwage;CHECKFIELDS - Overige velden worden gecontroleerd
+20190306 06:21:49;edit_users;mwage;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user demote updaten
+20190306 06:21:49;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor user

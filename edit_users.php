@@ -29,7 +29,11 @@ include ("header.php");
 <?php 
 //This code runs if the form has been submitted
 if (isset($_POST['cancel'])) {
-	header("location: edit_users.php?aktie=disp");
+    if (!isset($_SESSION['admin']) || (!$_SESSION['admin'])) {
+        header("location: index.php");
+    } else {
+        header("location: edit_users.php?aktie=disp");
+    }
 }
 
 if (isset($_POST['delete'])) {
@@ -40,7 +44,8 @@ if (isset($_POST['delete'])) {
 }
 
 if (isset($_POST['save'])) {
-	form_user_fill('save');
+	//form_user_fill('save');
+	$formerror = 0;
 	writelogrecord("edit_users", "SAVEBUTTON - Wachtwoorden worden gecontroleerd");
 	// Checks wanneer password OF verificatiepassword niet leeg zijn
 	if (($_POST['pass']) != "" || ($_POST['pass2']) != "") {

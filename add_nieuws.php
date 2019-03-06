@@ -5,7 +5,7 @@ include ("db.php");
 include ("function.php");
 
 // Controleren of gebruiker admin-rechten heeft
-check_admin();
+// check_admin();
 
 // Connectie met de database maken en database selecteren
 $dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
@@ -17,26 +17,25 @@ include ("header.php");
 
 ?>
 <div id="main">		
-	<h1>Toevoegen nieuw soort uur</h1>
+	<h1>Toevoegen nieuws</h1>
 			
 <?php 
 //This code runs if the form has been submitted
 if (isset($_POST['cancel'])) {
-	header("location: edit_soorturen.php?aktie=disp");
+	header("location: edit_nieuws.php?aktie=disp");
 }
-if (isset($_POST['submit'])) {
-	//form_soorturen_fill('toevoegen');
+if (isset($_POST['submit'])) { 
+	//form_nieuws_fill('toevoegen');
     $formerror = 0;
-	$_POST['code'] = strtoupper($_POST['code']);
-	
-	if (!$_POST['code']) {
-		echo '<p class="errmsg"> ERROR: Code is een verplicht veld</p>';
-		$focus     = 'code';
+		
+	if (!$_POST['nieuwsheader']) {
+		echo '<p class="errmsg"> ERROR: Nieuwsheader is een verplicht veld</p>';
+		$focus     = 'nieuwsheader';
 		$formerror = 1;
 	}
-	if (!$_POST['omschrijving'] && (!$formerror)) {
-		echo '<p class="errmsg"> ERROR: Omschrijving is een verplicht veld</p>';
-		$focus     = 'omschrijving';
+	if (!$_POST['nieuwsbericht'] && (!$formerror)) {
+		echo '<p class="errmsg"> ERROR: Nieuwsbericht is een verplicht veld</p>';
+		$focus     = 'nieuwsbericht';
 		$formerror = 1;
 	}
 	// checks if the soort uur is in use
@@ -82,19 +81,19 @@ if (isset($_POST['submit'])) {
 
 ?>
  
-<form name="soorturen" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form name="nieuws" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
  	<p>
 	<table>
 		<tr>
-			<td>Code</td>
-			<td><input style="text-transform: uppercase" type="text" name="code" size="10" maxlength="8" value="<?php if (isset($frm_code)) { echo $frm_code; } ?>"></td>
+			<td>header</td>
+			<td><input type="text" name="nieuwsheader" size="128" maxlength="128" value="<?php if (isset($frm_nieuwsheader)) { echo $frm_nieuwsheader; } ?>"></td>
 		</tr>
 		<tr>
-			<td>Omschrijving</td>
-			<td><input type="text" name="omschrijving" size="60" maxlength="60" value="<?php if (isset($frm_omschrijving)) { echo $frm_omschrijving; } ?>"></td>
+			<td>Bericht</td>
+			<td><input type="text" name="nieuwsbericht" size="60" maxlength="60" value="<?php if (isset($frm_nieuwsbericht)) { echo $frm_nieuwsbericht; } ?>"></td>
 	</table>
 	<br />
-	<input class="button" type="submit" name="submit" value="add soort uur">
+	<input class="button" type="submit" name="submit" value="add nieuwsbericht">
 	<input class="button" type="submit" name="cancel" value="cancel">
 	</p>
 </form>

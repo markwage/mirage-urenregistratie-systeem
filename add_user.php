@@ -25,7 +25,8 @@ if (isset($_POST['cancel'])) {
 	header("location: edit_users.php?aktie=disp");
 }
 if (isset($_POST['submit'])) { 
-	form_user_fill('toevoegen');
+	//form_user_fill('toevoegen');
+	$formerror = 0;
 	
 	if (!$_POST['username']) {
 		echo '<p class="errmsg"> ERROR: Username is een verplicht veld</p>';

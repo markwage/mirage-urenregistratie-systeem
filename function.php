@@ -97,13 +97,27 @@ function form_user_fill($btn_aktie) {
 //------------------------------------------------------------------------
 // Vullen van de frm_variabelen voor invullen van soort uren-scherm
 //------------------------------------------------------------------------
-function form_soorturen_fill($aktie) {
-	if ($aktie == "save" || $aktie == "toevoegen") {
+function form_soorturen_fill($btn_aktie) {
+	if ($btn_aktie == "save" || $btn_aktie == "toevoegen") {
 		global $frm_code, $frm_omschrijving, $formerror;
 		$formerror = 0;
-		$frm_code          = $_POST['code'];
-		$frm_omschrijving  = $_POST['omschrijving'];
+		//$frm_code          = $_POST['code'];
+		//$frm_omschrijving  = $_POST['omschrijving'];
 	}
+}
+
+//------------------------------------------------------------------------
+// Vullen van de frm_variabelen voor invullen van nieuwsbericht
+//------------------------------------------------------------------------
+function form_nieuws_fill($btn_aktie) {
+    if ($btn_aktie == "save" || $btn_aktie == "toevoegen") {
+        global $frm_datum, $frm_nieuwsheader, $frm_nieuwsbericht, $frm_createdby, $formerror;
+        $formerror         = 0;
+        $frm_datum         = $_POST['datum'];
+        $frm_createdby     = $_POST['createdby'];
+        $frm_nieuwsheader  = $_POST['nieuwsheader'];
+        $frm_nieuwsbericht = $_POST['nieuwsbericht'];
+    }
 }
 
 //------------------------------------------------------------------------

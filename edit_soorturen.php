@@ -38,7 +38,8 @@ if (isset($_POST['delete'])) {
 	header("location: edit_soorturen.php?aktie=disp");
 }
 if (isset($_POST['save'])) {
-	form_soorturen_fill('save');
+	//form_soorturen_fill('save');
+    $formerror = 0;
 	if ((!$_POST['code'] || $_POST['code'] == "") && (!$formerror)) {
 		echo '<p class="errmsg"> ERROR: Code is een verplicht veld</p>';
 		$focus     = 'code';
