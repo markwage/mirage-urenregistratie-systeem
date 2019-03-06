@@ -140,7 +140,8 @@ if (isset($_POST['save'])) {
 if ($aktie == 'disp') {
 	$sql_allusers = mysqli_query($dbconn, "SELECT * FROM users ORDER BY achternaam");
 	echo "<center><table>";
-	echo "<tr><th>ID</th><th>username</th><th>naam</th><th>Emailadres</th><th>Admin</th><th>InDienst</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
+	//echo "<tr><th>ID</th><th>username</th><th>naam</th><th>Emailadres</th><th>Admin</th><th>InDienst</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
+	echo "<tr><th>username</th><th>naam</th><th>Emailadres</th><th>Admin</th><th>InDienst</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
 	$rowcolor = 'row-a';
 	while($row_allusers = mysqli_fetch_array($sql_allusers)) {
 		$id            = $row_allusers['ID'];
@@ -152,7 +153,7 @@ if ($aktie == 'disp') {
 		$admin         = $row_allusers['admin'];
 		$indienst      = $row_allusers['indienst'];
 		echo '<tr class="'.$rowcolor.'">
-			<td>'.$id.'</td><td><b>'.$username.'</b></td>
+			<td><b>'.$username.'</b></td>
 			<td>'.$achternaam.', '.$voornaam.' '.$tussenvoegsel. '</td>
 			<td>'.$emailadres.'</td>
 			<td align="center">'.$admin.'</td>

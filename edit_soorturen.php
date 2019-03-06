@@ -74,14 +74,14 @@ if (isset($_POST['save'])) {
 if ($aktie == 'disp') {
 	$sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
 	echo "<center><table>";
-	echo "<tr><th>ID</th><th>Code</th><th>Omschrijving</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
+	echo "<tr><th>Code</th><th>Omschrijving</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
 	$rowcolor = 'row-a';
 	while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
 		$id           = $row_soorturen['ID'];
 		$code         = $row_soorturen['code'];
 		$omschrijving = $row_soorturen['omschrijving'];
 		echo '<tr class="'.$rowcolor.'">
-			<td>'.$id.'</td><td><b>'.$code.'</b></td><td>'.$omschrijving.'</td>
+			<td><b>'.$code.'</b></td><td>'.$omschrijving.'</td>
 
 			<td><a href="edit_soorturen.php?aktie=edit&edtcode='.$code.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen soort uur" title="wijzig soort uur '.$code.'" /></a></td>
 			<td><a href="edit_soorturen.php?aktie=delete&edtcode='.$code.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete soort uur" title="delete soort uur '.$code.'" /></a></td>
@@ -109,10 +109,6 @@ if ($aktie == 'edit' || $aktie == 'delete') {
 <form name="soorturen" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
  	<p>
 	<table>
-		<tr>
-			<td>ID</td>
-			<td><input type="text" readonly name="ID" value="<?php if (isset($frm_ID)) { echo $frm_ID; } ?>" size="4"></td>
-		</tr>
 		<tr>
 			<td>Code</td>
 			<td><input style="text-transform: uppercase" type="text" name="code" size="10" maxlength="8" value="<?php if (isset($frm_code)) { echo $frm_code; } ?>"></td>

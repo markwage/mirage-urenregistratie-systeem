@@ -46,14 +46,14 @@ if (isset($_POST['delete'])) {
 if ($aktie == 'disp') {
     $sql_nieuwsheaders = mysqli_query($dbconn, "SELECT * FROM nieuws ORDER BY datum desc");
     echo "<center><table>";
-    echo "<tr><th>ID</th><th>Datum</th><th>Nieuwsheader</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
+    echo "<tr><th>Datum</th><th>Nieuwsheader</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
     $rowcolor = 'row-a';
     while($row_nieuwsheaders = mysqli_fetch_array($sql_nieuwsheaders)) {
         $id           = $row_nieuwsheaders['ID'];
         $datum        = $row_nieuwsheaders['datum'];
         $nieuwsheader = $row_nieuwsheaders['nieuwsheader'];
         echo '<tr class="'.$rowcolor.'">
-			<td>'.$id.'</td><td>'.$datum.'</td><td>'.$nieuwsheader.'</td>';
+			<td>'.$datum.'</td><td>'.$nieuwsheader.'</td>';
         if (!isset($_SESSION['admin']) || (!$_SESSION['admin'])) {
             writeLogRecord("edit_nieuws","BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond");
             echo '<td><a href="edit_nieuws.php?aktie=dispbericht&edtid='.$id.'"><img src="./img/buttons/icons8-glasses-48.png" alt="display nieuwsbericht" title="display nieuwsbericht '.$id.'" /></a></td>';
@@ -89,10 +89,6 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'dispbericht') {
 	<form name="nieuwsartikelen" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 	<p>
 	<table>
-		<tr>
-			<td>ID</td>
-			<td><input type="text" readonly name="ID" value="<?php if (isset($frm_ID)) { echo $frm_ID; } ?>" size="4"></td>
-		</tr>
 		<tr>
 			<td>Datum</td>
 			<td><input type="text" name="datum" size="20" maxlength="20" <?php if (!$_SESSION['admin']) { echo "readonly "; } ?> value="<?php if (isset($frm_datum)) { echo $frm_datum; } ?>"></td>
