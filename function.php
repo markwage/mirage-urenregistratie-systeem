@@ -4,15 +4,10 @@
 // functie om een connectie met de database te maken
 //------------------------------------------------------------------------
 function makedbconnection() {
-    if (!isset($dbconn))
+    if (!isset($dbconn)) {
         include ("./db.php");
-    //include ("./db.php");
-    
-    //$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw);
-    //$dbconn = mysqli_connect("localhost","root","","mus");
-    
+    }
     if (mysqli_connect_errno()) {
-    //if (!$dbconn) {
         die("Kan de connectie met de database niet maken");
     }
     $dbselect = mysqli_select_db($dbconn, $dbname);
@@ -74,53 +69,6 @@ function setfocus($formnaam, $veldnaam) {
 }
 
 //------------------------------------------------------------------------
-// Vullen van de frm_variabelen voor invullen van usermanagement-scherm
-//------------------------------------------------------------------------
-function form_user_fill($btn_aktie) {
-	if ($btn_aktie == "save" || $btn_aktie == "toevoegen") {
-		global $frm_username, $frm_pass, $frm_pass2, $frm_admin, $frm_voornaam, $frm_tussenvoegsel, $frm_achternaam, 
-			$frm_email, $frm_indienst, $formerror;
-		$formerror = 0;
-		$frm_username      = $_POST['username'];
-		$frm_pass          = $_POST['pass'];
-		$frm_pass2         = $_POST['pass2'];
-		if (isset($_POST['admin'])) $frm_admin = $_POST['admin'];
-		else $frm_admin = "";
-		$frm_voornaam      = $_POST['voornaam'];
-		$frm_tussenvoegsel = $_POST['tussenvoegsel'];
-		$frm_achternaam    = $_POST['achternaam'];
-		$frm_email         = $_POST['email'];
-		if (isset($_POST['indienst'])) $frm_indienst = $_POST['indienst'];
-		else $frm_indienst = "";
-	}
-}
-//------------------------------------------------------------------------
-// Vullen van de frm_variabelen voor invullen van soort uren-scherm
-//------------------------------------------------------------------------
-function form_soorturen_fill($btn_aktie) {
-	if ($btn_aktie == "save" || $btn_aktie == "toevoegen") {
-		global $frm_code, $frm_omschrijving, $formerror;
-		$formerror = 0;
-		//$frm_code          = $_POST['code'];
-		//$frm_omschrijving  = $_POST['omschrijving'];
-	}
-}
-
-//------------------------------------------------------------------------
-// Vullen van de frm_variabelen voor invullen van nieuwsbericht
-//------------------------------------------------------------------------
-function form_nieuws_fill($btn_aktie) {
-    if ($btn_aktie == "save" || $btn_aktie == "toevoegen") {
-        global $frm_datum, $frm_nieuwsheader, $frm_nieuwsbericht, $frm_createdby, $formerror;
-        $formerror         = 0;
-        $frm_datum         = $_POST['datum'];
-        $frm_createdby     = $_POST['createdby'];
-        $frm_nieuwsheader  = $_POST['nieuwsheader'];
-        $frm_nieuwsbericht = $_POST['nieuwsbericht'];
-    }
-}
-
-//------------------------------------------------------------------------
 // Displayen van de diverse gegevens van de user
 //------------------------------------------------------------------------
 function displayUserGegevens() {
@@ -176,6 +124,42 @@ function writeLogRecord($phpProg, $logRecord) {
     $fileName = "C:\\wamp64\\www\\mirage-urenregistratie-systeem\\logs\\systemlogMUS.log";
     $datumlog = date('Ymd H:i:s');
     file_put_contents($fileName, PHP_EOL.$datumlog.";".$phpProg.";".$username.";".$logRecord, FILE_APPEND);
+}
+
+//------------------------------------------------------------------------
+// Vullen van de frm_variabelen voor invullen van soort uren-scherm
+//------------------------------------------------------------------------
+function form_soorturen_fill($aktie) {
+    if ($aktie == "save" || $aktie == "toevoegen") {
+        global $frm_code, $frm_omschrijving, $formerror;
+        $formerror = 0;
+        $frm_ID            = $_POST['ID'];
+        $frm_code          = $_POST['code'];
+        $frm_omschrijving  = $_POST['omschrijving'];
+    }
+}
+
+//------------------------------------------------------------------------
+// Stel de ingevulde gegevensin het scherm veilig zodat de velden gevuld worden
+// met de al ingevulde waarden bij het optreden van een error
+//------------------------------------------------------------------------
+function form_user_fill($btn_aktie) {
+    if ($btn_aktie == "save" || $btn_aktie == "toevoegen") {
+        global $frm_username, $frm_pass, $frm_pass2, $frm_admin, $frm_voornaam, $frm_tussenvoegsel, $frm_achternaam,
+        $frm_email, $frm_indienst, $formerror;
+        $formerror = 0;
+        $frm_username      = $_POST['username'];
+        $frm_pass          = $_POST['pass'];
+        $frm_pass2         = $_POST['pass2'];
+        if (isset($_POST['admin'])) $frm_admin = $_POST['admin'];
+        else $frm_admin = "";
+        $frm_voornaam      = $_POST['voornaam'];
+        $frm_tussenvoegsel = $_POST['tussenvoegsel'];
+        $frm_achternaam    = $_POST['achternaam'];
+        $frm_email         = $_POST['email'];
+        if (isset($_POST['indienst'])) $frm_indienst = $_POST['indienst'];
+        else $frm_indienst = "";
+    }
 }
 
 ?>

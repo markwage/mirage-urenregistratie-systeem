@@ -27,7 +27,15 @@ include ("header.php");
 	<h1>Usermanagement</h1>
 			
 <?php 
-//This code runs if the form has been submitted
+//------------------------------------------------------------------------------------------------------
+// From here this code runs if the form has been submitted
+//------------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------------
+// BUTTON Cancel
+// Wanneer het geen admin betreft wordt de hoofdpagina getoond. Indien wel adminrechten dan wordt de
+// lijst met alle users getoond
+//------------------------------------------------------------------------------------------------------
 if (isset($_POST['cancel'])) {
     if (!isset($_SESSION['admin']) || (!$_SESSION['admin'])) {
         header("location: index.php");
@@ -36,6 +44,9 @@ if (isset($_POST['cancel'])) {
     }
 }
 
+//------------------------------------------------------------------------------------------------------
+// BUTTON Delete
+//------------------------------------------------------------------------------------------------------
 if (isset($_POST['delete'])) {
 	$deluser = $_POST['username'];
 	$sql_deluser = mysqli_query($dbconn, "DELETE FROM users WHERE username = '$deluser'");
@@ -43,9 +54,12 @@ if (isset($_POST['delete'])) {
 	header("location: edit_users.php?aktie=disp");
 }
 
+//------------------------------------------------------------------------------------------------------
+// BUTTON Save
+//------------------------------------------------------------------------------------------------------
 if (isset($_POST['save'])) {
-	//form_user_fill('save');
-	$formerror = 0;
+    form_user_fill('save');
+	//$formerror = 0;
 	writelogrecord("edit_users", "SAVEBUTTON - Wachtwoorden worden gecontroleerd");
 	// Checks wanneer password OF verificatiepassword niet leeg zijn
 	if (($_POST['pass']) != "" || ($_POST['pass2']) != "") {
@@ -137,6 +151,10 @@ if (isset($_POST['save'])) {
 	}
 }
 
+//------------------------------------------------------------------------------------------------------
+// START Dit wordt uitgevoerd wanneer de user op Usermanagement heeft geklikt
+// Er wordt een lijst met de users getoond
+//------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') {
 	$sql_allusers = mysqli_query($dbconn, "SELECT * FROM users ORDER BY achternaam");
 	echo "<center><table>";
@@ -162,13 +180,16 @@ if ($aktie == 'disp') {
 			<td><a href="edit_users.php?aktie=delete&edtuser='.$username.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>
 			<td><a href="add_user.php"><img src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>
 			</tr>';
-		// <td><a href="edit_users.php?aktie=delete&deluser='.$username.'"><img src="./img/buttons/user-delete.gif" alt="delete user" title="delete user '.$username.'" onClick="return confirmDelete()" /></a></td>
 		if ($rowcolor == 'row-a') $rowcolor = 'row-b';
 		else $rowcolor = 'row-a';
 	}
 	echo "</table></center>";
 }
 
+//------------------------------------------------------------------------------------------------------
+// Wordt uitgevoerd wanneer men op de button klikt om te wijzigen of te deleten of om het eigen
+// profiel aan te passen
+//------------------------------------------------------------------------------------------------------
 if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 	$edtuser = $_GET['edtuser'];
 	$focus = "pass";
@@ -184,59 +205,55 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 		if ($row_dspuser['indienst'] == 1) $frm_indienst = "checked";
 		else $frm_indienst = "";
 	}
-
-?>
-
-<form name="AddUser" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
- 	<p>
-	<table>
-		<tr>
-			<td><b>Username</b></td>
-			<td><input <?php if ($aktie == "edit" || $aktie == "editprof") { echo "readonly"; } ?> type="text" name="username" maxlength="40" value="<?php if (isset($frm_username)) { echo $frm_username; } ?>"></td>
-		</tr>
-		<tr>
-			<td>Wachtwoord</td>
-			<td><input type="password" name="pass" maxlength="10" value="<?php if (isset($frm_pass)) { echo $frm_pass; } ?>"></td>
-			<td>Confirm</td>
-			<td><input type="password" name="pass2" maxlength="10" value="<?php if (isset($frm_pass2)) { echo $frm_pass2; } ?>"></td>
-		</tr>
-		<tr>
-			<td>Admin</td>
-			<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="admin" <?php { echo $frm_admin; } ?>></td>
-		</tr>
-		<tr>
-			<td>Voornaam</td>
-			<td><input type="text" name="voornaam" maxlength="24" value="<?php if (isset($frm_voornaam)) { echo $frm_voornaam; } ?>"></td>
-		</tr>
-		<tr>
-			<td>Tussenv.</td>
-			<td><input type="text" name="tussenvoegsel" maxlength="10" value="<?php if (isset($frm_tussenvoegsel)) { echo $frm_tussenvoegsel; } ?>"></td>
-			<td>Achternaam</td>
-			<td><input type="text" name="achternaam" maxlength="40" value="<?php if (isset($frm_achternaam)) { echo $frm_achternaam; } ?>"></td>
-		</tr>
-		<tr>
-			<td>Email</td>
-			<td colspan="2"><input type="text" name="email" size="40" maxlength="60" value="<?php if (isset($frm_email)) { echo $frm_email; } ?>"></td>
-		</tr>
-		<tr>
-			<td>In dienst</td>
-			<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="indienst" <?php { echo $frm_indienst; } ?>></td>
-		</tr>
-	</table>
-	<br />
-	<?php if ($aktie == 'edit' || $aktie == 'editprof') echo '<input class="button" type="submit" name="save" value="save">'; ?>
-	<?php if ($aktie == 'delete') echo '<input class="button" type="submit" name="delete" value="delete" onClick="return confirmDelUser()">'; ?>
-	<input class="button" type="submit" name="cancel" value="cancel">
-	</p>
-</form>
-<br />		
-<?php 
-if (!isset($focus)) {
-	$focus='username';
-}
-setfocus('AddUser', $focus);
-
-// Einde van if aktie=edit
+    ?>
+	<form name="AddUser" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+ 		<p>
+		<table>
+			<tr>
+				<td><b>Username</b></td>
+				<td><input <?php if ($aktie == "edit" || $aktie == "editprof") { echo "readonly"; } ?> type="text" name="username" maxlength="40" value="<?php if (isset($frm_username)) { echo $frm_username; } ?>"></td>
+			</tr>
+			<tr>
+				<td>Wachtwoord</td>
+				<td><input type="password" name="pass" maxlength="10" value="<?php if (isset($frm_pass)) { echo $frm_pass; } ?>"></td>
+				<td>Confirm</td>
+				<td><input type="password" name="pass2" maxlength="10" value="<?php if (isset($frm_pass2)) { echo $frm_pass2; } ?>"></td>
+			</tr>
+			<tr>
+				<td>Admin</td>
+				<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="admin" <?php { echo $frm_admin; } ?>></td>
+			</tr>
+			<tr>
+				<td>Voornaam</td>
+				<td><input type="text" name="voornaam" maxlength="24" value="<?php if (isset($frm_voornaam)) { echo $frm_voornaam; } ?>"></td>
+			</tr>
+			<tr>
+				<td>Tussenv.</td>
+				<td><input type="text" name="tussenvoegsel" maxlength="10" value="<?php if (isset($frm_tussenvoegsel)) { echo $frm_tussenvoegsel; } ?>"></td>
+				<td>Achternaam</td>
+				<td><input type="text" name="achternaam" maxlength="40" value="<?php if (isset($frm_achternaam)) { echo $frm_achternaam; } ?>"></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td colspan="2"><input type="text" name="email" size="40" maxlength="60" value="<?php if (isset($frm_email)) { echo $frm_email; } ?>"></td>
+			</tr>
+			<tr>
+				<td>In dienst</td>
+				<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="indienst" <?php { echo $frm_indienst; } ?>></td>
+			</tr>
+		</table>
+		<br />
+		<?php if ($aktie == 'edit' || $aktie == 'editprof') echo '<input class="button" type="submit" name="save" value="save">'; ?>
+		<?php if ($aktie == 'delete') echo '<input class="button" type="submit" name="delete" value="delete" onClick="return confirmDelUser()">'; ?>
+		<input class="button" type="submit" name="cancel" value="cancel">
+		</p>
+	</form>
+	<br />		
+	<?php 
+    if (!isset($focus)) {
+    	$focus='username';
+    }
+    setfocus('AddUser', $focus);
 }
 	
 include ("footer.php");

@@ -8,7 +8,7 @@ include ("function.php");
 check_admin();
 
 // Connectie met de database maken en database selecteren
-$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
+//$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
 
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
@@ -25,15 +25,14 @@ if (isset($_POST['cancel'])) {
 	header("location: edit_soorturen.php?aktie=disp");
 }
 if (isset($_POST['submit'])) {
-	//form_soorturen_fill('toevoegen');
-    $formerror = 0;
+	form_soorturen_fill('toevoegen');
+    //$formerror = 0;
 	$_POST['code'] = strtoupper($_POST['code']);
-	
 	if (!$_POST['code']) {
 		echo '<p class="errmsg"> ERROR: Code is een verplicht veld</p>';
 		$focus     = 'code';
 		$formerror = 1;
-	}
+	} 
 	if (!$_POST['omschrijving'] && (!$formerror)) {
 		echo '<p class="errmsg"> ERROR: Omschrijving is een verplicht veld</p>';
 		$focus     = 'omschrijving';

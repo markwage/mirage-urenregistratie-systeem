@@ -8,7 +8,7 @@ include ("function.php");
 check_admin();
 
 // Connectie met de database maken en database selecteren
-$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
+//$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
 
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
@@ -25,7 +25,7 @@ if (isset($_POST['cancel'])) {
 	header("location: edit_users.php?aktie=disp");
 }
 if (isset($_POST['submit'])) { 
-	//form_user_fill('toevoegen');
+	form_user_fill('toevoegen');
 	$formerror = 0;
 	
 	if (!$_POST['username']) {

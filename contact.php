@@ -7,6 +7,25 @@
 // be really nice of you.
 // Contact form with validation without using javascipt
 // **************************************************************
+
+session_start();
+include ("config.php");
+include ("db.php");
+include ("function.php");
+
+// Controleren of gebruiker admin-rechten heeft
+//check_admin();
+
+// Connectie met de database maken en database selecteren
+$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
+
+// Controleren of cookie aanwezig is. Anders login-scherm displayen
+//check_cookies();
+
+include ("header.php");
+
+
+
 // Get value from the form
 if($_POST['submit']){
 	$fName=$_POST['fName'];

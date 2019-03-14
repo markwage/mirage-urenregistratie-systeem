@@ -14,9 +14,6 @@ else {
 // Controleren of gebruiker admin-rechten heeft
 check_admin();
 
-// Connectie met de database maken en database selecteren
-$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
-
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
 
@@ -27,31 +24,48 @@ include ("header.php");
 	<h1>Onderhoud soort uren</h1>
 			
 <?php 
-//This code runs if the form has been submitted
 
+//------------------------------------------------------------------------------------------------------
+// From here this code runs if the form has been submitted
+//------------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------------
+// BUTTON Cancel
+//------------------------------------------------------------------------------------------------------
 if (isset($_POST['cancel'])) {
 	header("location: edit_soorturen.php?aktie=disp");
 }
+
+//------------------------------------------------------------------------------------------------------
+// BUTTON Delete
+//------------------------------------------------------------------------------------------------------
 if (isset($_POST['delete'])) {
 	$delcode = $_POST['code'];
 	$sql_delsoortuur = mysqli_query($dbconn, "DELETE FROM soorturen WHERE code = '$delcode'");
 	header("location: edit_soorturen.php?aktie=disp");
 }
+
+//------------------------------------------------------------------------------------------------------
+// BUTTON Save
+//------------------------------------------------------------------------------------------------------
 if (isset($_POST['save'])) {
-	//form_soorturen_fill('save');
-    $formerror = 0;
+    form_soorturen_fill('save');
+    writelogrecord("edit_soorturen","BTNSAVE Op save gedrukt om gewijzigd record op te slaan");
+    //$formerror = 0;
 	if ((!$_POST['code'] || $_POST['code'] == "") && (!$formerror)) {
+	    writelogrecord("edit_soorturen","CHECK1A Het veld code is niet ingevuld");
 		echo '<p class="errmsg"> ERROR: Code is een verplicht veld</p>';
 		$focus     = 'code';
 		$formerror = 1;
 	}
 	if ((!$_POST['omschrijving'] || $_POST['omschrijving'] == "") && (!$formerror)) {
+	    writelogrecord("edit_soorturen","CHECK1B Het veld omschrijving is niet ingevuld");
 		echo '<p class="errmsg"> ERROR: Omschrijving is een verplicht veld</p>';
 		$focus     = 'omschrijving';
 		$formerror = 1;
 	}
 
-	// here we encrypt the password and add slashes if needed
+	// Update record indien er geen errors zijn
 	if (!$formerror) { 
 		$_POST['code'] = strtoupper($_POST['code']);
 		$update = "UPDATE soorturen SET 
@@ -59,6 +73,7 @@ if (isset($_POST['save'])) {
 		omschrijving = '".$_POST['omschrijving']."' WHERE ID = '".$_POST['ID']."'";
 		$check_upd_soorturen = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error($dbconn));
 		if ($check_upd_soorturen) { 
+		    writelogrecord("edit_soorturen","UPDATE Soortuur ".$_POST['code']." is succesvol ge-update");
 			echo '<p class="infmsg">Soort uur <b>'.$_POST['cude'].'</b> is gewijzigd</p>.';
 			$frm_code          = "";
 			$frm_omschrijving  = "";
@@ -71,6 +86,10 @@ if (isset($_POST['save'])) {
 	}
 }
 
+//------------------------------------------------------------------------------------------------------
+// START Dit wordt uitgevoerd wanneer de user op Onderhoud soort uren heeft geklikt
+// Er wordt een lijst met de uren getoond
+//------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') {
 	$sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
 	echo "<center><table>";
@@ -94,44 +113,54 @@ if ($aktie == 'disp') {
 	echo "</table></center>";
 }
 
+//------------------------------------------------------------------------------------------------------
+// Wordt uitgevoerd wanneer men op de button klikt om te wijzigen of te deleten
+//------------------------------------------------------------------------------------------------------
 if ($aktie == 'edit' || $aktie == 'delete') {
 	$edtcode = $_GET['edtcode'];
 	$focus = "code";
 	$sql_dspsoorturen = mysqli_query($dbconn, "SELECT * FROM soorturen WHERE code = '$edtcode'");
 	while($row_dspsoorturen = mysqli_fetch_array($sql_dspsoorturen)) {
+	    global $frm_code, $frm_omschrijving, $formerror;
+	    $formerror = 0;
 		$frm_ID   = $row_dspsoorturen['ID'];
 		$frm_code = $row_dspsoorturen['code'];
 		$frm_omschrijving = $row_dspsoorturen['omschrijving'];
 	}
-
-?>
-
-<form name="soorturen" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
- 	<p>
-	<table>
-		<tr>
-			<td>Code</td>
-			<td><input style="text-transform: uppercase" type="text" name="code" size="10" maxlength="8" value="<?php if (isset($frm_code)) { echo $frm_code; } ?>"></td>
-		</tr>
-		<tr>
-			<td>Omschrijving</td>
-			<td><input type="text" name="omschrijving" size="60" maxlength="60" value="<?php if (isset($frm_omschrijving)) { echo $frm_omschrijving; } ?>"></td>
-	</table>
-	<br />
-	<?php if ($aktie == 'edit') echo '<input class="button" type="submit" name="save" value="save">'; ?>
-	<?php if ($aktie == 'delete') echo '<input class="button" type="submit" name="delete" value="delete" onClick="return confirmDelSoortuur()">'; ?>
-	<input class="button" type="submit" name="cancel" value="cancel">
-	</p>
-</form>
-
-<br />		
-<?php 
-if (!isset($focus)) {
-	$focus='code';
-}
-setfocus('soorturen', $focus);
-
-// Einde van if aktie=edit
+    ?>
+	<form name="soorturen" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+ 		<p>
+		<table>
+	    	<tr>
+				<td>ID</td>
+				<td><input type="text" readonly name="ID" size="4" maxlength="8" value="<?php if (isset($frm_ID)) { echo $frm_ID; } ?>"></td>
+			</tr>
+			<tr>
+				<td>Code</td>
+				<td><input style="text-transform: uppercase" type="text" name="code" size="10" maxlength="8" value="<?php if (isset($frm_code)) { echo $frm_code; } ?>" required></td>
+			</tr>
+			<tr>
+				<td>Omschrijving</td>
+				<td><input type="text" name="omschrijving" size="60" maxlength="60" value="<?php if (isset($frm_omschrijving)) { echo $frm_omschrijving; } ?>" required></td>
+			</tr>
+			<!-- 
+			<tr>
+				<td>Weeknummer</td>
+				<td><input type="week" name="week" id="camp-week" min="2019-W1" max="2019-W26" required></td>
+			</tr-->
+		</table>
+		<br />
+		<?php if ($aktie == 'edit') echo '<input class="button" type="submit" name="save" value="save">'; ?>
+		<?php if ($aktie == 'delete') echo '<input class="button" type="submit" name="delete" value="delete" onClick="return confirmDelSoortuur()">'; ?>
+		<input class="button" type="submit" name="cancel" value="cancel">
+		</p>
+	</form>
+	<br />		
+	<?php 
+    if (!isset($focus)) {
+    	$focus='code';
+    }
+    setfocus('soorturen', $focus);
 }
 	
 include ("footer.php");

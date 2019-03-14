@@ -625,3 +625,200 @@ Deze regel is twee regels naar beneden
 20190306 06:21:49;edit_users;mwage;CHECKFIELDS - Overige velden worden gecontroleerd
 20190306 06:21:49;edit_users;mwage;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user demote updaten
 20190306 06:21:49;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor user
+20190306 11:33:39;login;mwage;User mwage is succesvol ingelogd.
+20190306 11:39:20;edit_users;mwage;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190306 11:39:20;edit_users;mwage;CHECKFIELDS - Overige velden worden gecontroleerd
+20190306 11:39:20;edit_users;mwage;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user abredzete updaten
+20190306 11:39:20;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor user
+20190306 19:45:30;login;;User mwage probeerde in te loggen met een foutief wachtwoord
+20190306 19:45:42;login;mwage;User mwage is succesvol ingelogd.
+20190306 20:01:13;edit_nieuws;mwage;CANCEL User heeft op cancel gedrukt
+20190306 20:08:51;edit_nieuws;mwage;CANCEL User heeft op cancel gedrukt
+20190306 20:39:31;edit_nieuws;mwage;CANCEL User heeft op cancel gedrukt
+20190306 20:42:06;edit_users;mwage;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190306 20:42:06;edit_users;mwage;CHECKFIELDS - Overige velden worden gecontroleerd
+20190306 20:42:06;edit_users;mwage;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user demo3te updaten
+20190306 20:42:06;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor user
+20190306 21:05:50;edit_nieuws;mwage;CANCEL User heeft op cancel gedrukt
+20190306 21:08:11;login;demo2;User demo2 is succesvol ingelogd.
+20190306 21:08:14;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190306 21:08:14;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190306 21:08:26;edit_nieuws;demo2;CANCEL User heeft op cancel gedrukt
+20190306 21:08:27;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190306 21:08:27;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190306 21:16:42;edit_nieuws;demo2;CANCEL User heeft op cancel gedrukt
+20190306 21:16:42;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190306 21:16:42;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190306 21:17:38;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190306 21:17:38;edit_nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190306 21:17:50;login;mwage;User mwage is succesvol ingelogd.
+20190306 21:19:25;edit_nieuws;mwage;CANCEL User heeft op cancel gedrukt
+20190306 21:19:36;edit_nieuws;mwage;DELETE1 Het nieuwsbericht met id  is verwijderd uit tabel nieuws
+20190306 21:21:40;edit_nieuws;mwage;DELETE1 Het nieuwsbericht met id  is verwijderd uit tabel nieuws
+20190306 21:22:35;edit_nieuws;mwage;DELETE1 Het nieuwsbericht met id 4 is verwijderd uit tabel nieuws
+20190307 06:29:07;login;mwage;User mwage is succesvol ingelogd.
+20190307 06:50:28;edit_nieuws;mwage;CANCEL User heeft op cancel gedrukt
+20190307 07:08:51;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190307 07:08:51;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190307 07:08:51;add_nieuws;mwage;ADD01 Nieuwsbericht  wordt toegevoegd aan de database
+20190307 07:10:11;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190307 07:10:11;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190307 07:10:11;add_nieuws;mwage;ADD01 Nieuwsbericht wordt toegevoegd aan de database
+20190307 07:13:02;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190307 07:13:02;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190307 07:13:02;add_nieuws;mwage;ADD01 Nieuwsbericht wordt toegevoegd aan de database
+20190307 07:14:50;edit_nieuws;mwage;DELETE1 Het nieuwsbericht met id 8 is verwijderd uit tabel nieuws
+20190307 07:14:56;edit_nieuws;mwage;DELETE1 Het nieuwsbericht met id 7 is verwijderd uit tabel nieuws
+20190307 07:15:04;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190307 07:15:04;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190307 07:15:04;add_nieuws;mwage;CHECK01B Waarde: -- 
+20190307 07:15:04;add_nieuws;mwage;ADD01 Nieuwsbericht wordt toegevoegd aan de database
+20190307 07:18:30;edit_nieuws;mwage;DELETE1 Het nieuwsbericht met id 10 is verwijderd uit tabel nieuws
+20190307 07:18:37;edit_nieuws;mwage;DELETE1 Het nieuwsbericht met id 6 is verwijderd uit tabel nieuws
+20190307 07:18:42;edit_nieuws;mwage;DELETE1 Het nieuwsbericht met id 5 is verwijderd uit tabel nieuws
+20190307 07:18:48;edit_nieuws;mwage;DELETE1 Het nieuwsbericht met id 9 is verwijderd uit tabel nieuws
+20190307 07:18:54;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190307 07:18:54;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190307 07:18:54;add_nieuws;mwage;CHECK01B Waarde: -- --
+20190307 07:18:54;add_nieuws;mwage;ADD01 Nieuwsbericht wordt toegevoegd aan de database
+20190307 07:20:43;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190307 07:20:43;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190307 07:20:43;add_nieuws;mwage;CHECK01B Waarde: ----
+20190307 07:20:43;add_nieuws;mwage;CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld
+20190307 07:27:44;edit_nieuws;mwage;DELETE1 Het nieuwsbericht met id 11 is verwijderd uit tabel nieuws
+20190307 07:43:59;login;mwage;User mwage is succesvol ingelogd.
+20190307 07:44:02;logout;mwage;User is succesvol uitgelogd
+20190307 07:44:14;logout;mwage;User is succesvol uitgelogd
+20190307 10:49:11;login;demo;User demo is succesvol ingelogd.
+20190307 10:49:16;logout;demo;User is succesvol uitgelogd
+20190307 10:49:24;login;mwage;User mwage is succesvol ingelogd.
+20190307 19:44:25;login;mwage;User mwage is succesvol ingelogd.
+20190307 19:55:39;logout;mwage;User is succesvol uitgelogd
+20190307 19:55:46;login;demo;User demo is succesvol ingelogd.
+20190308 08:13:14;login;mwage;User mwage is succesvol ingelogd.
+20190308 08:13:51;edit_users;mwage;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190308 08:13:51;edit_users;mwage;CHECKFIELDS - Overige velden worden gecontroleerd
+20190308 08:13:51;edit_users;mwage;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user demo3te updaten
+20190308 08:13:51;edit_users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor user
+20190308 09:27:29;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190308 09:27:29;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190308 09:27:29;add_nieuws;mwage;CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld
+20190308 09:27:54;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190308 09:27:54;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190308 09:27:54;add_nieuws;mwage;ADD01 Nieuwsbericht wordt toegevoegd aan de database
+20190308 12:16:17;login;mwage;User mwage is succesvol ingelogd.
+20190308 13:43:35;logout;mwage;User is succesvol uitgelogd
+20190308 13:43:39;login;demo;User demo is succesvol ingelogd.
+20190308 13:43:42;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:43:42;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:43:42;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:43:49;edit_nieuws;demo;CANCEL User heeft op cancel gedrukt
+20190308 13:43:49;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:43:49;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:43:49;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:50:18;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:50:18;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:50:18;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:50:24;edit_nieuws;demo;CANCEL User heeft op cancel gedrukt
+20190308 13:50:24;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:50:24;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:50:24;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:51:37;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:51:37;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:51:37;edit_nieuws;demo;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190308 13:51:39;logout;demo;User is succesvol uitgelogd
+20190308 13:51:53;login;mwage;User mwage is succesvol ingelogd.
+20190308 13:52:08;edit_nieuws;mwage;DELETE1 Het nieuwsbericht met id 2 is verwijderd uit tabel nieuws
+20190308 13:52:22;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190308 13:52:22;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190308 13:52:22;add_nieuws;mwage;ADD01 Nieuwsbericht wordt toegevoegd aan de database
+20190308 13:52:36;logout;mwage;User is succesvol uitgelogd
+20190308 15:31:25;login;mwage;User mwage is succesvol ingelogd.
+20190310 17:32:39;login;mwage;User mwage is succesvol ingelogd.
+20190310 20:44:38;login;mwage;User mwage is succesvol ingelogd.
+20190310 21:34:04;logout;mwage;User is succesvol uitgelogd
+20190311 20:07:12;login;mwage;User mwage is succesvol ingelogd.
+20190311 20:27:32;login;mwage;User mwage is succesvol ingelogd.
+20190311 21:03:04;login;mwage;User mwage is succesvol ingelogd.
+20190311 21:06:21;login;mwage;User mwage is succesvol ingelogd.
+20190311 21:14:59;login;mwage;User mwage is succesvol ingelogd.
+20190311 21:27:59;login;mwage;User mwage is succesvol ingelogd.
+20190311 21:34:39;login;mwage;User mwage is succesvol ingelogd.
+20190311 21:40:14;logout;mwage;User is succesvol uitgelogd
+20190312 06:31:33;login;mwage;User mwage is succesvol ingelogd.
+20190312 08:52:38;login;mwage;User mwage is succesvol ingelogd.
+20190312 12:21:24;login;mwage;User mwage is succesvol ingelogd.
+20190313 10:56:00;login;mwage;User mwage is succesvol ingelogd.
+20190313 13:10:25;login;mwage;User mwage is succesvol ingelogd.
+20190313 13:10:48;logout;mwage;User is succesvol uitgelogd
+20190313 13:10:54;login;mwage;User mwage is succesvol ingelogd.
+20190313 13:11:09;logout;mwage;User is succesvol uitgelogd
+20190313 13:11:24;login;mwage;User mwage is succesvol ingelogd.
+20190313 13:21:41;logout;mwage;User is succesvol uitgelogd
+20190313 13:22:00;login;mwage;User mwage is succesvol ingelogd.
+20190313 13:39:14;login;mwage;User mwage is succesvol ingelogd.
+20190313 13:41:38;login;mwage;User mwage is succesvol ingelogd.
+20190313 14:13:32;login;mwage;User mwage is succesvol ingelogd.
+20190313 15:38:58;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190313 15:38:58;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190313 15:38:58;add_nieuws;mwage;CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld
+20190313 15:50:10;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190313 15:50:10;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190313 15:50:10;add_nieuws;mwage;CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld
+20190313 16:07:44;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190313 16:07:44;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190313 16:07:44;add_nieuws;mwage;CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld
+20190313 16:09:33;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190313 16:09:33;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190313 16:09:33;add_nieuws;mwage;CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld
+20190313 16:10:05;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190313 16:10:05;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190313 16:10:05;add_nieuws;mwage;CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld
+20190313 16:11:04;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190313 16:11:04;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190313 16:11:04;add_nieuws;mwage;CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld
+20190313 16:11:15;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190313 16:11:15;add_nieuws;mwage;CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld
+20190313 16:11:15;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190313 16:18:35;login;mwage;User mwage is succesvol ingelogd.
+20190313 16:18:44;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190313 16:18:44;add_nieuws;mwage;CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld
+20190313 16:18:44;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190313 16:18:59;add_nieuws;mwage;CHECK01A De inputveld nieuwsheader wordt gecontroleerd
+20190313 16:18:59;add_nieuws;mwage;CHECK01B De inputveld nieuwsbericht wordt gecontroleerd
+20190313 16:18:59;add_nieuws;mwage;CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld
+20190313 16:57:32;edit_users;mwage;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190313 16:57:32;edit_users;mwage;CHECKFIELDS - Overige velden worden gecontroleerd
+20190313 17:08:00;edit_users;mwage;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190313 17:08:00;edit_users;mwage;CHECKFIELDS - Overige velden worden gecontroleerd
+20190313 19:15:53;edit_nieuws;;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190313 19:15:53;edit_nieuws;;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190313 19:15:53;edit_nieuws;;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20190313 19:15:57;logout;;User is succesvol uitgelogd
+20190313 19:16:07;login;mwage;User mwage is succesvol ingelogd.
+20190313 20:38:28;edit_soorturen;mwage;BTNSAVE Op save gedrukt om gewijzigd record op te slaan
+20190313 20:38:28;edit_soorturen;mwage;UPDATE Soortuur MIR999ZZ is succesvol ge-update
+20190313 21:11:57;edit_soorturen;mwage;BTNSAVE Op save gedrukt om gewijzigd record op te slaan
+20190313 21:11:57;edit_soorturen;mwage;CHECK1B Het veld omschrijving is niet ingevuld
+20190313 21:16:28;edit_soorturen;mwage;BTNSAVE Op save gedrukt om gewijzigd record op te slaan
+20190313 21:16:28;edit_soorturen;mwage;CHECK1B Het veld omschrijving is niet ingevuld
+20190313 21:16:28;edit_soorturen;mwage;FLOW1A 
+20190313 21:22:28;edit_soorturen;mwage;BTNSAVE Op save gedrukt om gewijzigd record op te slaan
+20190313 21:22:28;edit_soorturen;mwage;CHECK1B Het veld omschrijving is niet ingevuld
+20190313 21:22:28;edit_soorturen;mwage;FLOW1A 
+20190313 21:33:34;edit_soorturen;mwage;BTNSAVE Op save gedrukt om gewijzigd record op te slaan
+20190313 21:33:34;edit_soorturen;mwage;CHECK1B Het veld omschrijving is niet ingevuld
+20190313 21:33:34;edit_soorturen;mwage;FLOW1A 
+20190314 06:00:00;login;;User mwage probeerde in te loggen met een foutief wachtwoord
+20190314 06:00:07;login;mwage;User mwage is succesvol ingelogd.
+20190314 13:04:22;login;mwage;User mwage is succesvol ingelogd.
+20190314 21:02:03;login;mwage;User mwage is succesvol ingelogd.
+20190314 21:03:34;edit_soorturen;mwage;BTNSAVE Op save gedrukt om gewijzigd record op te slaan
+20190314 21:03:34;edit_soorturen;mwage;CHECK1B Het veld omschrijving is niet ingevuld
+20190314 21:03:34;edit_soorturen;mwage;FLOW1A 
+20190314 21:07:54;edit_soorturen;mwage;BTNSAVE Op save gedrukt om gewijzigd record op te slaan
+20190314 21:07:54;edit_soorturen;mwage;CHECK1B Het veld omschrijving is niet ingevuld
+20190314 21:07:54;edit_soorturen;mwage;FLOW1A 
+20190314 21:07:54;edit_soorturen;mwage;FLOW1B Waarde van focus is omschrijving
+20190314 21:11:43;edit_soorturen;mwage;BTNSAVE Op save gedrukt om gewijzigd record op te slaan
+20190314 21:11:43;edit_soorturen;mwage;UPDATE Soortuur MIR999ZZ is succesvol ge-update

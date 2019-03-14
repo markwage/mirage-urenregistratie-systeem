@@ -29,6 +29,7 @@ if (isset($_POST['submit'])) {
 	// Error indien username wel ingevuld maar onbekend
 	$check2 = mysqli_num_rows($check);
 	if ($check2 == 0 && $_POST['username'] <> '') {
+	    writeLogRecord("login","WARN Er werd geprobeerd om in te loggen met een niet bestaande username: ".$_POST['username']);
 		echo '<p class="errmsg"> ERROR: Username is onbekend</p>';
 	}
 	while ($info = mysqli_fetch_array($check)) {
@@ -45,7 +46,7 @@ if (isset($_POST['submit'])) {
 		else {
 			// Toevoegen cookie indien username-password correct
 			$_POST['username'] = stripslashes($_POST['username']);
-			$hour = time() + 10800;
+			$hour = time() + 3600;
 			setcookie('ID_mus', $_POST['username'], $hour);
 			setcookie('Key_mus', $_POST['pass'], $hour);
 			$_SESSION['username'] = $_POST['username'];

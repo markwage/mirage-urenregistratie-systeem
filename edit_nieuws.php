@@ -17,32 +17,79 @@ if (!$aktie == "disp") {
 }
 
 // Connectie met de database maken en database selecteren
-$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
+//---$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
 
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
 
 include ("header.php");
 
-//--------------
+echo "<div id=\"main\"><h1>"; 
+if ($_SESSION['admin']) { 
+    echo "Onderhoud "; 
+} 
+echo "Nieuwsartikelen</h1>";
 
-echo "<div id=\"main\"><h1>"; if ($_SESSION['admin']) { echo "Onderhoud "; } echo "Nieuwsartikelen</h1>";
-//This code runs if the form has been submitted
+//------------------------------------------------------------------------------------------------------
+// From here this code runs if the form has been submitted
+//------------------------------------------------------------------------------------------------------
 
+//------------------------------------------------------------------------------------------------------
+// BUTTON Cancel
+//------------------------------------------------------------------------------------------------------
 if (isset($_POST['cancel'])) {
+    writeLogRecord("edit_nieuws","CANCEL User heeft op cancel gedrukt");
     header("location: edit_nieuws.php?aktie=disp");
 }
+//------------------------------------------------------------------------------------------------------
+// BUTTON Delete
+//------------------------------------------------------------------------------------------------------
 if (isset($_POST['delete'])) {
-    $delid = $_POST['id'];
+    $delid = $_POST['ID'];
     $sql_delnieuwsheader = mysqli_query($dbconn, "DELETE FROM nieuws WHERE ID = '$delid'");
     writeLogRecord("edit_nieuws","DELETE1 Het nieuwsbericht met id ".$delid." is verwijderd uit tabel nieuws");
     header("location: edit_nieuws.php?aktie=disp");
 }
 
-//
-//>>>> Hierna code voor als er op save is geklikt <<<<<
-//
+//------------------------------------------------------------------------------------------------------
+// BUTTON Save
+//------------------------------------------------------------------------------------------------------
+if (isset($_POST['save'])) {
+    $formerror=0;
+    if ((!$_POST['nieuwsheader'] || $_POST['nieuwsheader'] == "") && (!$formerror)) {
+        echo '<p class="errmsg"> ERROR: Nieuwsheader is een verplicht veld</p>';
+        $focus     = 'nieuwsheader';
+        $formerror = 1;
+    }
+    if ((!$_POST['nieuwsbericht'] || $_POST['nieuwsbericht'] == "") && (!$formerror)) {
+        echo '<p class="errmsg"> ERROR: Nieuwsbericht is een verplicht veld</p>';
+        $focus     = 'nieuwsbericht';
+        $formerror = 1;
+    }
+    if (!$formerror) {
+        $update = "UPDATE nieuws SET
+        datum = '".$_POST['datum']."', 
+		nieuwsheader = '".$_POST['nieuwsheader']."',
+        nieuwsbericht = '".$_POST['nieuwsbericht']."' WHERE ID = '".$_POST['ID']."'";
+        $check_upd_nieuws = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error($dbconn));
+        if ($check_upd_nieuws) {
+            echo '<p class="infmsg">Mieuwsbericht <b>'.$_POST['nieuwsheader'].'</b> is gewijzigd</p>.';
+            $frm_datum          = "";
+            $frm_nieuwsheader   = "";
+            $frm_nieuwsbericht  = "";
+        }
+        else {
+            echo '<p class="errmsg">Er is een fout opgetreden bij het updaten van nieuwsbericht. Probeer het nogmaals.<br />
+			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
+        }
+        header("location: edit_nieuws.php?aktie=disp");
+    }
+}
 
+//------------------------------------------------------------------------------------------------------
+// START Dit wordt uitgevoerd wanneer de user op Onderhoud nieuwsberichten heeft geklikt
+// Er wordt een lijst met de uren getoond
+//------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') {
     $sql_nieuwsheaders = mysqli_query($dbconn, "SELECT * FROM nieuws ORDER BY datum desc");
     echo "<center><table>";
@@ -56,10 +103,10 @@ if ($aktie == 'disp') {
 			<td>'.$datum.'</td><td>'.$nieuwsheader.'</td>';
         if (!isset($_SESSION['admin']) || (!$_SESSION['admin'])) {
             writeLogRecord("edit_nieuws","BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond");
-            echo '<td><a href="edit_nieuws.php?aktie=dispbericht&edtid='.$id.'"><img src="./img/buttons/icons8-glasses-48.png" alt="display nieuwsbericht" title="display nieuwsbericht '.$id.'" /></a></td>';
+            echo '<td><a href="edit_nieuws.php?aktie=dispbericht&edtid='.$id.'"><img src="./img/buttons/icons8-glasses-48.png" alt="display nieuwsbericht" title="display volledig nieuwsbericht" /></a></td>';
         } else {
-			echo '<td><a href="edit_nieuws.php?aktie=edit&edtid='.$id.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen nieuwsbericht" title="wijzig nieuwsbericht '.$id.'" /></a></td>
-			<td><a href="edit_nieuws.php?aktie=delete&edtid='.$id.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete nieuwsbericht" title="delete nieuwsbericht '.$id.'" /></a></td>
+			echo '<td><a href="edit_nieuws.php?aktie=edit&edtid='.$id.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen nieuwsbericht" title="wijzig nieuwsbericht" /></a></td>
+			<td><a href="edit_nieuws.php?aktie=delete&edtid='.$id.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete nieuwsbericht" title="delete het nieuwsbericht" /></a></td>
 			<td><a href="add_nieuws.php"><img src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwsbericht" title="toevoegen nieuwsbericht" /></a></td>'; 
 			
         }
@@ -70,6 +117,10 @@ if ($aktie == 'disp') {
     echo "</table></center>";
 }
 
+//------------------------------------------------------------------------------------------------------
+// Wordt uitgevoerd wanneer men op de button klikt om te wijzigen of te deleten of om het bericht
+// te verwijderen
+//------------------------------------------------------------------------------------------------------
 if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'dispbericht') {
     if ($aktie == 'edit' || $aktie == 'delete') {
         check_admin();
@@ -83,12 +134,14 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'dispbericht') {
         $frm_nieuwsheader  = $row_dspnieuws['nieuwsheader'];
         $frm_nieuwsbericht = $row_dspnieuws['nieuwsbericht'];
     }
-        
     ?>
-
 	<form name="nieuwsartikelen" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 	<p>
 	<table>
+	    <tr>
+			<td>ID</td>
+			<td><input type="text" readonly name="ID" size="4" maxlength="8" value="<?php if (isset($frm_ID)) { echo $frm_ID; } ?>"></td>
+		</tr>
 		<tr>
 			<td>Datum</td>
 			<td><input type="text" name="datum" size="20" maxlength="20" <?php if (!$_SESSION['admin']) { echo "readonly "; } ?> value="<?php if (isset($frm_datum)) { echo $frm_datum; } ?>"></td>
@@ -104,16 +157,18 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'dispbericht') {
         if ($aktie == 'dispbericht') {
             echo '<tr><td> </td><td><textarea readonly id="area1" name="nieuwsbericht">'.$frm_nieuwsbericht.'</textarea></td></tr>'; 
         }
-        echo '</table><br />';
-        if ($aktie == 'edit') { 
-            echo '<input class="button" type="submit" name="save" value="save">'; 
-        }
-        if ($aktie == 'delete') {
-            echo '<input class="button" type="submit" name="delete" value="delete" onClick="return confirmDelNieuwsbericht()">'; 
-        }
         ?>
-		<input class="button" type="submit" name="cancel" value="cancel">
-		</p>
+    </table><br />
+    <?php 
+    if ($aktie == 'edit') { 
+        echo '<input class="button" type="submit" name="save" value="save">'; 
+    }
+    if ($aktie == 'delete') {
+        echo '<input class="button" type="submit" name="delete" value="delete" onClick="return confirmDelNieuwsbericht()">'; 
+    }
+    ?>
+	<input class="button" type="submit" name="cancel" value="cancel">
+	</p>
 	</form>
 	<br />		
 
@@ -122,8 +177,6 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'dispbericht') {
     	$focus='datum';
     }
     setfocus('nieuwsartikelen', $focus);
-
-// Einde van if aktie=edit
 }
 	
 include ("footer.php");
