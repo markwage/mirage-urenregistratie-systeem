@@ -822,3 +822,48 @@ Deze regel is twee regels naar beneden
 20190314 21:07:54;edit_soorturen;mwage;FLOW1B Waarde van focus is omschrijving
 20190314 21:11:43;edit_soorturen;mwage;BTNSAVE Op save gedrukt om gewijzigd record op te slaan
 20190314 21:11:43;edit_soorturen;mwage;UPDATE Soortuur MIR999ZZ is succesvol ge-update
+20190315 12:07:56;login;mwage;User mwage is succesvol ingelogd.
+20190315 12:51:16;login;mwage;User mwage is succesvol ingelogd.
+20190315 15:00:26;login;mwage;User mwage is succesvol ingelogd.
+20190315 16:48:03;login;mwage;User mwage is succesvol ingelogd.
+20190318 14:57:53;login;mwage;User mwage is succesvol ingelogd.
+20190318 15:07:44;login;mwage;User mwage is succesvol ingelogd.
+20190318 16:19:13;login;mwage;User mwage is succesvol ingelogd.
+20190318 16:44:03;edit_soorturen;mwage;BTNSAVE Op save gedrukt om gewijzigd record op te slaan
+20190318 16:44:03;edit_soorturen;mwage;UPDATE Soortuur MIR899XX is succesvol ge-update
+20190318 16:44:16;edit_soorturen;mwage;BTNSAVE Op save gedrukt om gewijzigd record op te slaan
+20190318 16:44:16;edit_soorturen;mwage;UPDATE Soortuur MIR999ZZ is succesvol ge-update
+20190318 16:50:19;login;mwage;User mwage is succesvol ingelogd.
+20190318 19:50:45;login;mwage;User mwage is succesvol ingelogd.
+20190318 20:13:29;login;mwage;User mwage is succesvol ingelogd.
+20190318 20:14:17;logout;mwage;User is succesvol uitgelogd
+20190318 20:14:37;login;mwage;User mwage is succesvol ingelogd.
+20190318 21:35:48;login;mwage;User mwage is succesvol ingelogd.
+20190318 21:42:02;logout;mwage;User is succesvol uitgelogd
+20190319 06:14:08;login;mwage;User mwage is succesvol ingelogd.
+20190319 06:17:11;logout;mwage;User is succesvol uitgelogd
+20190319 06:17:24;login;mwage;User mwage is succesvol ingelogd.
+20190319 08:25:39;login;mwage;User mwage is succesvol ingelogd.
+20190319 13:16:38;login;mwage;User mwage is succesvol ingelogd.
+20190319 19:51:35;login;mwage;User mwage is succesvol ingelogd.
+20190320 06:05:27;login;mwage;User mwage is succesvol ingelogd.
+20190320 13:23:11;login;mwage;User mwage is succesvol ingelogd.
+20190320 14:24:08;login;mwage;User mwage is succesvol ingelogd.
+20190320 19:25:58;login;mwage;User mwage is succesvol ingelogd.
+20190320 20:09:29;uren;mwage;CREATE select options:  gelukt.
+20190320 20:10:37;uren;mwage;CREATE select options: <option value = "MIR000UU">MIR000UU - Gewerkte uren</option><option value = "MIR001VL">MIR001VL - Opgenomen verlofuren</option><option value = "MIR003BV">MIR003BV - Bijzonder verlof</option><option value = "MIR003FD">MIR003FD - Erkende feestdag</option><option value = "MIR010CU">MIR010CU - Cursus</option><option value = "MIR020LL">MIR020LL - Leegloop</option><option value = "MIR030IN">MIR030IN - Intern</option><option value = "MIR040BA">MIR040BA - Bezoek arts</option><option value = "MIR043ZK">MIR043ZK - Ziek</option><option value = "MIR100OV">MIR100OV - Overwerk tegen 100%</option><option value = "MIR115OV">MIR115OV - Overwerk tegen 115%</option><option value = "MIR120OV">MIR120OV - Overwerk tegen 120%</option><option value = "MIR125OV">MIR125OV - Overwerk tegen 125%</option><option value = "MIR150OV">MIR150OV - Overwerk tegen 150%</option><option value = "MIR200OV">MIR200OV - Overwerk tegen 200%</option><option value = "MIR899XX">MIR899XX - Test onderhoud uren</option><option value = "MIR999ZZ">MIR999ZZ - Test2 onderhoud uren</option> gelukt.
+20190320 20:22:44;uren;mwage;CREATE select options: <option value = "MIR000UU">MIR000UU - Gewerkte uren</option><option value = "MIR001VL">MIR001VL - Opgenomen verlofuren</option><option value = "MIR003BV">MIR003BV - Bijzonder verlof</option><option value = "MIR003FD">MIR003FD - Erkende feestdag</option><option value = "MIR010CU">MIR010CU - Cursus</option><option value = "MIR020LL">MIR020LL - Leegloop</option><option value = "MIR030IN">MIR030IN - Intern</option><option value = "MIR040BA">MIR040BA - Bezoek arts</option><option value = "MIR043ZK">MIR043ZK - Ziek</option><option value = "MIR100OV">MIR100OV - Overwerk tegen 100%</option><option value = "MIR115OV">MIR115OV - Overwerk tegen 115%</option><option value = "MIR120OV">MIR120OV - Overwerk tegen 120%</option><option value = "MIR125OV">MIR125OV - Overwerk tegen 125%</option><option value = "MIR150OV">MIR150OV - Overwerk tegen 150%</option><option value = "MIR200OV">MIR200OV - Overwerk tegen 200%</option><option value = "MIR899XX">MIR899XX - Test onderhoud uren</option><option value = "MIR999ZZ">MIR999ZZ - Test2 onderhoud uren</option> gelukt.
+20190320 20:23:11;uren;mwage;CREATE select options: <option value = "MIR000UU">MIR000UU - Gewerkte uren</option><option value = "MIR001VL">MIR001VL - Opgenomen verlofuren</option><option value = "MIR003BV">MIR003BV - Bijzonder verlof</option><option value = "MIR003FD">MIR003FD - Erkende feestdag</option><option value = "MIR010CU">MIR010CU - Cursus</option><option value = "MIR020LL">MIR020LL - Leegloop</option><option value = "MIR030IN">MIR030IN - Intern</option><option value = "MIR040BA">MIR040BA - Bezoek arts</option><option value = "MIR043ZK">MIR043ZK - Ziek</option><option value = "MIR100OV">MIR100OV - Overwerk tegen 100%</option><option value = "MIR115OV">MIR115OV - Overwerk tegen 115%</option><option value = "MIR120OV">MIR120OV - Overwerk tegen 120%</option><option value = "MIR125OV">MIR125OV - Overwerk tegen 125%</option><option value = "MIR150OV">MIR150OV - Overwerk tegen 150%</option><option value = "MIR200OV">MIR200OV - Overwerk tegen 200%</option><option value = "MIR899XX">MIR899XX - Test onderhoud uren</option><option value = "MIR999ZZ">MIR999ZZ - Test2 onderhoud uren</option> gelukt.
+20190320 20:23:59;uren;mwage;CREATE select options: <option value = "MIR000UU">MIR000UU - Gewerkte uren</option><option value = "MIR001VL">MIR001VL - Opgenomen verlofuren</option><option value = "MIR003BV">MIR003BV - Bijzonder verlof</option><option value = "MIR003FD">MIR003FD - Erkende feestdag</option><option value = "MIR010CU">MIR010CU - Cursus</option><option value = "MIR020LL">MIR020LL - Leegloop</option><option value = "MIR030IN">MIR030IN - Intern</option><option value = "MIR040BA">MIR040BA - Bezoek arts</option><option value = "MIR043ZK">MIR043ZK - Ziek</option><option value = "MIR100OV">MIR100OV - Overwerk tegen 100%</option><option value = "MIR115OV">MIR115OV - Overwerk tegen 115%</option><option value = "MIR120OV">MIR120OV - Overwerk tegen 120%</option><option value = "MIR125OV">MIR125OV - Overwerk tegen 125%</option><option value = "MIR150OV">MIR150OV - Overwerk tegen 150%</option><option value = "MIR200OV">MIR200OV - Overwerk tegen 200%</option><option value = "MIR899XX">MIR899XX - Test onderhoud uren</option><option value = "MIR999ZZ">MIR999ZZ - Test2 onderhoud uren</option> gelukt.
+20190320 20:30:01;login;mwage;User mwage is succesvol ingelogd.
+20190320 21:40:47;login;mwage;User mwage is succesvol ingelogd.
+20190321 06:06:14;login;mwage;User mwage is succesvol ingelogd.
+20190321 07:18:32;login;mwage;User mwage is succesvol ingelogd.
+20190321 10:18:10;login;mwage;User mwage is succesvol ingelogd.
+20190321 11:47:34;login;mwage;User mwage is succesvol ingelogd.
+20190321 13:48:34;login;mwage;User mwage is succesvol ingelogd.
+20190321 19:20:02;login;mwage;User mwage is succesvol ingelogd.
+20190321 20:20:53;login;mwage;User mwage is succesvol ingelogd.
+20190321 21:32:19;login;mwage;User mwage is succesvol ingelogd.
+20190321 21:38:38;login;mwage;User mwage is succesvol ingelogd.
+20190322 07:37:58;login;mwage;User mwage is succesvol ingelogd.

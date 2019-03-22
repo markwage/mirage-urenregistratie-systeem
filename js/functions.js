@@ -10,13 +10,20 @@ function confirmDelNieuwsbericht() {
 }
 
 function add_row() {
-	$rowno=$("#employee_table tr").length;
+	var fieldElementsSoortUur=document.getElementById('dropdownSoortUren');
+	var selectSoortUur = fieldElementsSoortUur.getAttribute("data-options");
+	$rowno=$("#uren_table tr").length;
 	$rowno=$rowno+1;
-	$("#employee_table tr:last").after("" +
+	$("#uren_table tr:last").after("" +
 		"<tr id='row"+$rowno+"'>" +
-			"<td><input type='text' name='name[]' placeholder='Enter Name'></td>" +
-			"<td><input type='text' name='age[]' placeholder='Enter Age'></td>" +
-			"<td><input type='text' name='job[]' placeholder='Enter Job'></td>" +
+			"<td><select name='soortuur[]'>"+selectSoortUur+"</select></td>" +
+			"<td><input type='number' name='dag1[]' min='0' max='24' step='0.25' size='2'></td>" +
+			"<td><input type='number' name='dag2[]' min='0' max='24' step='0.25' size='2'></td>" +
+			"<td><input type='number' name='dag3[]' min='0' max='24' step='0.25' size='2'></td>" +
+			"<td><input type='number' name='dag4[]' min='0' max='24' step='0.25' size='2'></td>" +
+			"<td><input type='number' name='dag5[]' min='0' max='24' step='0.25' size='2'></td>" +
+			"<td><input type='number' name='dag6[]' min='0' max='24' step='0.25' size='2'></td>" +
+			"<td><input type='number' name='dag7[]' min='0' max='24' step='0.25' size='2'></td>" +
 			"<td><img src='./img/buttons/icons8-plus-48.png' alt='add rij' title='add rij' onclick=add_row();></td>" +
 			"<td><img src='./img/buttons/icons8-trash-can-48.png' alt='verwijder rij' title='verwijder rij' onclick=delete_row('row"+$rowno+"')></td>" +
 		"</tr>");

@@ -85,22 +85,22 @@ function displayUserGegevens() {
 		$tussenvoegsel = $row_user['tussenvoegsel'];
 		$achternaam    = $row_user['achternaam'];
 		$emailadres    = $row_user['emailadres'];
-		echo '<tr><td align="right">Gebruikersnaam: </td><td>'.$username.'</td></tr>
-			<tr><td align="right">Medewerker: </td><td>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</td></tr>' ;
+		echo '<tr><td align="right">Medewerker: </td><td><strong>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</strong></td></tr></table></p>' ;
 	}
-	$sql_laatste = mysqli_query($dbconn, "SELECT * FROM uren WHERE userID = '$user_id' AND terapprovalaangeboden = 1 ORDER BY datum DESC LIMIT 1") or die ("Error in query: $sql_laatste. ".mysql_error());
-	$checknumrows = mysqli_num_rows($sql_laatste);
-	if ($checknumrows <> 0) {
-	    $row_laatste = mysqli_fetch_array($sql_laatste);
-	    $datum_laatste_mutatie = $row_laatste['datum'];
-	    echo '<tr><td align="right">Laatste week voor approval aangeboden: </td><td>week '.cnv_dateToWeek($datum_laatste_mutatie).'</td</tr>';
-	    $weekNumber = date("W");
-	    echo '<tr><td align="right">Huidige weeknummer: </td><td>'.$weekNumber.'</td</tr>';
-	    echo "</table></p>";
-	} else {
-	    echo '<tr><td align="right"><br>Er zijn nog geen weken ter approval aangeboden</td</tr>';
-	    echo "</table></p>";
-	}
+	//$sql_laatste = mysqli_query($dbconn, "SELECT * FROM uren WHERE userID = '$user_id' AND terapprovalaangeboden = 1 ORDER BY datum DESC LIMIT 1") or die ("Error in query: $sql_laatste. ".mysql_error());
+	//$checknumrows = mysqli_num_rows($sql_laatste);
+	//echo "<p><table>";
+	//if ($checknumrows <> 0) {
+	//    $row_laatste = mysqli_fetch_array($sql_laatste);
+	//    $datum_laatste_mutatie = $row_laatste['datum'];
+	//    echo '<tr><td align="right">Laatste week voor approval aangeboden: </td><td>week '.cnv_dateToWeek($datum_laatste_mutatie).'</td</tr>';
+	//    $weekNumber = date("W");
+	//    echo '<tr><td align="right">Huidige weeknummer: </td><td>'.$weekNumber.'</td</tr>';
+	//    // echo "</table></p>";
+	//} else {
+	//    echo '<tr><td align="right">Er zijn nog geen weken ter approval aangeboden</td</tr>';
+	//}
+	echo "</table></p>";
 }
 
 //------------------------------------------------------------------------
@@ -160,6 +160,33 @@ function form_user_fill($btn_aktie) {
         if (isset($_POST['indienst'])) $frm_indienst = $_POST['indienst'];
         else $frm_indienst = "";
     }
+}
+
+//-------------------------------------------------------------------------
+// Geef weeknummer en jaar door aan de functie
+// Deze geeft de dagnaam (mon - sun) en de datum in dd-mm 
+// Dit wordt gebruikt in de headers om de uren in te vullen
+//-------------------------------------------------------------------------
+//function getWeekdays($week, $year){
+//    global $weekDatum, $weekDagNaam;
+function getWeekdays($inputweeknr){
+    global $weekDatum, $weekDagNaam, $week, $year;
+    $week = substr($inputweeknr, 4, 2);
+    $year = substr($inputweeknr, 0, 4);
+    $weekDatum[0] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT)));
+    $weekDagNaam[0] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT)));
+    $weekDatum[1] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +1 days'));
+    $weekDagNaam[1] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +1 days'));
+    $weekDatum[2] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +2 days'));
+    $weekDagNaam[2] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +2 days'));
+    $weekDatum[3] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +3 days'));
+    $weekDagNaam[3] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +3 days'));
+    $weekDatum[4] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +4 days'));
+    $weekDagNaam[4] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +4 days'));
+    $weekDatum[5] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +5 days'));
+    $weekDagNaam[5] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +5 days'));
+    $weekDatum[6] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +6 days'));
+    $weekDagNaam[6] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +6 days'));
 }
 
 ?>

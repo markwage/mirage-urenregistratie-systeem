@@ -152,7 +152,7 @@ if ($aktie == 'edit' || $aktie == 'delete') {
 		<br />
 		<?php if ($aktie == 'edit') echo '<input class="button" type="submit" name="save" value="save">'; ?>
 		<?php if ($aktie == 'delete') echo '<input class="button" type="submit" name="delete" value="delete" onClick="return confirmDelSoortuur()">'; ?>
-		<input class="button" type="submit" name="cancel" value="cancel">
+		<input class="button" type="submit" name="cancel" value="cancel" formnovalidate>
 		</p>
 	</form>
 	<br />		

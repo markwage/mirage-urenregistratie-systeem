@@ -145,6 +145,13 @@ input:-moz-read-only {
 input:read-only {
   background-color: #e4e4e4;
 }
+select {
+	padding: 5px 5px 5px 5px;
+	border: 1px solid #333;
+	font: normal 13px verdana, arial, sans-serif;
+	/* color:#777; */
+	margin-bottom: 4px;
+}
 textarea {
 	width: 100%;
 	padding: 5px;
