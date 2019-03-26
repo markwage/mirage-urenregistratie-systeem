@@ -60,23 +60,23 @@ if (isset($_POST['cancel'])) {
 if (isset($_POST['save'])) {
     // Hoeveel invoerrijen op het scherm
     $aantalRijen = count($_POST["dag1"]);
-    if($aantalRijen > 0) {
-        for($ix1=0; $ix1<$aantalRijen; $ix1++) {
+    //if($aantalRijen > 0) {
+        //for($ix1=0; $ix1<$aantalRijen; $ix1++) {
             if(trim($_POST["soortuur"][$ix1] != '')) {
-                //$sql = "INSERT INTO tbl_name(name) VALUES('".mysqli_real_escape_string($dbconn, $_POST["name"][$i])."') or die(mysqli_error($db))";
-                //mysqli_query($connect, $sql);
-                
                 //001 Check de ingevulde velden op correctheid
+                $totaalUrenPerSoortuur = 0;
+                checkIngevuldeUrenPerSoort($ix1);
+                $totaalUrenPerSoortuur=$frm_dag1 + $frm_dag2 + $frm_dag3 + $frm_dag4 + $frm_dag5 + $frm_dag6 + $frm_dag7;
                 //002 Check of de week al voorkomt in de database
                 //002A Zo ja dan eerst die week uit de database verwijderen
                 //003 Insert de waarden in de database
                 
-                echo "Urensoort: ".$_POST["soortuur"][$ix1]."<br />";
+                echo "Urensoort: ".$_POST["soortuur"][$ix1]." - ".$totaalUrenPerSoortuur."<br />";
             }
-        }
-    } else {
+        //}
+    //} else {
         echo "Please Enter Name";
-    }  
+    //}  
 }
 ?>
 

@@ -162,6 +162,27 @@ function form_user_fill($btn_aktie) {
     }
 }
 
+//------------------------------------------------------------------------
+// Controleer de ingevulde uren per Soortuur
+//------------------------------------------------------------------------
+function checkIngevuldeUrenPerSoort($ix1) {
+    global $frm_dag1, $frm_dag2, $frm_dag3, $frm_dag4, $frm_dag5, $frm_dag6, $frm_dag7;
+    if(!isset($_POST["dag1"][$ix1]) || $_POST["dag1"][$ix1] == '') $frm_dag1=0;
+    else $frm_dag1 = $_POST["dag1"][$ix1];
+    if(!isset($_POST["dag2"][$ix1]) || $_POST["dag2"][$ix1] == '') $frm_dag2=0;
+    else $frm_dag2 = $_POST["dag2"][$ix1];
+    if(!isset($_POST["dag3"][$ix1]) || $_POST["dag3"][$ix1] == '') $frm_dag3=0;
+    else $frm_dag3 = $_POST["dag3"][$ix1];
+    if(!isset($_POST["dag4"][$ix1]) || $_POST["dag4"][$ix1] == '') $frm_dag4=0;
+    else $frm_dag4 = $_POST["dag4"][$ix1];
+    if(!isset($_POST["dag5"][$ix1]) || $_POST["dag5"][$ix1] == '') $frm_dag5=0;
+    else $frm_dag5 = $_POST["dag5"][$ix1];
+    if(!isset($_POST["dag6"][$ix1]) || $_POST["dag6"][$ix1] == '') $frm_dag6=0;
+    else $frm_dag6 = $_POST["dag6"][$ix1];
+    if(!isset($_POST["dag7"][$ix1]) || $_POST["dag7"][$ix1] == '') $frm_dag7=0;
+    else $frm_dag7 = $_POST["dag7"][$ix1];
+}
+
 //-------------------------------------------------------------------------
 // Geef weeknummer en jaar door aan de functie
 // Deze geeft de dagnaam (mon - sun) en de datum in dd-mm 
