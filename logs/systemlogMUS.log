@@ -884,3 +884,840 @@ Deze regel is twee regels naar beneden
 20190325 19:11:10;login;mwage;User mwage is succesvol ingelogd.
 20190325 20:17:47;login;mwage;User mwage is succesvol ingelogd.
 20190326 05:55:38;login;mwage;User mwage is succesvol ingelogd.
+20190326 08:11:23;login;mwage;User mwage is succesvol ingelogd.
+20190326 14:18:08;login;mwage;User mwage is succesvol ingelogd.
+20190326 15:24:15;login;mwage;User mwage is succesvol ingelogd.
+20190326 18:59:13;login;mwage;User mwage is succesvol ingelogd.
+20190327 12:26:54;login;mwage;User mwage is succesvol ingelogd.
+20190327 15:36:07;login;mwage;User mwage is succesvol ingelogd.
+20190327 16:37:05;login;mwage;User mwage is succesvol ingelogd.
+20190327 19:22:40;login;mwage;User mwage is succesvol ingelogd.
+20190327 20:28:00;login;mwage;User mwage is succesvol ingelogd.
+20190328 06:28:36;login;mwage;User mwage is succesvol ingelogd.
+20190328 07:39:34;login;mwage;User mwage is succesvol ingelogd.
+20190328 09:20:33;login;mwage;User mwage is succesvol ingelogd.
+20190328 12:15:21;login;mwage;User mwage is succesvol ingelogd.
+20190328 12:15:36;function;mwage;getWeekdays 001 inputweeknr: 201913
+20190328 12:15:36;function;mwage;getWeekdays 002 week: 13 - year: 2019
+20190328 12:15:42;function;mwage;getWeekdays 001 inputweeknr: 201913
+20190328 12:15:42;function;mwage;getWeekdays 002 week: 13 - year: 2019
+20190328 12:15:42;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201912
+20190328 12:15:42;function;mwage;getWeekdays 001 inputweeknr: 201912
+20190328 12:15:42;function;mwage;getWeekdays 002 week: 12 - year: 2019
+20190328 12:16:28;function;mwage;getWeekdays 001 inputweeknr: 201913
+20190328 12:16:28;function;mwage;getWeekdays 002 week: 13 - year: 2019
+20190328 12:16:28;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201912
+20190328 12:16:28;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 12:16:28;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201912
+20190328 12:16:28;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201912
+20190328 12:18:11;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 12:18:11;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 12:18:11;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 12:18:33;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 12:18:33;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 12:18:33;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 12:18:33;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201912
+20190328 12:18:33;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 12:18:33;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 12:18:33;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 12:19:33;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 12:19:33;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 12:19:33;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 12:19:33;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201912
+20190328 12:19:33;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 12:19:33;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201912
+20190328 12:19:33;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201912
+20190328 12:21:42;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 12:21:42;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 12:21:42;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 12:21:59;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 12:21:59;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 12:21:59;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 12:21:59;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201911
+20190328 12:21:59;function;mwage;getWeekdays 001 weeknr: 201911
+20190328 12:21:59;function;mwage;getWeekdays 002 inputweeknr: 201911
+20190328 12:21:59;function;mwage;getWeekdays 003 week: 11 - year: 2019
+20190328 12:22:28;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 12:22:28;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 12:22:28;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 12:22:28;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201911
+20190328 12:22:28;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201911
+20190328 12:22:28;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201911
+20190328 12:22:28;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201911
+20190328 12:25:57;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 12:25:57;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 12:25:57;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 12:26:14;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 12:26:14;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 12:26:14;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 12:26:14;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201911
+20190328 12:26:14;function;mwage;getWeekdays 001 weeknr: 201911
+20190328 12:26:14;function;mwage;getWeekdays 002 inputweeknr: 201911
+20190328 12:26:14;function;mwage;getWeekdays 003 week: 11 - year: 2019
+20190328 12:26:51;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 12:26:51;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 12:26:51;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 12:26:51;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201911
+20190328 12:26:51;function;mwage;getWeekdays 001 weeknr: 201911
+20190328 12:26:51;function;mwage;getWeekdays 002 inputweeknr: 201911
+20190328 12:26:51;function;mwage;getWeekdays 003 week: 11 - year: 2019
+20190328 12:26:51;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201911
+20190328 12:26:51;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201911
+20190328 12:26:51;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201911
+20190328 15:33:16;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 15:33:16;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 15:33:16;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 15:33:22;login;mwage;User mwage is succesvol ingelogd.
+20190328 15:33:24;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 15:33:24;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 15:33:24;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 15:33:35;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 15:33:35;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 15:33:35;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 15:33:35;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201910
+20190328 15:33:35;function;mwage;getWeekdays 001 weeknr: 201910
+20190328 15:33:35;function;mwage;getWeekdays 002 inputweeknr: 201910
+20190328 15:33:35;function;mwage;getWeekdays 003 week: 10 - year: 2019
+20190328 15:33:45;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 15:33:45;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 15:33:45;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 15:33:45;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201910
+20190328 15:33:45;function;mwage;getWeekdays 001 weeknr: 201910
+20190328 15:33:45;function;mwage;getWeekdays 002 inputweeknr: 201910
+20190328 15:33:45;function;mwage;getWeekdays 003 week: 10 - year: 2019
+20190328 15:33:45;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201910
+20190328 15:33:45;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201910
+20190328 15:33:45;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201910
+20190328 15:34:11;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 15:34:11;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 15:34:11;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:25:02;login;mwage;User mwage is succesvol ingelogd.
+20190328 20:25:05;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:25:05;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:25:05;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:25:14;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:25:14;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:25:14;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:25:14;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190328 20:25:14;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:25:14;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:25:14;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:25:14;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 20:25:14;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190328 20:25:14;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190328 20:25:14;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 20:25:14;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 20:33:13;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:33:13;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:33:13;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:33:24;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:33:24;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:33:24;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:33:24;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190328 20:33:24;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:33:24;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:33:24;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:33:24;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 20:33:24;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190328 20:33:24;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190328 20:33:24;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 20:33:24;uren;mwage;BTNSAVE 007 
+20190328 20:33:24;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 20:33:24;uren;mwage;BTNSAVE 007 
+20190328 20:34:37;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:34:37;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:34:37;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:34:47;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:34:47;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:34:47;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:34:47;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190328 20:34:47;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:34:47;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:34:47;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:34:47;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 20:34:47;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190328 20:34:47;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190328 20:34:47;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 20:34:47;uren;mwage;BTNSAVE 007 
+20190328 20:37:09;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:37:09;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:37:09;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:37:17;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:37:17;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:37:17;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:37:17;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190328 20:37:17;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:37:17;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:37:17;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:37:17;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 20:37:17;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190328 20:37:17;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190328 20:37:17;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 20:37:17;uren;mwage;BTNSAVE 007 1
+20190328 20:40:45;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:40:45;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:40:45;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:40:51;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:40:51;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:40:51;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:40:51;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190328 20:40:51;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:40:51;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:40:51;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:40:51;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 20:40:51;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190328 20:40:51;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190328 20:40:51;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 20:40:51;uren;mwage;BTNSAVE 007 1
+20190328 20:43:50;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:43:50;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:43:50;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:43:55;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:43:55;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:43:55;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:43:55;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190328 20:43:55;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:43:55;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:43:55;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:43:55;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 20:43:55;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190328 20:43:55;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190328 20:43:55;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 20:43:55;uren;mwage;BTNSAVE 007 1
+20190328 20:44:46;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:44:46;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:44:46;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:44:51;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:44:51;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:44:51;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:44:51;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190328 20:44:51;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:44:51;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:44:51;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:44:51;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 20:44:51;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190328 20:44:51;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190328 20:44:51;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 20:44:51;uren;mwage;BTNSAVE 007 1
+20190328 20:51:13;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:51:13;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:51:13;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:51:19;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:51:19;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:51:19;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:51:19;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190328 20:51:19;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:51:19;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:51:19;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:51:19;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 20:51:19;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190328 20:51:19;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190328 20:51:19;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 20:51:19;uren;mwage;BTNSAVE 007 1
+20190328 20:55:20;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:55:20;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:55:20;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:55:46;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:55:46;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:55:46;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:55:46;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190328 20:55:46;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:55:46;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:55:46;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:55:46;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 20:55:46;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190328 20:55:46;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190328 20:55:46;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 20:55:46;uren;mwage;BTNSAVE 007 1
+20190328 20:57:49;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:57:49;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:57:49;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:57:58;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:57:58;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:57:58;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:57:58;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190328 20:57:58;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 20:57:58;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 20:57:58;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 20:57:58;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 20:57:58;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190328 20:57:58;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190328 20:57:58;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 20:57:58;uren;mwage;BTNSAVE 007 1
+20190328 21:04:49;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:04:49;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:04:49;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:04:55;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:04:55;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:04:55;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:04:55;uren;mwage;BTNSAVE 005 Records verwijderd voor inputweeknr: 201913
+20190328 21:04:55;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190328 21:04:55;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:04:55;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:04:55;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:04:55;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 21:04:55;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190328 21:04:55;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190328 21:04:55;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 21:04:55;uren;mwage;BTNSAVE 007 1
+20190328 21:08:33;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:08:33;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:08:33;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:08:33;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201912
+20190328 21:08:33;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:08:33;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:08:33;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:08:46;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:08:46;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:08:46;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:08:46;uren;mwage;BTNSAVE 005 Records verwijderd voor inputweeknr: 201913
+20190328 21:08:46;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201912
+20190328 21:08:46;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:08:46;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:08:46;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:08:46;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201912
+20190328 21:08:46;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201912
+20190328 21:08:46;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201912
+20190328 21:08:46;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:08:46;uren;mwage;BTNSAVE 007 1
+20190328 21:08:46;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:08:46;uren;mwage;BTNSAVE 007 1
+20190328 21:10:16;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:10:16;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:10:16;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:10:20;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:10:20;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:10:20;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:10:20;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201911
+20190328 21:10:20;function;mwage;getWeekdays 001 weeknr: 201911
+20190328 21:10:20;function;mwage;getWeekdays 002 inputweeknr: 201911
+20190328 21:10:20;function;mwage;getWeekdays 003 week: 11 - year: 2019
+20190328 21:10:28;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:10:28;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:10:28;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:10:28;uren;mwage;BTNSAVE 005 Records verwijderd voor inputweeknr: 201913
+20190328 21:10:28;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201911
+20190328 21:10:28;function;mwage;getWeekdays 001 weeknr: 201911
+20190328 21:10:28;function;mwage;getWeekdays 002 inputweeknr: 201911
+20190328 21:10:28;function;mwage;getWeekdays 003 week: 11 - year: 2019
+20190328 21:10:28;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201911
+20190328 21:10:28;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201911
+20190328 21:10:28;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201911
+20190328 21:10:28;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201911
+20190328 21:10:28;uren;mwage;BTNSAVE 007 1
+20190328 21:11:55;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:11:55;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:11:55;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:12:04;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:12:04;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:12:04;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:12:04;function;mwage;getWeekdays 001 weeknr: 201911
+20190328 21:12:04;function;mwage;getWeekdays 002 inputweeknr: 201911
+20190328 21:12:04;function;mwage;getWeekdays 003 week: 11 - year: 2019
+20190328 21:12:04;uren;mwage;BTNSAVE 005 Records verwijderd voor inputweeknr: 201911
+20190328 21:12:04;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201911
+20190328 21:12:04;function;mwage;getWeekdays 001 weeknr: 201911
+20190328 21:12:04;function;mwage;getWeekdays 002 inputweeknr: 201911
+20190328 21:12:04;function;mwage;getWeekdays 003 week: 11 - year: 2019
+20190328 21:12:04;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201911
+20190328 21:12:04;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201911
+20190328 21:12:04;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201911
+20190328 21:12:04;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201911
+20190328 21:12:04;uren;mwage;BTNSAVE 007 1
+20190328 21:12:24;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:12:24;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:12:24;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:12:24;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201909
+20190328 21:12:24;function;mwage;getWeekdays 001 weeknr: 201909
+20190328 21:12:24;function;mwage;getWeekdays 002 inputweeknr: 201909
+20190328 21:12:24;function;mwage;getWeekdays 003 week: 09 - year: 2019
+20190328 21:12:46;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:12:46;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:12:46;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:12:46;function;mwage;getWeekdays 001 weeknr: 201909
+20190328 21:12:46;function;mwage;getWeekdays 002 inputweeknr: 201909
+20190328 21:12:46;function;mwage;getWeekdays 003 week: 09 - year: 2019
+20190328 21:12:46;uren;mwage;BTNSAVE 005 Records verwijderd voor inputweeknr: 201909
+20190328 21:12:46;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201909
+20190328 21:12:46;function;mwage;getWeekdays 001 weeknr: 201909
+20190328 21:12:46;function;mwage;getWeekdays 002 inputweeknr: 201909
+20190328 21:12:46;function;mwage;getWeekdays 003 week: 09 - year: 2019
+20190328 21:12:46;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201909
+20190328 21:12:46;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201909
+20190328 21:12:46;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201909
+20190328 21:12:46;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201909
+20190328 21:12:46;uren;mwage;BTNSAVE 007 1
+20190328 21:12:46;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201909
+20190328 21:12:46;uren;mwage;BTNSAVE 007 1
+20190328 21:12:46;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201909
+20190328 21:12:46;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201909
+20190328 21:12:46;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201909
+20190328 21:12:46;uren;mwage;BTNSAVE 007 1
+20190328 21:12:46;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201909
+20190328 21:12:46;uren;mwage;BTNSAVE 007 1
+20190328 21:14:14;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:14:14;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:14:14;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:14:14;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201910
+20190328 21:14:14;function;mwage;getWeekdays 001 weeknr: 201910
+20190328 21:14:14;function;mwage;getWeekdays 002 inputweeknr: 201910
+20190328 21:14:14;function;mwage;getWeekdays 003 week: 10 - year: 2019
+20190328 21:14:21;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:14:21;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:14:21;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:14:21;function;mwage;getWeekdays 001 weeknr: 201910
+20190328 21:14:21;function;mwage;getWeekdays 002 inputweeknr: 201910
+20190328 21:14:21;function;mwage;getWeekdays 003 week: 10 - year: 2019
+20190328 21:14:21;uren;mwage;BTNSAVE 005 Records verwijderd voor inputweeknr: 201910
+20190328 21:14:21;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201910
+20190328 21:14:21;function;mwage;getWeekdays 001 weeknr: 201910
+20190328 21:14:21;function;mwage;getWeekdays 002 inputweeknr: 201910
+20190328 21:14:21;function;mwage;getWeekdays 003 week: 10 - year: 2019
+20190328 21:14:21;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201910
+20190328 21:14:21;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201910
+20190328 21:14:21;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201910
+20190328 21:14:21;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201910
+20190328 21:14:21;uren;mwage;BTNSAVE 007 1
+20190328 21:16:09;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:16:09;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:16:09;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:16:15;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:16:15;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:16:15;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:16:15;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201908
+20190328 21:16:15;function;mwage;getWeekdays 001 weeknr: 201908
+20190328 21:16:15;function;mwage;getWeekdays 002 inputweeknr: 201908
+20190328 21:16:15;function;mwage;getWeekdays 003 week: 08 - year: 2019
+20190328 21:16:20;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:16:20;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:16:20;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:16:20;function;mwage;getWeekdays 001 weeknr: 201908
+20190328 21:16:20;function;mwage;getWeekdays 002 inputweeknr: 201908
+20190328 21:16:20;function;mwage;getWeekdays 003 week: 08 - year: 2019
+20190328 21:17:35;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:17:35;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:17:35;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:17:41;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:17:41;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:17:41;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:17:41;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:17:41;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:17:41;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:17:41;uren;mwage;BTNSAVE 005 Records verwijderd voor inputweeknr: 201913
+20190328 21:17:41;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190328 21:17:41;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:17:41;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:17:41;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:17:41;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190328 21:17:41;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190328 21:17:41;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190328 21:17:41;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190328 21:17:41;uren;mwage;BTNSAVE 007 1
+20190328 21:17:52;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:17:52;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:17:52;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:17:52;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201905
+20190328 21:17:52;function;mwage;getWeekdays 001 weeknr: 201905
+20190328 21:17:52;function;mwage;getWeekdays 002 inputweeknr: 201905
+20190328 21:17:52;function;mwage;getWeekdays 003 week: 05 - year: 2019
+20190328 21:17:57;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:17:57;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:17:57;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:17:57;function;mwage;getWeekdays 001 weeknr: 201905
+20190328 21:17:57;function;mwage;getWeekdays 002 inputweeknr: 201905
+20190328 21:17:57;function;mwage;getWeekdays 003 week: 05 - year: 2019
+20190328 21:17:57;uren;mwage;BTNSAVE 005 Records verwijderd voor inputweeknr: 201905
+20190328 21:17:57;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201905
+20190328 21:17:57;function;mwage;getWeekdays 001 weeknr: 201905
+20190328 21:17:57;function;mwage;getWeekdays 002 inputweeknr: 201905
+20190328 21:17:57;function;mwage;getWeekdays 003 week: 05 - year: 2019
+20190328 21:17:57;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201905
+20190328 21:17:57;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201905
+20190328 21:17:57;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201905
+20190328 21:17:57;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201905
+20190328 21:17:57;uren;mwage;BTNSAVE 007 1
+20190328 21:21:15;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:21:15;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:21:15;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:21:25;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:21:25;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:21:25;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:21:25;function;mwage;getWeekdays 001 weeknr: 201906
+20190328 21:21:25;function;mwage;getWeekdays 002 inputweeknr: 201906
+20190328 21:21:25;function;mwage;getWeekdays 003 week: 06 - year: 2019
+20190328 21:22:08;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:22:08;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:22:08;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:22:13;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:22:13;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:22:13;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:22:13;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201909
+20190328 21:22:13;function;mwage;getWeekdays 001 weeknr: 201909
+20190328 21:22:13;function;mwage;getWeekdays 002 inputweeknr: 201909
+20190328 21:22:13;function;mwage;getWeekdays 003 week: 09 - year: 2019
+20190328 21:22:19;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:22:19;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:22:19;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:22:19;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201904
+20190328 21:22:19;function;mwage;getWeekdays 001 weeknr: 201904
+20190328 21:22:19;function;mwage;getWeekdays 002 inputweeknr: 201904
+20190328 21:22:19;function;mwage;getWeekdays 003 week: 04 - year: 2019
+20190328 21:22:24;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:22:24;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:22:24;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:22:24;function;mwage;getWeekdays 001 weeknr: 201904
+20190328 21:22:24;function;mwage;getWeekdays 002 inputweeknr: 201904
+20190328 21:22:24;function;mwage;getWeekdays 003 week: 04 - year: 2019
+20190328 21:23:28;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:23:28;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:23:28;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:23:34;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:23:34;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:23:34;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:23:34;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201903
+20190328 21:23:34;function;mwage;getWeekdays 001 weeknr: 201903
+20190328 21:23:34;function;mwage;getWeekdays 002 inputweeknr: 201903
+20190328 21:23:34;function;mwage;getWeekdays 003 week: 03 - year: 2019
+20190328 21:23:40;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:23:40;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:23:40;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:23:40;function;mwage;getWeekdays 001 weeknr: 201903
+20190328 21:23:40;function;mwage;getWeekdays 002 inputweeknr: 201903
+20190328 21:23:40;function;mwage;getWeekdays 003 week: 03 - year: 2019
+20190328 21:23:40;uren;mwage;BTNSAVE 005 Records verwijderd voor inputweeknr: 201903
+20190328 21:23:40;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201903
+20190328 21:23:40;function;mwage;getWeekdays 001 weeknr: 201903
+20190328 21:23:40;function;mwage;getWeekdays 002 inputweeknr: 201903
+20190328 21:23:40;function;mwage;getWeekdays 003 week: 03 - year: 2019
+20190328 21:23:40;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201903
+20190328 21:23:40;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201903
+20190328 21:23:40;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201903
+20190328 21:23:40;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201903
+20190328 21:23:40;uren;mwage;BTNSAVE 007 1
+20190328 21:27:24;login;mwage;User mwage is succesvol ingelogd.
+20190328 21:27:29;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:27:29;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:27:29;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:27:38;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:27:38;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:27:38;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:27:38;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201901
+20190328 21:27:38;function;mwage;getWeekdays 001 weeknr: 201901
+20190328 21:27:38;function;mwage;getWeekdays 002 inputweeknr: 201901
+20190328 21:27:38;function;mwage;getWeekdays 003 week: 01 - year: 2019
+20190328 21:27:44;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:27:44;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:27:44;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:27:44;function;mwage;getWeekdays 001 weeknr: 201901
+20190328 21:27:44;function;mwage;getWeekdays 002 inputweeknr: 201901
+20190328 21:27:44;function;mwage;getWeekdays 003 week: 01 - year: 2019
+20190328 21:29:48;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:29:48;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:29:48;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:29:55;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:29:55;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:29:55;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:29:55;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:29:55;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:29:55;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:36:18;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:36:18;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:36:18;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:36:24;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:36:24;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:36:24;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:36:24;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201912
+20190328 21:36:24;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:36:24;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:36:24;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:36:29;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:36:29;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:36:29;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:36:29;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:36:29;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:36:29;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:36:29;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201912
+20190328 21:36:29;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:36:29;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:36:29;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:36:29;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201912
+20190328 21:36:29;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201912
+20190328 21:36:29;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201912
+20190328 21:36:29;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:36:29;uren;mwage;BTNSAVE 007 1
+20190328 21:36:38;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:36:38;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:36:38;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:36:38;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:36:38;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:36:38;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:36:38;uren;mwage;BTNSAVE 005 Records verwijderd voor inputweeknr: 201912
+20190328 21:36:38;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201912
+20190328 21:36:38;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:36:38;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:36:38;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:36:38;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201912
+20190328 21:36:38;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201912
+20190328 21:36:38;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201912
+20190328 21:36:38;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:36:38;uren;mwage;BTNSAVE 007 1
+20190328 21:41:18;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:41:18;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:41:18;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:41:18;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:41:18;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:41:18;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:41:18;uren;mwage;BTNSAVE 005 Records verwijderd voor inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201912
+20190328 21:41:18;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:41:18;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:41:18;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:41:18;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 007 1
+20190328 21:41:18;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 007 1
+20190328 21:41:18;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 007 1
+20190328 21:41:18;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 007 1
+20190328 21:41:18;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 007 1
+20190328 21:41:18;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 007 1
+20190328 21:41:18;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 007 1
+20190328 21:41:18;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 007 1
+20190328 21:41:18;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201912
+20190328 21:41:18;uren;mwage;BTNSAVE 007 1
+20190328 21:41:51;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:41:51;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:41:51;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:41:51;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:41:51;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:41:51;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:41:51;uren;mwage;BTNSAVE 005 Records verwijderd voor inputweeknr: 201912
+20190328 21:41:51;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201912
+20190328 21:41:51;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:41:51;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:41:51;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:41:51;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201912
+20190328 21:41:51;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201912
+20190328 21:41:51;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201912
+20190328 21:41:57;function;mwage;getWeekdays 001 weeknr: 201913
+20190328 21:41:57;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190328 21:41:57;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190328 21:41:57;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:41:57;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:41:57;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:41:57;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201912
+20190328 21:41:57;function;mwage;getWeekdays 001 weeknr: 201912
+20190328 21:41:57;function;mwage;getWeekdays 002 inputweeknr: 201912
+20190328 21:41:57;function;mwage;getWeekdays 003 week: 12 - year: 2019
+20190328 21:41:57;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201912
+20190328 21:41:57;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201912
+20190328 21:41:57;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201912
+20190329 06:58:36;login;mwage;User mwage is succesvol ingelogd.
+20190329 06:58:43;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 06:58:43;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 06:58:43;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 06:58:49;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 06:58:49;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 06:58:49;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 06:58:49;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 06:58:49;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 06:58:49;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 06:58:49;uren;mwage;BTNSAVE 001 Op save gedrukt POST(week): 201913
+20190329 06:58:49;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 06:58:49;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 06:58:49;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 06:58:49;uren;mwage;BTNSAVE 002 Op save gedrukt inputweeknr: 201913
+20190329 06:58:49;uren;mwage;BTNSAVE 003 Op save gedrukt inputweeknr: 201913
+20190329 06:58:49;uren;mwage;BTNSAVE 004 Op save gedrukt inputweeknr: 201913
+20190329 06:58:49;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190329 06:58:49;uren;mwage;BTNSAVE 007 1
+20190329 06:58:49;uren;mwage;BTNSAVE 006 Records toegevoegd voor inputweeknr: 201913
+20190329 06:58:49;uren;mwage;BTNSAVE 007 1
+20190329 07:32:56;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:32:56;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:32:56;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:33:13;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:33:13;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:33:13;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:33:27;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:33:27;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:33:27;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:33:27;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:33:27;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:33:27;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:33:27;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 13 zijn
+20190329 07:33:27;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='13' AND jaar='2019'
+20190329 07:33:27;uren;mwage;BTNSAVE Records worden verwijder van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:33:27;uren;mwage;BTNSAVE Query: DELETE FROM uren where user='mwage' AND week='13' AND jaar='2019'
+20190329 07:33:27;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:33:27;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:33:27;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:33:27;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:33:27;uren;mwage;BTNSAVE Query: 
+20190329 07:33:27;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:33:27;uren;mwage;BTNSAVE Query: 
+20190329 07:33:27;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:33:27;uren;mwage;BTNSAVE Query: 
+20190329 07:34:13;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:34:13;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:34:13;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:34:21;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:34:21;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:34:21;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:34:21;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:34:21;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:34:21;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:34:21;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 13 zijn
+20190329 07:34:21;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='13' AND jaar='2019'
+20190329 07:34:21;uren;mwage;BTNSAVE Records worden verwijder van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:34:21;uren;mwage;BTNSAVE Query: DELETE FROM uren where user='mwage' AND week='13' AND jaar='2019'
+20190329 07:34:21;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:34:21;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:34:21;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:34:21;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:34:21;uren;mwage;BTNSAVE Query: 
+20190329 07:34:21;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:34:21;uren;mwage;BTNSAVE Query: 
+20190329 07:34:21;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:34:21;uren;mwage;BTNSAVE Query: 
+20190329 07:34:46;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:34:46;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:34:46;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:34:50;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:34:50;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:34:50;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:34:50;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:34:50;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:34:50;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:34:50;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 13 zijn
+20190329 07:34:50;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='13' AND jaar='2019'
+20190329 07:34:50;uren;mwage;BTNSAVE Records worden verwijder van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:34:50;uren;mwage;BTNSAVE Query: DELETE FROM uren where user='mwage' AND week='13' AND jaar='2019'
+20190329 07:34:50;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:34:50;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:34:50;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:34:50;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:34:50;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019',
+                            '13',
+                            'MIR000UU',
+                            '2019-03-25',
+                            '3',
+                            'mwage'
+                        )
+20190329 07:34:50;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:34:50;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019',
+                            '13',
+                            'MIR000UU',
+                            '2019-03-26',
+                            '1',
+                            'mwage'
+                        )
+20190329 07:34:50;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:34:50;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019',
+                            '13',
+                            'MIR000UU',
+                            '2019-03-27',
+                            '2',
+                            'mwage'
+                        )
+20190329 07:35:15;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:35:15;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:35:15;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:35:21;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:35:21;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:35:21;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:35:21;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:35:21;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:35:21;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:35:21;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 13 zijn
+20190329 07:35:21;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='13' AND jaar='2019'
+20190329 07:35:21;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:35:21;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:35:21;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:35:21;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:35:21;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019',
+                            '13',
+                            'MIR000UU',
+                            '2019-03-25',
+                            '3',
+                            'mwage'
+                        )
+20190329 07:35:21;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:35:21;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019',
+                            '13',
+                            'MIR000UU',
+                            '2019-03-26',
+                            '2',
+                            'mwage'
+                        )
+20190329 07:35:21;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:35:21;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019',
+                            '13',
+                            'MIR000UU',
+                            '2019-03-27',
+                            '4',
+                            'mwage'
+                        )
+20190329 07:35:21;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:35:21;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019',
+                            '13',
+                            'MIR000UU',
+                            '2019-03-28',
+                            '3',
+                            'mwage'
+                        )
+20190329 07:37:04;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:37:04;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:37:04;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:37:10;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:37:10;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:37:10;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:37:10;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:37:10;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:37:10;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:37:10;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 13 zijn
+20190329 07:37:10;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='13' AND jaar='2019'
+20190329 07:37:10;uren;mwage;BTNSAVE Records worden verwijder van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:37:10;uren;mwage;BTNSAVE Query: DELETE FROM uren where user='mwage' AND week='13' AND jaar='2019'
+20190329 07:37:10;function;mwage;getWeekdays 001 weeknr: 201913
+20190329 07:37:10;function;mwage;getWeekdays 002 inputweeknr: 201913
+20190329 07:37:10;function;mwage;getWeekdays 003 week: 13 - year: 2019
+20190329 07:37:10;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:37:10;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019, 13, MIR000UU, 2019-03-25, 4, mwage')
+20190329 07:37:10;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:37:10;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019, 13, MIR000UU, 2019-03-27, 3, mwage')
+20190329 07:40:53;function;mwage;getWeekdays weeknr: 201913
+20190329 07:40:56;function;mwage;getWeekdays weeknr: 201913
+20190329 07:40:56;function;mwage;getWeekdays weeknr: 201913
+20190329 07:40:56;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 13 zijn
+20190329 07:40:56;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='13' AND jaar='2019'
+20190329 07:40:56;function;mwage;getWeekdays weeknr: 201913
+20190329 07:40:56;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:40:56;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '13', 'MIR000UU', '2019-03-25', '2', 'mwage')
+20190329 07:40:56;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 13 voor het updaten van de betreffende week
+20190329 07:40:56;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '13', 'MIR000UU', '2019-03-26', '1', 'mwage')
+20190329 11:57:24;function;mwage;getWeekdays weeknr: 201913
+20190329 11:57:29;login;mwage;User mwage is succesvol ingelogd.

@@ -166,21 +166,29 @@ function form_user_fill($btn_aktie) {
 // Controleer de ingevulde uren per Soortuur
 //------------------------------------------------------------------------
 function checkIngevuldeUrenPerSoort($ix1) {
-    global $frm_dag1, $frm_dag2, $frm_dag3, $frm_dag4, $frm_dag5, $frm_dag6, $frm_dag7;
-    if(!isset($_POST["dag1"][$ix1]) || $_POST["dag1"][$ix1] == '') $frm_dag1=0;
-    else $frm_dag1 = $_POST["dag1"][$ix1];
-    if(!isset($_POST["dag2"][$ix1]) || $_POST["dag2"][$ix1] == '') $frm_dag2=0;
-    else $frm_dag2 = $_POST["dag2"][$ix1];
-    if(!isset($_POST["dag3"][$ix1]) || $_POST["dag3"][$ix1] == '') $frm_dag3=0;
-    else $frm_dag3 = $_POST["dag3"][$ix1];
-    if(!isset($_POST["dag4"][$ix1]) || $_POST["dag4"][$ix1] == '') $frm_dag4=0;
-    else $frm_dag4 = $_POST["dag4"][$ix1];
-    if(!isset($_POST["dag5"][$ix1]) || $_POST["dag5"][$ix1] == '') $frm_dag5=0;
-    else $frm_dag5 = $_POST["dag5"][$ix1];
-    if(!isset($_POST["dag6"][$ix1]) || $_POST["dag6"][$ix1] == '') $frm_dag6=0;
-    else $frm_dag6 = $_POST["dag6"][$ix1];
-    if(!isset($_POST["dag7"][$ix1]) || $_POST["dag7"][$ix1] == '') $frm_dag7=0;
-    else $frm_dag7 = $_POST["dag7"][$ix1];
+    global $urenarray, $frm_soortuur, $frm_urendag1, $frm_urendag2, $frm_urendag3, $frm_urendag4, $frm_urendag5, $frm_urendag6, $frm_urendag7;
+    $frm_soortuur = $_POST["soortuur"][$ix1];
+    if(!isset($_POST["dag1"][$ix1]) || $_POST["dag1"][$ix1] == '') $frm_urendag1=0;
+    else $frm_urendag1 = $_POST["dag1"][$ix1];
+    if(!isset($_POST["dag2"][$ix1]) || $_POST["dag2"][$ix1] == '') $frm_urendag2=0;
+    else $frm_urendag2 = $_POST["dag2"][$ix1];
+    if(!isset($_POST["dag3"][$ix1]) || $_POST["dag3"][$ix1] == '') $frm_urendag3=0;
+    else $frm_urendag3 = $_POST["dag3"][$ix1];
+    if(!isset($_POST["dag4"][$ix1]) || $_POST["dag4"][$ix1] == '') $frm_urendag4=0;
+    else $frm_urendag4 = $_POST["dag4"][$ix1];
+    if(!isset($_POST["dag5"][$ix1]) || $_POST["dag5"][$ix1] == '') $frm_urendag5=0;
+    else $frm_urendag5 = $_POST["dag5"][$ix1];
+    if(!isset($_POST["dag6"][$ix1]) || $_POST["dag6"][$ix1] == '') $frm_urendag6=0;
+    else $frm_urendag6 = $_POST["dag6"][$ix1];
+    if(!isset($_POST["dag7"][$ix1]) || $_POST["dag7"][$ix1] == '') $frm_urendag7=0;
+    else $frm_urendag7 = $_POST["dag7"][$ix1];
+    $urenarray[0] = $frm_urendag1;
+    $urenarray[1] = $frm_urendag2;
+    $urenarray[2] = $frm_urendag3;
+    $urenarray[3] = $frm_urendag4;
+    $urenarray[4] = $frm_urendag5;
+    $urenarray[5] = $frm_urendag6;
+    $urenarray[6] = $frm_urendag7;
 }
 
 //-------------------------------------------------------------------------
@@ -188,25 +196,25 @@ function checkIngevuldeUrenPerSoort($ix1) {
 // Deze geeft de dagnaam (mon - sun) en de datum in dd-mm 
 // Dit wordt gebruikt in de headers om de uren in te vullen
 //-------------------------------------------------------------------------
-//function getWeekdays($week, $year){
-//    global $weekDatum, $weekDagNaam;
-function getWeekdays($inputweeknr){
-    global $weekDatum, $weekDagNaam, $week, $year;
+function getWeekdays($weeknr){
+    global $weekDatum, $weekDagNaam, $week, $year, $inputweeknr;
+    writelogrecord("function","getWeekdays weeknr: ".$weeknr);
+    $inputweeknr = $weeknr;
     $week = substr($inputweeknr, 4, 2);
     $year = substr($inputweeknr, 0, 4);
-    $weekDatum[0] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT)));
+    $weekDatum[0] = date("m-d", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT)));
     $weekDagNaam[0] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT)));
-    $weekDatum[1] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +1 days'));
+    $weekDatum[1] = date("m-d", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +1 days'));
     $weekDagNaam[1] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +1 days'));
-    $weekDatum[2] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +2 days'));
+    $weekDatum[2] = date("m-d", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +2 days'));
     $weekDagNaam[2] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +2 days'));
-    $weekDatum[3] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +3 days'));
+    $weekDatum[3] = date("m-d", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +3 days'));
     $weekDagNaam[3] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +3 days'));
-    $weekDatum[4] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +4 days'));
+    $weekDatum[4] = date("m-d", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +4 days'));
     $weekDagNaam[4] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +4 days'));
-    $weekDatum[5] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +5 days'));
+    $weekDatum[5] = date("m-d", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +5 days'));
     $weekDagNaam[5] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +5 days'));
-    $weekDatum[6] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +6 days'));
+    $weekDatum[6] = date("m-d", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +6 days'));
     $weekDagNaam[6] = date("D", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +6 days'));
 }
 

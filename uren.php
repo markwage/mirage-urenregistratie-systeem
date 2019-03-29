@@ -16,9 +16,7 @@ include ("header.php");
 	<h1>Urenadministratie</h1>
 	
 <?php 
-displayUserGegevens(); 
-//$currentWeek = date("W");
-//$currentJaar = date("Y");
+displayUserGegevens();
 $inputweeknr=date('Y').date('W');
 getWeekdays($inputweeknr);
 
@@ -43,8 +41,11 @@ while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
 // Door getWeekdays worden de dagen en data van die nieuwe week berekend
 //------------------------------------------------------------------------------------------------------
 if (isset($_POST['updateweeknr'])) {
+    writelogrecord("uren","UPDWEEK 001 Op refresh gedrukt POST(week): ".$_POST['week']);
     $inputweeknr = $_POST["week"];
-    getWeekdays($inputweeknr);
+    getWeekdays($_POST['week']);
+    // Controleer of deze week bestaat. Zo ja dan gegevens ophalen en tonen op scherm
+    // Indien week al approved kan deze niet gewijzigd worden
 }
 
 //------------------------------------------------------------------------------------------------------
@@ -58,25 +59,41 @@ if (isset($_POST['cancel'])) {
 // BUTTON Save
 //------------------------------------------------------------------------------------------------------
 if (isset($_POST['save'])) {
-    // Hoeveel invoerrijen op het scherm
+    getWeekdays($_POST['week']);
+    $sql_select_uren = "SELECT * FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."'";
+    //echo $sql_select_uren."<br />";
+    writelogrecord("uren","BTNSAVE Controle of er al gegevens van jaar ".$year." en week ".$week." zijn");
+    writelogrecord("uren","BTNSAVE Query: ".$sql_select_uren);
+    $check_select_uren = mysqli_query($dbconn, $sql_select_uren);
+    if (mysqli_num_rows($check_select_uren) > 0) {
+        $sql_delete_uren = "DELETE FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."'";
+        //echo $sql_delete_uren."<br />";
+        $check_insert_uren = mysqli_query($dbconn, $sql_delete_uren);
+        writelogrecord("uren","BTNSAVE Records worden verwijder van jaar ".$year." en week ".$week." voor het updaten van de betreffende week");
+        writelogrecord("uren","BTNSAVE Query: ".$sql_delete_uren);
+    }
+    $inputweeknr = $_POST['week'];
+    getWeekdays($_POST['week']);
     $aantalRijen = count($_POST["dag1"]);
-    //if($aantalRijen > 0) {
-        //for($ix1=0; $ix1<$aantalRijen; $ix1++) {
-            if(trim($_POST["soortuur"][$ix1] != '')) {
-                //001 Check de ingevulde velden op correctheid
-                $totaalUrenPerSoortuur = 0;
-                checkIngevuldeUrenPerSoort($ix1);
-                $totaalUrenPerSoortuur=$frm_dag1 + $frm_dag2 + $frm_dag3 + $frm_dag4 + $frm_dag5 + $frm_dag6 + $frm_dag7;
-                //002 Check of de week al voorkomt in de database
-                //002A Zo ja dan eerst die week uit de database verwijderen
-                //003 Insert de waarden in de database
-                
-                echo "Urensoort: ".$_POST["soortuur"][$ix1]." - ".$totaalUrenPerSoortuur."<br />";
+    for($ix1=0; $ix1<$aantalRijen; $ix1++) {
+        if(trim($_POST["soortuur"][$ix1] != '')) {
+            //001 Check de ingevulde velden op correctheid
+            checkIngevuldeUrenPerSoort($ix1);
+            //002 Check of de week al voorkomt in de database Indien ja en al approved dan kunnen de gegevens niet gewijzigd worden
+            //$sql_uren = mysqli_query($dbconn, "SELECT * FROM uren where user=$username AND weeknr=$inputweeknr ORDER BY datum");
+            for($ix2=0; $ix2<7; $ix2++) {
+                if ($urenarray[$ix2] > 0) {
+                    $datum = date("Y-m-d", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ix2.' days'));
+                    $sql_insert_uren = "INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('".$year."', '".$week."', '".$_POST['soortuur'][$ix1]."', '".$datum."', '".$urenarray[$ix2]."', '".$username."')";
+                    //echo $sql_inserturen."<br />";
+                    $check_insert_uren = mysqli_query($dbconn, $sql_insert_uren);
+                    writelogrecord("uren","BTNSAVE Records worden toegevoegd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week");
+                    writelogrecord("uren","BTNSAVE Query: ".$sql_insert_uren);
+                }
             }
-        //}
-    //} else {
-        echo "Please Enter Name";
-    //}  
+        }
+    }
 }
 ?>
 
