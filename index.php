@@ -44,10 +44,49 @@ check_cookies();
 			<h1>Mirage Urenadministratie</h1>
 			<?php 
 			displayUserGegevens();
-			echo "<p><table>";
-			echo '<tr><th colspan="3">Status laatste 10 weken</th></tr>';
-			echo "<tr><th><strong>Weeknr</th><th>Start<br>datum</th><th>Approved</th>";
-			echo "</table></p>";
+			$sql_select = "SELECT * FROM uren where user='".$username."' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10";
+			writelogrecord("index","Query: ".$sql_select);
+			if($sql_result = mysqli_query($dbconn, $sql_select)) {
+			    writelogrecord("index","Totaal aantal rijen uit de select-query: ".mysqli_num_rows($sql_result));
+			    if(mysqli_num_rows($sql_result) > 0) {
+			        echo "<center><table>";
+			        echo "<tr>";
+			            echo "<th colspan='6' style='text-align:center;'>Approvals laatste 10 weken</th>";
+			        echo "</tr>";
+			        echo "<tr>";
+                        echo "<th>jaar</th>";
+                        echo "<th>week</th>";
+                        echo "<th>Aangeboden</th>";
+                        echo "<th>Approved</th>";
+                        echo "<th>datum</th>";
+                        echo "<th>approved door</th>";
+                    echo "</tr>";
+			        $rowcolor = 'row-a';
+			        while($row_selecturen = mysqli_fetch_array($sql_result)) {
+			            $qry_jaar                  = $row_selecturen['jaar'];
+			            $qry_week                  = $row_selecturen['week'];
+			            $qry_terapprovalaangeboden = $row_selecturen['terapprovalaangeboden'];
+			            $qry_approved              = $row_selecturen['approved'];
+			            $qry_approveddatum         = $row_selecturen['approveddatum'];
+			            $qry_approvedbyuser        = $row_selecturen['approvedbyuser'];
+			            echo '<tr class="'.$rowcolor.'">';
+			                echo '<td style="text-align:center;">'.$qry_jaar.'</td>';
+			                echo '<td style="text-align:center;">'.$qry_week.'</td>';
+			                echo '<td style="text-align:center;">'.$qry_terapprovalaangeboden.'</td>';
+			                echo '<td style="text-align:center;">'.$qry_approved.'</td>';
+			                echo '<td>'.$qry_approveddatum.'</td>';
+                            echo '<td>'.$qry_approvedbyuser.'</td>';
+			            echo '</tr>';
+			            if ($rowcolor == 'row-a') $rowcolor = 'row-b';
+			            else $rowcolor = 'row-a';
+			        }
+			        echo "</table>";
+			    } else {
+			        echo "Er zijn geen records gevonden";
+			    }
+			} else {
+			    echo "ERROR: Could not able to execute $sql_select. ". mysqli_error($dbconn);
+			}
 			
 include ("footer.php");
 ?>	
