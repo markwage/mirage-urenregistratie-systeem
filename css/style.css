@@ -88,8 +88,7 @@ tr {
 	/* height: 20px; */
 }
 td {
-	padding-left: 5px;
-	padding-right: 5px;
+	padding: 5px 5px 5px 5px;
 	/* padding-top: 5px; */
 	/* padding-bottom: 5px; */
 	/* border-left: 1px solid #FFE1C3; */

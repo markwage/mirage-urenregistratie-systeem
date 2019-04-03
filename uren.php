@@ -33,9 +33,25 @@ while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
 	
 <?php 
 //------------------------------------------------------------------------------------------------------
+// This code runs before the form is displayed
+//------------------------------------------------------------------------------------------------------
+// Bekijk huidige week of er al uren ingevuld zijn.
+//------------------------------------------------------------------------------------------------------
+$sql_select = "SELECT * FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."' ORDER BY dagnummer";
+if($sql_result = mysqli_query($dbconn, $sql_select)) {
+    if(mysqli_num_rows($sql_result) > 0) {
+        echo "nu kunnen de rijen getoond worden";
+    }
+} else {
+    echo "ERROR: Kan geen connectie met de database maken. Query:". $sql_select. " failed.". mysqli_error($dbconn);
+}
+
+// Zo ja dan deze uren laten zien in de form
+
+
+//------------------------------------------------------------------------------------------------------
 // From here this code runs if the form has been submitted (clicked save or cancel)
 //------------------------------------------------------------------------------------------------------
-
 //------------------------------------------------------------------------------------------------------
 // BUTTON changeWeeknr is op geklikt om een andere week te muteren.
 // Door getWeekdays worden de dagen en data van die nieuwe week berekend
@@ -81,8 +97,9 @@ if (isset($_POST['save'])) {
             for($ix2=0; $ix2<7; $ix2++) {
                 if ($urenarray[$ix2] > 0) {
                     $datum = date("Y-m-d", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ix2.' days'));
-                    $sql_insert_uren = "INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
-                        values('".$year."', '".$week."', '".$_POST['soortuur'][$ix1]."', '".$datum."', '".$urenarray[$ix2]."', '".$username."')";
+                    $dagnummer = $ix2;
+                    $sql_insert_uren = "INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('".$year."', '".$week."', '".$dagnummer."', '".$_POST['soortuur'][$ix1]."', '".$datum."', '".$urenarray[$ix2]."', '".$username."')";
                     $check_insert_uren = mysqli_query($dbconn, $sql_insert_uren);
                     writelogrecord("uren","BTNSAVE Records worden toegevoegd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week");
                     writelogrecord("uren","BTNSAVE Query: ".$sql_insert_uren);
@@ -102,33 +119,37 @@ if (isset($_POST['save'])) {
 			<td><input class="button" type="submit" name="updateweeknr" value="refresh"></td>
 		</tr>
 	</table>
-	<table id="uren_table">
-		<tr>
-			<th>Soortuur</th>
-			<th><?php echo "<center>".$weekDatum[0]."<br>".$weekDagNaam[0]."</center>"; ?></th>
-			<th><?php echo "<center>".$weekDatum[1]."<br>".$weekDagNaam[1]."</center>"; ?></th>
-			<th><?php echo "<center>".$weekDatum[2]."<br>".$weekDagNaam[2]."</center>"; ?></th>
-			<th><?php echo "<center>".$weekDatum[3]."<br>".$weekDagNaam[3]."</center>"; ?></th>
-			<th><?php echo "<center>".$weekDatum[4]."<br>".$weekDagNaam[4]."</center>"; ?></th>
-			<th><?php echo "<center>".$weekDatum[5]."<br>".$weekDagNaam[5]."</center>"; ?></th>
-			<th><?php echo "<center>".$weekDatum[6]."<br>".$weekDagNaam[6]."</center>"; ?></th>
-			<th colspan="2"></th>
-		</tr>
-   		<tr id="row1">
-   			<div id="dropdownSoortUren" data-options="<?php echo $option; ?>"></div>
-   		    <!-- Het aantal td's moet in functions.js net zoveel zijn! -->
-   		    <td><select name="soortuur[]"><?php echo $option; ?></select></td>
-    		<td><input style="width:50px" type="number" name="dag1[]" min="0" max="24" step="0.25" size="2"></td>
-    		<td><input style="width:50px" type="number" name="dag2[]" min="0" max="24" step="0.25" size="2"></td>
-    		<td><input style="width:50px" type="number" name="dag3[]" min="0" max="24" step="0.25" size="2"></td>
-    		<td><input style="width:50px" type="number" name="dag4[]" min="0" max="24" step="0.25" size="2"></td>
-    		<td><input style="width:50px" type="number" name="dag5[]" min="0" max="24" step="0.25" size="2"></td>
-    		<td><input style="width:50px" type="number" name="dag6[]" min="0" max="24" step="0.25" size="2"></td>
-    		<td><input style="width:50px" type="number" name="dag7[]" min="0" max="24" step="0.25" size="2"></td>
-    		<td><img src="./img/buttons/icons8-plus-48.png" alt="toevoegen soort uur" title="toevoegen soort uur" onclick="add_row();" /></td>
-    		<td></td>
-   		</tr>
-  	</table>
+	<?php 
+	echo "<table id='uren_table'>";
+        echo "<tr>";
+            echo "<th>Soortuur</th>";
+	        echo "<th><center>".$weekDatum[0]."<br>".$weekDagNaam[0]."</center></th>";
+	        echo "<th><center>".$weekDatum[1]."<br>".$weekDagNaam[1]."</center></th>";
+	        echo "<th><center>".$weekDatum[2]."<br>".$weekDagNaam[2]."</center></th>";
+	        echo "<th><center>".$weekDatum[3]."<br>".$weekDagNaam[3]."</center></th>";
+	        echo "<th><center>".$weekDatum[4]."<br>".$weekDagNaam[4]."</center></th>";
+	        echo "<th><center>".$weekDatum[5]."<br>".$weekDagNaam[5]."</center></th>";
+	        echo "<th><center>".$weekDatum[6]."<br>".$weekDagNaam[6]."</center></th>";
+	        echo "<th colspan='2'></th>";
+	    echo "</tr>";
+   		echo "<tr id='row1'>";
+   		    echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
+   	
+   		    //<!-- Het aantal td's moet in functions.js net zoveel zijn! -->
+ 	
+   		    echo "<td><select name='soortuur[]'>".$option."</select></td>";
+    		echo "<td><input style='width:50px' type='number' name='dag1[]' min='0' max='24' step='0.25' size='2'></td>";
+    		echo "<td><input style='width:50px' type='number' name='dag2[]' min='0' max='24' step='0.25' size='2'></td>";
+    		echo "<td><input style='width:50px' type='number' name='dag3[]' min='0' max='24' step='0.25' size='2'></td>";
+    		echo "<td><input style='width:50px' type='number' name='dag4[]' min='0' max='24' step='0.25' size='2'></td>";
+    		echo "<td><input style='width:50px' type='number' name='dag5[]' min='0' max='24' step='0.25' size='2'></td>";
+    		echo "<td><input style='width:50px' type='number' name='dag6[]' min='0' max='24' step='0.25' size='2'></td>";
+    		echo "<td><input style='width:50px' type='number' name='dag7[]' min='0' max='24' step='0.25' size='2'></td>";
+    		echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
+    		echo "<td></td>";
+   		echo "</tr>";
+  	echo "</table>";
+  	?>
   	<input class="button" type="submit" name="save" value="save">
   	<input class="button" type="submit" name="cancel" value="cancel">
 </form>

@@ -58,3 +58,420 @@
 20190401 14:36:55;function;mwage;getWeekdays weeknr: 201914
 20190401 14:36:55;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
 20190401 14:36:55;index;mwage;Totaal aantal rijen uit de select-query: 2
+20190401 20:26:39;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190401 20:26:39;index;;Totaal aantal rijen uit de select-query: 0
+20190401 20:27:00;login;mwage;User mwage is succesvol ingelogd.
+20190401 20:27:01;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190401 20:27:01;index;mwage;Totaal aantal rijen uit de select-query: 2
+20190401 20:27:26;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190401 20:27:26;index;mwage;Totaal aantal rijen uit de select-query: 2
+20190401 20:28:16;function;mwage;getWeekdays weeknr: 201914
+20190401 20:28:18;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190401 20:28:18;index;mwage;Totaal aantal rijen uit de select-query: 2
+20190401 20:50:31;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190401 20:50:31;index;mwage;Totaal aantal rijen uit de select-query: 2
+20190401 20:50:34;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190401 20:50:34;index;mwage;Totaal aantal rijen uit de select-query: 2
+20190402 11:50:38;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 11:50:38;index;;Totaal aantal rijen uit de select-query: 0
+20190402 11:50:43;login;mwage;User mwage is succesvol ingelogd.
+20190402 11:50:43;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 11:50:43;index;mwage;Totaal aantal rijen uit de select-query: 2
+20190402 11:50:53;function;mwage;getWeekdays weeknr: 201914
+20190402 11:51:02;function;mwage;getWeekdays weeknr: 201914
+20190402 11:51:02;function;mwage;getWeekdays weeknr: 201914
+20190402 11:51:02;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 14 zijn
+20190402 11:51:02;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='14' AND jaar='2019'
+20190402 11:51:02;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 14 voor het updaten van de betreffende week
+20190402 11:51:02;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '14', 'MIR000UU', '2019-04-01', '5', 'mwage')
+20190402 11:51:02;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 14 voor het updaten van de betreffende week
+20190402 11:51:02;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '14', 'MIR000UU', '2019-04-02', '6', 'mwage')
+20190402 11:51:17;function;mwage;getWeekdays weeknr: 201914
+20190402 11:51:17;function;mwage;getWeekdays weeknr: 201912
+20190402 11:51:17;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 12 zijn
+20190402 11:51:17;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='12' AND jaar='2019'
+20190402 11:51:17;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 12 voor het updaten van de betreffende week
+20190402 11:51:17;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '12', 'MIR000UU', '2019-03-18', '8', 'mwage')
+20190402 11:51:17;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 12 voor het updaten van de betreffende week
+20190402 11:51:17;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '12', 'MIR000UU', '2019-03-19', '8', 'mwage')
+20190402 11:51:17;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 12 voor het updaten van de betreffende week
+20190402 11:51:17;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '12', 'MIR000UU', '2019-03-20', '8', 'mwage')
+20190402 11:51:17;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 12 voor het updaten van de betreffende week
+20190402 11:51:17;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '12', 'MIR000UU', '2019-03-21', '8', 'mwage')
+20190402 11:51:17;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 12 voor het updaten van de betreffende week
+20190402 11:51:17;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '12', 'MIR000UU', '2019-03-22', '8', 'mwage')
+20190402 11:51:23;function;mwage;getWeekdays weeknr: 201914
+20190402 11:51:23;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201911
+20190402 11:51:23;function;mwage;getWeekdays weeknr: 201911
+20190402 11:51:31;function;mwage;getWeekdays weeknr: 201914
+20190402 11:51:31;function;mwage;getWeekdays weeknr: 201911
+20190402 11:51:31;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 11 zijn
+20190402 11:51:31;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='11' AND jaar='2019'
+20190402 11:51:31;uren;mwage;BTNSAVE Records worden verwijderd van jaar 2019 en week 11 voor het updaten van de betreffende week
+20190402 11:51:31;uren;mwage;BTNSAVE Query: DELETE FROM uren where user='mwage' AND week='11' AND jaar='2019'
+20190402 11:51:31;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 11 voor het updaten van de betreffende week
+20190402 11:51:31;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '11', 'MIR000UU', '2019-03-11', '8', 'mwage')
+20190402 11:51:31;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 11 voor het updaten van de betreffende week
+20190402 11:51:31;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '11', 'MIR000UU', '2019-03-12', '8', 'mwage')
+20190402 11:51:31;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 11 voor het updaten van de betreffende week
+20190402 11:51:31;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '11', 'MIR000UU', '2019-03-13', '8', 'mwage')
+20190402 11:51:31;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 11 voor het updaten van de betreffende week
+20190402 11:51:31;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '11', 'MIR000UU', '2019-03-14', '8', 'mwage')
+20190402 11:51:31;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 11 voor het updaten van de betreffende week
+20190402 11:51:31;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '11', 'MIR000UU', '2019-03-15', '8', 'mwage')
+20190402 11:51:34;function;mwage;getWeekdays weeknr: 201914
+20190402 11:51:34;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201910
+20190402 11:51:34;function;mwage;getWeekdays weeknr: 201910
+20190402 11:51:39;function;mwage;getWeekdays weeknr: 201914
+20190402 11:51:39;function;mwage;getWeekdays weeknr: 201910
+20190402 11:51:39;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 10 zijn
+20190402 11:51:39;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='10' AND jaar='2019'
+20190402 11:51:39;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 10 voor het updaten van de betreffende week
+20190402 11:51:39;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '10', 'MIR000UU', '2019-03-04', '8', 'mwage')
+20190402 11:51:39;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 10 voor het updaten van de betreffende week
+20190402 11:51:39;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '10', 'MIR000UU', '2019-03-05', '8', 'mwage')
+20190402 11:51:39;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 10 voor het updaten van de betreffende week
+20190402 11:51:39;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '10', 'MIR000UU', '2019-03-06', '8', 'mwage')
+20190402 11:51:39;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 10 voor het updaten van de betreffende week
+20190402 11:51:39;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '10', 'MIR000UU', '2019-03-07', '8', 'mwage')
+20190402 11:51:39;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 10 voor het updaten van de betreffende week
+20190402 11:51:39;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '10', 'MIR000UU', '2019-03-08', '8', 'mwage')
+20190402 11:51:42;function;mwage;getWeekdays weeknr: 201914
+20190402 11:51:42;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201909
+20190402 11:51:42;function;mwage;getWeekdays weeknr: 201909
+20190402 11:51:47;function;mwage;getWeekdays weeknr: 201914
+20190402 11:51:47;function;mwage;getWeekdays weeknr: 201909
+20190402 11:51:47;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 09 zijn
+20190402 11:51:47;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='09' AND jaar='2019'
+20190402 11:51:47;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 09 voor het updaten van de betreffende week
+20190402 11:51:47;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '09', 'MIR000UU', '2019-02-25', '8', 'mwage')
+20190402 11:51:47;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 09 voor het updaten van de betreffende week
+20190402 11:51:47;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '09', 'MIR000UU', '2019-02-26', '8', 'mwage')
+20190402 11:51:47;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 09 voor het updaten van de betreffende week
+20190402 11:51:47;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '09', 'MIR000UU', '2019-02-27', '8', 'mwage')
+20190402 11:51:47;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 09 voor het updaten van de betreffende week
+20190402 11:51:47;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '09', 'MIR000UU', '2019-02-28', '8', 'mwage')
+20190402 11:51:47;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 09 voor het updaten van de betreffende week
+20190402 11:51:47;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '09', 'MIR000UU', '2019-03-01', '8', 'mwage')
+20190402 11:51:55;function;mwage;getWeekdays weeknr: 201914
+20190402 11:51:55;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201908
+20190402 11:51:55;function;mwage;getWeekdays weeknr: 201908
+20190402 11:52:04;function;mwage;getWeekdays weeknr: 201914
+20190402 11:52:04;function;mwage;getWeekdays weeknr: 201908
+20190402 11:52:04;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 08 zijn
+20190402 11:52:04;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='08' AND jaar='2019'
+20190402 11:52:04;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 08 voor het updaten van de betreffende week
+20190402 11:52:04;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '08', 'MIR000UU', '2019-02-18', '8', 'mwage')
+20190402 11:52:04;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 08 voor het updaten van de betreffende week
+20190402 11:52:04;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '08', 'MIR000UU', '2019-02-19', '8', 'mwage')
+20190402 11:52:04;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 08 voor het updaten van de betreffende week
+20190402 11:52:04;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '08', 'MIR000UU', '2019-02-20', '8', 'mwage')
+20190402 11:52:04;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 08 voor het updaten van de betreffende week
+20190402 11:52:04;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '08', 'MIR000UU', '2019-02-21', '8', 'mwage')
+20190402 11:52:04;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 08 voor het updaten van de betreffende week
+20190402 11:52:04;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '08', 'MIR000UU', '2019-02-22', '8', 'mwage')
+20190402 11:52:36;function;mwage;getWeekdays weeknr: 201914
+20190402 11:52:36;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201907
+20190402 11:52:36;function;mwage;getWeekdays weeknr: 201907
+20190402 11:52:41;function;mwage;getWeekdays weeknr: 201914
+20190402 11:52:41;function;mwage;getWeekdays weeknr: 201907
+20190402 11:52:41;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 07 zijn
+20190402 11:52:41;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='07' AND jaar='2019'
+20190402 11:52:41;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 07 voor het updaten van de betreffende week
+20190402 11:52:41;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '07', 'MIR000UU', '2019-02-11', '8', 'mwage')
+20190402 11:52:41;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 07 voor het updaten van de betreffende week
+20190402 11:52:41;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '07', 'MIR000UU', '2019-02-12', '8', 'mwage')
+20190402 11:52:41;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 07 voor het updaten van de betreffende week
+20190402 11:52:41;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '07', 'MIR000UU', '2019-02-13', '8', 'mwage')
+20190402 11:52:41;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 07 voor het updaten van de betreffende week
+20190402 11:52:41;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '07', 'MIR000UU', '2019-02-14', '8', 'mwage')
+20190402 11:52:41;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 07 voor het updaten van de betreffende week
+20190402 11:52:41;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '07', 'MIR000UU', '2019-02-15', '8', 'mwage')
+20190402 11:52:44;function;mwage;getWeekdays weeknr: 201914
+20190402 11:52:44;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201906
+20190402 11:52:44;function;mwage;getWeekdays weeknr: 201906
+20190402 11:52:49;function;mwage;getWeekdays weeknr: 201914
+20190402 11:52:49;function;mwage;getWeekdays weeknr: 201906
+20190402 11:52:49;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 06 zijn
+20190402 11:52:49;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='06' AND jaar='2019'
+20190402 11:52:49;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 06 voor het updaten van de betreffende week
+20190402 11:52:49;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '06', 'MIR000UU', '2019-02-04', '8', 'mwage')
+20190402 11:52:49;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 06 voor het updaten van de betreffende week
+20190402 11:52:49;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '06', 'MIR000UU', '2019-02-05', '8', 'mwage')
+20190402 11:52:49;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 06 voor het updaten van de betreffende week
+20190402 11:52:49;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '06', 'MIR000UU', '2019-02-06', '8', 'mwage')
+20190402 11:52:49;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 06 voor het updaten van de betreffende week
+20190402 11:52:49;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '06', 'MIR000UU', '2019-02-07', '8', 'mwage')
+20190402 11:52:49;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 06 voor het updaten van de betreffende week
+20190402 11:52:49;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '06', 'MIR000UU', '2019-02-08', '8', 'mwage')
+20190402 11:52:53;function;mwage;getWeekdays weeknr: 201914
+20190402 11:52:53;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201905
+20190402 11:52:53;function;mwage;getWeekdays weeknr: 201905
+20190402 11:52:58;function;mwage;getWeekdays weeknr: 201914
+20190402 11:52:58;function;mwage;getWeekdays weeknr: 201905
+20190402 11:52:58;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 05 zijn
+20190402 11:52:58;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='05' AND jaar='2019'
+20190402 11:52:58;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 05 voor het updaten van de betreffende week
+20190402 11:52:58;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '05', 'MIR000UU', '2019-01-28', '8', 'mwage')
+20190402 11:52:58;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 05 voor het updaten van de betreffende week
+20190402 11:52:58;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '05', 'MIR000UU', '2019-01-29', '8', 'mwage')
+20190402 11:52:58;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 05 voor het updaten van de betreffende week
+20190402 11:52:58;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '05', 'MIR000UU', '2019-01-30', '8', 'mwage')
+20190402 11:52:58;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 05 voor het updaten van de betreffende week
+20190402 11:52:58;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '05', 'MIR000UU', '2019-01-31', '8', 'mwage')
+20190402 11:52:58;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 05 voor het updaten van de betreffende week
+20190402 11:52:58;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '05', 'MIR000UU', '2019-02-01', '8', 'mwage')
+20190402 11:53:01;function;mwage;getWeekdays weeknr: 201914
+20190402 11:53:01;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201904
+20190402 11:53:01;function;mwage;getWeekdays weeknr: 201904
+20190402 11:53:07;function;mwage;getWeekdays weeknr: 201914
+20190402 11:53:07;function;mwage;getWeekdays weeknr: 201904
+20190402 11:53:07;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 04 zijn
+20190402 11:53:07;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='04' AND jaar='2019'
+20190402 11:53:07;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 04 voor het updaten van de betreffende week
+20190402 11:53:07;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '04', 'MIR000UU', '2019-01-21', '8', 'mwage')
+20190402 11:53:07;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 04 voor het updaten van de betreffende week
+20190402 11:53:07;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '04', 'MIR000UU', '2019-01-22', '8', 'mwage')
+20190402 11:53:07;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 04 voor het updaten van de betreffende week
+20190402 11:53:07;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '04', 'MIR000UU', '2019-01-23', '8', 'mwage')
+20190402 11:53:07;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 04 voor het updaten van de betreffende week
+20190402 11:53:07;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '04', 'MIR000UU', '2019-01-24', '8', 'mwage')
+20190402 11:53:07;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 04 voor het updaten van de betreffende week
+20190402 11:53:07;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '04', 'MIR000UU', '2019-01-25', '8', 'mwage')
+20190402 11:53:09;function;mwage;getWeekdays weeknr: 201914
+20190402 11:53:09;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201903
+20190402 11:53:09;function;mwage;getWeekdays weeknr: 201903
+20190402 11:53:16;function;mwage;getWeekdays weeknr: 201914
+20190402 11:53:16;function;mwage;getWeekdays weeknr: 201903
+20190402 11:53:16;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 03 zijn
+20190402 11:53:16;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='03' AND jaar='2019'
+20190402 11:53:16;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 03 voor het updaten van de betreffende week
+20190402 11:53:16;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '03', 'MIR000UU', '2019-01-14', '8', 'mwage')
+20190402 11:53:16;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 03 voor het updaten van de betreffende week
+20190402 11:53:16;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '03', 'MIR000UU', '2019-01-15', '8', 'mwage')
+20190402 11:53:16;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 03 voor het updaten van de betreffende week
+20190402 11:53:16;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '03', 'MIR000UU', '2019-01-16', '8', 'mwage')
+20190402 11:53:16;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 03 voor het updaten van de betreffende week
+20190402 11:53:16;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '03', 'MIR000UU', '2019-01-17', '8', 'mwage')
+20190402 11:53:16;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 03 voor het updaten van de betreffende week
+20190402 11:53:16;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '03', 'MIR000UU', '2019-01-18', '8', 'mwage')
+20190402 11:53:21;function;mwage;getWeekdays weeknr: 201914
+20190402 11:53:21;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201902
+20190402 11:53:21;function;mwage;getWeekdays weeknr: 201902
+20190402 11:53:29;function;mwage;getWeekdays weeknr: 201914
+20190402 11:53:29;function;mwage;getWeekdays weeknr: 201902
+20190402 11:53:29;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 02 zijn
+20190402 11:53:29;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='02' AND jaar='2019'
+20190402 11:53:29;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 02 voor het updaten van de betreffende week
+20190402 11:53:29;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '02', 'MIR000UU', '2019-01-07', '8', 'mwage')
+20190402 11:53:29;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 02 voor het updaten van de betreffende week
+20190402 11:53:29;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '02', 'MIR000UU', '2019-01-08', '8', 'mwage')
+20190402 11:53:29;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 02 voor het updaten van de betreffende week
+20190402 11:53:29;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '02', 'MIR000UU', '2019-01-09', '8', 'mwage')
+20190402 11:53:29;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 02 voor het updaten van de betreffende week
+20190402 11:53:29;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '02', 'MIR000UU', '2019-01-10', '8', 'mwage')
+20190402 11:53:29;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 02 voor het updaten van de betreffende week
+20190402 11:53:29;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '02', 'MIR000UU', '2019-01-11', '8', 'mwage')
+20190402 11:53:32;function;mwage;getWeekdays weeknr: 201914
+20190402 11:53:32;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201901
+20190402 11:53:32;function;mwage;getWeekdays weeknr: 201901
+20190402 11:53:47;function;mwage;getWeekdays weeknr: 201914
+20190402 11:53:47;function;mwage;getWeekdays weeknr: 201901
+20190402 11:53:47;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 01 zijn
+20190402 11:53:47;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='01' AND jaar='2019'
+20190402 11:53:47;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 01 voor het updaten van de betreffende week
+20190402 11:53:47;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '01', 'MIR000UU', '2018-12-31', '8', 'mwage')
+20190402 11:53:47;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 01 voor het updaten van de betreffende week
+20190402 11:53:47;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '01', 'MIR000UU', '2019-01-02', '8', 'mwage')
+20190402 11:53:47;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 01 voor het updaten van de betreffende week
+20190402 11:53:47;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '01', 'MIR000UU', '2019-01-03', '8', 'mwage')
+20190402 11:53:47;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 01 voor het updaten van de betreffende week
+20190402 11:53:47;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '01', 'MIR000UU', '2019-01-04', '8', 'mwage')
+20190402 11:53:47;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 01 voor het updaten van de betreffende week
+20190402 11:53:47;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, soortuur, datum, uren, user)
+                        values('2019', '01', 'MIR003FD', '2019-01-01', '8', 'mwage')
+20190402 11:53:52;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 11:53:52;index;mwage;Totaal aantal rijen uit de select-query: 10
+20190402 11:54:11;function;mwage;getWeekdays weeknr: 201914
+20190402 11:55:42;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 11:55:42;index;mwage;Totaal aantal rijen uit de select-query: 10
+20190402 11:55:51;logout;mwage;User is succesvol uitgelogd
+20190402 11:55:55;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 11:55:55;index;;Totaal aantal rijen uit de select-query: 0
+20190402 11:56:00;login;mwage;User mwage is succesvol ingelogd.
+20190402 11:56:00;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 11:56:00;index;mwage;Totaal aantal rijen uit de select-query: 10
+20190402 11:57:04;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 11:57:04;index;mwage;Totaal aantal rijen uit de select-query: 10
+20190402 11:57:06;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 11:57:06;index;mwage;Totaal aantal rijen uit de select-query: 10
+20190402 12:00:45;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 12:00:45;index;mwage;Totaal aantal rijen uit de select-query: 10
+20190402 14:27:19;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 14:27:19;index;;Totaal aantal rijen uit de select-query: 0
+20190402 14:27:27;login;mwage;User mwage is succesvol ingelogd.
+20190402 14:27:27;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 14:27:27;index;mwage;Totaal aantal rijen uit de select-query: 10
+20190402 14:34:08;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 14:34:08;index;mwage;Totaal aantal rijen uit de select-query: 10
+20190402 14:34:30;function;mwage;getWeekdays weeknr: 201914
+20190402 14:36:19;function;mwage;getWeekdays weeknr: 201914
+20190402 14:37:03;function;mwage;getWeekdays weeknr: 201914
+20190402 15:28:06;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 15:28:06;index;;Totaal aantal rijen uit de select-query: 0
+20190402 15:28:13;login;mwage;User mwage is succesvol ingelogd.
+20190402 15:28:13;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 15:28:13;index;mwage;Totaal aantal rijen uit de select-query: 10
+20190402 15:37:39;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190402 15:37:39;index;mwage;Totaal aantal rijen uit de select-query: 10
+20190402 15:37:41;function;mwage;getWeekdays weeknr: 201914
+20190403 05:28:58;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 05:28:58;index;;Totaal aantal rijen uit de select-query: 0
+20190403 05:29:04;login;mwage;User mwage is succesvol ingelogd.
+20190403 05:29:04;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 05:29:04;index;mwage;Totaal aantal rijen uit de select-query: 0
+20190403 05:29:20;function;mwage;getWeekdays weeknr: 201914
+20190403 05:29:27;function;mwage;getWeekdays weeknr: 201914
+20190403 05:29:27;function;mwage;getWeekdays weeknr: 201914
+20190403 05:29:27;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 14 zijn
+20190403 05:29:27;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='14' AND jaar='2019'
+20190403 05:29:27;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 14 voor het updaten van de betreffende week
+20190403 05:29:27;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '14', '0', 'MIR000UU', '2019-04-01', '8', 'mwage')
+20190403 05:29:27;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 14 voor het updaten van de betreffende week
+20190403 05:29:27;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '14', '2', 'MIR000UU', '2019-04-03', '8', 'mwage')
+20190403 11:09:16;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 11:09:16;index;;Totaal aantal rijen uit de select-query: 0
+20190403 11:09:22;login;mwage;User mwage is succesvol ingelogd.
+20190403 11:09:22;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 11:09:22;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 11:09:27;function;mwage;getWeekdays weeknr: 201914
+20190403 11:09:38;function;mwage;getWeekdays weeknr: 201914
+20190403 11:09:38;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 11:09:38;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 12:19:43;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 12:19:43;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 12:19:48;login;mwage;User mwage is succesvol ingelogd.
+20190403 12:19:48;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 12:19:48;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 12:19:50;function;mwage;getWeekdays weeknr: 201914
+20190403 12:19:56;function;mwage;getWeekdays weeknr: 201914
+20190403 12:19:56;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 12:19:56;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 12:22:11;function;mwage;getWeekdays weeknr: 201914
+20190403 12:22:14;function;mwage;getWeekdays weeknr: 201914
+20190403 12:22:14;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 12:22:14;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 13:48:20;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 13:48:20;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 13:48:25;login;mwage;User mwage is succesvol ingelogd.
+20190403 13:48:25;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 13:48:25;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 13:48:27;function;mwage;getWeekdays weeknr: 201914
+20190403 13:49:19;function;mwage;getWeekdays weeknr: 201914
+20190403 13:49:44;function;mwage;getWeekdays weeknr: 201914
+20190403 13:50:49;function;mwage;getWeekdays weeknr: 201914
+20190403 13:50:56;function;mwage;getWeekdays weeknr: 201914
+20190403 13:50:57;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 13:50:57;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 13:52:38;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 13:52:38;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 13:52:41;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 13:52:41;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 13:52:45;function;mwage;getWeekdays weeknr: 201914
+20190403 13:54:14;function;mwage;getWeekdays weeknr: 201914
+20190403 14:24:22;function;mwage;getWeekdays weeknr: 201914
+20190403 14:24:26;function;mwage;getWeekdays weeknr: 201914
+20190403 14:24:26;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 14:24:26;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 14:26:02;function;mwage;getWeekdays weeknr: 201914
+20190403 14:26:10;function;mwage;getWeekdays weeknr: 201914
+20190403 14:26:10;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 14:26:10;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 14:27:42;function;mwage;getWeekdays weeknr: 201914
+20190403 14:27:48;function;mwage;getWeekdays weeknr: 201914
+20190403 14:27:55;function;mwage;getWeekdays weeknr: 201914
+20190403 14:27:57;function;mwage;getWeekdays weeknr: 201914
+20190403 14:28:04;function;mwage;getWeekdays weeknr: 201914
+20190403 14:37:22;function;mwage;getWeekdays weeknr: 201914
+20190403 14:38:54;function;mwage;getWeekdays weeknr: 201914
+20190403 18:36:50;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 18:36:50;index;;Totaal aantal rijen uit de select-query: 0
+20190403 18:36:57;login;mwage;User mwage is succesvol ingelogd.
+20190403 18:36:57;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 18:36:57;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 18:37:00;function;mwage;getWeekdays weeknr: 201914
+20190403 18:37:53;function;mwage;getWeekdays weeknr: 201914
+20190403 18:38:36;function;mwage;getWeekdays weeknr: 201914
+20190403 18:38:51;function;mwage;getWeekdays weeknr: 201914
+20190403 18:38:51;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 18:38:51;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 18:44:27;function;mwage;getWeekdays weeknr: 201914
+20190403 18:44:36;function;mwage;getWeekdays weeknr: 201914
+20190403 18:44:36;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190403 18:44:36;index;mwage;Totaal aantal rijen uit de select-query: 1
+20190403 18:47:30;function;mwage;getWeekdays weeknr: 201914
+20190403 19:05:33;function;mwage;getWeekdays weeknr: 201914
+20190403 19:05:49;function;mwage;getWeekdays weeknr: 201914

@@ -51,7 +51,7 @@ check_cookies();
 			    if(mysqli_num_rows($sql_result) > 0) {
 			        echo "<center><table>";
 			        echo "<tr>";
-			            echo "<th colspan='6' style='text-align:center;'>Approvals laatste 10 weken</th>";
+			            echo "<th colspan='6' style='text-align:center;'>Overzicht laatste 10 ingevulde weken</th>";
 			        echo "</tr>";
 			        echo "<tr>";
                         echo "<th>jaar</th>";
