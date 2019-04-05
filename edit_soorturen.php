@@ -41,8 +41,19 @@ if (isset($_POST['cancel'])) {
 //------------------------------------------------------------------------------------------------------
 if (isset($_POST['delete'])) {
 	$delcode = $_POST['code'];
-	$sql_delsoortuur = mysqli_query($dbconn, "DELETE FROM soorturen WHERE code = '$delcode'");
-	header("location: edit_soorturen.php?aktie=disp");
+	$sql_select = "SELECT * FROM uren where soortuur='".$delcode."'";
+	if($sql_result = mysqli_query($dbconn, $sql_select)) {
+	    if(mysqli_num_rows($sql_result) > 0) {
+	        //ERROR DAT ER NOG UREN GEKOPPELD ZIJN AAN DEZE SOORTUUR!!!!
+	        echo '<p class="errmsg"> ERROR: Er zijn nog uren gekoppeld aan deze code</p>';
+	        $focus     = 'code';
+	        $formerror = 1;
+	    } else {
+	        $sql_delsoortuur = mysqli_query($dbconn, "DELETE FROM soorturen WHERE code = '$delcode'");
+	        header("location: edit_soorturen.php?aktie=disp");
+	    }
+	}
+	//header("location: edit_soorturen.php?aktie=disp");
 }
 
 //------------------------------------------------------------------------------------------------------

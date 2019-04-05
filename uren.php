@@ -37,14 +37,14 @@ while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
 //------------------------------------------------------------------------------------------------------
 // Bekijk huidige week of er al uren ingevuld zijn.
 //------------------------------------------------------------------------------------------------------
-$sql_select = "SELECT * FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."' ORDER BY dagnummer";
-if($sql_result = mysqli_query($dbconn, $sql_select)) {
-    if(mysqli_num_rows($sql_result) > 0) {
-        echo "nu kunnen de rijen getoond worden";
-    }
-} else {
-    echo "ERROR: Kan geen connectie met de database maken. Query:". $sql_select. " failed.". mysqli_error($dbconn);
-}
+//$sql_select = "SELECT * FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."' ORDER BY dagnummer";
+//if($sql_result = mysqli_query($dbconn, $sql_select)) {
+//    if(mysqli_num_rows($sql_result) > 0) {
+//        echo "nu kunnen de rijen getoond worden";
+//    }
+//} else {
+//    echo "ERROR: Kan geen connectie met de database maken. Query:". $sql_select. " failed.". mysqli_error($dbconn);
+//}
 
 // Zo ja dan deze uren laten zien in de form
 
@@ -132,22 +132,85 @@ if (isset($_POST['save'])) {
 	        echo "<th><center>".$weekDatum[6]."<br>".$weekDagNaam[6]."</center></th>";
 	        echo "<th colspan='2'></th>";
 	    echo "</tr>";
-   		echo "<tr id='row1'>";
-   		    echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
+	    //------------------------------------------------------------------------------------------------------
+	    // Bekijk huidige week of er al uren ingevuld zijn.
+	    //------------------------------------------------------------------------------------------------------
+	    for($ix3=0; $ix3<7; $ix3++) {
+	        ${"frm_valueDag$ix3"} = '';
+	    }
+	    $tmp_soortuur = 'eersteloop';
+	    
+	    $sql_uren = "SELECT * FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."' ORDER BY soortuur, dagnummer";
+        // Om regels per soortuur te krijgen HOE??
+        if($sql_result_uren = mysqli_query($dbconn, $sql_uren)) {
+	        if(mysqli_num_rows($sql_result_uren) > 0) {
+	            while($row_uren = mysqli_fetch_array($sql_result_uren)) {
+	                if(($tmp_soortuur <> $row_uren['soortuur']) && ($tmp_soortuur <> 'eersteloop')) {
+	                    $sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
+	                    $option = "";
+	                    while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
+	                        if ($tmp_soortuur == $row_soorturen['code']) {
+	                            $option_selected = 'selected';
+	                            //echo "1 ".$tmp_soortuur."<br />";
+	                        } else {
+	                            $option_selected = '';
+	                        }
+	                        $option .= "<option ".$option_selected." value='".$row_soorturen['code']."'>".$row_soorturen['code']." - ".$row_soorturen['omschrijving']."</option>";
+	                    }
+	                    echo "<tr id='row1'>";
+	                        echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
+	                        echo "<td><select name='soortuur[]'>".$option."</select></td>";
+	                        echo "<td><input style='width:50px' type='number' name='dag1[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag0."'></td>";
+	                        echo "<td><input style='width:50px' type='number' name='dag2[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag1."'></td>";
+	                        echo "<td><input style='width:50px' type='number' name='dag3[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag2."'></td>";
+	                        echo "<td><input style='width:50px' type='number' name='dag4[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag3."'></td>";
+	                        echo "<td><input style='width:50px' type='number' name='dag5[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag4."'></td>";
+	                        echo "<td><input style='width:50px' type='number' name='dag6[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag5."'></td>";
+	                        echo "<td><input style='width:50px' type='number' name='dag7[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag6."'></td>";
+	                        echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
+	                        echo "<td></td>";
+	                    echo "</tr>";
+	                    for($ix4=0; $ix4<7; $ix4++) {
+	                        ${"frm_valueDag$ix4"} = '';
+	                    }
+	                }
+	                if($row_uren['dagnummer'] == '0') $frm_valueDag0 = $row_uren['uren'];
+	                if($row_uren['dagnummer'] == '1') $frm_valueDag1 = $row_uren['uren'];
+	                if($row_uren['dagnummer'] == '2') $frm_valueDag2 = $row_uren['uren'];
+	                if($row_uren['dagnummer'] == '3') $frm_valueDag3 = $row_uren['uren'];
+	                if($row_uren['dagnummer'] == '4') $frm_valueDag4 = $row_uren['uren'];
+	                if($row_uren['dagnummer'] == '5') $frm_valueDag5 = $row_uren['uren'];
+	                if($row_uren['dagnummer'] == '6') $frm_valueDag6 = $row_uren['uren'];
+	                $tmp_soortuur = $row_uren['soortuur'];
+	            }
+	        }
+   		    echo "<tr id='row1'>";
+   	            $sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
+   	            $option = "";
+   	            while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
+   	                if ($tmp_soortuur == $row_soorturen['code']) {
+   	                    $option_selected = 'selected';
+   	                } else {
+   	                   $option_selected = '';
+   	                }
+   	                $option .= "<option ".$option_selected." value='".$row_soorturen['code']."'>".$row_soorturen['code']." - ".$row_soorturen['omschrijving']."</option>";
+   	            }
+   	            echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
+   	            echo "<td><select name='soortuur[]'>".$option."</select></td>";
+    	        echo "<td><input style='width:50px' type='number' name='dag1[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag0."'></td>";
+        	    echo "<td><input style='width:50px' type='number' name='dag2[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag1."'></td>";
+           	    echo "<td><input style='width:50px' type='number' name='dag3[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag2."'></td>";
+    		    echo "<td><input style='width:50px' type='number' name='dag4[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag3."'></td>";
+    		    echo "<td><input style='width:50px' type='number' name='dag5[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag4."'></td>";
+    		    echo "<td><input style='width:50px' type='number' name='dag6[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag5."'></td>";
+    	   	    echo "<td><input style='width:50px' type='number' name='dag7[]' min='0' max='24' step='0.25' size='2' value='".$frm_valueDag6."'></td>";
+    		    echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
+    		    echo "<td></td>";
+   		    echo "</tr>";
+        } else {
+            echo "ERROR: Kan geen connectie met de database maken. Query:". $sql_select. " failed.". mysqli_error($dbconn);
+        }
    	
-   		    //<!-- Het aantal td's moet in functions.js net zoveel zijn! -->
- 	
-   		    echo "<td><select name='soortuur[]'>".$option."</select></td>";
-    		echo "<td><input style='width:50px' type='number' name='dag1[]' min='0' max='24' step='0.25' size='2'></td>";
-    		echo "<td><input style='width:50px' type='number' name='dag2[]' min='0' max='24' step='0.25' size='2'></td>";
-    		echo "<td><input style='width:50px' type='number' name='dag3[]' min='0' max='24' step='0.25' size='2'></td>";
-    		echo "<td><input style='width:50px' type='number' name='dag4[]' min='0' max='24' step='0.25' size='2'></td>";
-    		echo "<td><input style='width:50px' type='number' name='dag5[]' min='0' max='24' step='0.25' size='2'></td>";
-    		echo "<td><input style='width:50px' type='number' name='dag6[]' min='0' max='24' step='0.25' size='2'></td>";
-    		echo "<td><input style='width:50px' type='number' name='dag7[]' min='0' max='24' step='0.25' size='2'></td>";
-    		echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
-    		echo "<td></td>";
-   		echo "</tr>";
   	echo "</table>";
   	?>
   	<input class="button" type="submit" name="save" value="save">
