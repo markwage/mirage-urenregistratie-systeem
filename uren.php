@@ -43,13 +43,29 @@ while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
 // BUTTON changeWeeknr is op geklikt om een andere week te muteren.
 // Door getWeekdays worden de dagen en data van die nieuwe week berekend
 //------------------------------------------------------------------------------------------------------
-if (isset($_POST['updateweeknr'])) {
+if (isset($_POST['updateweeknr']) || (isset($_POST['week']))) {
     writelogrecord("uren","UPDWEEK 001 Op refresh gedrukt POST(week): ".$_POST['week']);
     $inputweeknr = $_POST["week"];
     getWeekdays($_POST['week']);
     // Controleer of deze week bestaat. Zo ja dan gegevens ophalen en tonen op scherm
     // Indien week al approved kan deze niet gewijzigd worden
 }
+
+//------------------------------------------------------------------------------------------------------
+// BUTTON submit om de week ter approval aan te bieden
+//------------------------------------------------------------------------------------------------------
+//if (isset($_POST['approval'])) {
+//    getWeekdays($_POST['week']);
+//    $sql_update_uren = "UPDATE uren SET terapprovalaangeboden='1' where user='".$username."' AND week='".$week."' AND jaar='".$year."'";
+//    if($sql_result = mysqli_query($dbconn, $sql_update_uren)) {
+//        writelogrecord("uren","APPROVAL Week ".$year." /  ".$week." is aangeboden om approved te worden");
+//    } else {
+//        writelogrecord("uren","APPROVAL Week ".$year." /  ".$week." is aangeboden maar update is mislukt");
+//        writelogrecord("uren","    Query: ".$sql_update_uren);
+//        echo "ERROR: Could not able to execute $sql_update_uren ". mysqli_error($dbconn);
+//    }
+//    header("location: index.php");
+//}
 
 //------------------------------------------------------------------------------------------------------
 // BUTTON Cancel
@@ -61,7 +77,7 @@ if (isset($_POST['cancel'])) {
 //------------------------------------------------------------------------------------------------------
 // BUTTON Save
 //------------------------------------------------------------------------------------------------------
-if (isset($_POST['save'])) {
+if (isset($_POST['save']) || isset($_POST['approval'])) {
     getWeekdays($_POST['week']);
     $sql_select_uren = "SELECT * FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."'";
     writelogrecord("uren","BTNSAVE Controle of er al gegevens van jaar ".$year." en week ".$week." zijn");
@@ -93,6 +109,18 @@ if (isset($_POST['save'])) {
             }
         }
     }
+    if (isset($_POST['approval'])) {
+        //getWeekdays($_POST['week']);
+        $sql_update_uren = "UPDATE uren SET terapprovalaangeboden='1' where user='".$username."' AND week='".$week."' AND jaar='".$year."'";
+        if($sql_result = mysqli_query($dbconn, $sql_update_uren)) {
+            writelogrecord("uren","APPROVAL Week ".$year." /  ".$week." is aangeboden om approved te worden");
+        } else {
+            writelogrecord("uren","APPROVAL Week ".$year." /  ".$week." is aangeboden maar update is mislukt");
+            writelogrecord("uren","    Query: ".$sql_update_uren);
+            echo "ERROR: Problemen in uitvoeren van query ".$sql_update_uren.". ".mysqli_error($dbconn);
+        }
+        header("location: index.php");
+    }
 }
 ?>
 
@@ -101,8 +129,8 @@ if (isset($_POST['save'])) {
 	<table>
 		<tr>
 			<td>Weeknummer</td>
-			<td><input style="width:70px" type="number" name="week" id="camp-week" value="<?php echo $inputweeknr; ?>" required></td>
-			<td><input class="button" type="submit" name="updateweeknr" value="refresh"></td>
+			<td><input style="width:70px" type="number" name="week" id="camp-week" value="<?php echo $inputweeknr; ?>" required onchange='this.form.submit()'></td>
+			<!-- -<td><input class="button" type="submit" name="updateweeknr" value="refresh"></td> -->
 		</tr>
 	</table>
 	<?php 
@@ -126,7 +154,9 @@ if (isset($_POST['save'])) {
         if($sql_result_uren = mysqli_query($dbconn, $sql_uren)) {
 	        if(mysqli_num_rows($sql_result_uren) > 0) {
 	            while($row_uren = mysqli_fetch_array($sql_result_uren)) {
-	                if($row_uren['approved'] == 1) { 
+	                $frm_approved = $row_uren['approved'];
+	                $frm_terapprovalaangeboden = $row_uren['terapprovalaangeboden'];
+	                if($frm_approved == 1) { 
 	                    $frm_readonly = "readonly";
 	                    $frm_selectdisabled = "disabled";
 	                } else { 
@@ -147,13 +177,12 @@ if (isset($_POST['save'])) {
 	                    echo "<tr id='row1'>";
 	                        echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
 	                        echo "<td><select name='soortuur[]' ".$frm_selectdisabled." ".$frm_readonly.">".$option."</select></td>";
-	                        //echo "<td><select name='soortuur[]' disabled >".$option."</select></td>";
 	                        for($ix5=0; $ix5<7; $ix5++) {
 	                            $frm_value = ${"frm_valueDag$ix5"};
 	                            $ix5b = $ix5 + 1;
 	                            echo "<td><input ".$frm_readonly." style='width:50px' type='number' name='dag".$ix5b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
 	                        }
-	                        if($row_uren['approved'] == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
+	                        if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
 	                        else echo "<td></td>";
 	                        echo "<td></td>";
 	                    echo "</tr>";
@@ -166,6 +195,10 @@ if (isset($_POST['save'])) {
 	                }
 	                $tmp_soortuur = $row_uren['soortuur'];
 	            }
+	        } else {
+	            $frm_selectdisabled = "";
+	            $frm_readonly = "";
+	            $frm_approved = "";
 	        }
    		    echo "<tr id='row1'>";
    	            $sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
@@ -179,16 +212,14 @@ if (isset($_POST['save'])) {
    	                $option .= "<option ".$option_selected." value='".$row_soorturen['code']."'>".$row_soorturen['code']." - ".$row_soorturen['omschrijving']."</option>";
    	            }
    	            echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
-   	            //echo "<td><select ".$frm_readonly." name='soortuur[]'>".$option."</select></td>";
    	            echo "<td><select name='soortuur[]' ".$frm_selectdisabled." ".$frm_readonly.">".$option."</select></td>";
    	            for($ix7=0; $ix7<7; $ix7++) {
    	                $frm_value = ${"frm_valueDag$ix7"};
    	                $ix7b = $ix7 + 1;
    	                echo "<td><input ".$frm_readonly." style='width:50px' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
    	            }
-   	            if($row_uren['approved'] == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
+   	            if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
    	            else echo "<td></td>";
-    		    //echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
     		    echo "<td></td>";
    		    echo "</tr>";
         } else {
@@ -196,9 +227,13 @@ if (isset($_POST['save'])) {
         }
    	
   	echo "</table>";
+  	if($frm_approved == 0) { 
+  	    if($frm_terapprovalaangeboden == 1 ) echo "<blockquote><p>Deze week is al ter approval aangeboden maar kan nog gewijzigd worden</p></blockquote>";
+  	    echo "<input class='button' type='submit' name='save' value='save'>";
+  	    echo "<input class='button' type='submit' name='approval' value='submit'>";
+  	}
+  	echo "<input class='button' type='submit' name='cancel' value='cancel'>";
   	?>
-  	<input class="button" type="submit" name="save" value="save">
-  	<input class="button" type="submit" name="cancel" value="cancel">
 </form>
 </div>	
 

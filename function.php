@@ -198,7 +198,7 @@ function checkIngevuldeUrenPerSoort($ix1) {
 //-------------------------------------------------------------------------
 function getWeekdays($weeknr){
     global $weekDatum, $weekDagNaam, $week, $year, $inputweeknr;
-    writelogrecord("function","getWeekdays weeknr: ".$weeknr);
+    //writelogrecord("function","getWeekdays weeknr: ".$weeknr);
     $inputweeknr = $weeknr;
     $week = substr($inputweeknr, 4, 2);
     $year = substr($inputweeknr, 0, 4);
