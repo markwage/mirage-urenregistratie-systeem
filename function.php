@@ -87,19 +87,6 @@ function displayUserGegevens() {
 		$emailadres    = $row_user['emailadres'];
 		echo '<tr><td align="right">Medewerker: </td><td><strong>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</strong></td></tr></table></p>' ;
 	}
-	//$sql_laatste = mysqli_query($dbconn, "SELECT * FROM uren WHERE userID = '$user_id' AND terapprovalaangeboden = 1 ORDER BY datum DESC LIMIT 1") or die ("Error in query: $sql_laatste. ".mysql_error());
-	//$checknumrows = mysqli_num_rows($sql_laatste);
-	//echo "<p><table>";
-	//if ($checknumrows <> 0) {
-	//    $row_laatste = mysqli_fetch_array($sql_laatste);
-	//    $datum_laatste_mutatie = $row_laatste['datum'];
-	//    echo '<tr><td align="right">Laatste week voor approval aangeboden: </td><td>week '.cnv_dateToWeek($datum_laatste_mutatie).'</td</tr>';
-	//    $weekNumber = date("W");
-	//    echo '<tr><td align="right">Huidige weeknummer: </td><td>'.$weekNumber.'</td</tr>';
-	//    // echo "</table></p>";
-	//} else {
-	//    echo '<tr><td align="right">Er zijn nog geen weken ter approval aangeboden</td</tr>';
-	//}
 	echo "</table></p>";
 }
 

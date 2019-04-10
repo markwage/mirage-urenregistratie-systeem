@@ -11,7 +11,7 @@ if (isset($_COOKIE['ID_mus'])) {
 	echo '<h1 class="clear">Urenadministratie</h1>';
 	echo '<ul class="sidemenu">';
 	echo '<li><a href="uren.php?aktie=toevoegen">Invoeren uren</a></li>';
-	echo '<li><a href="uren.php?aktie=disp">Weken wachtend op approval</a></li>';
+	//echo '<li><a href="openstaand.php?aktie=disp">Openstaande approvals</a></li>';
 	echo '<li><a href="uren.php?aktie=disp">Vakantie-uren per kalenderjaar</a></li>';
 	echo '<li><a href="rapportage.php">Overzicht periode</a></li>';
 	//echo '<li><a href="edit_users.php?aktie=edit&edtuser='.$_SESSION["username"].'">Mijn profiel</a></li>';
@@ -25,6 +25,7 @@ if (isset($_COOKIE['ID_mus'])) {
 		echo '<h1>Admin menu</h1>';
 		echo '<ul class="sidemenu">';
 		// echo '<li><a href="add_user.php">Add user</a></li>';
+		echo '<li><a href="openstaand.php?aktie=disp">Openstaande approvals</a></li>';
 		echo '<li><a href="edit_users.php?aktie=disp">Usermanagement</a></li>';
 		echo '<li><a href="edit_soorturen.php?aktie=disp">Onderhoud soort uren</a></li>';
 		echo '<li><a href="edit_nieuws.php?aktie=disp">Onderhoud nieuwsartikelen</a></li>';

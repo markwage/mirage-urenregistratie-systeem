@@ -199,6 +199,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
 	            $frm_selectdisabled = "";
 	            $frm_readonly = "";
 	            $frm_approved = "";
+	            $frm_terapprovalaangeboden = "";
 	        }
    		    echo "<tr id='row1'>";
    	            $sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
@@ -227,6 +228,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
         }
    	
   	echo "</table>";
+  	if($frm_approved == 1) echo "<blockquote><p>Deze week is al approved en kan derhalve niet meer gewijzigd worden</p></blockquote>";
   	if($frm_approved == 0) { 
   	    if($frm_terapprovalaangeboden == 1 ) echo "<blockquote><p>Deze week is al ter approval aangeboden maar kan nog gewijzigd worden</p></blockquote>";
   	    echo "<input class='button' type='submit' name='save' value='save'>";

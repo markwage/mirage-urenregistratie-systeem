@@ -28,7 +28,7 @@ a:hover {
 
 /* headers */
 h1, h2, h3 { font: bold verdana, arial, sans-serif; }
-h1 { font-size: 24px; color: #65944A; }
+h1 { font-size: 24px; color: #118981; }
 h2 { font-size: 20px; text-transform: uppercase; }
 h3 { font-size: 16px; }
 
@@ -59,7 +59,7 @@ blockquote {
   	background-color: #FAFAFA; 
 	background-position: 8px 10px;
 	border: 1px solid #f2f2f2; 
-	border-left: 3px solid #72A545;  
+	border-left: 3px solid #13C3B7;  
 	font: 13px verdana, arial, sans-serif; 
 	color: #666666;	
 }
@@ -73,7 +73,7 @@ th strong {
 	color: #fff;
 }
 th {
-	background: #74A846;
+	background: #13C3B7;
 	height: 20px;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -102,7 +102,7 @@ tr.row-a {
 	background: white;
 }
 tr.row-b {
-	background: #ecfbec;
+	background: #eafffd;
 }
 /* end - table */
 
@@ -110,8 +110,8 @@ tr.row-b {
 form {
 	margin: 10px 15px;
 	padding: 0;
-	border: 1px solid #f2f2f2;
-	background-color: #f3fef3;
+	border: 1px solid #eafffd;
+	background-color: #eafffd;
 }
 label {
 	display:block;
@@ -132,7 +132,7 @@ input[type="checkbox"]{
 }
 
 input:focus {
-	background-color: #e8ffe8;
+	background-color: #eafffd;
 }
 /* Selects any <input> element that is read-only */
 /* Supported in Firefox with a prefix */
@@ -165,7 +165,7 @@ textarea:read-only {
   background-color: #e4e4e4;
 }
 textarea:focus {
-	background-color: #e8ffe8;
+	background-color: #eafffd;
 }
 
 input.button {
@@ -192,6 +192,7 @@ input.button {
 #header {
 	height: 100px;
 	text-align: left;	
+	background-color: black;
 }
 #header-content {	
 	margin: 0 auto; padding: 0;
@@ -247,11 +248,11 @@ input.button {
 	border-right: 1px solid #272727;
 }
 #header-content li a:hover {
-	background: #65944A;
+	background: #13C3B7;
 	color: #FFF;
 }
 #header-content li a#current  {
-	background: #65944A;
+	background: #13C3B7;
 	color: #FFF;
 }
 
@@ -312,8 +313,8 @@ input.button {
 }
 #sidebar ul.sidemenu a:hover {
 	padding: .3em 0 .3em 10px;
-	border-left: 5px solid  #65944A;
-	color: #65944A;		
+	border-left: 5px solid  #0c726b;
+	color: #0c726b;		
 }
 
 /* main */
@@ -322,7 +323,7 @@ input.button {
 	width: 73%;	
 	margin: 0 0 10px 0; padding: 0;	
 	border: 2px solid;
-	border-color: #65944A;
+	border-color: #0c726b;
 }
 #main h1 {
 	padding: 10px 0px 0px 5px;
@@ -351,7 +352,7 @@ input.button {
 	background-color: #FAFAFA;
 	background-position: 8px 10px;
 	border: 1px solid #f2f2f2;
-	border-left: 3px solid #65944A;
+	border-left: 3px solid #0c726b;
 	font: 13px verdana, arial, sans-serif;
 	font-weight: bold;
 }
