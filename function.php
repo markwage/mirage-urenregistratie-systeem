@@ -85,7 +85,9 @@ function displayUserGegevens() {
 		$tussenvoegsel = $row_user['tussenvoegsel'];
 		$achternaam    = $row_user['achternaam'];
 		$emailadres    = $row_user['emailadres'];
-		echo '<tr><td align="right">Medewerker: </td><td><strong>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</strong></td></tr></table></p>' ;
+		echo '<tr><td align="right"><strong>Medewerker: </strong></td><td>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</td></tr>';
+		echo '<tr><td align="right"><strong>Emailadres: </strong></td><td>'.$emailadres.'</td></tr>';
+		//echo "</tr></table></p>";
 	}
 	echo "</table></p>";
 }
