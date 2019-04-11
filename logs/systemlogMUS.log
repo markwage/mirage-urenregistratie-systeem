@@ -2458,3 +2458,49 @@
 20190411 09:40:44;index;mwage;Totaal aantal rijen uit de select-query: 4
 20190411 09:41:00;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
 20190411 09:41:00;index;mwage;Totaal aantal rijen uit de select-query: 4
+20190411 13:34:31;login;mwage;User mwage is succesvol ingelogd.
+20190411 13:34:31;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190411 13:34:31;index;mwage;Totaal aantal rijen uit de select-query: 4
+20190411 13:34:54;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201915
+20190411 13:34:54;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190411 13:34:54;index;mwage;Totaal aantal rijen uit de select-query: 4
+20190411 18:36:44;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190411 18:36:44;index;;Totaal aantal rijen uit de select-query: 0
+20190411 18:36:54;login;mwage;User mwage is succesvol ingelogd.
+20190411 18:36:54;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190411 18:36:54;index;mwage;Totaal aantal rijen uit de select-query: 4
+20190411 19:15:57;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201916
+20190411 19:19:20;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201916
+20190411 19:21:41;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201917
+20190411 19:21:44;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201916
+20190411 19:21:49;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201915
+20190411 19:32:43;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201914
+20190411 19:34:48;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201914
+20190411 20:32:14;login;mwage;User mwage is succesvol ingelogd.
+20190411 20:32:14;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190411 20:32:14;index;mwage;Totaal aantal rijen uit de select-query: 4
+20190411 20:32:37;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201916
+20190411 20:32:42;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201915
+20190411 20:32:46;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201914
+20190411 20:35:18;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201914
+20190411 20:35:24;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201913
+20190411 20:35:31;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201912
+20190411 20:40:30;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201914
+20190411 20:40:33;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201913
+20190411 20:40:37;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201912
+20190411 20:40:41;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201911
+20190411 20:40:53;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201916
+20190411 20:40:53;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 16 zijn
+20190411 20:40:53;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='16' AND jaar='2019'
+20190411 20:40:57;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201917
+20190411 20:41:02;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201914
+20190411 20:41:02;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 14 zijn
+20190411 20:41:02;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='14' AND jaar='2019'
+20190411 20:41:02;uren;mwage;BTNSAVE Records worden verwijderd van jaar 2019 en week 14 voor het updaten van de betreffende week
+20190411 20:41:02;uren;mwage;BTNSAVE Query: DELETE FROM uren where user='mwage' AND week='14' AND jaar='2019'
+20190411 20:41:07;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201913
+20190411 20:41:22;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201914
+20190411 20:41:26;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201913
+20190411 20:41:31;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201912
+20190411 20:41:33;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201913
+20190411 20:41:36;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201914

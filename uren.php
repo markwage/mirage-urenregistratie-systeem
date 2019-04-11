@@ -15,7 +15,7 @@ include ("header.php");
 <div id="main">		
 	<h1>Urenadministratie</h1>
 	
-<?php 
+<?php
 displayUserGegevens();
 $inputweeknr=date('Y').date('W');
 getWeekdays($inputweeknr);
@@ -29,9 +29,6 @@ while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
     $option .= "<option value='".$row_soorturen['code']."'>".$row_soorturen['code']." - ".$row_soorturen['omschrijving']."</option>";
 }
 
-?>
-	
-<?php 
 //------------------------------------------------------------------------------------------------------
 // This code runs before the form is displayed
 //------------------------------------------------------------------------------------------------------
@@ -126,14 +123,31 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
 
 <div id="form_div">
 <form name="add_uren" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	<table>
-		<tr>
-			<td>Weeknummer</td>
-			<td><input style="width:70px" type="number" name="week" id="camp-week" value="<?php echo $inputweeknr; ?>" required onchange='this.form.submit()'></td>
-			<!-- -<td><input class="button" type="submit" name="updateweeknr" value="refresh"></td> -->
-		</tr>
-	</table>
 	<?php 
+	$sql_approval = "SELECT approved, terapprovalaangeboden FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."' ORDER BY soortuur, dagnummer";
+	if($sql_result_approval = mysqli_query($dbconn, $sql_approval)) {
+	    if(mysqli_num_rows($sql_result_approval) > 0) {
+	        while($row_uren = mysqli_fetch_array($sql_result_approval)) {
+	            $frm_approved = $row_uren['approved'];
+	            $frm_terapprovalaangeboden = $row_uren['terapprovalaangeboden'];
+	            if($frm_approved == 1) $status = "Deze week is al approved en kan derhalve niet meer gewijzigd worden.";
+	            if($frm_approved == 0) {
+	                if($frm_terapprovalaangeboden == 1 ) $status = "Deze week is al ter approval aangeboden maar kan nog gewijzigd worden";
+	                if($frm_terapprovalaangeboden == 0 ) $status = "Deze week is nog niet ter approval aangeboden.";
+	            }
+	        }    
+	    } else {
+	        $status = "Dit is een nieuwe week is nog niet ter approval aangeboden";
+	    }
+	}
+	echo "<table>";
+	    echo "<tr>";
+			echo "<td><strong>Weeknummer</strong></td>";
+			echo "<td><input style='width:70px' type='number' name='week' id='camp-week' value='".$inputweeknr."' required onchange='this.form.submit()'></td>";
+			echo "<td>".$status."</td";
+			//<!-- -<td><input class="button" type="submit" name="updateweeknr" value="refresh"></td> -->
+		echo "</tr>";
+	echo "</table>";
 	echo "<table id='uren_table'>";
         echo "<tr>";
             echo "<th>Soortuur</th>";
@@ -155,7 +169,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
 	        if(mysqli_num_rows($sql_result_uren) > 0) {
 	            while($row_uren = mysqli_fetch_array($sql_result_uren)) {
 	                $frm_approved = $row_uren['approved'];
-	                $frm_terapprovalaangeboden = $row_uren['terapprovalaangeboden'];
+	                //$frm_terapprovalaangeboden = $row_uren['terapprovalaangeboden'];
 	                if($frm_approved == 1) { 
 	                    $frm_readonly = "readonly";
 	                    $frm_selectdisabled = "disabled";
@@ -199,7 +213,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
 	            $frm_selectdisabled = "";
 	            $frm_readonly = "";
 	            $frm_approved = "";
-	            $frm_terapprovalaangeboden = "";
+	            //$frm_terapprovalaangeboden = "";
 	        }
    		    echo "<tr id='row1'>";
    	            $sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
@@ -228,9 +242,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
         }
    	
   	echo "</table>";
-  	if($frm_approved == 1) echo "<blockquote><p>Deze week is al approved en kan derhalve niet meer gewijzigd worden</p></blockquote>";
   	if($frm_approved == 0) { 
-  	    if($frm_terapprovalaangeboden == 1 ) echo "<blockquote><p>Deze week is al ter approval aangeboden maar kan nog gewijzigd worden</p></blockquote>";
   	    echo "<input class='button' type='submit' name='save' value='save'>";
   	    echo "<input class='button' type='submit' name='approval' value='submit'>";
   	}
