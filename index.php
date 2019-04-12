@@ -56,7 +56,7 @@ check_cookies();
 			        echo "<tr>";
                         echo "<th>jaar</th>";
                         echo "<th>week</th>";
-                        echo "<th>Aangeboden</th>";
+                        echo "<th>Ter approval<br />aangeboden</th>";
                         echo "<th>Approved</th>";
                         echo "<th>datum</th>";
                         echo "<th>approved door</th>";

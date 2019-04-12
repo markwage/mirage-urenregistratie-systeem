@@ -9,9 +9,6 @@ function confirmDelNieuwsbericht() {
 	return confirm("Weet je zeker dat dit bericht verwijderd moet worden?");
 }
 
-function noenter() {
-	  return !(window.event && window.event.keyCode == 13); }
-
 function add_row() {
 	var fieldElementsSoortUur=document.getElementById('dropdownSoortUren');
 	var selectSoortUur = fieldElementsSoortUur.getAttribute("data-options");

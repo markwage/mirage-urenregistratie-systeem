@@ -225,7 +225,7 @@ echo "<table id='uren_table'>";
         echo "ERROR: Kan geen connectie met de database maken. Query:". $sql_select. " failed.". mysqli_error($dbconn);
     }
    	
-echo "</table>";
+echo "</table>"; 
 // This button is needed for when user pushes the ENTER button when changing the weeknumber
 echo "<input type='submit' name='dummy' value='None' style='display: none'>";
 if($frm_approved == 0) { 
