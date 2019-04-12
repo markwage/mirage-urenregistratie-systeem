@@ -48,23 +48,6 @@ if (isset($_POST['updateweeknr']) || (isset($_POST['week']))) {
     // Indien week al approved kan deze niet gewijzigd worden
 }
 
-//------------------------------------------------------------------------------------------------------
-// BUTTON submit om de week ter approval aan te bieden
-//------------------------------------------------------------------------------------------------------
-//if (isset($_POST['approval'])) {
-//    getWeekdays($_POST['week']);
-//    $sql_update_uren = "UPDATE uren SET terapprovalaangeboden='1' where user='".$username."' AND week='".$week."' AND jaar='".$year."'";
-//    if($sql_result = mysqli_query($dbconn, $sql_update_uren)) {
-//        writelogrecord("uren","APPROVAL Week ".$year." /  ".$week." is aangeboden om approved te worden");
-//    } else {
-//        writelogrecord("uren","APPROVAL Week ".$year." /  ".$week." is aangeboden maar update is mislukt");
-//        writelogrecord("uren","    Query: ".$sql_update_uren);
-//        echo "ERROR: Could not able to execute $sql_update_uren ". mysqli_error($dbconn);
-//    }
-//    header("location: index.php");
-//}
-
-//------------------------------------------------------------------------------------------------------
 // BUTTON Cancel
 //------------------------------------------------------------------------------------------------------
 if (isset($_POST['cancel'])) {
@@ -123,131 +106,134 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
 
 <div id="form_div">
 <form name="add_uren" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	<?php 
-	$sql_approval = "SELECT approved, terapprovalaangeboden FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."' ORDER BY soortuur, dagnummer";
-	if($sql_result_approval = mysqli_query($dbconn, $sql_approval)) {
-	    if(mysqli_num_rows($sql_result_approval) > 0) {
-	        while($row_uren = mysqli_fetch_array($sql_result_approval)) {
-	            $frm_approved = $row_uren['approved'];
-	            $frm_terapprovalaangeboden = $row_uren['terapprovalaangeboden'];
-	            if($frm_approved == 1) $status = "Deze week is al approved en kan derhalve niet meer gewijzigd worden.";
-	            if($frm_approved == 0) {
-	                if($frm_terapprovalaangeboden == 1 ) $status = "Deze week is al ter approval aangeboden maar kan nog gewijzigd worden";
-	                if($frm_terapprovalaangeboden == 0 ) $status = "Deze week is nog niet ter approval aangeboden.";
-	            }
-	        }    
-	    } else {
-	        $status = "Dit is een nieuwe week is nog niet ter approval aangeboden";
-	    }
-	}
-	echo "<table>";
-	    echo "<tr>";
-			echo "<td><strong>Weeknummer</strong></td>";
-			echo "<td><input style='width:70px' type='number' name='week' id='camp-week' value='".$inputweeknr."' required onchange='this.form.submit()'></td>";
-			echo "<td>".$status."</td";
-			//<!-- -<td><input class="button" type="submit" name="updateweeknr" value="refresh"></td> -->
-		echo "</tr>";
-	echo "</table>";
-	echo "<table id='uren_table'>";
-        echo "<tr>";
-            echo "<th>Soortuur</th>";
-            for($ix6=0; $ix6<7; $ix6++) {
-                echo "<th><center>".$weekDatum[$ix6]."<br>".$weekDagNaam[$ix6]."</center></th>";
+	
+<?php
+$sql_approval = "SELECT approved, terapprovalaangeboden FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."' ORDER BY soortuur, dagnummer";
+if($sql_result_approval = mysqli_query($dbconn, $sql_approval)) {
+    if(mysqli_num_rows($sql_result_approval) > 0) {
+        while($row_approved = mysqli_fetch_array($sql_result_approval)) {
+            $frm_approved = $row_approved['approved'];
+            $frm_terapprovalaangeboden = $row_approved['terapprovalaangeboden'];
+            if($frm_approved == 1) $status = "Deze week is al approved en kan derhalve niet meer gewijzigd worden.";
+            if($frm_approved == 0) {
+                if($frm_terapprovalaangeboden == 1 ) $status = "Deze week is al ter approval aangeboden maar kan nog gewijzigd worden";
+                if($frm_terapprovalaangeboden == 0 ) $status = "Deze week is nog niet ter approval aangeboden.";
             }
-	    echo "</tr>";
-	    //------------------------------------------------------------------------------------------------------
-	    // Bekijk huidige week of er al uren ingevuld zijn.
-	    //------------------------------------------------------------------------------------------------------
-	    for($ix3=0; $ix3<7; $ix3++) {
-	        ${"frm_valueDag$ix3"} = '';
-	    }
-	    $tmp_soortuur = 'eersteloop';
-	    
-	    $sql_uren = "SELECT * FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."' ORDER BY soortuur, dagnummer";
-        // Om regels per soortuur te krijgen HOE??
-        if($sql_result_uren = mysqli_query($dbconn, $sql_uren)) {
-	        if(mysqli_num_rows($sql_result_uren) > 0) {
-	            while($row_uren = mysqli_fetch_array($sql_result_uren)) {
-	                $frm_approved = $row_uren['approved'];
-	                //$frm_terapprovalaangeboden = $row_uren['terapprovalaangeboden'];
-	                if($frm_approved == 1) { 
-	                    $frm_readonly = "readonly";
-	                    $frm_selectdisabled = "disabled";
-	                } else { 
-	                    $frm_readonly = "";
-	                    $frm_selectdisabled = "";
-	                }
-	                if(($tmp_soortuur <> $row_uren['soortuur']) && ($tmp_soortuur <> 'eersteloop')) {
-	                    $sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
-	                    $option = "";
-	                    while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
-	                        if ($tmp_soortuur == $row_soorturen['code']) {
-	                            $option_selected = 'selected';
-	                        } else {
-	                            $option_selected = '';
-	                        }
-	                        $option .= "<option ".$option_selected." value='".$row_soorturen['code']."'>".$row_soorturen['code']." - ".$row_soorturen['omschrijving']."</option>";
-	                    }
-	                    echo "<tr id='row1'>";
-	                        echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
-	                        echo "<td><select name='soortuur[]' ".$frm_selectdisabled." ".$frm_readonly.">".$option."</select></td>";
-	                        for($ix5=0; $ix5<7; $ix5++) {
-	                            $frm_value = ${"frm_valueDag$ix5"};
-	                            $ix5b = $ix5 + 1;
-	                            echo "<td><input ".$frm_readonly." style='width:50px' type='number' name='dag".$ix5b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
-	                        }
-	                        if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
-	                        else echo "<td></td>";
-	                        echo "<td></td>";
-	                    echo "</tr>";
-	                    for($ix4=0; $ix4<7; $ix4++) {
-	                        ${"frm_valueDag$ix4"} = '';
-	                    }
-	                }
-	                for($ix5=0; $ix5<7; $ix5++) {
-	                    if($row_uren['dagnummer'] == $ix5) ${"frm_valueDag$ix5"} = $row_uren['uren'];
-	                }
-	                $tmp_soortuur = $row_uren['soortuur'];
-	            }
-	        } else {
-	            $frm_selectdisabled = "";
-	            $frm_readonly = "";
-	            $frm_approved = "";
-	            //$frm_terapprovalaangeboden = "";
-	        }
-   		    echo "<tr id='row1'>";
-   	            $sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
-   	            $option = "";
-   	            while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
-   	                if ($tmp_soortuur == $row_soorturen['code']) {
-   	                    $option_selected = 'selected';
-   	                } else {
-   	                   $option_selected = '';
-   	                }
-   	                $option .= "<option ".$option_selected." value='".$row_soorturen['code']."'>".$row_soorturen['code']." - ".$row_soorturen['omschrijving']."</option>";
-   	            }
-   	            echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
-   	            echo "<td><select name='soortuur[]' ".$frm_selectdisabled." ".$frm_readonly.">".$option."</select></td>";
-   	            for($ix7=0; $ix7<7; $ix7++) {
-   	                $frm_value = ${"frm_valueDag$ix7"};
-   	                $ix7b = $ix7 + 1;
-   	                echo "<td><input ".$frm_readonly." style='width:50px' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
-   	            }
-   	            if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
-   	            else echo "<td></td>";
-    		    echo "<td></td>";
-   		    echo "</tr>";
-        } else {
-            echo "ERROR: Kan geen connectie met de database maken. Query:". $sql_select. " failed.". mysqli_error($dbconn);
+        }    
+    } else {
+        $status = "Dit is een nieuwe week is nog niet ter approval aangeboden";
+    }
+}
+echo "<table>";
+    echo "<tr>";
+		echo "<td><strong>Weeknummer</strong></td>";
+		echo "<td><input style='width:70px' type='number' name='week' id='camp-week' value='".$inputweeknr."' required onchange='this.form.submit()'></td>";
+		echo "<td>".$status."</td";
+		//<!-- -<td><input class="button" type="submit" name="updateweeknr" value="refresh"></td> -->
+	echo "</tr>";
+echo "</table>";
+echo "<table id='uren_table'>";
+    echo "<tr>";
+        echo "<th>Soortuur</th>";
+        for($ix6=0; $ix6<7; $ix6++) {
+            echo "<th><center>".$weekDatum[$ix6]."<br>".$weekDagNaam[$ix6]."</center></th>";
         }
+    echo "</tr>";
+    //------------------------------------------------------------------------------------------------------
+    // Bekijk huidige week of er al uren ingevuld zijn.
+    //------------------------------------------------------------------------------------------------------
+    for($ix3=0; $ix3<7; $ix3++) {
+        ${"frm_valueDag$ix3"} = '';
+    }
+    $tmp_soortuur = 'eersteloop';
+	    
+    $sql_uren = "SELECT * FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."' ORDER BY soortuur, dagnummer";
+    // Om regels per soortuur te krijgen HOE??
+    if($sql_result_uren = mysqli_query($dbconn, $sql_uren)) {
+        if(mysqli_num_rows($sql_result_uren) > 0) {
+            while($row_uren = mysqli_fetch_array($sql_result_uren)) {
+                $frm_approved = $row_uren['approved'];
+                //$frm_terapprovalaangeboden = $row_uren['terapprovalaangeboden'];
+                if($frm_approved == 1) { 
+                    $frm_readonly = "readonly";
+                    $frm_selectdisabled = "disabled";
+                } else { 
+                    $frm_readonly = "";
+                    $frm_selectdisabled = "";
+                }
+                if(($tmp_soortuur <> $row_uren['soortuur']) && ($tmp_soortuur <> 'eersteloop')) {
+                    $sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
+                    $option = "";
+                    while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
+                        if ($tmp_soortuur == $row_soorturen['code']) {
+                            $option_selected = 'selected';
+                        } else {
+                            $option_selected = '';
+                        }
+                        $option .= "<option ".$option_selected." value='".$row_soorturen['code']."'>".$row_soorturen['code']." - ".$row_soorturen['omschrijving']."</option>";
+                    }
+                    echo "<tr id='row1'>";
+                        echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
+                        echo "<td><select name='soortuur[]' ".$frm_selectdisabled." ".$frm_readonly.">".$option."</select></td>";
+                        for($ix5=0; $ix5<7; $ix5++) {
+                            $frm_value = ${"frm_valueDag$ix5"};
+                            $ix5b = $ix5 + 1;
+                            echo "<td><input ".$frm_readonly." style='width:50px' type='number' name='dag".$ix5b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
+                        }
+                        if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
+                        else echo "<td></td>";
+                        echo "<td></td>";
+                    echo "</tr>";
+                    for($ix4=0; $ix4<7; $ix4++) {
+                        ${"frm_valueDag$ix4"} = '';
+                    }
+                }
+                for($ix5=0; $ix5<7; $ix5++) {
+                    if($row_uren['dagnummer'] == $ix5) ${"frm_valueDag$ix5"} = $row_uren['uren'];
+                }
+                $tmp_soortuur = $row_uren['soortuur'];
+            }
+        } else {
+            $frm_selectdisabled = "";
+            $frm_readonly = "";
+            $frm_approved = "";
+            //$frm_terapprovalaangeboden = "";
+        }
+	    echo "<tr id='row1'>";
+            $sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
+            $option = "";
+            while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
+                if ($tmp_soortuur == $row_soorturen['code']) {
+                    $option_selected = 'selected';
+                } else {
+                   $option_selected = '';
+                }
+                $option .= "<option ".$option_selected." value='".$row_soorturen['code']."'>".$row_soorturen['code']." - ".$row_soorturen['omschrijving']."</option>";
+            }
+            echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
+            echo "<td><select name='soortuur[]' ".$frm_selectdisabled." ".$frm_readonly.">".$option."</select></td>";
+            for($ix7=0; $ix7<7; $ix7++) {
+                $frm_value = ${"frm_valueDag$ix7"};
+                $ix7b = $ix7 + 1;
+                echo "<td><input ".$frm_readonly." style='width:50px' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
+            }
+            if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
+            else echo "<td></td>";
+  		    echo "<td></td>";
+	    echo "</tr>";
+    } else {
+        echo "ERROR: Kan geen connectie met de database maken. Query:". $sql_select. " failed.". mysqli_error($dbconn);
+    }
    	
-  	echo "</table>";
-  	if($frm_approved == 0) { 
-  	    echo "<input class='button' type='submit' name='save' value='save'>";
-  	    echo "<input class='button' type='submit' name='approval' value='submit'>";
-  	}
-  	echo "<input class='button' type='submit' name='cancel' value='cancel'>";
-  	?>
+echo "</table>";
+// This button is needed for when user pushes the ENTER button when changing the weeknumber
+echo "<input type='submit' name='dummy' value='None' style='display: none'>";
+if($frm_approved == 0) { 
+    echo "<input class='button' type='submit' name='save' value='save'>";
+    echo "<input class='button' type='submit' name='approval' value='submit'>";
+}
+echo "<input class='button' type='submit' name='cancel' value='cancel'>";
+?>
 </form>
 </div>	
 
