@@ -138,6 +138,7 @@ echo "<table id='uren_table'>";
         for($ix6=0; $ix6<7; $ix6++) {
             echo "<th><center>".$weekDatum[$ix6]."<br>".$weekDagNaam[$ix6]."</center></th>";
         }
+        echo "<th colspan=2>Totaal</th>";
     echo "</tr>";
     //------------------------------------------------------------------------------------------------------
     // Bekijk huidige week of er al uren ingevuld zijn.
@@ -172,18 +173,23 @@ echo "<table id='uren_table'>";
                         }
                         $option .= "<option ".$option_selected." value='".$row_soorturen['code']."'>".$row_soorturen['code']." - ".$row_soorturen['omschrijving']."</option>";
                     }
+                    
                     echo "<tr id='row1'>";
                         echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
                         echo "<td><select name='soortuur[]' ".$frm_selectdisabled." ".$frm_readonly.">".$option."</select></td>";
+                        $totaalurenpersoort = 0;
                         for($ix5=0; $ix5<7; $ix5++) {
                             $frm_value = ${"frm_valueDag$ix5"};
                             $ix5b = $ix5 + 1;
-                            echo "<td><input ".$frm_readonly." style='width:50px' type='number' name='dag".$ix5b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
+                            echo "<td><input ".$frm_readonly." style='width:50px; text-align:right' type='number' name='dag".$ix5b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
+                            $totaalurenpersoort = number_format($totaalurenpersoort + floatval($frm_value), 2);
+                            if($ix5b == 7) echo "<td><input readonly style='width:50px; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
                         }
                         if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
                         else echo "<td></td>";
                         echo "<td></td>";
                     echo "</tr>";
+                    
                     for($ix4=0; $ix4<7; $ix4++) {
                         ${"frm_valueDag$ix4"} = '';
                     }
@@ -199,6 +205,7 @@ echo "<table id='uren_table'>";
             $frm_approved = "";
             //$frm_terapprovalaangeboden = "";
         }
+        
 	    echo "<tr id='row1'>";
             $sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
             $option = "";
@@ -212,15 +219,22 @@ echo "<table id='uren_table'>";
             }
             echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
             echo "<td><select name='soortuur[]' ".$frm_selectdisabled." ".$frm_readonly.">".$option."</select></td>";
+            $totaalurenpersoort = 0;
             for($ix7=0; $ix7<7; $ix7++) {
                 $frm_value = ${"frm_valueDag$ix7"};
                 $ix7b = $ix7 + 1;
-                echo "<td><input ".$frm_readonly." style='width:50px' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
+                echo "<td><input ".$frm_readonly." style='width:50px; text-align:right' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
+                //$urenperdag = floatval($frm_value);
+                //$totaalurenpersoort = number_format($totaalurenpersoort + $urenperdag, 2);
+                $totaalurenpersoort = number_format($totaalurenpersoort + floatval($frm_value), 2);
+                if($ix7b == 7) echo "<td><input readonly style='width:50px; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
             }
+            
             if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
             else echo "<td></td>";
   		    echo "<td></td>";
 	    echo "</tr>";
+	    
     } else {
         echo "ERROR: Kan geen connectie met de database maken. Query:". $sql_select. " failed.". mysqli_error($dbconn);
     }

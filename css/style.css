@@ -6,6 +6,11 @@
 * { padding: 0; margin: 0; }
 
 body {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 	margin: 0;
 	padding: 0;
 	font: normal 13px verdana, arial, sans-serif;
@@ -70,7 +75,7 @@ table {
 	margin: 10px 15px;	
 }
 th strong {
-	color: #fff;
+	color: black;
 }
 th {
 	background: #13C3B7;
@@ -79,7 +84,7 @@ th {
 	padding-right: 5px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	color: #fff;
+	color: black;
 	text-align: left;
 	border-left: 1px solid #13C3B7;
 	/* border-bottom: solid 2px #FFF; */
@@ -143,6 +148,13 @@ input:-moz-read-only {
 /* Supported in Blink/WebKit/Edge without a prefix */
 input:read-only {
   background-color: #e4e4e4;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0; 
 }
 select {
 	padding: 5px 5px 5px 5px;
@@ -273,7 +285,7 @@ input.button {
 /* sidebar */
 #sidebar {
 	float: left;
-	width: 25%;
+	width: 20%;
 	margin: 0 10px 10px 0; 
 	padding: 0;	
 }	
@@ -320,7 +332,7 @@ input.button {
 /* main */
 #main {
 	float: left;
-	width: 73%;	
+	width: 78%;	
 	margin: 0 0 10px 0; padding: 0;	
 	border: 2px solid;
 	border-color: #0c726b;
