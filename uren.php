@@ -224,8 +224,6 @@ echo "<table id='uren_table'>";
                 $frm_value = ${"frm_valueDag$ix7"};
                 $ix7b = $ix7 + 1;
                 echo "<td><input ".$frm_readonly." style='width:50px; text-align:right' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
-                //$urenperdag = floatval($frm_value);
-                //$totaalurenpersoort = number_format($totaalurenpersoort + $urenperdag, 2);
                 $totaalurenpersoort = number_format($totaalurenpersoort + floatval($frm_value), 2);
                 if($ix7b == 7) echo "<td><input readonly style='width:50px; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
             }

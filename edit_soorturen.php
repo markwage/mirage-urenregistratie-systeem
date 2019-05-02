@@ -11,11 +11,8 @@ else {
 	$aktie = "";
 }
 
-// Controleren of gebruiker admin-rechten heeft
-check_admin();
-
-// Controleren of cookie aanwezig is. Anders login-scherm displayen
-check_cookies();
+check_admin();     // Controleren of gebruiker admin-rechten heeft
+check_cookies();   // Controleren of cookie aanwezig is. Zo niet, login-scherm displayen
 
 include ("header.php");
 
@@ -98,7 +95,8 @@ if (isset($_POST['save'])) {
 }
 
 //------------------------------------------------------------------------------------------------------
-// START Dit wordt uitgevoerd wanneer de user op Onderhoud soort uren heeft geklikt
+// *******************   START   *******************
+// Dit wordt uitgevoerd wanneer de user op Onderhoud soort uren heeft geklikt
 // Er wordt een lijst met de uren getoond
 //------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') {

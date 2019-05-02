@@ -16,18 +16,13 @@ if (!$aktie == "disp") {
     check_admin();
 }
 
-// Connectie met de database maken en database selecteren
-//---$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
-
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
 
 include ("header.php");
 
 echo "<div id=\"main\"><h1>"; 
-if ($_SESSION['admin']) { 
-    echo "Onderhoud "; 
-} 
+if ($_SESSION['admin']) echo "Onderhoud "; 
 echo "Nieuwsartikelen</h1>";
 
 //------------------------------------------------------------------------------------------------------

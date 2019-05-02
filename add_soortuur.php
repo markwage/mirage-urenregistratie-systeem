@@ -4,14 +4,8 @@ include ("config.php");
 include ("db.php");
 include ("function.php");
 
-// Controleren of gebruiker admin-rechten heeft
-check_admin();
-
-// Connectie met de database maken en database selecteren
-//$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
-
-// Controleren of cookie aanwezig is. Anders login-scherm displayen
-check_cookies();
+check_admin();     // Controleren of gebruiker admin-rechten heeft
+check_cookies();   // Controleren of cookie aanwezig is. Zo niet, login-scherm displayen
 
 include ("header.php");
 
