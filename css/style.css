@@ -6,7 +6,7 @@
 * { padding: 0; margin: 0; }
 
 body {
-	position: fixed;
+	/* position: fixed; */
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -32,10 +32,10 @@ a:hover {
 }
 
 /* headers */
-h1, h2, h3 { font: bold verdana, arial, sans-serif; }
-h1 { font-size: 24px; color: #118981; }
+h1, h2, h3 { font: bold verdana, arial, sans-serif; color: #118981; }
+h1 { font-size: 24px; padding-bottom: 13px; }
 h2 { font-size: 20px; text-transform: uppercase; }
-h3 { font-size: 16px; }
+h3 { font-size: 16px; padding-top: 10px; padding-bottom: 10px; }
 
 p, h1, h2, h3 {
 	margin: 10px 15px;
@@ -169,7 +169,7 @@ textarea {
 	font: normal 13px verdana, arial, sans-serif;
 	border: 1px solid #333;
 	min-height: 100px;
-	overflow: hidden;
+	/* op commentaar ivm scrollbars overflow: hidden; */
 	/*vdisplay: block;v*/
 	color: black;
 }
@@ -338,7 +338,7 @@ input.button {
 	border-color: #0c726b;
 }
 #main h1 {
-	padding: 10px 0px 0px 5px;
+	padding: 10px 0px 13px 5px;
 	margin: 0 0 0 10px;
 	border-bottom: 1px solid #f2f2f2;
 	font: bold 24px verdana, arial, sans-serif;

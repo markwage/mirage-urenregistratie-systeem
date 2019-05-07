@@ -27,7 +27,7 @@ include ("header.php");
 
 
 // Get value from the form
-if($_POST['submit']){
+if(isset($_POST['submit'])) {
 	$fName=$_POST['fName'];
 	$lName=$_POST['lName'];
 	$email=$_POST['email'];

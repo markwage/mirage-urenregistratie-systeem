@@ -46,7 +46,8 @@ if (isset($_POST['submit'])) {
 		else {
 			// Toevoegen cookie indien username-password correct
 			$_POST['username'] = stripslashes($_POST['username']);
-			$hour = time() + 3600;
+			//$hour = time() + 3600;
+			$hour = time() + 36000;
 			setcookie('ID_mus', $_POST['username'], $hour);
 			setcookie('Key_mus', $_POST['pass'], $hour);
 			$_SESSION['username'] = $_POST['username'];
