@@ -202,7 +202,8 @@ input.button {
 
 /* header */
 #header {
-	height: 100px;
+	/* height: 100px; */
+	height: 13.5vh;
 	text-align: left;	
 	background-color: black;
 }
@@ -341,7 +342,8 @@ input.button {
 	padding: 10px 0px 13px 5px;
 	margin: 0 0 0 10px;
 	border-bottom: 1px solid #f2f2f2;
-	font: bold 24px verdana, arial, sans-serif;
+	/* font: bold 24px verdana, arial, sans-serif; */
+	font: bold 2vw verdana, arial, sans-serif;
 }
 #main ul li {
 	list-style-image: url(../img/bullet.gif);
