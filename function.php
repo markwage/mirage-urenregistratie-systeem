@@ -205,7 +205,6 @@ function getWeekdays($weeknr){
     $weekDagNaam[4] = "Vrij";
     $weekDagNaam[5] = "Zat";
     $weekDagNaam[6] = "Zon";
-    
 }
 
 ?>

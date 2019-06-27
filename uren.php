@@ -121,7 +121,7 @@ if($sql_result_approval = mysqli_query($dbconn, $sql_approval)) {
             }
         }    
     } else {
-        $status = "Dit is een nieuwe week is nog niet ter approval aangeboden";
+        $status = "Dit is een nieuwe week en derhalve nog niet ter approval aangeboden";
     }
 }
 echo "<table>";
@@ -154,7 +154,6 @@ echo "<table id='uren_table'>";
         if(mysqli_num_rows($sql_result_uren) > 0) {
             while($row_uren = mysqli_fetch_array($sql_result_uren)) {
                 $frm_approved = $row_uren['approved'];
-                //$frm_terapprovalaangeboden = $row_uren['terapprovalaangeboden'];
                 if($frm_approved == 1) { 
                     $frm_readonly = "readonly";
                     $frm_selectdisabled = "disabled";
@@ -183,7 +182,7 @@ echo "<table id='uren_table'>";
                             $ix5b = $ix5 + 1;
                             echo "<td><input ".$frm_readonly." style='width:50px; text-align:right' type='number' name='dag".$ix5b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
                             $totaalurenpersoort = number_format($totaalurenpersoort + floatval($frm_value), 2);
-                            if($ix5b == 7) echo "<td><input readonly style='width:50px; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
+                            if($ix5b == 7) echo "<td class='totaalkolom'><input readonly style='width:50px; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
                         }
                         if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
                         else echo "<td></td>";
@@ -225,7 +224,7 @@ echo "<table id='uren_table'>";
                 $ix7b = $ix7 + 1;
                 echo "<td><input ".$frm_readonly." style='width:50px; text-align:right' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
                 $totaalurenpersoort = number_format($totaalurenpersoort + floatval($frm_value), 2);
-                if($ix7b == 7) echo "<td><input readonly style='width:50px; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
+                if($ix7b == 7) echo "<td class='totaalkolom'><input readonly style='width:50px; text-align:right;' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
             }
             
             if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
@@ -238,7 +237,7 @@ echo "<table id='uren_table'>";
     }
    	
 echo "</table>"; 
-// This button is needed for when user pushes the ENTER button when changing the weeknumber
+// This button is needed for when user pushes the ENTER button when changing the weeknumber. Button is not displayed
 echo "<input type='submit' name='dummy' value='None' style='display: none'>";
 if($frm_approved == 0) { 
     echo "<input class='button' type='submit' name='save' value='save'>";

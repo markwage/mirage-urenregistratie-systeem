@@ -33,8 +33,8 @@ echo "Nieuwsartikelen</h1>";
 // BUTTON Cancel
 //------------------------------------------------------------------------------------------------------
 if (isset($_POST['cancel'])) {
-    writeLogRecord("edit_nieuws","CANCEL User heeft op cancel gedrukt");
-    header("location: edit_nieuws.php?aktie=disp");
+    writeLogRecord("nieuws","CANCEL User heeft op cancel gedrukt");
+    header("location: nieuws.php?aktie=disp");
 }
 //------------------------------------------------------------------------------------------------------
 // BUTTON Delete
@@ -42,8 +42,8 @@ if (isset($_POST['cancel'])) {
 if (isset($_POST['delete'])) {
     $delid = $_POST['ID'];
     $sql_delnieuwsheader = mysqli_query($dbconn, "DELETE FROM nieuws WHERE ID = '$delid'");
-    writeLogRecord("edit_nieuws","DELETE1 Het nieuwsbericht met id ".$delid." is verwijderd uit tabel nieuws");
-    header("location: edit_nieuws.php?aktie=disp");
+    writeLogRecord("nieuws","DELETE1 Het nieuwsbericht met id ".$delid." is verwijderd uit tabel nieuws");
+    header("location: nieuws.php?aktie=disp");
 }
 
 //------------------------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ if (isset($_POST['save'])) {
             echo '<p class="errmsg">Er is een fout opgetreden bij het updaten van nieuwsbericht. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
         }
-        header("location: edit_nieuws.php?aktie=disp");
+        header("location: nieuws.php?aktie=disp");
     }
 }
 
@@ -97,11 +97,11 @@ if ($aktie == 'disp') {
         echo '<tr class="'.$rowcolor.'">
 			<td>'.$datum.'</td><td>'.$nieuwsheader.'</td>';
         if (!isset($_SESSION['admin']) || (!$_SESSION['admin'])) {
-            writeLogRecord("edit_nieuws","BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond");
-            echo '<td><a href="edit_nieuws.php?aktie=dispbericht&edtid='.$id.'"><img src="./img/buttons/icons8-glasses-48.png" alt="display nieuwsbericht" title="display volledig nieuwsbericht" /></a></td>';
+            writeLogRecord("nieuws","BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond");
+            echo '<td><a href="nieuws.php?aktie=dispbericht&edtid='.$id.'"><img src="./img/buttons/icons8-glasses-48.png" alt="display nieuwsbericht" title="display volledig nieuwsbericht" /></a></td>';
         } else {
-			echo '<td><a href="edit_nieuws.php?aktie=edit&edtid='.$id.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen nieuwsbericht" title="wijzig nieuwsbericht" /></a></td>
-			<td><a href="edit_nieuws.php?aktie=delete&edtid='.$id.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete nieuwsbericht" title="delete het nieuwsbericht" /></a></td>
+			echo '<td><a href="nieuws.php?aktie=edit&edtid='.$id.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen nieuwsbericht" title="wijzig nieuwsbericht" /></a></td>
+			<td><a href="nieuws.php?aktie=delete&edtid='.$id.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete nieuwsbericht" title="delete het nieuwsbericht" /></a></td>
 			<td><a href="add_nieuws.php"><img src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwsbericht" title="toevoegen nieuwsbericht" /></a></td>'; 
 			
         }

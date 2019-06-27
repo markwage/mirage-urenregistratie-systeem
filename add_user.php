@@ -16,7 +16,7 @@ include ("header.php");
 <?php 
 //This code runs if the form has been submitted
 if (isset($_POST['cancel'])) {
-	header("location: edit_users.php?aktie=disp");
+	header("location: users.php?aktie=disp");
 }
 if (isset($_POST['submit'])) { 
 	form_user_fill('toevoegen');
@@ -111,7 +111,7 @@ if (isset($_POST['submit'])) {
 			$frm_tussenvoegsel = "";
 			$frm_achternaam    = "";
 			$frm_email         = "";
-			header("location: edit_users.php?aktie=disp"); 
+			header("location: users.php?aktie=disp"); 
 		}
 		else {
 			echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />

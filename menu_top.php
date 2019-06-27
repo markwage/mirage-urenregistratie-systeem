@@ -8,8 +8,8 @@ if (!isset($_SESSION['admin'])) {
 // Indien ingelogd is
 if (isset($_COOKIE['ID_mus'])) {
 	echo '<li><a href="logout.php">Logout</a></li>';
-	echo '<li><a href="edit_users.php?aktie=edit&edtuser='.$_SESSION["username"].'">Profiel</a></li>';
-	echo "<li><a href='edit_nieuws.php?aktie=disp'>Nieuws</a></li>";
+	echo '<li><a href="users.php?aktie=edit&edtuser='.$_SESSION["username"].'">Profiel</a></li>';
+	echo "<li><a href='nieuws.php?aktie=disp'>Nieuws</a></li>";
 
 	// Indien de user admin-rechten heeft
 	// if ($_SESSION['admin']) {

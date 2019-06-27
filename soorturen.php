@@ -33,7 +33,7 @@ include ("header.php");
 // BUTTON Cancel
 //------------------------------------------------------------------------------------------------------
 if (isset($_POST['cancel'])) {
-	header("location: edit_soorturen.php?aktie=disp");
+	header("location: soorturen.php?aktie=disp");
 }
 
 //------------------------------------------------------------------------------------------------------
@@ -50,10 +50,9 @@ if (isset($_POST['delete'])) {
 	        $formerror = 1;
 	    } else {
 	        $sql_delsoortuur = mysqli_query($dbconn, "DELETE FROM soorturen WHERE code = '$delcode'");
-	        header("location: edit_soorturen.php?aktie=disp");
+	        header("location: soorturen.php?aktie=disp");
 	    }
 	}
-	//header("location: edit_soorturen.php?aktie=disp");
 }
 
 //------------------------------------------------------------------------------------------------------
@@ -61,16 +60,16 @@ if (isset($_POST['delete'])) {
 //------------------------------------------------------------------------------------------------------
 if (isset($_POST['save'])) {
     form_soorturen_fill('save');
-    writelogrecord("edit_soorturen","BTNSAVE Op save gedrukt om gewijzigd record op te slaan");
+    writelogrecord("soorturen","BTNSAVE Op save gedrukt om gewijzigd record op te slaan");
     //$formerror = 0;
 	if ((!$_POST['code'] || $_POST['code'] == "") && (!$formerror)) {
-	    writelogrecord("edit_soorturen","CHECK1A Het veld code is niet ingevuld");
+	    writelogrecord("soorturen","CHECK1A Het veld code is niet ingevuld");
 		echo '<p class="errmsg"> ERROR: Code is een verplicht veld</p>';
 		$focus     = 'code';
 		$formerror = 1;
 	}
 	if ((!$_POST['omschrijving'] || $_POST['omschrijving'] == "") && (!$formerror)) {
-	    writelogrecord("edit_soorturen","CHECK1B Het veld omschrijving is niet ingevuld");
+	    writelogrecord("soorturen","CHECK1B Het veld omschrijving is niet ingevuld");
 		echo '<p class="errmsg"> ERROR: Omschrijving is een verplicht veld</p>';
 		$focus     = 'omschrijving';
 		$formerror = 1;
@@ -84,7 +83,7 @@ if (isset($_POST['save'])) {
 		omschrijving = '".$_POST['omschrijving']."' WHERE ID = '".$_POST['ID']."'";
 		$check_upd_soorturen = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error($dbconn));
 		if ($check_upd_soorturen) { 
-		    writelogrecord("edit_soorturen","UPDATE Soortuur ".$_POST['code']." is succesvol ge-update");
+		    writelogrecord("soorturen","UPDATE Soortuur ".$_POST['code']." is succesvol ge-update");
 			echo '<p class="infmsg">Soort uur <b>'.$_POST['cude'].'</b> is gewijzigd</p>.';
 			$frm_code          = "";
 			$frm_omschrijving  = "";
@@ -93,7 +92,7 @@ if (isset($_POST['save'])) {
 			echo '<p class="errmsg">Er is een fout opgetreden bij het updaten van soort uur. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
 		}
-		header("location: edit_soorturen.php?aktie=disp"); 
+		header("location: soorturen.php?aktie=disp"); 
 	}
 }
 
@@ -116,11 +115,10 @@ if ($aktie == 'disp') {
 		echo '<tr class="'.$rowcolor.'">
 			<td><b>'.$code.'</b></td><td>'.$omschrijving.'</td>
 
-			<td><a href="edit_soorturen.php?aktie=edit&edtcode='.$code.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen soort uur" title="wijzig soort uur '.$code.'" /></a></td>
-			<td><a href="edit_soorturen.php?aktie=delete&edtcode='.$code.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete soort uur" title="delete soort uur '.$code.'" /></a></td>
+			<td><a href="soorturen.php?aktie=edit&edtcode='.$code.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen soort uur" title="wijzig soort uur '.$code.'" /></a></td>
+			<td><a href="soorturen.php?aktie=delete&edtcode='.$code.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete soort uur" title="delete soort uur '.$code.'" /></a></td>
 			<td><a href="add_soortuur.php"><img src="./img/buttons/icons8-plus-48.png" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
 			</tr>';
-		    //<td><a href="add_soortuur.php"><img src="./img/buttons/plus-green.gif" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
 		if ($rowcolor == 'row-a') $rowcolor = 'row-b';
 		else $rowcolor = 'row-a';
 	}
@@ -157,11 +155,6 @@ if ($aktie == 'edit' || $aktie == 'delete') {
 				<td>Omschrijving</td>
 				<td><input type="text" name="omschrijving" size="60" maxlength="60" value="<?php if (isset($frm_omschrijving)) { echo $frm_omschrijving; } ?>" required></td>
 			</tr>
-			<!-- 
-			<tr>
-				<td>Weeknummer</td>
-				<td><input type="week" name="week" id="camp-week" min="2019-W1" max="2019-W26" required></td>
-			</tr-->
 		</table>
 		<br />
 		<?php if ($aktie == 'edit') echo '<input class="button" type="submit" name="save" value="save">'; ?>

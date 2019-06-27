@@ -40,7 +40,7 @@ if (isset($_POST['cancel'])) {
     if (!isset($_SESSION['admin']) || (!$_SESSION['admin'])) {
         header("location: index.php");
     } else {
-        header("location: edit_users.php?aktie=disp");
+        header("location: users.php?aktie=disp");
     }
 }
 
@@ -50,8 +50,8 @@ if (isset($_POST['cancel'])) {
 if (isset($_POST['delete'])) {
 	$deluser = $_POST['username'];
 	$sql_deluser = mysqli_query($dbconn, "DELETE FROM users WHERE username = '$deluser'");
-	writeLogRecord("edit_users","User ".$deluser." is succesvol verwijderd.");
-	header("location: edit_users.php?aktie=disp");
+	writeLogRecord("users","User ".$deluser." is succesvol verwijderd.");
+	header("location: users.php?aktie=disp");
 }
 
 //------------------------------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ if (isset($_POST['delete'])) {
 if (isset($_POST['save'])) {
     form_user_fill('save');
 	//$formerror = 0;
-	writelogrecord("edit_users", "SAVEBUTTON - Wachtwoorden worden gecontroleerd");
+	writelogrecord("users", "SAVEBUTTON - Wachtwoorden worden gecontroleerd");
 	// Checks wanneer password OF verificatiepassword niet leeg zijn
 	if (($_POST['pass']) != "" || ($_POST['pass2']) != "") {
 	    if (!$_POST['pass'] && (!$formerror)) {
@@ -80,7 +80,7 @@ if (isset($_POST['save'])) {
 		    $formerror = 1;
 		}
 	}
-	writelogrecord("edit_users", "CHECKFIELDS - Overige velden worden gecontroleerd");
+	writelogrecord("users", "CHECKFIELDS - Overige velden worden gecontroleerd");
 	if ((!$_POST['voornaam'] || $_POST['voornaam'] == "") && (!$formerror)) {
 		echo '<p class="errmsg"> ERROR: Voornaam is een verplicht veld</p>';
 		$focus     = 'voornaam';
@@ -113,11 +113,11 @@ if (isset($_POST['save'])) {
 	
 	// here we encrypt the password and add slashes if needed
 	if (!$formerror) {
-	    writelogrecord("edit_users", "CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user ".$_POST['username']."te updaten");
+	    writelogrecord("users", "CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user ".$_POST['username']."te updaten");
 	    $update = "UPDATE users SET ";
 	    if (!$_POST['pass'] == "") {
 	        $_POST['pass'] = md5($_POST['pass']);
-	        writelogrecord("edit_users", "PASS_MD5 - Wachtwoord is middels md5 encrypted");
+	        writelogrecord("users", "PASS_MD5 - Wachtwoord is middels md5 encrypted");
 	        if (!get_magic_quotes_gpc()) {
 	            $_POST['pass'] = addslashes($_POST['pass']);
 	            $_POST['username'] = addslashes($_POST['username']);
@@ -131,7 +131,7 @@ if (isset($_POST['save'])) {
 		achternaam='".$_POST['achternaam']."',
 		emailadres='".$_POST['email']."',
 		indienst='".$_POST['indienst']."' WHERE username = '".$_POST['username']."'";
-	    writeLogRecord("edit_users","UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor user".$frm_username);
+	    writeLogRecord("users","UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor user".$frm_username);
 	    $check_upd_user = mysqli_query($dbconn, $update);
 		if ($check_upd_user) { 
 			echo '<p class="infmsg">User <b>'.$_POST['username'].'</b> is gewijzigd</p>.';
@@ -147,7 +147,7 @@ if (isset($_POST['save'])) {
 			echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
 		}
-		header("location: edit_users.php?aktie=disp"); 
+		header("location: users.php?aktie=disp"); 
 	}
 }
 
@@ -176,8 +176,8 @@ if ($aktie == 'disp') {
 			<td>'.$emailadres.'</td>
 			<td align="center">'.$admin.'</td>
 			<td align="center">'.$indienst.'</td>
-			<td><a href="edit_users.php?aktie=edit&edtuser='.$username.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
-			<td><a href="edit_users.php?aktie=delete&edtuser='.$username.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>
+			<td><a href="users.php?aktie=edit&edtuser='.$username.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
+			<td><a href="users.php?aktie=delete&edtuser='.$username.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>
 			<td><a href="add_user.php"><img src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>
 			</tr>';
 		if ($rowcolor == 'row-a') $rowcolor = 'row-b';

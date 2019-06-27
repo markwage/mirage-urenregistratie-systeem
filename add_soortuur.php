@@ -16,7 +16,7 @@ include ("header.php");
 <?php 
 //This code runs if the form has been submitted
 if (isset($_POST['cancel'])) {
-	header("location: edit_soorturen.php?aktie=disp");
+	header("location: soorturen.php?aktie=disp");
 }
 if (isset($_POST['submit'])) {
 	form_soorturen_fill('toevoegen');
@@ -49,7 +49,6 @@ if (isset($_POST['submit'])) {
 
 	// here we encrypt the password and add slashes if needed
 	if (!$formerror) { 
-		//$_POST['code'] = strtoupper($_POST['code']);
 		if (!get_magic_quotes_gpc()) {
 			$_POST['code'] = addslashes($_POST['code']);
 		}
@@ -64,7 +63,7 @@ if (isset($_POST['submit'])) {
 			echo '<p class="infmsg">Code <b>'.$_POST['code'].'</b> is opgenomen</p>.';
 			$frm_code         = "";
 			$frm_omschrijving = "";
-			header("location: edit_soorturen.php?aktie=disp"); 
+			header("location: soorturen.php?aktie=disp"); 
 		}
 		else {
 			echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de code. Probeer het nogmaals.<br />

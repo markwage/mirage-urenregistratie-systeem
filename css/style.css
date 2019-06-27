@@ -103,6 +103,10 @@ td {
 td.first,th.first {
 	border-left: 0px;
 }
+td.totaalkolom input {
+	background-color: #13C3B7;
+	font-weight:bold;
+}
 tr.row-a {
 	background: white;
 }
@@ -137,7 +141,7 @@ input[type="checkbox"]{
 }
 
 input:focus {
-	background-color: #eafffd;
+	background-color: #f4f9f9;
 }
 /* Selects any <input> element that is read-only */
 /* Supported in Firefox with a prefix */

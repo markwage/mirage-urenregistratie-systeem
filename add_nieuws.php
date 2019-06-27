@@ -22,7 +22,7 @@ include ("header.php");
 <?php 
 //This code runs if the form has been submitted
 if (isset($_POST['cancel'])) {
-	header("location: edit_nieuws.php?aktie=disp");
+	header("location: nieuws.php?aktie=disp");
 }
 
 if (isset($_POST['submit'])) { 
@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
 			echo '<p class="infmsg">Het nieuwsbericht is opgenomen</p>.';
 			$frm_nieuwsheader  = "";
 			$frm_nieuwsbericht = "";
-			header("location: edit_nieuws.php?aktie=disp"); 
+			header("location: nieuws.php?aktie=disp"); 
 		}
 		else {
 			echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van nieuwsbericht. Probeer het nogmaals.<br />
