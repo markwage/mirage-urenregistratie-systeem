@@ -38,12 +38,10 @@ if (isset($_POST['submit'])) {
 		$formerror = 1;
 	}
 	if ($_SESSION['admin']) {
-		if (!isset($_POST['admin'])) {
-			$_POST['admin'] = 0;
-		}
-		else {
-			$_POST['admin'] = 1;
-		}
+		if (!isset($_POST['admin'])) $_POST['admin'] = 0;
+		else $_POST['admin'] = 1;
+		if (!isset($_POST['approvenallowed'])) $_POST['approvenallowed'] = 0;
+		else $_POST['approvenallowed'] = 1;
 	}
 	// checks if the username is in use
 	if (!get_magic_quotes_gpc()) {
@@ -91,7 +89,7 @@ if (isset($_POST['submit'])) {
 		}
 
 		// Record toevoegen in database
-		$insert = "INSERT INTO users (username, password, admin, voornaam, tussenvoegsel, achternaam, emailadres, indienst)
+		$insert = "INSERT INTO users (username, password, admin, voornaam, tussenvoegsel, achternaam, emailadres, indienst, approvenallowed)
 			VALUES ('".$_POST['username']."', 
 					'".$_POST['pass']."', 
 					'".$_POST['admin']."',
@@ -99,7 +97,9 @@ if (isset($_POST['submit'])) {
 					'".$_POST['tussenvoegsel']."',
 					'".$_POST['achternaam']."',
 					'".$_POST['email']."',
-					'".$_POST['indienst']."')";
+					'".$_POST['indienst']."',
+                    '".$_POST['approvenallowed']."')";
+		            
 		$check_add_member = mysqli_query($dbconn, $insert);
 	
 		if ($check_add_member) { 
@@ -137,7 +137,25 @@ if (isset($_POST['submit'])) {
 		</tr>
 		<tr>
 			<td>Admin</td>
-			<td><input type="checkbox" name="admin"></td>
+			<!-- <td><input type="checkbox" name="admin"></td> -->
+			<td><div class="onoffswitch">
+    			<input type="checkbox" name="admin" class="onoffswitch-checkbox" id="myonoffswitch">
+    			<label class="onoffswitch-label" for="myonoffswitch">
+        			<span class="onoffswitch-inner"></span>
+        			<span class="onoffswitch-switch"></span>
+    			</label>
+			</div></td>
+		</tr>
+		<tr>
+			<td>Approven</td>
+			<!-- <td><input type="checkbox" name="admin"></td> -->
+			<td><div class="onoffswitch">
+    			<input type="checkbox" name="approvenallowed" class="onoffswitch-checkbox" id="myonoffswitch3">
+    			<label class="onoffswitch-label" for="myonoffswitch3">
+        			<span class="onoffswitch-inner"></span>
+        			<span class="onoffswitch-switch"></span>
+    			</label>
+			</div></td>
 		</tr>
 		<tr>
 			<td>Voornaam</td>

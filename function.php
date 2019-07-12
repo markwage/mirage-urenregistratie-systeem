@@ -142,6 +142,8 @@ function form_user_fill($btn_aktie) {
         $frm_pass2         = $_POST['pass2'];
         if (isset($_POST['admin'])) $frm_admin = $_POST['admin'];
         else $frm_admin = "";
+        if (isset($_POST['approvenallowed'])) $frm_approvenallowed = $_POST['approvenallowed'];
+        else $frm_approvenallowed = "";
         $frm_voornaam      = $_POST['voornaam'];
         $frm_tussenvoegsel = $_POST['tussenvoegsel'];
         $frm_achternaam    = $_POST['achternaam'];

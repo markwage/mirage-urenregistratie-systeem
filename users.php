@@ -97,18 +97,12 @@ if (isset($_POST['save'])) {
 		$formerror = 1;
 	}
 	if ($_SESSION['admin'] && (!$formerror)) {
-		if (!isset($_POST['admin'])) {
-			$_POST['admin'] = 0;
-		}
-		else {
-			$_POST['admin'] = 1;
-		}
-		if (!isset($_POST['indienst'])) {
-			$_POST['indienst'] = 0;
-		}
-		else {
-			$_POST['indienst'] = 1;
-		}
+		if (!isset($_POST['admin'])) $_POST['admin'] = 0;
+		else $_POST['admin'] = 1;
+		if (!isset($_POST['indienst'])) $_POST['indienst'] = 0;
+		else $_POST['indienst'] = 1;
+		if (!isset($_POST['approvenallowed'])) $_POST['approvenallowed'] = 0;
+		else $_POST['approvenallowed'] = 1;
 	}
 	
 	// here we encrypt the password and add slashes if needed
@@ -130,7 +124,9 @@ if (isset($_POST['save'])) {
 		tussenvoegsel='".$_POST['tussenvoegsel']."',
 		achternaam='".$_POST['achternaam']."',
 		emailadres='".$_POST['email']."',
-		indienst='".$_POST['indienst']."' WHERE username = '".$_POST['username']."'";
+		indienst='".$_POST['indienst']."',
+        approvenallowed='".$_POST['approvenallowed']."' 
+        WHERE username = '".$_POST['username']."'";
 	    writeLogRecord("users","UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor user".$frm_username);
 	    $check_upd_user = mysqli_query($dbconn, $update);
 		if ($check_upd_user) { 
@@ -159,27 +155,32 @@ if ($aktie == 'disp') {
 	$sql_allusers = mysqli_query($dbconn, "SELECT * FROM users ORDER BY achternaam");
 	echo "<center><table>";
 	//echo "<tr><th>ID</th><th>username</th><th>naam</th><th>Emailadres</th><th>Admin</th><th>InDienst</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
-	echo "<tr><th>username</th><th>naam</th><th>Emailadres</th><th>Admin</th><th>InDienst</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
+	echo "<tr><th>username</th><th>naam</th><th>Emailadres</th><th>Admin</th><th>InDienst</th><th>Approven</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
 	$rowcolor = 'row-a';
 	while($row_allusers = mysqli_fetch_array($sql_allusers)) {
-		$id            = $row_allusers['ID'];
-		$username      = $row_allusers['username'];
-		$voornaam      = $row_allusers['voornaam'];
-		$tussenvoegsel = $row_allusers['tussenvoegsel'];
-		$achternaam    = $row_allusers['achternaam'];
-		$emailadres    = $row_allusers['emailadres'];
-		$admin         = $row_allusers['admin'];
-		$indienst      = $row_allusers['indienst'];
+		$id              = $row_allusers['ID'];
+		$username        = $row_allusers['username'];
+		$voornaam        = $row_allusers['voornaam'];
+		$tussenvoegsel   = $row_allusers['tussenvoegsel'];
+		$achternaam      = $row_allusers['achternaam'];
+		$emailadres      = $row_allusers['emailadres'];
+		$admin           = $row_allusers['admin'];
+		$indienst        = $row_allusers['indienst'];
+		$approvenallowed = $row_allusers['approvenallowed'];
 		echo '<tr class="'.$rowcolor.'">
 			<td><b>'.$username.'</b></td>
 			<td>'.$achternaam.', '.$voornaam.' '.$tussenvoegsel. '</td>
-			<td>'.$emailadres.'</td>
-			<td align="center">'.$admin.'</td>
-			<td align="center">'.$indienst.'</td>
-			<td><a href="users.php?aktie=edit&edtuser='.$username.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
+			<td>'.$emailadres.'</td>';
+			if ($admin == 1) echo '<td style="text-align:center;"><img src="./img/buttons/icons8-ok-48.png" alt="1" title="heeft adminrechten" /></td>';
+			else echo '<td style="text-align:center;"><img src="./img/buttons/icons8-cancel-48.png" alt="0" title="heeft geen adminrechten" /></td>';
+			if ($indienst == 1) echo '<td style="text-align:center;"><img src="./img/buttons/icons8-ok-48.png" alt="1" title="medewerker is nog in dienst" /></td>';
+			else echo '<td style="text-align:center;"><img src="./img/buttons/icons8-cancel-48.png" alt="0" title="medewerker is niet meer in dienst" /></td>';
+			if ($approvenallowed == 1) echo '<td style="text-align:center;"><img src="./img/buttons/icons8-ok-48.png" alt="1" title="medewerker heeft rechten om uren te approven" /></td>';
+			else echo '<td style="text-align:center;"><img src="./img/buttons/icons8-cancel-48.png" alt="0" title="medewerker heeft geen rechten om uren te approven" /></td>';
+			echo '<td><a href="users.php?aktie=edit&edtuser='.$username.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
 			<td><a href="users.php?aktie=delete&edtuser='.$username.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>
 			<td><a href="add_user.php"><img src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>
-			</tr>';
+		</tr>';
 		if ($rowcolor == 'row-a') $rowcolor = 'row-b';
 		else $rowcolor = 'row-a';
 	}
@@ -204,6 +205,8 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 		else $frm_admin = "";
 		if ($row_dspuser['indienst'] == 1) $frm_indienst = "checked";
 		else $frm_indienst = "";
+		if ($row_dspuser['approvenallowed'] == 1) $frm_approvenallowed = "checked";
+		else $frm_approvenallowed = "";
 	}
     ?>
 	<form name="AddUser" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -221,7 +224,25 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 			</tr>
 			<tr>
 				<td>Admin</td>
-				<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="admin" <?php { echo $frm_admin; } ?>></td>
+				<!--  <td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="admin" <?php { echo $frm_admin; } ?>></td> -->
+				<td><div class="onoffswitch">
+    			<input type="checkbox" name="admin" class="onoffswitch-checkbox" id="myonoffswitch" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?><?php { echo $frm_admin; } ?>>
+    			<label class="onoffswitch-label" for="myonoffswitch">
+        			<span class="onoffswitch-inner"></span>
+        			<span class="onoffswitch-switch"></span>
+    			</label>
+				</div></td>
+			</tr>
+			<tr>
+				<td>Approven</td>
+				<!--  <td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="admin" <?php { echo $frm_admin; } ?>></td> -->
+				<td><div class="onoffswitch">
+    			<input type="checkbox" name="approvenallowed" class="onoffswitch-checkbox" id="myonoffswitch3" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?><?php { echo $frm_approvenallowed; } ?>>
+    			<label class="onoffswitch-label" for="myonoffswitch3">
+        			<span class="onoffswitch-inner"></span>
+        			<span class="onoffswitch-switch"></span>
+    			</label>
+				</div></td>
 			</tr>
 			<tr>
 				<td>Voornaam</td>
@@ -239,7 +260,14 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 			</tr>
 			<tr>
 				<td>In dienst</td>
-				<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="indienst" <?php { echo $frm_indienst; } ?>></td>
+				<!--  <td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="indienst" <?php { echo $frm_indienst; } ?>></td> -->
+				<td><div class="onoffswitch">
+    			<input type="checkbox" name="indienst" class="onoffswitch-checkbox" id="myonoffswitch2" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?><?php { echo $frm_indienst; } ?>>
+    			<label class="onoffswitch-label" for="myonoffswitch2">
+        			<span class="onoffswitch-inner"></span>
+        			<span class="onoffswitch-switch"></span>
+    			</label>
+				</div></td>
 			</tr>
 		</table>
 		<br />

@@ -54,6 +54,9 @@ if (isset($_POST['submit'])) {
 			$_SESSION['admin']    = $_POST['admin'];
 			$_SESSION['voornaam'] = $_POST['voornaam'];
 			// update lastloggedin in de tabel
+			// Haal eerst de lastloggedin op om dit in het scherm te tonen als user aangelogd is
+			//$sql_getlastloggedin = "SELECT lastloggedin FROM USERS WHERE username = '".$_POST['username']."'";
+			//$check_getlastloggedin = mysqli_query($dbconn, $sql_lastloggedin) or die ("Error in query: $sql_getlastloggedin. ".mysqli_error());
 			$update = "UPDATE users SET 
 				lastloggedin = '".date('Y-m-d h:i:s')."' WHERE username = '".$_POST['username']."'";
 			$check_upd_users = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error());
