@@ -19,7 +19,7 @@ include ("header.php");
 if (isset($_POST['submit'])) {
 	//controleer of het ingevuld is
 	if (!$_POST['username'] || !$_POST['pass']) {
-		echo '<p class="errmsg"> ERROR: Niet alle velden zijn ingevuld</p>';
+	    echo '<blockquote class="error">ERROR: Niet alle verplichte velden zijn ingevuld</blockquote>';
 	}
 	// Controleer het met de database
 	if (!get_magic_quotes_gpc()) {
@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
 	$check2 = mysqli_num_rows($check);
 	if ($check2 == 0 && $_POST['username'] <> '') {
 	    writeLogRecord("login","WARN Er werd geprobeerd om in te loggen met een niet bestaande username: ".$_POST['username']);
-		echo '<p class="errmsg"> ERROR: Username is onbekend</p>';
+		echo '<blockquote class="error">ERROR: Username is onbekend</blockquote>';
 	}
 	while ($info = mysqli_fetch_array($check)) {
 		$_POST['pass']     = stripslashes($_POST['pass']);
@@ -38,20 +38,21 @@ if (isset($_POST['submit'])) {
 		$_POST['pass']     = md5($_POST['pass']);
 		$_POST['admin']    = $info['admin'];
 		$_POST['voornaam'] = $info['voornaam'];
+		$_POST['approvenallowed'] = $info['approvenallowed'];
 		//Error indien password fout
 		if ($_POST['pass'] != $info['password']) {
-			echo '<p class="errmsg"> ERROR: Foutief password, probeer het nogmaals</p>';
-			writeLogRecord("login","User ".$_POST['username']." probeerde in te loggen met een foutief wachtwoord");
+			writeLogRecord("login","WARN User ".$_POST['username']." probeerde in te loggen met een foutief wachtwoord");
+			echo '<blockquote class="error">ERROR: Foutief wachtwoord. Probeer het nogmaals</blockquote>';
 		}
 		else {
 			// Toevoegen cookie indien username-password correct
 			$_POST['username'] = stripslashes($_POST['username']);
-			//$hour = time() + 3600;
 			$hour = time() + 36000;
 			setcookie('ID_mus', $_POST['username'], $hour);
 			setcookie('Key_mus', $_POST['pass'], $hour);
 			$_SESSION['username'] = $_POST['username'];
 			$_SESSION['admin']    = $_POST['admin'];
+			$_SESSION['approvenallowed'] = $_POST['approvenallowed'];
 			$_SESSION['voornaam'] = $_POST['voornaam'];
 			// update lastloggedin in de tabel
 			// Haal eerst de lastloggedin op om dit in het scherm te tonen als user aangelogd is

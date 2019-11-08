@@ -64,35 +64,41 @@ if (isset($_POST['save'])) {
 	// Checks wanneer password OF verificatiepassword niet leeg zijn
 	if (($_POST['pass']) != "" || ($_POST['pass2']) != "") {
 	    if (!$_POST['pass'] && (!$formerror)) {
-			echo '<p class="errmsg"> ERROR: Wachtwoord is een verplicht veld</p>';
+			//echo '<p class="errmsg"> ERROR: Wachtwoord is een verplicht veld</p>';
+			echo '<blockquote class="error">ERROR: Wachtwoord is een verplicht veld</blockquote>';
 			$focus     = 'pass';
 			$formerror = 1;
 		}
 		if (!$_POST['pass2'] && (!$formerror)) {
-			echo '<p class="errmsg"> ERROR: Wachtwoord voor verificatie is een verplicht veld</p>';
+			//echo '<p class="errmsg"> ERROR: Wachtwoord voor verificatie is een verplicht veld</p>';
+			echo '<blockquote class="error">ERROR: Wachtwoord ter verificatie is een verplicht veld</blockquote>';
 			$focus     = 'pass2';
 			$formerror = 1;
 		}
 		// Check of de wachtwoorden gelijk zijn
 		if (($_POST['pass'] != $_POST['pass2']) && (!$formerror)) {
-		    echo '<p class="errmsg"> ERROR: De wachtwoorden zijn niet gelijk</p>';
+		    //echo '<p class="errmsg"> ERROR: De wachtwoorden zijn niet gelijk</p>';
+		    echo '<blockquote class="error">ERROR: De wachtwoorden zijn niet gelijk. Probeer het nogmaals.</blockquote>';
 		    $focus     = 'pass';
 		    $formerror = 1;
 		}
 	}
 	writelogrecord("users", "CHECKFIELDS - Overige velden worden gecontroleerd");
 	if ((!$_POST['voornaam'] || $_POST['voornaam'] == "") && (!$formerror)) {
-		echo '<p class="errmsg"> ERROR: Voornaam is een verplicht veld</p>';
+		//echo '<p class="errmsg"> ERROR: Voornaam is een verplicht veld</p>';
+	    echo '<blockquote class="error">ERROR: Voornaam is een verplicht veld</blockquote>';
 		$focus     = 'voornaam';
 		$formerror = 1;
 	}
 	if (!$_POST['achternaam'] && (!$formerror)) {
-		echo '<p class="errmsg"> ERROR: Achternaam is een verplicht veld</p>';
+		//echo '<p class="errmsg"> ERROR: Achternaam is een verplicht veld</p>';
+	    echo '<blockquote class="error">ERROR: Achternaam is een verplich veld</blockquote>';
 		$focus     = 'achternaam';
 		$formerror = 1;
 	}
 	if (!$_POST['email'] && (!$formerror)) {
-		echo '<p class="errmsg"> ERROR: Email is een verplicht veld</p>';
+		//echo '<p class="errmsg"> ERROR: Email is een verplicht veld</p>';
+		echo '<blockquote class="error">ERROR: Emailadres is een verplicht veld</blockquote>';
 		$focus     = 'email';
 		$formerror = 1;
 	}
@@ -140,8 +146,10 @@ if (isset($_POST['save'])) {
 			$frm_email         = "";
 		}
 		else {
-			echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />
-			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
+			//echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />
+			//Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
+			echo '<blockquote class="error">ERROR: Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />
+			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</blockquote>';
 		}
 		header("location: users.php?aktie=disp"); 
 	}

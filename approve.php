@@ -83,7 +83,6 @@ if ($aktie == 'disp') {
 		else $rowcolor = 'row-a';
 	}
 	echo "</table></center>";
-		
 }
 
 //------------------------------------------------------------------------------------------------------
@@ -150,8 +149,12 @@ if ($aktie == 'dspuren') {
     <input type="hidden" name="week" value="<?php if (isset($week)) { echo $week; } ?>">
     <input type="hidden" name="username" value="<?php if (isset($username)) { echo $username; } ?>">
     <input type="hidden" name="jaar" value="<?php if (isset($datum)) { echo substr($datum,0,4); } ?>">
+    <!--  Tot hier -->
     <input class="button" type="submit" name="cancel" value="cancel" formnovalidate>
-    <input class="button" type="submit" name="approve" value="approve">
+    <?php 
+    if (!isset($_SESSION['approvenallowed']) || (!$_SESSION['approvenallowed'])) echo '<blockquote>Je hebt geen rechten om te approven</blockquote>';
+    else echo '<input class="button" type="submit" name="approve" value="approve">';
+    ?>
     </form>
     <?php 
 }

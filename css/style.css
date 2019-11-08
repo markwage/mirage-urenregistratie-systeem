@@ -69,6 +69,11 @@ blockquote {
 	color: #666666;	
 }
 
+blockquote.error {
+	border-left: 3px solid red;
+	color: red;
+}
+
 /* start - table */
 table {
 	border-collapse: collapse;

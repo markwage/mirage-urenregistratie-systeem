@@ -116,3 +116,148 @@
 20190710 07:07:23;index;mwage;Totaal aantal rijen uit de select-query: 8
 20190712 10:31:03;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
 20190712 10:31:03;index;;Totaal aantal rijen uit de select-query: 0
+20190712 10:42:13;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190712 10:42:13;index;;Totaal aantal rijen uit de select-query: 0
+20190712 10:42:18;login;mwage;User mwage is succesvol ingelogd.
+20190712 10:42:18;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190712 10:42:18;index;mwage;Totaal aantal rijen uit de select-query: 8
+20190712 13:59:35;logout;mwage;User is succesvol uitgelogd
+20190712 13:59:41;login;mwage;User admin probeerde in te loggen met een foutief wachtwoord
+20190712 13:59:51;login;mwage;User mwage is succesvol ingelogd.
+20190712 13:59:51;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190712 13:59:51;index;mwage;Totaal aantal rijen uit de select-query: 8
+20190712 14:00:03;users;mwage;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20190712 14:00:03;users;mwage;CHECKFIELDS - Overige velden worden gecontroleerd
+20190712 14:00:03;users;mwage;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user adminte updaten
+20190712 14:00:03;users;mwage;PASS_MD5 - Wachtwoord is middels md5 encrypted
+20190712 14:00:03;users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor useradmin
+20190712 14:00:14;logout;mwage;User is succesvol uitgelogd
+20190712 14:00:19;login;admin;User admin is succesvol ingelogd.
+20190712 14:00:19;index;admin;Query: SELECT * FROM uren where user='admin' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190712 14:00:19;index;admin;Totaal aantal rijen uit de select-query: 0
+20190712 14:52:02;index;admin;Query: SELECT * FROM uren where user='admin' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190712 14:52:02;index;admin;Totaal aantal rijen uit de select-query: 0
+20190716 04:35:50;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190716 04:35:50;index;;Totaal aantal rijen uit de select-query: 0
+20190717 15:17:52;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190717 15:17:52;index;;Totaal aantal rijen uit de select-query: 0
+20190717 15:18:00;login;mwage;User mwage is succesvol ingelogd.
+20190717 15:18:00;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190717 15:18:00;index;mwage;Totaal aantal rijen uit de select-query: 8
+20190719 10:40:34;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190719 10:40:34;index;;Totaal aantal rijen uit de select-query: 0
+20190719 10:44:48;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: asdasd
+20190719 10:45:47;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: asdasd
+20190719 10:45:56;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: asdasda
+20190719 10:46:06;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190719 10:46:06;index;;Totaal aantal rijen uit de select-query: 0
+20190719 10:46:11;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: asd
+20190719 10:46:58;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190719 10:46:58;index;;Totaal aantal rijen uit de select-query: 0
+20190719 10:47:02;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: asdas
+20190719 10:47:18;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: asdasd
+20190719 10:47:24;login;;User mwage probeerde in te loggen met een foutief wachtwoord
+20190719 10:47:35;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: asdasd
+20190719 11:25:30;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190719 11:25:30;index;;Totaal aantal rijen uit de select-query: 0
+20190719 11:25:35;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: asdas
+20190719 11:26:26;login;;User mwage probeerde in te loggen met een foutief wachtwoord
+20190719 12:22:34;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: sdf
+20190719 12:22:39;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: sdf
+20190719 12:22:46;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: sdf
+20190719 13:26:04;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190719 13:26:04;index;;Totaal aantal rijen uit de select-query: 0
+20190719 13:26:07;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: asda
+20190719 13:27:36;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190719 13:27:36;index;;Totaal aantal rijen uit de select-query: 0
+20190719 13:27:40;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: asdas
+20190719 13:28:32;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: asdasd
+20190719 13:28:36;login;;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: asd
+20190719 14:44:08;login;mwage;User mwage is succesvol ingelogd.
+20190719 14:44:08;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190719 14:44:08;index;mwage;Totaal aantal rijen uit de select-query: 8
+20190726 10:44:30;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190726 10:44:30;index;;Totaal aantal rijen uit de select-query: 0
+20190726 11:35:33;login;mwage;User mwage is succesvol ingelogd.
+20190726 11:35:33;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190726 11:35:33;index;mwage;Totaal aantal rijen uit de select-query: 8
+20190726 11:35:52;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 20193
+20190726 11:35:55;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201931
+20190726 11:37:16;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201931
+20190726 11:37:16;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 31 zijn
+20190726 11:37:16;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='31' AND jaar='2019'
+20190726 11:37:16;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 31 voor het updaten van de betreffende week
+20190726 11:37:16;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '31', '0', 'MIR000UU', '2019-07-29', '8', 'mwage')
+20190726 11:37:16;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 31 voor het updaten van de betreffende week
+20190726 11:37:16;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '31', '1', 'MIR000UU', '2019-07-30', '8', 'mwage')
+20190726 11:37:16;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 31 voor het updaten van de betreffende week
+20190726 11:37:16;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '31', '2', 'MIR000UU', '2019-07-31', '8', 'mwage')
+20190726 11:38:43;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201930
+20190726 11:38:49;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201930
+20190726 11:38:49;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 30 zijn
+20190726 11:38:49;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='30' AND jaar='2019'
+20190726 11:38:49;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 30 voor het updaten van de betreffende week
+20190726 11:38:49;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '30', '0', 'MIR000UU', '2019-07-22', '8', 'mwage')
+20190726 11:38:49;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 30 voor het updaten van de betreffende week
+20190726 11:38:49;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '30', '1', 'MIR000UU', '2019-07-23', '8', 'mwage')
+20190726 11:38:49;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 30 voor het updaten van de betreffende week
+20190726 11:38:49;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '30', '2', 'MIR000UU', '2019-07-24', '8', 'mwage')
+20190726 11:38:49;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 30 voor het updaten van de betreffende week
+20190726 11:38:49;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '30', '3', 'MIR000UU', '2019-07-25', '8', 'mwage')
+20190726 11:38:49;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 30 voor het updaten van de betreffende week
+20190726 11:38:49;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '30', '4', 'MIR000UU', '2019-07-26', '8', 'mwage')
+20190726 11:38:55;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201931
+20190726 11:39:14;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201931
+20190726 11:39:14;uren;mwage;BTNSAVE Controle of er al gegevens van jaar 2019 en week 31 zijn
+20190726 11:39:14;uren;mwage;BTNSAVE Query: SELECT * FROM uren where user='mwage' AND week='31' AND jaar='2019'
+20190726 11:39:14;uren;mwage;BTNSAVE Records worden verwijderd van jaar 2019 en week 31 voor het updaten van de betreffende week
+20190726 11:39:14;uren;mwage;BTNSAVE Query: DELETE FROM uren where user='mwage' AND week='31' AND jaar='2019'
+20190726 11:39:14;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 31 voor het updaten van de betreffende week
+20190726 11:39:14;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '31', '0', 'MIR001VL', '2019-07-29', '8', 'mwage')
+20190726 11:39:14;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 31 voor het updaten van de betreffende week
+20190726 11:39:14;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '31', '1', 'MIR001VL', '2019-07-30', '8', 'mwage')
+20190726 11:39:14;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 31 voor het updaten van de betreffende week
+20190726 11:39:14;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '31', '2', 'MIR001VL', '2019-07-31', '8', 'mwage')
+20190726 11:39:14;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 31 voor het updaten van de betreffende week
+20190726 11:39:14;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '31', '3', 'MIR001VL', '2019-08-01', '8', 'mwage')
+20190726 11:39:14;uren;mwage;BTNSAVE Records worden toegevoegd van jaar 2019 en week 31 voor het updaten van de betreffende week
+20190726 11:39:14;uren;mwage;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '31', '4', 'MIR001VL', '2019-08-02', '8', 'mwage')
+20190726 16:32:09;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201931
+20190829 18:36:52;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190829 18:36:52;index;;Totaal aantal rijen uit de select-query: 0
+20190829 18:37:02;login;mwage;User mwage is succesvol ingelogd.
+20190829 18:37:02;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20190829 18:37:02;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191011 13:24:25;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191011 13:24:25;index;;Totaal aantal rijen uit de select-query: 0
+20191105 14:18:57;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191105 14:18:57;index;;Totaal aantal rijen uit de select-query: 0
+20191105 14:19:02;login;mwage;User mwage is succesvol ingelogd.
+20191105 14:19:02;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191105 14:19:02;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191105 14:54:24;nieuws;mwage;CANCEL User heeft op cancel gedrukt
+20191105 14:54:35;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191105 14:54:35;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191105 14:55:57;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201931
+20191105 14:56:06;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201916
+20191105 14:56:32;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191105 14:56:32;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191105 14:56:39;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191105 14:56:39;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191105 15:50:52;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191105 15:50:52;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191105 15:54:46;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191105 15:54:46;index;mwage;Totaal aantal rijen uit de select-query: 10

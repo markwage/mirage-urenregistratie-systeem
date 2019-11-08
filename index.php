@@ -85,7 +85,7 @@ check_cookies();
 			        }
 			        echo "</table>";
 			    } else {
-			        echo "Er zijn geen records gevonden";
+			        echo "<blockquote>Er zijn geen records gevonden</blockquote>";
 			    }
 			} else {
 			    echo "ERROR: Could not be able to execute $sql_select. ". mysqli_error($dbconn);
