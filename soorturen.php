@@ -41,15 +41,14 @@ if (isset($_POST['cancel'])) {
 //------------------------------------------------------------------------------------------------------
 if (isset($_POST['delete'])) {
 	$delcode = $_POST['code'];
-	$sql_select = "SELECT * FROM uren where soortuur='".$delcode."'";
-	if($sql_result = mysqli_query($dbconn, $sql_select)) {
-	    if(mysqli_num_rows($sql_result) > 0) {
-	        //ERROR DAT ER NOG UREN GEKOPPELD ZIJN AAN DEZE SOORTUUR!!!!
+	if($sqlOut = mysqli_query($dbconn, "SELECT * FROM uren where soortuur='".$delcode."'")) {
+	    if(mysqli_num_rows($sqlOut) > 0) {
+	        //Errormelding dat deze soortuur niet verwijderd kan worden omdat er nog uren aan gekoppeld zijn
 	        echo '<p class="errmsg"> ERROR: Er zijn nog uren gekoppeld aan deze code</p>';
 	        $focus     = 'code';
 	        $formerror = 1;
 	    } else {
-	        $sql_delsoortuur = mysqli_query($dbconn, "DELETE FROM soorturen WHERE code = '$delcode'");
+	        $sqlOut = mysqli_query($dbconn, "DELETE FROM soorturen WHERE code = '$delcode'");
 	        header("location: soorturen.php?aktie=disp");
 	    }
 	}
@@ -81,8 +80,8 @@ if (isset($_POST['save'])) {
 		$update = "UPDATE soorturen SET 
 		code = '".$_POST['code']."', 
 		omschrijving = '".$_POST['omschrijving']."' WHERE ID = '".$_POST['ID']."'";
-		$check_upd_soorturen = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error($dbconn));
-		if ($check_upd_soorturen) { 
+		$sqlUpd = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error($dbconn));
+		if ($sqlUpd) { 
 		    writelogrecord("soorturen","UPDATE Soortuur ".$_POST['code']." is succesvol ge-update");
 			echo '<p class="infmsg">Soort uur <b>'.$_POST['cude'].'</b> is gewijzigd</p>.';
 			$frm_code          = "";
@@ -104,14 +103,14 @@ if (isset($_POST['save'])) {
 // Er wordt een lijst met de uren getoond
 //------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') {
-	$sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
+	$sqlOut = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
 	echo "<center><table>";
 	echo "<tr><th>Code</th><th>Omschrijving</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
 	$rowcolor = 'row-a';
-	while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
-		$id           = $row_soorturen['ID'];
-		$code         = $row_soorturen['code'];
-		$omschrijving = $row_soorturen['omschrijving'];
+	while($sqlRow = mysqli_fetch_array($sqlOut)) {
+		$id           = $sqlRow['ID'];
+		$code         = $sqlRow['code'];
+		$omschrijving = $sqlRow['omschrijving'];
 		echo '<tr class="'.$rowcolor.'">
 			<td><b>'.$code.'</b></td><td>'.$omschrijving.'</td>
 
@@ -131,13 +130,13 @@ if ($aktie == 'disp') {
 if ($aktie == 'edit' || $aktie == 'delete') {
 	$edtcode = $_GET['edtcode'];
 	$focus = "code";
-	$sql_dspsoorturen = mysqli_query($dbconn, "SELECT * FROM soorturen WHERE code = '$edtcode'");
-	while($row_dspsoorturen = mysqli_fetch_array($sql_dspsoorturen)) {
+	$sqlOut = mysqli_query($dbconn, "SELECT * FROM soorturen WHERE code = '$edtcode'");
+	while($sqlRow = mysqli_fetch_array($sqlOut)) {
 	    global $frm_code, $frm_omschrijving, $formerror;
 	    $formerror = 0;
-		$frm_ID   = $row_dspsoorturen['ID'];
-		$frm_code = $row_dspsoorturen['code'];
-		$frm_omschrijving = $row_dspsoorturen['omschrijving'];
+		$frm_ID   = $sqlRow['ID'];
+		$frm_code = $sqlRow['code'];
+		$frm_omschrijving = $sqlRow['omschrijving'];
 	}
     ?>
 	<form name="soorturen" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

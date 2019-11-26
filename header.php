@@ -22,8 +22,7 @@
 			<h1 id="logo"><a href="index.php" title=""><span class="gray">M</span>irage<span class="gray">us</span></a></h1>	
 			<h2 id="slogan">Mirage Urenregistratie Systeem...</h2>		
 			<?php include ("./menu_top.php") ?>
-		</div>
-	</div>
+		</div></div>
 	
 	<!-- content-wrap starts here -->
 	<div id="content-wrap">

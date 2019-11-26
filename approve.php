@@ -56,7 +56,7 @@ if (isset($_POST['approve'])) {
 //
 //       *******************   START   *******************
 //
-// Dit wordt uitgevoerd wanneer de gebruiker in linkermenu op "Openastaande approvals" klikt
+// Dit wordt uitgevoerd wanneer de gebruiker in linkermenu op "Openstaande approvals" klikt
 // Er wordt een lijst met de te approven weken getoond
 //------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') {

@@ -3,18 +3,18 @@
 //------------------------------------------------------------------------
 // functie om een connectie met de database te maken
 //------------------------------------------------------------------------
-function makedbconnection() {
-    if (!isset($dbconn)) {
-        include ("./db.php");
-    }
-    if (mysqli_connect_errno()) {
-        die("Kan de connectie met de database niet maken");
-    }
-    $dbselect = mysqli_select_db($dbconn, $dbname);
-    if (!$dbselect) {
-        die("Kan de database niet openen : " . mysqli_error());
-    }
-}
+//function makedbconnection() {
+//    if (!isset($dbconn)) {
+//        include ("./db.php");
+//    }
+//    if (mysqli_connect_errno()) {
+//        die("Kan de connectie met de database niet maken");
+//    }
+//    $dbselect = mysqli_select_db($dbconn, $dbname);
+//    if (!$dbselect) {
+//        die("Kan de database niet openen : " . mysqli_error());
+//    }
+//}
 
 //------------------------------------------------------------------------
 // functie om een error-message te displayen met standaard
@@ -93,18 +93,6 @@ function displayUserGegevens() {
 }
 
 //------------------------------------------------------------------------
-// Converteren datum (JJJJ-MM-DD) naar een weeknummer
-//------------------------------------------------------------------------
-function cnv_dateToWeek($datum) {
-    $dat_jaar  = substr($datum, 0, 4); // jaren     (Y)
-    $dat_maand = substr($datum, 5, 2); // maanden   (m)
-    $dat_dag   = substr($datum, 8, 2); // dagen     (d)
-    $buildDatum = mktime(0, 0, 0, $dat_maand, $dat_dag, $dat_jaar);
-	$weekNumber = date('W', $buildDatum); 
-	return $weekNumber;
-}
-
-//------------------------------------------------------------------------
 // Write logrecord to file 
 //------------------------------------------------------------------------
 function writeLogRecord($phpProg, $logRecord) {
@@ -180,6 +168,18 @@ function checkIngevuldeUrenPerSoort($ix1) {
     $urenarray[4] = $frm_urendag5;
     $urenarray[5] = $frm_urendag6;
     $urenarray[6] = $frm_urendag7;
+}
+
+//------------------------------------------------------------------------
+// Converteren datum (JJJJ-MM-DD) naar een weeknummer
+//------------------------------------------------------------------------
+function cnv_dateToWeek($datum) {
+    $dat_jaar  = substr($datum, 0, 4); // jaren     (Y)
+    $dat_maand = substr($datum, 5, 2); // maanden   (m)
+    $dat_dag   = substr($datum, 8, 2); // dagen     (d)
+    $buildDatum = mktime(0, 0, 0, $dat_maand, $dat_dag, $dat_jaar);
+    $weekNumber = date('W', $buildDatum);
+    return $weekNumber;
 }
 
 //-------------------------------------------------------------------------

@@ -149,7 +149,7 @@ echo "<table id='uren_table'>";
     $tmp_soortuur = 'eersteloop';
 	    
     $sql_uren = "SELECT * FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."' ORDER BY soortuur, dagnummer";
-    // Om regels per soortuur te krijgen HOE??
+    // Om regels per soortuur te krijgen 
     if($sql_result_uren = mysqli_query($dbconn, $sql_uren)) {
         if(mysqli_num_rows($sql_result_uren) > 0) {
             while($row_uren = mysqli_fetch_array($sql_result_uren)) {
@@ -208,6 +208,7 @@ echo "<table id='uren_table'>";
 	    echo "<tr id='row1'>";
             $sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
             $option = "";
+            // Loop om de dropdown met soorten uren op te bouwen
             while($row_soorturen = mysqli_fetch_array($sql_soorturen)) {
                 if ($tmp_soortuur == $row_soorturen['code']) {
                     $option_selected = 'selected';

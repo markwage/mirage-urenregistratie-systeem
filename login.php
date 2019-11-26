@@ -17,7 +17,7 @@ include ("header.php");
 <?php
 // Indien het Login form is submitted
 if (isset($_POST['submit'])) {
-	//controleer of het ingevuld is
+	//controleer of username en wachtwoord zijn ingevuld
 	if (!$_POST['username'] || !$_POST['pass']) {
 	    echo '<blockquote class="error">ERROR: Niet alle verplichte velden zijn ingevuld</blockquote>';
 	}
@@ -25,22 +25,22 @@ if (isset($_POST['submit'])) {
 	if (!get_magic_quotes_gpc()) {
 		$_POST['username'] = addslashes($_POST['username']);
 	}
-	$check = mysqli_query($dbconn, "SELECT * FROM users WHERE username = '".$_POST['username']."'") or die(mysqli_error($dbconn));
+	$sqlOut = mysqli_query($dbconn, "SELECT * FROM users WHERE username = '".$_POST['username']."'") or die(mysqli_error($dbconn));
 	// Error indien username wel ingevuld maar onbekend
-	$check2 = mysqli_num_rows($check);
-	if ($check2 == 0 && $_POST['username'] <> '') {
+	$sqlCnt = mysqli_num_rows($sqlOut);
+	if ($sqlCnt == 0 && $_POST['username'] <> '') {
 	    writeLogRecord("login","WARN Er werd geprobeerd om in te loggen met een niet bestaande username: ".$_POST['username']);
 		echo '<blockquote class="error">ERROR: Username is onbekend</blockquote>';
 	}
-	while ($info = mysqli_fetch_array($check)) {
+	while ($sqlRow = mysqli_fetch_array($sqlOut)) {
 		$_POST['pass']     = stripslashes($_POST['pass']);
-		$info['password']  = stripslashes($info['password']);
+		$sqlRow['password']  = stripslashes($sqlRow['password']);
 		$_POST['pass']     = md5($_POST['pass']);
-		$_POST['admin']    = $info['admin'];
-		$_POST['voornaam'] = $info['voornaam'];
-		$_POST['approvenallowed'] = $info['approvenallowed'];
+		$_POST['admin']    = $sqlRow['admin'];
+		$_POST['voornaam'] = $sqlRow['voornaam'];
+		$_POST['approvenallowed'] = $sqlRow['approvenallowed'];
 		//Error indien password fout
-		if ($_POST['pass'] != $info['password']) {
+		if ($_POST['pass'] != $sqlRow['password']) {
 			writeLogRecord("login","WARN User ".$_POST['username']." probeerde in te loggen met een foutief wachtwoord");
 			echo '<blockquote class="error">ERROR: Foutief wachtwoord. Probeer het nogmaals</blockquote>';
 		}
@@ -55,12 +55,9 @@ if (isset($_POST['submit'])) {
 			$_SESSION['approvenallowed'] = $_POST['approvenallowed'];
 			$_SESSION['voornaam'] = $_POST['voornaam'];
 			// update lastloggedin in de tabel
-			// Haal eerst de lastloggedin op om dit in het scherm te tonen als user aangelogd is
-			//$sql_getlastloggedin = "SELECT lastloggedin FROM USERS WHERE username = '".$_POST['username']."'";
-			//$check_getlastloggedin = mysqli_query($dbconn, $sql_lastloggedin) or die ("Error in query: $sql_getlastloggedin. ".mysqli_error());
 			$update = "UPDATE users SET 
 				lastloggedin = '".date('Y-m-d h:i:s')."' WHERE username = '".$_POST['username']."'";
-			$check_upd_users = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error());
+			$sqlUpd = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error());
 			header("location: index.php");
 			writeLogRecord("login","User ".$_POST['username']." is succesvol ingelogd.");
 		}
