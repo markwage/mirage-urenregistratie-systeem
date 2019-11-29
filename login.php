@@ -63,7 +63,6 @@ if (isset($_POST['submit'])) {
 		}
 	}
 }
-// else {
 	// indien niet ingelogd het inlogform displayen
 	?>
 	

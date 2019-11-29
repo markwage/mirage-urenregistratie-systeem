@@ -10,7 +10,7 @@ if (isset($_COOKIE['ID_mus'])) {
 	echo '<div class="sidebox">';	
 	echo '<h1 class="clear">Urenadministratie</h1>';
 	echo '<ul class="sidemenu">';
-	echo '<li><a href="uren.php?aktie=toevoegen">Invoeren uren</a></li>';
+	echo '<li><a href="uren.php?aktie=toevoegen">Uren</a></li>';
 	echo '<li><a href="uren.php?aktie=disp">Vakantie-uren per kalenderjaar</a></li>';
 	echo '<li><a href="rapportage.php">Overzicht periode</a></li>';
 	echo '<li><a href="users.php?aktie=editprof&edtuser='.$_SESSION["username"].'">Mijn profiel</a></li>';

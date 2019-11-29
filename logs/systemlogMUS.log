@@ -350,3 +350,784 @@
 20191126 16:19:54;index;mwage;Totaal aantal rijen uit de select-query: 10
 20191126 16:20:15;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
 20191126 16:20:15;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191126 20:24:30;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 20:24:30;index;;Totaal aantal rijen uit de select-query: 0
+20191126 20:24:35;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 20:24:35;index;;Totaal aantal rijen uit de select-query: 0
+20191126 20:24:39;logout;;User is succesvol uitgelogd
+20191126 20:24:59;login;mwage;User mwage is succesvol ingelogd.
+20191126 20:24:59;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 20:24:59;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191126 20:26:17;nieuws;mwage;CANCEL User heeft op cancel gedrukt
+20191126 20:26:21;logout;mwage;User is succesvol uitgelogd
+20191126 20:26:27;login;mwage;WARN Er werd geprobeerd om in te loggen met een niet bestaande username: demo
+20191126 20:26:36;login;mwage;User mwage is succesvol ingelogd.
+20191126 20:26:36;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 20:26:36;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191126 20:27:17;users;mwage;SAVEBUTTON - Wachtwoorden worden gecontroleerd
+20191126 20:27:17;users;mwage;CHECKFIELDS - Overige velden worden gecontroleerd
+20191126 20:27:17;users;mwage;CREATEQRY1 - Beginnen met het aanmaken van de UPDATE query om user demo2te updaten
+20191126 20:27:17;users;mwage;PASS_MD5 - Wachtwoord is middels md5 encrypted
+20191126 20:27:17;users;mwage;UPDQUERY De UPDATE-query wordt nu uitgevoerd op de database voor userdemo2
+20191126 20:27:27;logout;mwage;User is succesvol uitgelogd
+20191126 20:28:00;login;demo2;User demo2 is succesvol ingelogd.
+20191126 20:28:00;index;demo2;Query: SELECT * FROM uren where user='demo2' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 20:28:00;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191126 20:28:13;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 20:28:13;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 20:28:13;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 20:28:21;nieuws;demo2;CANCEL User heeft op cancel gedrukt
+20191126 20:28:21;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 20:28:21;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 20:28:21;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 20:28:28;nieuws;demo2;CANCEL User heeft op cancel gedrukt
+20191126 20:28:28;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 20:28:28;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 20:28:28;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 20:28:39;nieuws;demo2;CANCEL User heeft op cancel gedrukt
+20191126 20:28:39;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 20:28:39;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 20:28:39;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 20:29:14;uren;demo2;UPDWEEK 001 Op refresh gedrukt POST(week): 201948
+20191126 20:29:14;uren;demo2;BTNSAVE Controle of er al gegevens van jaar 2019 en week 48 zijn
+20191126 20:29:14;uren;demo2;BTNSAVE Query: SELECT * FROM uren where user='demo2' AND week='48' AND jaar='2019'
+20191126 20:29:14;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191126 20:29:14;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '0', 'MIR000UU', '2019-11-25', '8', 'demo2')
+20191126 20:29:14;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191126 20:29:14;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '1', 'MIR000UU', '2019-11-26', '4', 'demo2')
+20191126 20:29:14;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191126 20:29:14;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '2', 'MIR000UU', '2019-11-27', '5', 'demo2')
+20191126 20:29:14;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191126 20:29:14;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '3', 'MIR000UU', '2019-11-28', '8', 'demo2')
+20191126 20:29:14;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191126 20:29:14;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '4', 'MIR000UU', '2019-11-29', '8', 'demo2')
+20191126 20:29:14;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191126 20:29:14;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '1', 'MIR010CU', '2019-11-26', '5', 'demo2')
+20191126 20:29:14;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191126 20:29:14;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '2', 'MIR010CU', '2019-11-27', '3', 'demo2')
+20191126 20:30:36;index;demo2;Query: SELECT * FROM uren where user='demo2' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 20:30:36;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191126 21:08:03;index;demo2;Query: SELECT * FROM uren where user='demo2' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 21:08:03;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191126 21:08:06;index;demo2;Query: SELECT * FROM uren where user='demo2' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 21:08:06;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191126 21:08:12;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 21:08:12;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 21:08:12;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 21:08:14;index;demo2;Query: SELECT * FROM uren where user='demo2' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 21:08:14;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191126 21:42:42;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 21:42:42;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 21:42:42;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 21:42:44;index;demo2;Query: SELECT * FROM uren where user='demo2' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 21:42:44;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191126 21:43:05;index;demo2;Query: SELECT * FROM uren where user='demo2' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 21:43:05;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191126 21:43:08;index;demo2;Query: SELECT * FROM uren where user='demo2' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 21:43:08;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191126 21:43:10;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 21:43:10;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 21:43:10;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 21:43:11;index;demo2;Query: SELECT * FROM uren where user='demo2' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 21:43:11;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191126 21:43:14;index;demo2;Query: SELECT * FROM uren where user='demo2' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 21:43:14;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191126 21:44:00;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 21:44:00;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 21:44:00;nieuws;demo2;BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond
+20191126 21:44:01;index;demo2;Query: SELECT * FROM uren where user='demo2' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191126 21:44:01;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191127 18:29:04;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191127 18:29:04;index;;Totaal aantal rijen uit de select-query: 0
+20191127 18:58:50;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191127 18:58:50;index;;Totaal aantal rijen uit de select-query: 0
+20191128 11:08:36;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 11:08:36;index;;Totaal aantal rijen uit de select-query: 0
+20191128 11:08:41;login;mwage;User mwage is succesvol ingelogd.
+20191128 11:08:41;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 11:08:41;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 11:10:03;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 11:10:03;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 12:00:12;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 12:00:12;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 12:20:20;nieuws;mwage;CANCEL User heeft op cancel gedrukt
+20191128 12:20:39;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201948
+20191128 12:20:39;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 12:20:39;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 12:44:19;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 12:44:19;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 12:45:36;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 12:45:36;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 12:50:22;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 12:50:22;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 12:50:28;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 12:50:28;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 12:51:14;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 12:51:14;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 12:52:42;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 12:52:42;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 12:52:44;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 12:52:44;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 12:55:10;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 12:55:10;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 12:56:43;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 12:56:43;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 12:57:19;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 12:57:19;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 13:08:10;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191128 13:08:10;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191128 15:07:32;logout;mwage;User is succesvol uitgelogd
+20191129 11:04:32;index;;Query: SELECT * FROM uren where user='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 11:04:32;index;;Totaal aantal rijen uit de select-query: 0
+20191129 11:04:39;login;mwage;User mwage is succesvol ingelogd.
+20191129 11:04:39;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 11:04:39;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191129 11:23:03;index;mwage;Query: SELECT * FROM uren where user='mwage' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 11:23:03;index;mwage;Totaal aantal rijen uit de select-query: 10
+20191129 13:50:11;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:50:11;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:50:11;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:50:11;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:50:11;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:50:11;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:50:11;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:50:11;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:50:11;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:50:11;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:50:11;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:50:11;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:50:11;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:50:11;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:50:11;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:50:11;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:50:11;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:50:11;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:50:11;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:50:11;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:57:57;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:57:57;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:57:57;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:57:57;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:57:57;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:57:57;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:57:57;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:57:57;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:57:57;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:57:57;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:57:57;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:57:57;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:57:57;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:57:57;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:57:57;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:57:57;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:57:57;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:57:57;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:57:57;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='' AND week='' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:57:57;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:58:43;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:58:43;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:58:43;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:58:43;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:58:43;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:58:43;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:58:43;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:58:43;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:58:43;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:58:43;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:58:43;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:58:43;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:58:43;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:58:43;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:58:43;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:58:43;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:58:43;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:58:43;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 13:58:43;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 13:58:43;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:00:09;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:00:09;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:00:09;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:00:09;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:00:09;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:00:09;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:00:09;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:00:09;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:00:09;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:00:09;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:00:09;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:00:09;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:00:09;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:00:09;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:00:09;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:00:09;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:00:09;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:00:09;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:00:09;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:00:09;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:42;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:42;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:42;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:42;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:42;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:42;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:42;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:42;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:42;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:42;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:42;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:42;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:42;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:42;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:42;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:42;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:42;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:42;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:42;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:42;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:56;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:56;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:56;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:56;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:56;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:56;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:56;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:56;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:56;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:56;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:56;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:56;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:56;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:56;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:56;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:56;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:56;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:56;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:03:56;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:03:56;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:29;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:29;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:29;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:29;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:29;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:29;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:29;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:29;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:29;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:29;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:29;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:29;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:29;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:29;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:29;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:29;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:29;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:29;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:29;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:29;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:32;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:32;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:32;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:32;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:32;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:32;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:32;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:32;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:32;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:32;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:32;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:32;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:32;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:32;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:32;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:32;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:32;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:32;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:04:32;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:04:32;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:05:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:05:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:05:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:05:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:05:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:05:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:05:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:05:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:05:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:05:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:05:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:05:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:05:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:05:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:05:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:05:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:05:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:05:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:05:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:05:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:58;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:58;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:58;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:58;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:58;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:58;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:58;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:58;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:58;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:58;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:58;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:58;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:58;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:58;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:58;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:58;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:58;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:58;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:19:58;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:19:58;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:24:40;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:24:40;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:24:40;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:24:40;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:24:40;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:24:40;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:24:40;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:24:40;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:24:40;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:24:40;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:24:40;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:24:40;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:24:40;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:24:40;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:24:40;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:24:40;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:24:40;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:24:40;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:24:40;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:24:40;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:29:39;logout;mwage;User is succesvol uitgelogd
+20191129 14:29:45;login;demo2;User demo2 is succesvol ingelogd.
+20191129 14:29:45;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:29:45;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191129 14:29:45;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:29:45;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:29:45;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:29:45;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:29:45;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:29:45;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:29:45;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:29:45;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:29:45;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:29:45;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:29:45;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:29:45;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:29:45;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:29:46;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:29:46;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:29:46;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:29:46;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:29:46;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:31:44;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:31:44;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191129 14:31:44;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:31:44;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:31:44;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:31:44;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:31:44;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:31:44;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:31:44;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:31:44;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:31:44;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:31:44;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:31:44;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:31:44;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:31:44;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:31:44;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:31:44;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:31:44;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:31:44;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:31:44;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:32:01;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:32:01;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191129 14:32:01;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:32:01;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:32:01;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:32:01;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:32:01;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:32:01;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:32:01;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:32:01;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:32:01;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:32:01;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:32:01;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:32:01;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:32:01;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:32:01;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:32:01;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:32:01;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:32:01;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:32:01;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:25;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191129 14:35:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:26;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:26;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191129 14:35:26;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:26;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:26;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:26;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:26;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:26;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:26;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:26;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:26;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:26;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:26;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:26;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:26;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:26;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:26;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:26;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:26;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:26;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:29;logout;demo2;User is succesvol uitgelogd
+20191129 14:35:37;login;mwage;User mwage is succesvol ingelogd.
+20191129 14:35:37;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:37;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:37;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:37;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:37;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:37;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:37;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:37;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:37;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:37;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:37;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:37;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:37;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:37;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:37;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:37;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:37;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:37;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:37;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:37;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:47;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201948
+20191129 14:35:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 14:35:47;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 14:35:47;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 15:52:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 15:52:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 15:52:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 15:52:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 15:52:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 15:52:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 15:52:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 15:52:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 15:52:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 15:52:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 15:52:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 15:52:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 15:52:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 15:52:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 15:52:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 15:52:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 15:52:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 15:52:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 15:52:06;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 15:52:06;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:16:53;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:16:53;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:16:53;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:16:53;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:16:53;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:16:53;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:16:53;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:16:53;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:16:53;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:16:53;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:16:53;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:16:53;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:16:53;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:16:53;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:16:53;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:16:53;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:16:53;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:16:53;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:16:53;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:16:53;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:07;logout;mwage;User is succesvol uitgelogd
+20191129 16:17:12;login;demo2;User demo2 is succesvol ingelogd.
+20191129 16:17:12;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:12;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191129 16:17:12;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:12;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:12;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:12;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:12;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:12;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:12;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:12;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:12;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:12;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:12;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:12;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:12;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:12;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:12;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:12;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:12;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:12;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:21;uren;demo2;UPDWEEK 001 Op refresh gedrukt POST(week): 201948
+20191129 16:17:21;uren;demo2;BTNSAVE Controle of er al gegevens van jaar 2019 en week 48 zijn
+20191129 16:17:21;uren;demo2;BTNSAVE Query: SELECT * FROM uren where user='demo2' AND week='48' AND jaar='2019'
+20191129 16:17:21;uren;demo2;BTNSAVE Records worden verwijderd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191129 16:17:21;uren;demo2;BTNSAVE Query: DELETE FROM uren where user='demo2' AND week='48' AND jaar='2019'
+20191129 16:17:21;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191129 16:17:21;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '0', 'MIR000UU', '2019-11-25', '8.00', 'demo2')
+20191129 16:17:21;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191129 16:17:21;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '1', 'MIR000UU', '2019-11-26', '4.00', 'demo2')
+20191129 16:17:21;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191129 16:17:21;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '2', 'MIR000UU', '2019-11-27', '5.00', 'demo2')
+20191129 16:17:21;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191129 16:17:21;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '3', 'MIR000UU', '2019-11-28', '8.00', 'demo2')
+20191129 16:17:21;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191129 16:17:21;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '4', 'MIR000UU', '2019-11-29', '8.00', 'demo2')
+20191129 16:17:21;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191129 16:17:21;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '1', 'MIR010CU', '2019-11-26', '5.00', 'demo2')
+20191129 16:17:21;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 48 voor het updaten van de betreffende week
+20191129 16:17:21;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '48', '2', 'MIR010CU', '2019-11-27', '3.00', 'demo2')
+20191129 16:17:21;uren;demo2;APPROVAL Week 2019 /  48 is aangeboden om approved te worden
+20191129 16:17:21;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:21;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191129 16:17:21;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:21;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:21;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:21;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:21;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:21;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:21;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:21;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:21;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:21;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:21;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:21;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:21;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:21;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:21;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:21;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:21;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:21;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:47;uren;demo2;UPDWEEK 001 Op refresh gedrukt POST(week): 201948
+20191129 16:17:47;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:47;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191129 16:17:47;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:47;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:47;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:47;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:47;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:47;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:47;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:47;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:47;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:47;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:47;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:47;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:47;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:47;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:47;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:47;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:17:47;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:17:47;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:18:40;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:18:40;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191129 16:18:40;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:18:40;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:18:40;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:18:40;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:18:40;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:18:40;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:18:40;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:18:40;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:18:40;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:18:40;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:18:40;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:18:40;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:18:40;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:18:40;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:18:40;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:18:40;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:18:40;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:18:40;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:02;uren;demo2;UPDWEEK 001 Op refresh gedrukt POST(week): 201947
+20191129 16:19:02;uren;demo2;UPDWEEK 001 Op refresh gedrukt POST(week): 201947
+20191129 16:19:22;uren;demo2;UPDWEEK 001 Op refresh gedrukt POST(week): 201947
+20191129 16:19:22;uren;demo2;BTNSAVE Controle of er al gegevens van jaar 2019 en week 47 zijn
+20191129 16:19:22;uren;demo2;BTNSAVE Query: SELECT * FROM uren where user='demo2' AND week='47' AND jaar='2019'
+20191129 16:19:22;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 47 voor het updaten van de betreffende week
+20191129 16:19:22;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '47', '0', 'MIR000UU', '2019-11-18', '8', 'demo2')
+20191129 16:19:22;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 47 voor het updaten van de betreffende week
+20191129 16:19:22;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '47', '1', 'MIR000UU', '2019-11-19', '8', 'demo2')
+20191129 16:19:22;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 47 voor het updaten van de betreffende week
+20191129 16:19:22;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '47', '2', 'MIR000UU', '2019-11-20', '8', 'demo2')
+20191129 16:19:22;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 47 voor het updaten van de betreffende week
+20191129 16:19:22;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '47', '3', 'MIR001VL', '2019-11-21', '8', 'demo2')
+20191129 16:19:22;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 47 voor het updaten van de betreffende week
+20191129 16:19:22;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '47', '4', 'MIR001VL', '2019-11-22', '8', 'demo2')
+20191129 16:19:25;uren;demo2;UPDWEEK 001 Op refresh gedrukt POST(week): 201947
+20191129 16:19:25;uren;demo2;BTNSAVE Controle of er al gegevens van jaar 2019 en week 47 zijn
+20191129 16:19:25;uren;demo2;BTNSAVE Query: SELECT * FROM uren where user='demo2' AND week='47' AND jaar='2019'
+20191129 16:19:25;uren;demo2;BTNSAVE Records worden verwijderd van jaar 2019 en week 47 voor het updaten van de betreffende week
+20191129 16:19:25;uren;demo2;BTNSAVE Query: DELETE FROM uren where user='demo2' AND week='47' AND jaar='2019'
+20191129 16:19:25;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 47 voor het updaten van de betreffende week
+20191129 16:19:25;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '47', '0', 'MIR000UU', '2019-11-18', '8.00', 'demo2')
+20191129 16:19:25;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 47 voor het updaten van de betreffende week
+20191129 16:19:25;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '47', '1', 'MIR000UU', '2019-11-19', '8.00', 'demo2')
+20191129 16:19:25;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 47 voor het updaten van de betreffende week
+20191129 16:19:25;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '47', '2', 'MIR000UU', '2019-11-20', '8.00', 'demo2')
+20191129 16:19:25;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 47 voor het updaten van de betreffende week
+20191129 16:19:25;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '47', '3', 'MIR001VL', '2019-11-21', '8.00', 'demo2')
+20191129 16:19:25;uren;demo2;BTNSAVE Records worden toegevoegd van jaar 2019 en week 47 voor het updaten van de betreffende week
+20191129 16:19:25;uren;demo2;BTNSAVE Query: INSERT INTO uren (jaar, week, dagnummer, soortuur, datum, uren, user)
+                        values('2019', '47', '4', 'MIR001VL', '2019-11-22', '8.00', 'demo2')
+20191129 16:19:25;uren;demo2;APPROVAL Week 2019 /  47 is aangeboden om approved te worden
+20191129 16:19:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:25;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191129 16:19:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:25;index;demo2;Totaal aantal rijen uit de select-query: 1
+20191129 16:19:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:25;index;demo2;Query: SELECT * FROM uren where user='demo2' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:25;index;demo2;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:30;logout;demo2;User is succesvol uitgelogd
+20191129 16:19:36;login;mwage;User mwage is succesvol ingelogd.
+20191129 16:19:36;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:36;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:36;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:36;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:36;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:36;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:36;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:36;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:36;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:36;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:36;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:36;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:36;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:36;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:36;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:36;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:36;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:36;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:19:36;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:19:36;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:25:46;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='48' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:25:46;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:25:46;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='47' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:25:46;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:25:46;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='46' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:25:46;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:25:46;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='45' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:25:46;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:25:46;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='44' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:25:46;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:25:46;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='43' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:25:46;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:25:46;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='42' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:25:46;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:25:46;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='41' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:25:46;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:25:46;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='40' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:25:46;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:25:46;index;mwage;Query: SELECT * FROM uren where user='mwage' AND jaar='2019' AND week='39' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10
+20191129 16:25:46;index;mwage;Totaal aantal rijen uit de select-query: 0
+20191129 16:38:32;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201947
+20191129 16:38:39;uren;mwage;UPDWEEK 001 Op refresh gedrukt POST(week): 201916

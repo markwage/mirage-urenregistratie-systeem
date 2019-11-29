@@ -101,6 +101,7 @@ if ($aktie == 'dspuren') {
     
     $sql_uren = mysqli_query($dbconn, "SELECT * FROM uren WHERE user = '$username' AND week = '$week' ORDER BY datum, soortuur");
     echo "<h3>Overzicht per dag</h3>";
+    //echo "<h4><center><b>Weeknummer: </b>".$week."<br /><b>Medewerker: </b>".$voornaam." ".$tussenvoegsel." ".$achternaam." </h4>";
     echo "<center><table>";
     echo "<tr><th>Datum</th><th>Soortuur</th><th>Uren</th></tr>";
     $rowcolor = 'row-a';

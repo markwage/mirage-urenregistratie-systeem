@@ -129,7 +129,6 @@ echo "<table>";
 		echo "<td><strong>Weeknummer</strong></td>";
 		echo "<td><input style='width:70px' type='number' name='week' id='camp-week' value='".$inputweeknr."' required onchange='this.form.submit()'></td>";
 		echo "<td><img src=\"./img/buttons/icons8-info-48.png\" alt=\"informatie\" title=\"informatie\" /></td><td>".$status."</td";
-		//<!-- -<td><input class="button" type="submit" name="updateweeknr" value="refresh"></td> -->
 	echo "</tr>";
 echo "</table>";
 echo "<table id='uren_table'>";

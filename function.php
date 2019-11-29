@@ -1,22 +1,6 @@
 <?php
 
 //------------------------------------------------------------------------
-// functie om een connectie met de database te maken
-//------------------------------------------------------------------------
-//function makedbconnection() {
-//    if (!isset($dbconn)) {
-//        include ("./db.php");
-//    }
-//    if (mysqli_connect_errno()) {
-//        die("Kan de connectie met de database niet maken");
-//    }
-//    $dbselect = mysqli_select_db($dbconn, $dbname);
-//    if (!$dbselect) {
-//        die("Kan de database niet openen : " . mysqli_error());
-//    }
-//}
-
-//------------------------------------------------------------------------
 // functie om een error-message te displayen met standaard
 // header en kleuren
 //------------------------------------------------------------------------
@@ -87,7 +71,6 @@ function displayUserGegevens() {
 		$emailadres    = $row_user['emailadres'];
 		echo '<tr><td align="right"><strong>Medewerker: </strong></td><td>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</td></tr>';
 		echo '<tr><td align="right"><strong>Emailadres: </strong></td><td>'.$emailadres.'</td></tr>';
-		//echo "</tr></table></p>";
 	}
 	echo "</table></p>";
 }
@@ -182,6 +165,20 @@ function cnv_dateToWeek($datum) {
     return $weekNumber;
 }
 
+//------------------------------------------------------------------------
+// Converteren huidige dag naar currentWeeknummer
+//------------------------------------------------------------------------
+function jaarWeek() {
+    global $mainWeek, $mainJaar;
+    $datum = date("d-m-Y");
+    $dagen = 0;
+    for($ix1=0; $ix1<10; $ix1++) {
+        $dagen = -7 * $ix1; // Negatief omdat we 10 weken terug moeten kijken
+        $mainWeek[$ix1] = date("W", strtotime("+$dagen day ".$datum));
+        $mainJaar[$ix1] = date("Y", strtotime("+$dagen day ".$datum));
+    }
+}
+
 //-------------------------------------------------------------------------
 // Geef weeknummer en jaar door aan de functie
 // Deze geeft de dagnaam (mon - sun) en de datum in dd-mm 
@@ -189,17 +186,12 @@ function cnv_dateToWeek($datum) {
 //-------------------------------------------------------------------------
 function getWeekdays($weeknr){
     global $weekDatum, $weekDagNaam, $week, $year, $inputweeknr;
-    //writelogrecord("function","getWeekdays weeknr: ".$weeknr);
     $inputweeknr = $weeknr;
     $week = substr($inputweeknr, 4, 2);
     $year = substr($inputweeknr, 0, 4);
-    $weekDatum[0] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT)));
-    $weekDatum[1] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +1 days'));
-    $weekDatum[2] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +2 days'));
-    $weekDatum[3] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +3 days'));
-    $weekDatum[4] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +4 days'));
-    $weekDatum[5] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +5 days'));
-    $weekDatum[6] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +6 days'));
+    for($ix1=0; $ix1<7; $ix1++) {
+        $weekDatum[$ix1] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ix1.' days'));
+    }
     $weekDagNaam[0] = "Maa";
     $weekDagNaam[1] = "Din";
     $weekDagNaam[2] = "Woe";

@@ -36,6 +36,7 @@ h1, h2, h3 { font: bold verdana, arial, sans-serif; color: #118981; }
 h1 { font-size: 24px; padding-bottom: 13px; }
 h2 { font-size: 20px; text-transform: uppercase; }
 h3 { font-size: 16px; padding-top: 10px; padding-bottom: 10px; }
+h4 { font-size: 14px; padding-top: 10px; padding-bottom: 10px; }
 
 p, h1, h2, h3 {
 	margin: 10px 15px;
