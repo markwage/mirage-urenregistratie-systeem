@@ -29,6 +29,7 @@ function check_cookies() {
 			}
 		}
 	}
+	
 	else {
 		header("location: login.php");
 	}
