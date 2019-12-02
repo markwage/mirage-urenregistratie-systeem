@@ -13,7 +13,8 @@ body {
 	right: 0;
 	margin: 0;
 	padding: 0;
-	font: normal 13px verdana, arial, sans-serif;
+	/* font: normal 13px verdana, arial, sans-serif; */
+	font: normal 1vw verdana, arial, sans-serif;
 	color: black;
 	background: #FFF url(../img/bg.jpg) repeat-x;
 	text-align: center;
@@ -33,10 +34,14 @@ a:hover {
 
 /* headers */
 h1, h2, h3 { font: bold verdana, arial, sans-serif; color: #118981; }
-h1 { font-size: 24px; padding-bottom: 13px; }
-h2 { font-size: 20px; text-transform: uppercase; }
-h3 { font-size: 16px; padding-top: 10px; padding-bottom: 10px; }
-h4 { font-size: 14px; padding-top: 10px; padding-bottom: 10px; }
+/* h1 { font-size: 24px; padding-bottom: 13px; } */
+h1 { font-size: 1.6vw; padding-bottom: 0.5vw; }
+/* h2 { font-size: 20px; text-transform: uppercase; } */
+h2 { font-size: 1.33vw; text-transform: uppercase; }
+/* h3 { font-size: 16px; padding-top: 10px; padding-bottom: 10px; } */
+h3 { font-size: 1.07; padding-top: 10px; padding-bottom: 10px; }
+/* h4 { font-size: 14px; padding-top: 10px; padding-bottom: 10px; } */
+h4 { font-size: 0.93; padding-top: 10px; padding-bottom: 10px; }
 
 p, h1, h2, h3 {
 	margin: 10px 15px;
@@ -66,7 +71,7 @@ blockquote {
 	background-position: 8px 10px;
 	border: 1px solid #f2f2f2; 
 	border-left: 3px solid #13C3B7;  
-	font: 13px verdana, arial, sans-serif; 
+	font: 1vw verdana, arial, sans-serif; 
 	color: #666666;	
 }
 
@@ -137,7 +142,8 @@ label {
 input {
 	padding: 5px 5px 5px 5px;
 	border: 1px solid #333;
-	font: normal 13px verdana, arial, sans-serif;
+	/* font: normal 13px verdana, arial, sans-serif; */
+	font: normal 1vw verdana, arial, sans-serif; 
 	/* color:#777; */
 	margin-bottom: 4px;
 }
@@ -170,14 +176,16 @@ input[type=number]::-webkit-outer-spin-button {
 select {
 	padding: 5px 5px 5px 5px;
 	border: 1px solid #333;
-	font: normal 13px verdana, arial, sans-serif;
+	/* font: normal 13px verdana, arial, sans-serif; */
+	font: normal 1vw verdana, arial, sans-serif;
 	/* color:#777; */
 	margin-bottom: 4px;
 }
 textarea {
 	width: 100%;
 	padding: 5px;
-	font: normal 13px verdana, arial, sans-serif;
+	/* font: normal 13px verdana, arial, sans-serif; */
+	font: normal 1vw verdana, arial, sans-serif;
 	border: 1px solid #333;
 	min-height: 100px;
 	/* op commentaar ivm scrollbars overflow: hidden; */
@@ -193,7 +201,8 @@ textarea:focus {
 
 input.button {
 	margin-left: 5px;
-	font: bold 13px verdana, arial, sans-serif;
+	/* font: bold 13px verdana, arial, sans-serif; */
+	font: bold 1vw verdana, arial, sans-serif;
 	background: #FFF url(../img/gradientbg.jpg) repeat-x;
 	padding: 5px 8px 5px 8px;
 	color: black;
@@ -224,7 +233,8 @@ input.button {
 }
 #header-content h1#logo {
 	position: absolute;	
-	font: bold 45px verdana, arial, sans-serif;
+	/* font: bold 45px verdana, arial, sans-serif; */
+	font: bold 3vw verdana, arial, sans-serif;
 	letter-spacing: -2px; 
 	color: #FFF;
 	margin: 0; padding: 0;		
@@ -238,7 +248,8 @@ input.button {
 }
 #header-content #slogan {
 	position: absolute;	
-	font: bold 13px verdana, arial, sans-serif;
+	/* font: bold 13px verdana, arial, sans-serif; */
+	font: bold 1vw verdana, arial, sans-serif;
 	text-transform: none;
 	color: #FFF;	
 	margin: 0; padding: 0;
@@ -253,7 +264,8 @@ input.button {
 	/* right: 0px; top: 15px; */
 	left: 27%;
 	top: 55px;
-	font: bolder 17px verdana, arial, sans-serif;
+	/* font: bolder 17px verdana, arial, sans-serif; */
+	font: bolder 1.13vw verdana, arial, sans-serif;
 	color: #FFF;
 	list-style: none;
 	margin: 0;
@@ -304,7 +316,8 @@ input.button {
 #sidebar h1 {
 	padding: 10px 0px 5px 10px;
 	margin: 0;	
-	font: bold 18px verdana, arial, sans-serif;
+	/* font: bold 18px verdana, arial, sans-serif; */
+	font: bold 1.2vw verdana, arial, sans-serif;
 }
 .sidebox {
 	background: #F5F5F5;
@@ -354,7 +367,7 @@ input.button {
 	margin: 0 0 0 10px;
 	border-bottom: 1px solid #f2f2f2;
 	/* font: bold 24px verdana, arial, sans-serif; */
-	font: bold 2vw verdana, arial, sans-serif;
+	font: bold 1.6vw verdana, arial, sans-serif;
 }
 #main ul li {
 	list-style-image: url(../img/bullet.gif);
@@ -367,7 +380,7 @@ input.button {
 	background-position: 8px 10px;
 	border: 1px solid #f2f2f2;
 	border-left: 3px solid red;
-	font: 13px verdana, arial, sans-serif;
+	font: 1vw verdana, arial, sans-serif;
 	color: red;
 }
 
@@ -378,7 +391,7 @@ input.button {
 	background-position: 8px 10px;
 	border: 1px solid #f2f2f2;
 	border-left: 3px solid #0c726b;
-	font: 13px verdana, arial, sans-serif;
+	font: 1vw verdana, arial, sans-serif;
 	font-weight: bold;
 }
 
@@ -387,7 +400,7 @@ input.button {
 	float: right;
 	clear: both;
 	margin: 0; padding: 0;
-	font: normal 11px/12px verdana, arial, sans-serif;
+	font: normal 0.8vw verdana, arial, sans-serif;
 	text-align: right;	width: 33%;
 	padding: 0 0 30px 0;
 }

@@ -127,7 +127,7 @@ if($sql_result_approval = mysqli_query($dbconn, $sql_approval)) {
 echo "<table>";
     echo "<tr>";
 		echo "<td><strong>Weeknummer</strong></td>";
-		echo "<td><input style='width:70px' type='number' name='week' id='camp-week' value='".$inputweeknr."' required onchange='this.form.submit()'></td>";
+		echo "<td><input style='width:4.66vw' type='number' name='week' id='camp-week' value='".$inputweeknr."' required onchange='this.form.submit()'></td>";
 		echo "<td><img src=\"./img/buttons/icons8-info-48.png\" alt=\"informatie\" title=\"informatie\" /></td><td>".$status."</td";
 	echo "</tr>";
 echo "</table>";
@@ -179,9 +179,9 @@ echo "<table id='uren_table'>";
                         for($ix5=0; $ix5<7; $ix5++) {
                             $frm_value = ${"frm_valueDag$ix5"};
                             $ix5b = $ix5 + 1;
-                            echo "<td><input ".$frm_readonly." style='width:50px; text-align:right' type='number' name='dag".$ix5b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
+                            echo "<td><input ".$frm_readonly." style='width:3.33vw; text-align:right' type='number' name='dag".$ix5b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
                             $totaalurenpersoort = number_format($totaalurenpersoort + floatval($frm_value), 2);
-                            if($ix5b == 7) echo "<td class='totaalkolom'><input readonly style='width:50px; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
+                            if($ix5b == 7) echo "<td class='totaalkolom'><input readonly style='width:3.33vw; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
                         }
                         if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
                         else echo "<td></td>";
@@ -222,9 +222,9 @@ echo "<table id='uren_table'>";
             for($ix7=0; $ix7<7; $ix7++) {
                 $frm_value = ${"frm_valueDag$ix7"};
                 $ix7b = $ix7 + 1;
-                echo "<td><input ".$frm_readonly." style='width:50px; text-align:right' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
+                echo "<td><input ".$frm_readonly." style='width:3.33vw; text-align:right' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
                 $totaalurenpersoort = number_format($totaalurenpersoort + floatval($frm_value), 2);
-                if($ix7b == 7) echo "<td class='totaalkolom'><input readonly style='width:50px; text-align:right;' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
+                if($ix7b == 7) echo "<td class='totaalkolom'><input readonly style='width:3.33vw; text-align:right;' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
             }
             
             if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
