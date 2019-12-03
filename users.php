@@ -179,15 +179,15 @@ if ($aktie == 'disp') {
 			<td><b>'.$username.'</b></td>
 			<td>'.$achternaam.', '.$voornaam.' '.$tussenvoegsel. '</td>
 			<td>'.$emailadres.'</td>';
-			if ($admin == 1) echo '<td style="text-align:center;"><img src="./img/buttons/icons8-ok-48.png" alt="1" title="heeft adminrechten" /></td>';
-			else echo '<td style="text-align:center;"><img src="./img/buttons/icons8-cancel-48.png" alt="0" title="heeft geen adminrechten" /></td>';
-			if ($indienst == 1) echo '<td style="text-align:center;"><img src="./img/buttons/icons8-ok-48.png" alt="1" title="medewerker is nog in dienst" /></td>';
-			else echo '<td style="text-align:center;"><img src="./img/buttons/icons8-cancel-48.png" alt="0" title="medewerker is niet meer in dienst" /></td>';
-			if ($approvenallowed == 1) echo '<td style="text-align:center;"><img src="./img/buttons/icons8-ok-48.png" alt="1" title="medewerker heeft rechten om uren te approven" /></td>';
-			else echo '<td style="text-align:center;"><img src="./img/buttons/icons8-cancel-48.png" alt="0" title="medewerker heeft geen rechten om uren te approven" /></td>';
-			echo '<td><a href="users.php?aktie=edit&edtuser='.$username.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
-			<td><a href="users.php?aktie=delete&edtuser='.$username.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>
-			<td><a href="add_user.php"><img src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>
+			if ($admin == 1) echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-ok-48.png" alt="1" title="heeft adminrechten" /></td>';
+			else echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-cancel-48.png" alt="0" title="heeft geen adminrechten" /></td>';
+			if ($indienst == 1) echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-ok-48.png" alt="1" title="medewerker is nog in dienst" /></td>';
+			else echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-cancel-48.png" alt="0" title="medewerker is niet meer in dienst" /></td>';
+			if ($approvenallowed == 1) echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-ok-48.png" alt="1" title="medewerker heeft rechten om uren te approven" /></td>';
+			else echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-cancel-48.png" alt="0" title="medewerker heeft geen rechten om uren te approven" /></td>';
+			echo '<td><a href="users.php?aktie=edit&edtuser='.$username.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
+			<td><a href="users.php?aktie=delete&edtuser='.$username.'"><img class="button" src="./img/buttons/icons8-trash-can-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>
+			<td><a href="add_user.php"><img class="button" src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>
 		</tr>';
 		if ($rowcolor == 'row-a') $rowcolor = 'row-b';
 		else $rowcolor = 'row-a';

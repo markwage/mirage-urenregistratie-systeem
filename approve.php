@@ -60,7 +60,7 @@ if (isset($_POST['approve'])) {
 // Er wordt een lijst met de te approven weken getoond
 //------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') {
-	$sql_approvals = mysqli_query($dbconn, "SELECT user, week FROM uren WHERE terapprovalaangeboden = 1 AND approved = 0 GROUP BY user, week ORDER BY user, week;");
+	$sql_approvals = mysqli_query($dbconn, "SELECT user, week FROM uren WHERE terapprovalaangeboden = 1 AND approved = 0 GROUP BY user, week ORDER BY week, user;");
 	echo "<center><table>";
 	echo "<tr><th>Medewerker</th><th>Week</th><th></th></tr>";
 	$rowcolor = 'row-a';
@@ -76,7 +76,7 @@ if ($aktie == 'disp') {
 		echo '<tr class="'.$rowcolor.'">
 			<td><b>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</b></td><td style=\'text-align:center\'>'.$week.'</td>
 
-			<td><a href="approve.php?aktie=dspuren&user='.$username.'&week='.$week.'"><img src="./img/buttons/icons8-glasses-48.png" alt="wijzigen soort uur" title="Toon de uren voor deze week voor deze user" /></a></td>
+			<td><a href="approve.php?aktie=dspuren&user='.$username.'&week='.$week.'"><img class="button" src="./img/buttons/icons8-glasses-48.png" alt="wijzigen soort uur" title="Toon de uren voor deze week voor deze user" /></a></td>
 			</tr>';
 		    //<td><a href="add_soortuur.php"><img src="./img/buttons/plus-green.gif" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
 		if ($rowcolor == 'row-a') $rowcolor = 'row-b';

@@ -114,9 +114,9 @@ if ($aktie == 'disp') {
 		echo '<tr class="'.$rowcolor.'">
 			<td><b>'.$code.'</b></td><td>'.$omschrijving.'</td>
 
-			<td><a href="soorturen.php?aktie=edit&edtcode='.$code.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen soort uur" title="wijzig soort uur '.$code.'" /></a></td>
-			<td><a href="soorturen.php?aktie=delete&edtcode='.$code.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete soort uur" title="delete soort uur '.$code.'" /></a></td>
-			<td><a href="add_soortuur.php"><img src="./img/buttons/icons8-plus-48.png" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
+			<td><a href="soorturen.php?aktie=edit&edtcode='.$code.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="wijzigen soort uur" title="wijzig soort uur '.$code.'" /></a></td>
+			<td><a href="soorturen.php?aktie=delete&edtcode='.$code.'"><img class="button" src="./img/buttons/icons8-trash-can-48.png" alt="delete soort uur" title="delete soort uur '.$code.'" /></a></td>
+			<td><a href="add_soortuur.php"><img class="button" src="./img/buttons/icons8-plus-48.png" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
 			</tr>';
 		if ($rowcolor == 'row-a') $rowcolor = 'row-b';
 		else $rowcolor = 'row-a';

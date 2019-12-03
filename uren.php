@@ -128,7 +128,7 @@ echo "<table>";
     echo "<tr>";
 		echo "<td><strong>Weeknummer</strong></td>";
 		echo "<td><input style='width:4.66vw' type='number' name='week' id='camp-week' value='".$inputweeknr."' required onchange='this.form.submit()'></td>";
-		echo "<td><img src=\"./img/buttons/icons8-info-48.png\" alt=\"informatie\" title=\"informatie\" /></td><td>".$status."</td";
+		echo "<td><img class='button' src=\"./img/buttons/icons8-info-48.png\" alt=\"informatie\" title=\"informatie\" /></td><td>".$status."</td";
 	echo "</tr>";
 echo "</table>";
 echo "<table id='uren_table'>";
@@ -137,7 +137,7 @@ echo "<table id='uren_table'>";
         for($ix6=0; $ix6<7; $ix6++) {
             echo "<th><center>".$weekDatum[$ix6]."<br>".$weekDagNaam[$ix6]."</center></th>";
         }
-        echo "<th style='text-align:right'>Totaal</th><th></th>";
+        echo "<th style='text-align:right'>Totaal</th><th style='width:1.5vw'></th>";
     echo "</tr>";
     //------------------------------------------------------------------------------------------------------
     // Bekijk huidige week of er al uren ingevuld zijn.
@@ -183,7 +183,7 @@ echo "<table id='uren_table'>";
                             $totaalurenpersoort = number_format($totaalurenpersoort + floatval($frm_value), 2);
                             if($ix5b == 7) echo "<td class='totaalkolom'><input readonly style='width:3.33vw; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
                         }
-                        if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
+                        if($frm_approved == 0) echo "<td><img class='button' src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
                         else echo "<td></td>";
                         echo "<td></td>";
                     echo "</tr>";
@@ -227,7 +227,7 @@ echo "<table id='uren_table'>";
                 if($ix7b == 7) echo "<td class='totaalkolom'><input readonly style='width:3.33vw; text-align:right;' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
             }
             
-            if($frm_approved == 0) echo "<td><img src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
+            if($frm_approved == 0) echo "<td><img class='button' src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
             else echo "<td></td>";
   		    echo "<td></td>";
 	    echo "</tr>";

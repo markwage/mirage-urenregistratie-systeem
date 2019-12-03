@@ -211,6 +211,11 @@ input.button {
 	border-radius: 5px;
 }
 
+img.button {
+	width: 1.5vw;
+	height: 1.5vw;
+}
+
 
 /***********************
 	  LAYOUT
