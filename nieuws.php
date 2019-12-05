@@ -98,11 +98,11 @@ if ($aktie == 'disp') {
 			<td>'.$datum.'</td><td>'.$nieuwsheader.'</td>';
         if (!isset($_SESSION['admin']) || (!$_SESSION['admin'])) {
             writeLogRecord("nieuws","BUTTONS Geen admin-sessie dus alleen de button bril wordt getoond");
-            echo '<td><a href="nieuws.php?aktie=dispbericht&edtid='.$id.'"><img src="./img/buttons/icons8-glasses-48.png" alt="display nieuwsbericht" title="display volledig nieuwsbericht" /></a></td>';
+            echo '<td><a href="nieuws.php?aktie=dispbericht&edtid='.$id.'"><img class="button" src="./img/buttons/icons8-glasses-48.png" alt="display nieuwsbericht" title="display volledig nieuwsbericht" /></a></td>';
         } else {
-			echo '<td><a href="nieuws.php?aktie=edit&edtid='.$id.'"><img src="./img/buttons/icons8-edit-48.png" alt="wijzigen nieuwsbericht" title="wijzig nieuwsbericht" /></a></td>
-			<td><a href="nieuws.php?aktie=delete&edtid='.$id.'"><img src="./img/buttons/icons8-trash-can-48.png" alt="delete nieuwsbericht" title="delete het nieuwsbericht" /></a></td>
-			<td><a href="add_nieuws.php"><img src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwsbericht" title="toevoegen nieuwsbericht" /></a></td>'; 
+			echo '<td><a href="nieuws.php?aktie=edit&edtid='.$id.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="wijzigen nieuwsbericht" title="wijzig nieuwsbericht" /></a></td>
+			<td><a href="nieuws.php?aktie=delete&edtid='.$id.'"><img class="button" src="./img/buttons/icons8-trash-can-48.png" alt="delete nieuwsbericht" title="delete het nieuwsbericht" /></a></td>
+			<td><a href="add_nieuws.php"><img class="button" src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwsbericht" title="toevoegen nieuwsbericht" /></a></td>'; 
 			
         }
         echo '</tr>';

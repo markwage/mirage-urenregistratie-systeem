@@ -196,7 +196,7 @@ textarea:read-only {
   background-color: #e4e4e4;
 }
 textarea:focus {
-	background-color: #eafffd;
+	background-color: #f4f9f9;
 }
 
 input.button {
