@@ -5,16 +5,14 @@ include ("config.php");
 include ("db.php");
 include ("function.php");
 
-
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
-
 include ("header.php");
 
 ?>
-<div id="main">		
+<div id="main">
 	<h1>Urenadministratie</h1>
-	
+
 <?php
 displayUserGegevens();
 $inputweeknr=date('Y').date('W');
@@ -106,7 +104,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
 
 <div id="form_div">
 <form name="add_uren" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	
+
 <?php
 $sql_approval = "SELECT approved, terapprovalaangeboden FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."' ORDER BY soortuur, dagnummer";
 if($sql_result_approval = mysqli_query($dbconn, $sql_approval)) {
@@ -119,7 +117,7 @@ if($sql_result_approval = mysqli_query($dbconn, $sql_approval)) {
                 if($frm_terapprovalaangeboden == 1 ) $status = "Deze week is al ter approval aangeboden maar kan nog gewijzigd worden";
                 if($frm_terapprovalaangeboden == 0 ) $status = "Deze week is nog niet ter approval aangeboden.";
             }
-        }    
+        }
     } else {
         $status = "Dit is een nieuwe week en derhalve nog niet ter approval aangeboden";
     }
@@ -146,17 +144,17 @@ echo "<table id='uren_table'>";
         ${"frm_valueDag$ix3"} = '';
     }
     $tmp_soortuur = 'eersteloop';
-	    
+
     $sql_uren = "SELECT * FROM uren where user='".$username."' AND week='".$week."' AND jaar='".$year."' ORDER BY soortuur, dagnummer";
-    // Om regels per soortuur te krijgen 
+    // Om regels per soortuur te krijgen
     if($sql_result_uren = mysqli_query($dbconn, $sql_uren)) {
         if(mysqli_num_rows($sql_result_uren) > 0) {
             while($row_uren = mysqli_fetch_array($sql_result_uren)) {
                 $frm_approved = $row_uren['approved'];
-                if($frm_approved == 1) { 
+                if($frm_approved == 1) {
                     $frm_readonly = "readonly";
                     $frm_selectdisabled = "disabled";
-                } else { 
+                } else {
                     $frm_readonly = "";
                     $frm_selectdisabled = "";
                 }
@@ -171,7 +169,7 @@ echo "<table id='uren_table'>";
                         }
                         $option .= "<option ".$option_selected." value='".$row_soorturen['code']."'>".$row_soorturen['code']." - ".$row_soorturen['omschrijving']."</option>";
                     }
-                    
+
                     echo "<tr id='row1'>";
                         echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
                         echo "<td><select name='soortuur[]' ".$frm_selectdisabled." ".$frm_readonly.">".$option."</select></td>";
@@ -187,7 +185,7 @@ echo "<table id='uren_table'>";
                         else echo "<td></td>";
                         echo "<td></td>";
                     echo "</tr>";
-                    
+
                     for($ix4=0; $ix4<7; $ix4++) {
                         ${"frm_valueDag$ix4"} = '';
                     }
@@ -203,7 +201,7 @@ echo "<table id='uren_table'>";
             $frm_approved = "";
             //$frm_terapprovalaangeboden = "";
         }
-        
+
 	    echo "<tr id='row1'>";
             $sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
             $option = "";
@@ -226,28 +224,28 @@ echo "<table id='uren_table'>";
                 $totaalurenpersoort = number_format($totaalurenpersoort + floatval($frm_value), 2);
                 if($ix7b == 7) echo "<td class='totaalkolom'><input readonly style='width:3.33vw; text-align:right;' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaalurenpersoort."'></td>";
             }
-            
+
             if($frm_approved == 0) echo "<td><img class='button' src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
             else echo "<td></td>";
   		    echo "<td></td>";
 	    echo "</tr>";
-	    
+
     } else {
         echo "ERROR: Kan geen connectie met de database maken. Query:". $sql_select. " failed.". mysqli_error($dbconn);
     }
-   	
-echo "</table>"; 
+
+echo "</table>";
 // This button is needed for when user pushes the ENTER button when changing the weeknumber. Button is not displayed
 echo "<input type='submit' name='dummy' value='None' style='display: none'>";
-if($frm_approved == 0) { 
+if($frm_approved == 0) {
     echo "<input class='button' type='submit' name='save' value='save'>";
     echo "<input class='button' type='submit' name='approval' value='submit'>";
 }
 echo "<input class='button' type='submit' name='cancel' value='cancel'>";
 ?>
 </form>
-</div>	
+</div>
 
-<?php 
+<?php
 include ("footer.php");
-?>		
+?>
