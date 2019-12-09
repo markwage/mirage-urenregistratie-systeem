@@ -3,6 +3,7 @@
 //------------------------------------------------------------------------
 // functie om een error-message te displayen met standaard
 // header en kleuren
+// test git
 //------------------------------------------------------------------------
 function errormessage($error_header, $error_message) {
 	echo '<div id="message">';
