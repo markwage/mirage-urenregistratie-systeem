@@ -3,7 +3,8 @@
 if (isset($_COOKIE['ID_mus'])) {
 	echo '<div class="sidebox">';
 	echo '<h1>Welkom op MUS</h1>';
-	echo "<p>Welkom <b>".$_SESSION['voornaam']."</b>.<br /> Je bent nu ingelogd op MUS, het Mirage Urenregistratie Systeem<br /></p>";			
+	echo "<p>Welkom <b>".$_SESSION['voornaam']."</b>.<br /> Je bent nu ingelogd op MUS, het Mirage Urenregistratie Systeem<br /></p>";	
+	echo "<p>Je kunt nu je uren inzien en je urenverantwoording invulling";
 	echo '</div>';
 	
 	// Menu voor updaten/onderhouden van de gewerkte uren

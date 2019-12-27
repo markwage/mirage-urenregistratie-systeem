@@ -17,7 +17,7 @@ body {
 	font: normal 1vw verdana, arial, sans-serif;
 	color: black;
 	background: #FFF url(../img/bg.jpg) repeat-x;
-	text-align: center;
+	/* text-align: center; */
 }
 
 /* links */

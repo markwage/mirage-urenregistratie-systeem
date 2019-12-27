@@ -37,7 +37,9 @@ if (isset($_POST['submit'])) {
 		$_POST['code'] = addslashes($_POST['code']);
 	}
 	$soortuurcheck = $_POST['code'];
-	$check = mysqli_query($dbconn, "SELECT code FROM soorturen WHERE code = '$soortuurcheck'") or die(mysql_error());
+	$sql_code = "SELECT code FROM soorturen 
+                 WHERE code = '$soortuurcheck'";
+	$check = mysqli_query($dbconn, $sql_code) or die(mysql_error());
 	$check2 = mysqli_num_rows($check);
 
 	//if the name exists it gives an error
@@ -55,8 +57,8 @@ if (isset($_POST['submit'])) {
 		
 		// Record toevoegen in database
 		$insert = "INSERT INTO soorturen (code, omschrijving)
-			VALUES ('".$_POST['code']."', 
-					'".$_POST['omschrijving']."')";
+			       VALUES ('".$_POST['code']."', 
+					       '".$_POST['omschrijving']."')";
 		$check_add_member = mysqli_query($dbconn, $insert);
 
 		if ($check_add_member) { 
@@ -64,8 +66,7 @@ if (isset($_POST['submit'])) {
 			$frm_code         = "";
 			$frm_omschrijving = "";
 			header("location: soorturen.php?aktie=disp"); 
-		}
-		else {
+		} else {
 			echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de code. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
 		}

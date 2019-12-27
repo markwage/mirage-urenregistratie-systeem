@@ -22,7 +22,12 @@ include ("header.php");
     <?php 
     jaarWeek();
     for($ix1=0; $ix1<10; $ix1++) {
-        $sqlCode = "SELECT * FROM uren where user='$username' AND jaar='$mainJaar[$ix1]' AND week='$mainWeek[$ix1]' GROUP BY user, jaar, week ORDER BY jaar desc , week desc , datum desc LIMIT 10";
+        $sqlCode = "SELECT * FROM uren 
+                    WHERE user='$username' 
+                    AND jaar='$mainJaar[$ix1]' 
+                    AND week='$mainWeek[$ix1]' 
+                    GROUP BY user, jaar, week 
+                    ORDER BY jaar desc , week desc , datum DESC LIMIT 10";
         writelogrecord("index","Query: ".$sqlCode);
         if($sqlOut = mysqli_query($dbconn, $sqlCode)) {
             writelogrecord("index","Totaal aantal rijen uit de select-query: ".mysqli_num_rows($sqlOut));
@@ -42,7 +47,6 @@ include ("header.php");
     	        $qry_approved              = ' ';
     	        $qry_approveddatum         = ' ';
     	        $qry_approvedbyuser        = ' ';
-    	        
             }
             echo '<tr class="'.$rowcolor.'">';
             echo '<td style="text-align:center;">'.$qry_jaar.'</td>';

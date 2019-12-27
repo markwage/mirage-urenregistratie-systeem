@@ -1,5 +1,7 @@
 <?php
 
-// Configuration instellingen
+/**
+ * Algemene instellingen
+ */
 
 ?>
