@@ -15,94 +15,137 @@ include ("header.php");
 			
 <?php 
 //This code runs if the form has been submitted
-if (isset($_POST['cancel'])) {
+if (isset($_POST['cancel'])) 
+{
 	header("location: users.php?aktie=disp");
 }
-if (isset($_POST['submit'])) { 
+
+if (isset($_POST['submit'])) 
+{ 
 	form_user_fill('toevoegen');
 	$formerror = 0;
 	
-	if (!$_POST['username']) {
+	if (!$_POST['username']) 
+	{
 		echo '<p class="errmsg"> ERROR: Username is een verplicht veld</p>';
 		$focus     = 'username';
 		$formerror = 1;
 	}
-	if (!$_POST['pass'] && (!$formerror)) {
+	
+	if (!$_POST['pass'] && (!$formerror)) 
+	{
 		echo '<p class="errmsg"> ERROR: Password is een verplicht veld</p>';
 		$focus     = 'pass';
 		$formerror = 1;
 	}
-	if (!$_POST['pass2'] && (!$formerror)) {
+	
+	if (!$_POST['pass2'] && (!$formerror)) 
+	{
 		echo '<p class="errmsg"> ERROR: Password voor verificatie is een verplicht veld</p>';
 		$focus     = 'pass2';
 		$formerror = 1;
 	}
+	
 	if ($_SESSION['admin']) {
-		if (!isset($_POST['admin'])) $_POST['admin'] = 0;
-		else $_POST['admin'] = 1;
-		if (!isset($_POST['approvenallowed'])) $_POST['approvenallowed'] = 0;
-		else $_POST['approvenallowed'] = 1;
+		if (!isset($_POST['admin'])) 
+		{
+		    $_POST['admin'] = 0;
+		}
+		else 
+		{
+		    $_POST['admin'] = 1;
+		}
+		
+		if (!isset($_POST['approvenallowed'])) 
+		{
+		    $_POST['approvenallowed'] = 0;
+		}
+		else 
+		{
+		    $_POST['approvenallowed'] = 1;
+		}
 	}
-	// checks if the username is in use
-	if (!get_magic_quotes_gpc()) {
+	
+	// Controleer of de username al in gebruik is
+	if (!get_magic_quotes_gpc()) 
+	{
 		$_POST['username'] = addslashes($_POST['username']);
 	}
+	
 	$usercheck = $_POST['username'];
-	$check = mysqli_query($dbconn, "SELECT username FROM users WHERE username = '$usercheck'") or die(mysql_error());
-	$check2 = mysqli_num_rows($check);
+	$sql_code = "SELECT username FROM users
+                 WHERE username = '$usercheck'";
+	$sql_out = mysqli_query($dbconn, $sql_code);
+	$sql_num_rows = mysqli_num_rows($sql_out);
 
-	//if the name exists it gives an error
-	if ($check2 != 0) {
+	//Als username al bestaat een error displayen
+	if ($sql_num_rows != 0) 
+	{
+	    writelogrecord("add_user","ERROR Er is geprobeerd user ".$_POST['username']." aan te maken terwijl deze al bestaat");
 		echo '<p class="errmsg"> ERROR: Username '.$_POST['username'].' is al aanwezig.</p>';
 		$focus     = 'username';
 		$formerror = 1;
 	}
-	// this makes sure both passwords entered match
-	if (($_POST['pass'] != $_POST['pass2']) && (!$formerror)) {
+	
+	// Controle of beide ingevoerde passwords gelijk zijn
+	if (($_POST['pass'] != $_POST['pass2']) && (!$formerror)) 
+	{
+	    writelogrecord("add_user","ERROR De ingevoerde wachtwoorden zijn niet gelijk");
 		echo '<p class="errmsg"> ERROR: De wachtwoorden zijn niet gelijk</p>';
 		$focus     = 'pass2';
 		$formerror = 1;
 	}
-	if (!$_POST['voornaam'] && (!$formerror)) {
+	
+	if (!$_POST['voornaam'] && (!$formerror)) 
+	{
 		echo '<p class="errmsg"> ERROR: Voornaam is een verplicht veld</p>';
 		$focus     = 'voornaam';
 		$formerror = 1;
 	}
-	if (!$_POST['achternaam'] && (!$formerror)) {
+	
+	if (!$_POST['achternaam'] && (!$formerror)) 
+	{
 		echo '<p class="errmsg"> ERROR: Achternaam is een verplicht veld</p>';
 		$focus     = 'achternaam';
 		$formerror = 1;
 	}
-	if (!$_POST['email'] && (!$formerror)) {
+	
+	if (!$_POST['email'] && (!$formerror)) 
+	{
 		echo '<p class="errmsg"> ERROR: Email is een verplicht veld</p>';
 		$focus     = 'email';
 		$formerror = 1;
 	}
 
-	// here we encrypt the password and add slashes if needed
-	if (!$formerror) { 
+	// Encrypt password en voeg eventueel slashes toe
+	if (!$formerror) 
+	{ 
 		$_POST['indienst'] = 1;
 		$_POST['pass'] = md5($_POST['pass']);
-		if (!get_magic_quotes_gpc()) {
+		
+		if (!get_magic_quotes_gpc()) 
+		{
 			$_POST['pass'] = addslashes($_POST['pass']);
 			$_POST['username'] = addslashes($_POST['username']);
 		}
 
 		// Record toevoegen in database
-		$insert = "INSERT INTO users (username, password, admin, voornaam, tussenvoegsel, achternaam, emailadres, indienst, approvenallowed)
-			VALUES ('".$_POST['username']."', 
-					'".$_POST['pass']."', 
-					'".$_POST['admin']."',
-					'".$_POST['voornaam']."',
-					'".$_POST['tussenvoegsel']."',
-					'".$_POST['achternaam']."',
-					'".$_POST['email']."',
-					'".$_POST['indienst']."',
-                    '".$_POST['approvenallowed']."')";
+		$sql_code = "INSERT INTO users (username, password, admin, voornaam, tussenvoegsel, achternaam, emailadres, indienst, approvenallowed)
+			       VALUES ('".$_POST['username']."', 
+					       '".$_POST['pass']."', 
+                           '".$_POST['admin']."',
+					       '".$_POST['voornaam']."',
+					       '".$_POST['tussenvoegsel']."',
+					       '".$_POST['achternaam']."',
+					       '".$_POST['email']."',
+					       '".$_POST['indienst']."',
+                           '".$_POST['approvenallowed']."')";
 		            
-		$check_add_member = mysqli_query($dbconn, $insert);
+		$sql_out = mysqli_query($dbconn, $sql_code);
 	
-		if ($check_add_member) { 
+		if ($sql_out) 
+		{
+		    writelogrecord("add_user","INFO User ".$_POST['username']." is succesvol aangemaakt");
 			echo '<p class="infmsg">User <b>'.$_POST['username'].'</b> is opgenomen</p>.';
 			$frm_username      = "";
 			$frm_pass          = "";
@@ -113,7 +156,8 @@ if (isset($_POST['submit'])) {
 			$frm_email         = "";
 			header("location: users.php?aktie=disp"); 
 		}
-		else {
+		else 
+		{
 			echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
 		}
@@ -180,7 +224,8 @@ if (isset($_POST['submit'])) {
 </form>
 <br />		
 <?php 
-if (!isset($focus)) {
+if (!isset($focus)) 
+{
 	$focus='username';
 }
 setfocus('AddUser', $focus);

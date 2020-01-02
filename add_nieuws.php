@@ -21,28 +21,37 @@ include ("header.php");
 			
 <?php 
 //This code runs if the form has been submitted
-if (isset($_POST['cancel'])) {
+if (isset($_POST['cancel'])) 
+{
 	header("location: nieuws.php?aktie=disp");
 }
 
-if (isset($_POST['submit'])) { 
+if (isset($_POST['submit'])) 
+{ 
 	//form_nieuws_fill('toevoegen');
     $formerror = 0;
-    if (isset($frm_nieuwsheader)) {
+    
+    if (isset($frm_nieuwsheader)) 
+    {
         $nieuwsheader = $frm_nieuwsheader;
     }
+    
     writeLogRecord("add_nieuws","CHECK01A De inputveld nieuwsheader wordt gecontroleerd");
-	if (!$_POST['nieuwsheader']) {
-	    writeLogRecord("add_nieuws","CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld");
+	if (!$_POST['nieuwsheader']) 
+	{
+	    writeLogRecord("add_nieuws","ERROR Verplicht inputveld nieuwsheader is niet ingevuld");
 		echo '<p class="errmsg"> ERROR: Nieuwsheader is een verplicht veld</p>';
 		$focus     = 'nieuwsheader';
 		$formerror = 1;
-	} else {
+	} 
+	else 
+	{
 	    $frm_nieuwsheader = $_POST['nieuwsheader'];
 	}
-	writeLogRecord("add_nieuws","CHECK01B De inputveld nieuwsbericht wordt gecontroleerd");
-	if ((!$_POST['nieuwsbericht'])  && (!$formerror)) {
-	    writeLogRecord("add_nieuws","CHECK02 ERROR Verplicht inputveld nieuwsheader is niet gevuld");
+	
+	if ((!$_POST['nieuwsbericht'])  && (!$formerror)) 
+	{
+	    writeLogRecord("add_nieuws","ERROR Verplicht inputveld nieuwsbericht is niet gevuld");
 		echo '<p class="errmsg"> ERROR: Nieuwsbericht is een verplicht veld</p>';
 		$focus     = 'nieuwsbericht';
 		$formerror = 1;
@@ -50,22 +59,25 @@ if (isset($_POST['submit'])) {
 	
 	// Normaal wordt hier gechecked of de ingevulde velden al bestaan in de database maar dat is voor nieuwsberichten niet nodig
 
-	// here we encrypt the password and add slashes if needed
-	if (!$formerror) { 
-	    writeLogRecord("add_nieuws","ADD01 Nieuwsbericht wordt toegevoegd aan de database");
+	// Toevoegen nieuwsbericht in de database
+	if (!$formerror) 
+	{ 
 		// Record toevoegen in database
-		$insert = "INSERT INTO nieuws (nieuwsheader, nieuwsbericht)
-			VALUES ('".$_POST['nieuwsheader']."', 
-					'".$_POST['nieuwsbericht']."')";
-		$check_add_nieuws = mysqli_query($dbconn, $insert);
+		$sql_code = "INSERT INTO nieuws (nieuwsheader, nieuwsbericht)
+			      VALUES ('".$_POST['nieuwsheader']."', 
+                          '".$_POST['nieuwsbericht']."')";
+		$sql_out = mysqli_query($dbconn, $sql_code);
 
-		if ($check_add_nieuws) { 
+		if ($sql_out) 
+		{
+		    writeLogRecord("add_nieuws","INFO Nieuwsbericht is succesvol toegevoegd aan de database");
 			echo '<p class="infmsg">Het nieuwsbericht is opgenomen</p>.';
 			$frm_nieuwsheader  = "";
 			$frm_nieuwsbericht = "";
 			header("location: nieuws.php?aktie=disp"); 
 		}
-		else {
+		else 
+		{
 			echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van nieuwsbericht. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
 		}
@@ -92,7 +104,8 @@ if (isset($_POST['submit'])) {
 </form>
 <br />		
 <?php 
-if (!isset($focus)) {
+if (!isset($focus)) 
+{
 	$focus='nieuwsheader';
 }
 setfocus('nieuws', $focus);

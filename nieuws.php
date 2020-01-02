@@ -106,8 +106,9 @@ if ($aktie == 'disp') {
 			
         }
         echo '</tr>';
-        if ($rowcolor == 'row-a') $rowcolor = 'row-b';
-        else $rowcolor = 'row-a';
+        check_row_color($rowcolor);
+        //if ($rowcolor == 'row-a') $rowcolor = 'row-b';
+        //else $rowcolor = 'row-a';
     }
     echo "</table></center>";
 }

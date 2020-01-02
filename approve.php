@@ -4,10 +4,13 @@ session_start();
 include ("config.php");
 include ("db.php");
 include ("function.php");
-if (isset($_GET['aktie'])) {
+
+if (isset($_GET['aktie'])) 
+{
     $aktie = $_GET['aktie'];
 }
-else {
+else 
+{
     $aktie = "";
 }
 
@@ -32,22 +35,25 @@ include ("header.php");
 //------------------------------------------------------------------------------------------------------
 // BUTTON Cancel
 //------------------------------------------------------------------------------------------------------
-if (isset($_POST['cancel'])) {
+if (isset($_POST['cancel'])) 
+{
 	header("location: approve.php?aktie=disp");
 }
 
 //------------------------------------------------------------------------------------------------------
-// BUTTON Cancel
+// BUTTON Approve
 //------------------------------------------------------------------------------------------------------
-if (isset($_POST['approve'])) {
+if (isset($_POST['approve'])) 
+{
     $approvedbyuser = $_SESSION['username'];
     $user           = $_POST['username'];
     $week           = $_POST['week'];
     $jaar           = $_POST['jaar'];
-    $update = "UPDATE uren SET 
+    $sql_code = "UPDATE uren SET 
 			approveddatum = '".date('Y-m-d')."', approvedbyuser = '".$approvedbyuser."', approved = '1'  
             WHERE user = '".$user."' AND week = '".$week."' AND jaar = '".$jaar."'";
-    $check_approve_uren = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error($dbconn));
+    $sql_out = mysqli_query($dbconn, $sql_code);
+    writelogrecord("approve","INFO Van user {$user} is week {$jaar}{$week} approved");
 
     header("location: approve.php?aktie=disp");
 }
@@ -59,28 +65,34 @@ if (isset($_POST['approve'])) {
 // Dit wordt uitgevoerd wanneer de gebruiker in linkermenu op "Openstaande approvals" klikt
 // Er wordt een lijst met de te approven weken getoond
 //------------------------------------------------------------------------------------------------------
-if ($aktie == 'disp') {
-	$sql_approvals = mysqli_query($dbconn, "SELECT user, week FROM uren WHERE terapprovalaangeboden = 1 AND approved = 0 GROUP BY user, week ORDER BY week, user;");
+if ($aktie == 'disp') 
+{
+    
+    $sql_code = "SELECT * FROM view_uren_get_full_username
+                WHERE terapprovalaangeboden = 1
+                AND approved = 0
+                GROUP BY user, week
+                ORDER BY week, user;";
+	$sql_out = mysqli_query($dbconn, $sql_code);
+	
 	echo "<center><table>";
 	echo "<tr><th>Medewerker</th><th>Week</th><th></th></tr>";
 	$rowcolor = 'row-a';
-	while($row_approvals = mysqli_fetch_array($sql_approvals)) {
-		$username = $row_approvals['user'];
-		$week     = $row_approvals['week'];
-		// ophalen volledige naam
-		$sql_user = mysqli_query($dbconn, "SELECT voornaam, tussenvoegsel, achternaam FROM users WHERE username = '$username'");
-		$row_user = mysqli_fetch_array($sql_user);
-		$voornaam      = $row_user['voornaam'];
-		$tussenvoegsel = $row_user['tussenvoegsel'];
-		$achternaam    = $row_user['achternaam'];
+	
+	while($sql_rows = mysqli_fetch_array($sql_out)) 
+	{
+		$username = $sql_rows['user'];
+		$week     = $sql_rows['week'];
+		$voornaam      = $sql_rows['voornaam'];
+		$tussenvoegsel = $sql_rows['tussenvoegsel'];
+		$achternaam    = $sql_rows['achternaam'];
+		
 		echo '<tr class="'.$rowcolor.'">
 			<td><b>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</b></td><td style=\'text-align:center\'>'.$week.'</td>
-
 			<td><a href="approve.php?aktie=dspuren&user='.$username.'&week='.$week.'"><img class="button" src="./img/buttons/icons8-glasses-48.png" alt="wijzigen soort uur" title="Toon de uren voor deze week voor deze user" /></a></td>
 			</tr>';
-		    //<td><a href="add_soortuur.php"><img src="./img/buttons/plus-green.gif" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
-		if ($rowcolor == 'row-a') $rowcolor = 'row-b';
-		else $rowcolor = 'row-a';
+		
+		check_row_color($rowcolor);
 	}
 	echo "</table></center>";
 }
@@ -88,59 +100,73 @@ if ($aktie == 'disp') {
 //------------------------------------------------------------------------------------------------------
 // Wordt uitgevoerd wanneer men op de button klikt om uren van die user / week te displayen
 //------------------------------------------------------------------------------------------------------
-if ($aktie == 'dspuren') {
+if ($aktie == 'dspuren') 
+{
     $username = $_GET['user'];
     $week     = $_GET['week'];
-    $sql_user = mysqli_query($dbconn, "SELECT * FROM users WHERE username = '$username'");
-    $row_user = mysqli_fetch_array($sql_user);
-    $voornaam      = $row_user['voornaam'];
-    $tussenvoegsel = $row_user['tussenvoegsel'];
-    $achternaam    = $row_user['achternaam'];
-    $emailadres    = $row_user['emailadres'];
-    echo "<center><b>Weeknummer: </b>".$week."<br /><b>Medewerker: </b>".$voornaam." ".$tussenvoegsel." ".$achternaam." ";
     
-    $sql_uren = mysqli_query($dbconn, "SELECT * FROM uren WHERE user = '$username' AND week = '$week' ORDER BY datum, soortuur");
+    $sql_code = "SELECT * FROM users
+                WHERE username = '$username'";
+    $sql_out = mysqli_query($dbconn, $sql_code);
+    $sql_rows = mysqli_fetch_array($sql_out);
+    $voornaam      = $sql_rows['voornaam'];
+    $tussenvoegsel = $sql_rows['tussenvoegsel'];
+    $achternaam    = $sql_rows['achternaam'];
+    $emailadres    = $sql_rows['emailadres'];
+    
+    echo "<center><b>Weeknummer: </b>".$week."<br /><b>Medewerker: </b>".$voornaam." ".$tussenvoegsel." ".$achternaam." ";
     echo "<h3>Overzicht per dag</h3>";
-    //echo "<h4><center><b>Weeknummer: </b>".$week."<br /><b>Medewerker: </b>".$voornaam." ".$tussenvoegsel." ".$achternaam." </h4>";
     echo "<center><table>";
     echo "<tr><th>Datum</th><th>Soortuur</th><th>Uren</th></tr>";
     $rowcolor = 'row-a';
-    while ($row_uren = mysqli_fetch_array($sql_uren)) {
-        $datum     = $row_uren['datum'];
-        $soortuur  = $row_uren['soortuur'];
-        $uren      = $row_uren['uren'];
-        $sql_soortuur = mysqli_query($dbconn, "SELECT omschrijving FROM soorturen WHERE code = '$soortuur'");
-        $row_soortuur = mysqli_fetch_array($sql_soortuur);
-        $omschrijving = $row_soortuur['omschrijving'];
+    
+    $sql_code = "SELECT * FROM view_uren_soortuur
+                 WHERE user = '$username'
+                 AND week = '$week'
+                 ORDER BY datum, soortuur";
+    $sql_out = mysqli_query($dbconn, $sql_code);
+    
+    while ($sql_rows = mysqli_fetch_array($sql_out)) 
+    {
+        $datum                 = $sql_rows['datum'];
+        $soortuur              = $sql_rows['soortuur'];
+        $uren                  = $sql_rows['uren'];
+        $omschrijving_soortuur = $sql_rows['omschrijving'];
+        
         echo '<tr class="'.$rowcolor.'">
-			<td><b>'.$datum.'</b></td><td>'.$soortuur.' - '.$omschrijving.'</td><td style=\'text-align:right\'>'.$uren.'</td>
+			<td><b>'.$datum.'</b></td><td>'.$soortuur.' - '.$omschrijving_soortuur.'</td><td style=\'text-align:right\'>'.$uren.'</td>
             </tr>';
-        //<td><a href="add_soortuur.php"><img src="./img/buttons/plus-green.gif" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
-        if ($rowcolor == 'row-a') $rowcolor = 'row-b';
-        else $rowcolor = 'row-a';
+        
+        check_row_color($rowcolor);
     }
     echo "</table></center>";
     
     // Display totaal per soortuur
-    //SELECT SUM(uren), soortuur FROM uren WHERE WEEK = 10 AND USER = 'mwage' GROUP BY soortuur;
-    $sql_totaalurenpersoort = mysqli_query($dbconn, "SELECT SUM(uren) as toturen, soortuur FROM uren WHERE user = '$username' AND week = '$week' GROUP BY soortuur ORDER BY soortuur");
     echo "<h3>Totaal per urensoort</h3>";
     echo "<center><table>";
     echo "<tr><th>Soort uur</th><th>Totaal</th></tr>";
+    
     $rowcolor = 'row-a';
-    while ($row_totaalurenpersoort = mysqli_fetch_array($sql_totaalurenpersoort)) {
-        $toturen    = $row_totaalurenpersoort['toturen'];
-        $soortuur   = $row_totaalurenpersoort['soortuur'];
-        $sql_soortuur = mysqli_query($dbconn, "SELECT omschrijving FROM soorturen WHERE code = '$soortuur'");
-        $row_soortuur = mysqli_fetch_array($sql_soortuur);
-        $omschrijving = $row_soortuur['omschrijving'];
+    
+    $sql_code = "SELECT SUM(uren) as toturen, soortuur, omschrijving FROM view_uren_soortuur
+                WHERE user = '$username'
+                AND week = '$week'
+                GROUP BY soortuur
+                ORDER BY soortuur";
+    $sql_out = mysqli_query($dbconn, $sql_code);
+    while ($sql_rows = mysqli_fetch_array($sql_out)) 
+    {
+        $toturen      = $sql_rows['toturen'];
+        $soortuur     = $sql_rows['soortuur'];
+        $omschrijving = $sql_rows['omschrijving'];
+        
         echo '<tr class="'.$rowcolor.'">
 			<td>'.$soortuur.' - '.$omschrijving.'</td><td style=\'text-align:right\'>'.$toturen.'</td>
             </tr>';
-        //<td><a href="add_soortuur.php"><img src="./img/buttons/plus-green.gif" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
-        if ($rowcolor == 'row-a') $rowcolor = 'row-b';
-        else $rowcolor = 'row-a';
+        
+        check_row_color($rowcolor);
     }
+    
     echo "</table></center>";
     
     // Display buttons. Met behulp van een formulier

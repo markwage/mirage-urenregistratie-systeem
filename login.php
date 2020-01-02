@@ -10,54 +10,68 @@ include ("header.php");
 ?>
 <div id="main">		
 	<h1>Urenregistratie</h1>
-	<p>Dit is de urenregistratie van Mirage Automatisering BV. 
-	Heb je een account dan kun je inloggen. 
-	Zo niet dan kun je een account aanvragen via het contactformulier.</p>
 			
 <?php
 // Indien het Login form is submitted
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) 
+{
 	//controleer of username en wachtwoord zijn ingevuld
-	if (!$_POST['username'] || !$_POST['pass']) {
+	if (!$_POST['username'] || !$_POST['pass']) 
+	{
 	    echo '<blockquote class="error">ERROR: Niet alle verplichte velden zijn ingevuld</blockquote>';
 	}
+	
 	// Controleer het met de database
-	if (!get_magic_quotes_gpc()) {
+	if (!get_magic_quotes_gpc()) 
+	{
 		$_POST['username'] = addslashes($_POST['username']);
 	}
-	$sqlOut = mysqli_query($dbconn, "SELECT * FROM users WHERE username = '".$_POST['username']."'") or die(mysqli_error($dbconn));
+	
+	$sql_code = "SELECT * FROM users
+                 WHERE username = '".$_POST['username']."'";
+	
+	$sql_out = mysqli_query($dbconn, $sql_code);
 	// Error indien username wel ingevuld maar onbekend
-	$sqlCnt = mysqli_num_rows($sqlOut);
-	if ($sqlCnt == 0 && $_POST['username'] <> '') {
+	$sql_num_rows = mysqli_num_rows($sql_out);
+	
+	if ($sql_num_rows == 0 && $_POST['username'] <> '') 
+	{
 	    writeLogRecord("login","WARN Er werd geprobeerd om in te loggen met een niet bestaande username: ".$_POST['username']);
 		echo '<blockquote class="error">ERROR: Username is onbekend</blockquote>';
 	}
-	while ($sqlRow = mysqli_fetch_array($sqlOut)) {
-		$_POST['pass']     = stripslashes($_POST['pass']);
-		$sqlRow['password']  = stripslashes($sqlRow['password']);
-		$_POST['pass']     = md5($_POST['pass']);
-		$_POST['admin']    = $sqlRow['admin'];
-		$_POST['voornaam'] = $sqlRow['voornaam'];
-		$_POST['approvenallowed'] = $sqlRow['approvenallowed'];
+	
+	while ($sql_rows = mysqli_fetch_array($sql_out)) 
+	{
+		$_POST['pass']            = stripslashes($_POST['pass']);
+		$sql_rows['password']     = stripslashes($sql_rows['password']);
+		$_POST['pass']            = md5($_POST['pass']);
+		$_POST['admin']           = $sql_rows['admin'];
+		$_POST['voornaam']        = $sql_rows['voornaam'];
+		$_POST['approvenallowed'] = $sql_rows['approvenallowed'];
+		
 		//Error indien password fout
-		if ($_POST['pass'] != $sqlRow['password']) {
+		if ($_POST['pass'] != $sql_rows['password']) 
+		{
 			writeLogRecord("login","WARN User ".$_POST['username']." probeerde in te loggen met een foutief wachtwoord");
 			echo '<blockquote class="error">ERROR: Foutief wachtwoord. Probeer het nogmaals</blockquote>';
 		}
-		else {
+		else 
+		{
 			// Toevoegen cookie indien username-password correct
 			$_POST['username'] = stripslashes($_POST['username']);
-			$hour = time() + 900; //cookie is 15 minuten geldig
+			$hour = time() + 3600; //cookie is 60 minuten geldig
 			setcookie('ID_mus', $_POST['username'], $hour);
 			setcookie('Key_mus', $_POST['pass'], $hour);
-			$_SESSION['username'] = $_POST['username'];
-			$_SESSION['admin']    = $_POST['admin'];
+			
+			$_SESSION['username']        = $_POST['username'];
+			$_SESSION['admin']           = $_POST['admin'];
 			$_SESSION['approvenallowed'] = $_POST['approvenallowed'];
-			$_SESSION['voornaam'] = $_POST['voornaam'];
+			$_SESSION['voornaam']        = $_POST['voornaam'];
+			
 			// update lastloggedin in de tabel
-			$update = "UPDATE users SET 
-				lastloggedin = '".date('Y-m-d h:i:s')."' WHERE username = '".$_POST['username']."'";
-			$sqlUpd = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error());
+			$sql_code = "UPDATE users SET lastloggedin = '".date('Y-m-d h:i:s')."' 
+				       WHERE username = '".$_POST['username']."'";
+			$sql_out = mysqli_query($dbconn, $sql_code);
 			header("location: index.php");
 			writeLogRecord("login","User ".$_POST['username']." is succesvol ingelogd.");
 		}

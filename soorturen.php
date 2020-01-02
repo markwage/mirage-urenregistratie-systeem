@@ -4,10 +4,13 @@ session_start();
 include ("config.php");
 include ("db.php");
 include ("function.php");
-if (isset($_GET['aktie'])) {
+
+if (isset($_GET['aktie'])) 
+{
 	$aktie = $_GET['aktie'];
 }
-else {
+else 
+{
 	$aktie = "";
 }
 
@@ -22,33 +25,44 @@ include ("header.php");
 			
 <?php 
 
-//------------------------------------------------------------------------------------------------------
-//
-//       *******************   SUBMITTED   *******************
-//
-// From here this code runs if the form has been submitted
-//------------------------------------------------------------------------------------------------------
+/**
+ * Dit is het begin van de code wat uitgevoerd wordt indien het formulier is gesubmit
+ * Welk gedeelte van de code is afhankelijk van de button waarop geclickt is. 
+ */
 
 //------------------------------------------------------------------------------------------------------
 // BUTTON Cancel
 //------------------------------------------------------------------------------------------------------
-if (isset($_POST['cancel'])) {
+if (isset($_POST['cancel'])) 
+{
 	header("location: soorturen.php?aktie=disp");
 }
 
 //------------------------------------------------------------------------------------------------------
 // BUTTON Delete
 //------------------------------------------------------------------------------------------------------
-if (isset($_POST['delete'])) {
+if (isset($_POST['delete'])) 
+{
 	$delcode = $_POST['code'];
-	if($sqlOut = mysqli_query($dbconn, "SELECT * FROM uren where soortuur='".$delcode."'")) {
-	    if(mysqli_num_rows($sqlOut) > 0) {
+	$sql_code = "SELECT * FROM uren
+                 WHERE soortuur='".$delcode."'";
+	
+	if($sql_out = mysqli_query($dbconn, $sql_code)) 
+	{
+	    if(mysqli_num_rows($sql_out) > 0) 
+	    {
 	        //Errormelding dat deze soortuur niet verwijderd kan worden omdat er nog uren aan gekoppeld zijn
-	        echo '<p class="errmsg"> ERROR: Er zijn nog uren gekoppeld aan deze code</p>';
+	        writelogrecord("soorturen","ERROR Soortuur ".$_POST['code']." kon niet verwijderd worden omdat er nog uren aan gekoppeld zijn");
+	        echo '<p class="errmsg"> ERROR: Code kan niet verwijderd worden. Er zijn nog uren gekoppeld aan deze code</p>';
 	        $focus     = 'code';
 	        $formerror = 1;
-	    } else {
-	        $sqlOut = mysqli_query($dbconn, "DELETE FROM soorturen WHERE code = '$delcode'");
+	    } 
+	    else 
+	    {
+	        $sql_code = "DELETE FROM soorturen
+                         WHERE code = '$delcode'";
+	        $sql_out = mysqli_query($dbconn, $sql_code);
+	        writelogrecord("soorturen","INFO Soortuur ".$_POST['code']." is succesvol verwijderd");
 	        header("location: soorturen.php?aktie=disp");
 	    }
 	}
@@ -57,38 +71,46 @@ if (isset($_POST['delete'])) {
 //------------------------------------------------------------------------------------------------------
 // BUTTON Save
 //------------------------------------------------------------------------------------------------------
-if (isset($_POST['save'])) {
+if (isset($_POST['save'])) 
+{
     form_soorturen_fill('save');
-    writelogrecord("soorturen","BTNSAVE Op save gedrukt om gewijzigd record op te slaan");
-    //$formerror = 0;
-	if ((!$_POST['code'] || $_POST['code'] == "") && (!$formerror)) {
-	    writelogrecord("soorturen","CHECK1A Het veld code is niet ingevuld");
+    
+	if ((!$_POST['code'] || $_POST['code'] == "") && (!$formerror)) 
+	{
+	    writelogrecord("soorturen","ERROR Het veld code is niet ingevuld");
 		echo '<p class="errmsg"> ERROR: Code is een verplicht veld</p>';
 		$focus     = 'code';
 		$formerror = 1;
 	}
-	if ((!$_POST['omschrijving'] || $_POST['omschrijving'] == "") && (!$formerror)) {
-	    writelogrecord("soorturen","CHECK1B Het veld omschrijving is niet ingevuld");
+	
+	if ((!$_POST['omschrijving'] || $_POST['omschrijving'] == "") && (!$formerror)) 
+	{
+	    writelogrecord("soorturen","ERROR Het veld omschrijving is niet ingevuld");
 		echo '<p class="errmsg"> ERROR: Omschrijving is een verplicht veld</p>';
 		$focus     = 'omschrijving';
 		$formerror = 1;
 	}
 
 	// Update record indien er geen errors zijn
-	if (!$formerror) { 
+	if (!$formerror) 
+	{ 
 		$_POST['code'] = strtoupper($_POST['code']);
-		$update = "UPDATE soorturen SET 
-		code = '".$_POST['code']."', 
-		omschrijving = '".$_POST['omschrijving']."' WHERE ID = '".$_POST['ID']."'";
-		$sqlUpd = mysqli_query($dbconn, $update) or die ("Error in query: $update. ".mysqli_error($dbconn));
-		if ($sqlUpd) { 
-		    writelogrecord("soorturen","UPDATE Soortuur ".$_POST['code']." is succesvol ge-update");
+		$sql_code = "UPDATE soorturen
+		           SET code = '".$_POST['code']."', 
+		               omschrijving = '".$_POST['omschrijving']."' 
+                   WHERE ID = '".$_POST['ID']."'";
+		$sql_out = mysqli_query($dbconn, $sql_code) or die ("Error in query: $sql_code. ".mysqli_error($dbconn));
+		
+		if ($sql_out) { 
+		    writelogrecord("soorturen","INFO Soortuur ".$_POST['code']." (".$_POST['omschrijving'].") is succesvol ge-update");
 			echo '<p class="infmsg">Soort uur <b>'.$_POST['cude'].'</b> is gewijzigd</p>.';
 			$frm_code          = "";
 			$frm_omschrijving  = "";
 		}
-		else {
-			echo '<p class="errmsg">Er is een fout opgetreden bij het updaten van soort uur. Probeer het nogmaals.<br />
+		else 
+		{
+		    writelogrecord("soorturen","ERROR Fout opgetreden bij update van ".$_POST['code']." (".$_POST['omschrijving'].")");
+		    echo '<p class="errmsg">Er is een fout opgetreden bij het updaten van soort uur. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
 		}
 		header("location: soorturen.php?aktie=disp"); 
@@ -99,26 +121,32 @@ if (isset($_POST['save'])) {
 //
 //       *******************   START   *******************
 //
-// Dit wordt uitgevoerd wanneer de user op Onderhoud soort uren heeft geklikt
-// Er wordt een lijst met de uren getoond
+// Dit wordt uitgevoerd wanneer de user op de link Onderhoud soort uren heeft geklikt
+// Er wordt een lijst met de soorten uren getoond waarop uren geboekt kunnen worden 
 //------------------------------------------------------------------------------------------------------
-if ($aktie == 'disp') {
-	$sqlOut = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
+if ($aktie == 'disp') 
+{
+    $sql_code = "SELECT * FROM soorturen
+                 ORDER BY code";
+	$sql_out = mysqli_query($dbconn, $sql_code);
+	
 	echo "<center><table>";
 	echo "<tr><th>Code</th><th>Omschrijving</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
 	$rowcolor = 'row-a';
-	while($sqlRow = mysqli_fetch_array($sqlOut)) {
-		$id           = $sqlRow['ID'];
-		$code         = $sqlRow['code'];
-		$omschrijving = $sqlRow['omschrijving'];
+	
+	while($sql_row = mysqli_fetch_array($sql_out)) 
+	{
+	    $id           = $sql_row['ID'];
+	    $code         = $sql_row['code'];
+	    $omschrijving = $sql_row['omschrijving'];
+	    
 		echo '<tr class="'.$rowcolor.'">
 			<td><b>'.$code.'</b></td><td>'.$omschrijving.'</td>
 			<td><a href="soorturen.php?aktie=edit&edtcode='.$code.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="wijzigen soort uur" title="wijzig soort uur '.$code.'" /></a></td>
 			<td><a href="soorturen.php?aktie=delete&edtcode='.$code.'"><img class="button" src="./img/buttons/icons8-trash-can-48.png" alt="delete soort uur" title="delete soort uur '.$code.'" /></a></td>
 			<td><a href="add_soortuur.php"><img class="button" src="./img/buttons/icons8-plus-48.png" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
 			</tr>';
-		if ($rowcolor == 'row-a') $rowcolor = 'row-b';
-		else $rowcolor = 'row-a';
+		check_row_color($rowcolor);
 	}
 	echo "</table></center>";
 }
@@ -126,17 +154,23 @@ if ($aktie == 'disp') {
 //------------------------------------------------------------------------------------------------------
 // Wordt uitgevoerd wanneer men op de button klikt om te wijzigen of te deleten
 //------------------------------------------------------------------------------------------------------
-if ($aktie == 'edit' || $aktie == 'delete') {
+if ($aktie == 'edit' || $aktie == 'delete') 
+{
 	$edtcode = $_GET['edtcode'];
 	$focus = "code";
-	$sqlOut = mysqli_query($dbconn, "SELECT * FROM soorturen WHERE code = '$edtcode'");
-	while($sqlRow = mysqli_fetch_array($sqlOut)) {
+	$sql_code = "SELECT * FROM soorturen
+                 WHERE code = '$edtcode'";
+	$sql_out = mysqli_query($dbconn, $sql_code);
+	
+	while($sql_row = mysqli_fetch_array($sql_out)) 
+	{
 	    global $frm_code, $frm_omschrijving, $formerror;
 	    $formerror = 0;
-		$frm_ID   = $sqlRow['ID'];
-		$frm_code = $sqlRow['code'];
-		$frm_omschrijving = $sqlRow['omschrijving'];
+		$frm_ID           = $sql_row['ID'];
+		$frm_code         = $sql_row['code'];
+		$frm_omschrijving = $sql_row['omschrijving'];
 	}
+	
     ?>
 	<form name="soorturen" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
  		<p>
@@ -155,14 +189,24 @@ if ($aktie == 'edit' || $aktie == 'delete') {
 			</tr>
 		</table>
 		<br />
-		<?php if ($aktie == 'edit') echo '<input class="button" type="submit" name="save" value="save">'; ?>
-		<?php if ($aktie == 'delete') echo '<input class="button" type="submit" name="delete" value="delete" onClick="return confirmDelSoortuur()">'; ?>
+		<?php 
+		if ($aktie == 'edit') 
+		{
+		    echo '<input class="button" type="submit" name="save" value="save">';
+		}
+		elseif ($aktie == 'delete') 
+		{
+		    echo '<input class="button" type="submit" name="delete" value="delete" onClick="return confirmDelSoortuur()">';
+		}
+		?>
+		
 		<input class="button" type="submit" name="cancel" value="cancel" formnovalidate>
 		</p>
 	</form>
 	<br />		
 	<?php 
-    if (!isset($focus)) {
+    if (!isset($focus)) 
+    {
     	$focus='code';
     }
     setfocus('soorturen', $focus);
