@@ -313,22 +313,13 @@ function jaarWeek()
     
     for($ix1=0; $ix1<10; $ix1++) 
     {
-        
-        // Onderstaande moet niet uitgevoerd worden als het de eerste week is.
-        // Dit is omdat anders de eerste week van het jaar in het oude jaar valt
-        if($ix1 > 0) 
-        {
-            $dagen = -7 * $ix1; // Negatief omdat we 10 weken terug moeten kijken
-        }
-        
+        $dagen = -7 * $ix1; // Negatief omdat we 10 weken terug moeten kijken
+         
+        // "o" laat het correcte jaar zien aan het einde van het jaar of het begin
+        // 31-12-2019: Y > 2019 
+        //             o > 2020 (wat correct is omdat die dag in eerste week van nieuwe jaar valt)
         $mainWeek[$ix1] = date("W", strtotime("+$dagen day ".$datum));
-        $mainJaar[$ix1] = date("Y", strtotime("+$dagen day ".$datum));
-        
-        // Indien eerste week van het jaar.
-        if ($mainWeek[$ix1] == "01") 
-        {
-            $mainJaar[$ix1] = date("Y", strtotime("+7 day ".$datum));
-        }
+        $mainJaar[$ix1] = date("o", strtotime("+$dagen day ".$datum));
     }
 }
 

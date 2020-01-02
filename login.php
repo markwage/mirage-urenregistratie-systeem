@@ -69,7 +69,8 @@ if (isset($_POST['submit']))
 			$_SESSION['voornaam']        = $_POST['voornaam'];
 			
 			// update lastloggedin in de tabel
-			$sql_code = "UPDATE users SET lastloggedin = '".date('Y-m-d h:i:s')."' 
+			date_default_timezone_set('Europe/Amsterdam');
+			$sql_code = "UPDATE users SET lastloggedin = '".date('Y-m-d H:i:s')."' 
 				       WHERE username = '".$_POST['username']."'";
 			$sql_out = mysqli_query($dbconn, $sql_code);
 			header("location: index.php");

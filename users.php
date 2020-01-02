@@ -217,7 +217,7 @@ if ($aktie == 'disp')
                  ORDER BY achternaam";
 	$sql_out = mysqli_query($dbconn, $sql_code);
 	echo "<center><table>";
-	echo "<tr><th>username</th><th>naam</th><th>Emailadres</th><th>Admin</th><th>InDienst</th><th>Approven</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
+	echo "<tr><th>Username</th><th>Volledige naam</th><th>Emailadres</th><th>last<br />logged in</th><th>Admin</th><th>Nog in<br />dienst</th><th>Mag<br />approven</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
 	$rowcolor = 'row-a';
 	
 	while($sql_rows = mysqli_fetch_array($sql_out)) 
@@ -228,13 +228,15 @@ if ($aktie == 'disp')
 		$tussenvoegsel   = $sql_rows['tussenvoegsel'];
 		$achternaam      = $sql_rows['achternaam'];
 		$emailadres      = $sql_rows['emailadres'];
+		$lastloggedin    = $sql_rows['lastloggedin'];
 		$admin           = $sql_rows['admin'];
 		$indienst        = $sql_rows['indienst'];
 		$approvenallowed = $sql_rows['approvenallowed'];
 		echo '<tr class="'.$rowcolor.'">
 			<td><b>'.$username.'</b></td>
 			<td>'.$achternaam.', '.$voornaam.' '.$tussenvoegsel. '</td>
-			<td>'.$emailadres.'</td>';
+			<td>'.$emailadres.'</td>
+            <td>'.$lastloggedin.'</td>';
 		if ($admin == 1) 
 		{
 		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-ok-48.png" alt="1" title="heeft adminrechten" /></td>';

@@ -49,9 +49,9 @@ if (isset($_POST['submit']))
 		$_POST['code'] = addslashes($_POST['code']);
 	}
 	
-	$soortuurcheck = $_POST['code'];
+	$check_soortuur = $_POST['code'];
 	$sql_code = "SELECT code FROM soorturen 
-                 WHERE code = '$soortuurcheck'";
+                 WHERE code = '$check_soortuur'";
 	$sql_out = mysqli_query($dbconn, $sql_code);
 	
 	if (!$sql_out) 

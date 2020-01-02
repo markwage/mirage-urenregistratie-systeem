@@ -19,8 +19,8 @@ include ("header.php");
     ?>
     
 	<center><table>
-	<tr><th colspan='6' style='text-align:center;'>Overzicht laatste 10 weken</th></tr>
-	<tr><th>jaar</th><th>week</th><th>Ter approval<br />aangeboden</th><th>Approved</th><th>datum</th><th>approved door</th></tr>
+	<tr><th colspan='7' style='text-align:center;'>Overzicht laatste 10 weken</th></tr>
+	<tr><th>jaar</th><th>week</th><th>Ter approval<br />aangeboden</th><th>Approved</th><th>datum</th><th>approved door</th><th> </th></tr>
 	
     <?php 
     jaarWeek();
@@ -41,6 +41,7 @@ include ("header.php");
             if(mysqli_num_rows($sql_out) > 0) 
             {
                 $sql_row = mysqli_fetch_array($sql_out);
+                
                 $qry_jaar                  = $sql_row['jaar'];
                 $qry_week                  = $sql_row['week'];
                 $qry_terapprovalaangeboden = $sql_row['terapprovalaangeboden'];
@@ -82,6 +83,10 @@ include ("header.php");
             
             echo "<td>$qry_approveddatum</td>";
             echo "<td>$qry_approvedbyuser</td>";
+            
+            // Nu een button displayen om die betreffende week te muteren
+            echo '<td><a href="uren.php?edtweek='.$qry_jaar.$qry_week.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="display uren van deze week" title="display uren van deze week" /></a></td>';
+            
             echo '</tr>';
             
             check_row_color($rowcolor);

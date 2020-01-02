@@ -16,18 +16,31 @@ include ("header.php");
 <?php
 displayUserGegevens();
 
-$inputweeknr = date('Y').date('W');
+// Indien weeknr en jaar is doorgegeven via url dan dit de inputweeknr maken
+// 
+if (isset($_GET['edtweek']))
+{
+    $inputweeknr = $_GET['edtweek'];
+}
+else
+{
+    $inputweeknr = date('Y').date('W');
+}
+//$inputweeknr = date('Y').date('W');
 getWeekdays($inputweeknr);
 
 //------------------------------------------------------------------------------------------------------
-// Haal alle soorturen op uit de database zodat deze in de dorpdown getoond worden
+// Haal alle soorturen op uit de database zodat deze in de dropdown getoond worden
 //------------------------------------------------------------------------------------------------------
-$sql_soorturen = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
 $option = "";
 
-while($row_soorturen = mysqli_fetch_array($sql_soorturen)) 
+$sql_code = "SELECT * FROM soorturen
+             ORDER BY code";
+$sql_out = mysqli_query($dbconn, $sql_code);
+
+while($sql_rows = mysqli_fetch_array($sql_out)) 
 {
-    $option .= "<option value='".$row_soorturen['code']."'>".$row_soorturen['code']." - ".$row_soorturen['omschrijving']."</option>";
+    $option .= "<option value='".$sql_rows['code']."'>".$sql_rows['code']." - ".$sql_rows['omschrijving']."</option>";
 }
 
 //------------------------------------------------------------------------------------------------------
@@ -104,7 +117,6 @@ if (isset($_POST['save']) || isset($_POST['approval']))
     
     if (isset($_POST['approval'])) 
     {
-        //getWeekdays($_POST['week']);
         $sql_update_uren = "UPDATE uren SET terapprovalaangeboden='1' where user='".$username."' AND week='".$week."' AND jaar='".$year."'";
         
         if($sql_result = mysqli_query($dbconn, $sql_update_uren)) 
@@ -243,7 +255,7 @@ if($sql_out = mysqli_query($dbconn, $sql_code))
                     $frm_value = ${"frm_valueDag$ix5"};
                     $ix5b = $ix5 + 1;
                     
-                    echo "<td><input ".$frm_readonly." style='width:3.33vw; text-align:right' type='number' name='dag".$ix5b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
+                    echo "<td title='Geef waarde in decimalen. Hierbij is een kwartier 0.25, half uur 0.5 en 45 minuten is 0.75'><input ".$frm_readonly." style='width:3.33vw; text-align:right' type='number' name='dag".$ix5b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
                     
                     $totaal_uren_per_soort = number_format($totaal_uren_per_soort + floatval($frm_value), 2);
                     
@@ -254,7 +266,7 @@ if($sql_out = mysqli_query($dbconn, $sql_code))
                 }
                 if($frm_approved == 0) 
                 {
-                    echo "<td><img class='button' src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
+                    echo "<td><img class='button' src='./img/buttons/icons8-plus-48.png' alt='toevoegen nieuwe regel' title='toevoegen nieuwe regel' onclick='add_row();' /></td>";
                 }
                 else 
                 {
@@ -319,7 +331,7 @@ if($sql_out = mysqli_query($dbconn, $sql_code))
         $frm_value = ${"frm_valueDag$ix7"};
         $ix7b = $ix7 + 1;
         
-        echo "<td><input ".$frm_readonly." style='width:3.33vw; text-align:right' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
+        echo "<td title='Geef waarde in decimalen. Hierbij is een kwartier 0.25, half uur 0.5 en 45 minuten is 0.75'><input ".$frm_readonly." style='width:3.33vw; text-align:right' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
         
         $totaal_uren_per_soort = number_format($totaal_uren_per_soort + floatval($frm_value), 2);
         
@@ -331,7 +343,7 @@ if($sql_out = mysqli_query($dbconn, $sql_code))
 
     if($frm_approved == 0) 
     {
-        echo "<td><img class='button' src='./img/buttons/icons8-plus-48.png' alt='toevoegen soort uur' title='toevoegen soort uur' onclick='add_row();' /></td>";
+        echo "<td><img class='button' src='./img/buttons/icons8-plus-48.png' alt='toevoegen nieuwe regel' title='toevoegen nieuwe regel' onclick='add_row();' /></td>";
     }
     else 
     {
