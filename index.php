@@ -85,7 +85,7 @@ include ("header.php");
             echo "<td>$qry_approvedbyuser</td>";
             
             // Nu een button displayen om die betreffende week te muteren
-            echo '<td><a href="uren.php?edtweek='.$qry_jaar.$qry_week.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="display uren van deze week" title="display uren van deze week" /></a></td>';
+            echo '<td><a href="uren.php?edtweek='.$qry_jaar.$qry_week.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="Toon uren van deze week" title="Toon uren van deze week" /></a></td>';
             
             echo '</tr>';
             

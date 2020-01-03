@@ -71,7 +71,6 @@ if (isset($_POST['delete']))
 if (isset($_POST['save'])) 
 {
     form_user_fill('save');
-	writelogrecord("users", "SAVEBUTTON - Wachtwoorden worden gecontroleerd");
 	
 	// Checks wanneer password OF verificatiepassword niet leeg zijn
 	if (($_POST['pass']) != "" || ($_POST['pass2']) != "") 

@@ -89,7 +89,7 @@ if ($aktie == 'disp')
 		
 		echo '<tr class="'.$rowcolor.'">
 			<td><b>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</b></td><td style=\'text-align:center\'>'.$week.'</td>
-			<td><a href="approve.php?aktie=dspuren&user='.$username.'&week='.$week.'"><img class="button" src="./img/buttons/icons8-glasses-48.png" alt="wijzigen soort uur" title="Toon de uren voor deze week voor deze user" /></a></td>
+			<td><a href="approve.php?aktie=dspuren&user='.$username.'&week='.$week.'"><img class="button" src="./img/buttons/icons8-glasses-48.png" alt="Toon week" title="Toon de uren van deze week" /></a></td>
 			</tr>';
 		
 		check_row_color($rowcolor);

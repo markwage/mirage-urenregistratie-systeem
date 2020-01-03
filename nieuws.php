@@ -4,6 +4,7 @@ session_start();
 include ("config.php");
 include ("db.php");
 include ("function.php");
+include ("autoload.php");
 
 if (isset($_GET['aktie'])) 
 {
@@ -51,7 +52,12 @@ if (isset($_POST['delete']))
     $sql_code = "DELETE FROM nieuws
                  WHERE ID = '$delid'";
     $sql_out = mysqli_query($dbconn, $sql_code);
-    writeLogRecord("nieuws","INFO Het nieuwsbericht met id ".$delid." is verwijderd uit tabel nieuws");
+    
+    $log_record = new Writelog();
+    $log_record->progname = $_SERVER['PHP_SELF'];
+    $log_record->message_text  = 'Het nieuwsbericht met id '.$delid.' is verwijderd uit tabel nieuws';
+    $log_record->write_record();
+    
     header("location: nieuws.php?aktie=disp");
 }
 
@@ -88,8 +94,11 @@ if (isset($_POST['save']))
         
         if ($sql_out) 
         {
-            writeLogRecord("nieuws","INFO Het nieuwsbericht met id ".$_POST['ID']." is gewijzigd");
-            echo '<p class="infmsg">Mieuwsbericht <b>'.$_POST['nieuwsheader'].'</b> is gewijzigd</p>.';
+            $log_record = new Writelog();
+            $log_record->progname = $_SERVER['PHP_SELF'];
+            $log_record->message_text  = 'Het nieuwsbericht met id '.$_POST['ID'].' is gewijzigd';
+            $log_record->write_record();
+            
             $frm_datum          = "";
             $frm_nieuwsheader   = "";
             $frm_nieuwsbericht  = "";
@@ -108,7 +117,7 @@ if (isset($_POST['save']))
 // Er wordt een lijst met de uren getoond
 //------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') 
-{
+{    
     $sql_code = "SELECT * FROM nieuws 
                  ORDER BY datum desc";
     $sql_out = mysqli_query($dbconn, $sql_code);

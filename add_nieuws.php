@@ -3,6 +3,7 @@ session_start();
 include ("config.php");
 include ("db.php");
 include ("function.php");
+include ("autoload.php");
 
 // Controleren of gebruiker admin-rechten heeft
 // check_admin();
@@ -36,10 +37,15 @@ if (isset($_POST['submit']))
         $nieuwsheader = $frm_nieuwsheader;
     }
     
-    writeLogRecord("add_nieuws","CHECK01A De inputveld nieuwsheader wordt gecontroleerd");
 	if (!$_POST['nieuwsheader']) 
 	{
-	    writeLogRecord("add_nieuws","ERROR Verplicht inputveld nieuwsheader is niet ingevuld");
+	    $log_record = new Writelog();
+	    $log_record->progname = $_SERVER['PHP_SELF'];
+	    $log_record->loglevel = 'ERROR';
+	    $log_record->message_text  = 'Verplicht inputveld nieuwsheader is niet ingevuld';
+	    $log_record->write_record();
+	    
+	    //writeLogRecord("add_nieuws","ERROR Verplicht inputveld nieuwsheader is niet ingevuld");
 		echo '<p class="errmsg"> ERROR: Nieuwsheader is een verplicht veld</p>';
 		$focus     = 'nieuwsheader';
 		$formerror = 1;
@@ -51,7 +57,12 @@ if (isset($_POST['submit']))
 	
 	if ((!$_POST['nieuwsbericht'])  && (!$formerror)) 
 	{
-	    writeLogRecord("add_nieuws","ERROR Verplicht inputveld nieuwsbericht is niet gevuld");
+	    $log_record = new Writelog();
+	    $log_record->progname = $_SERVER['PHP_SELF'];
+	    $log_record->loglevel = 'ERROR';
+	    $log_record->message_text  = 'Verplicht inputveld nieuwsbericht is niet gevuld';
+	    $log_record->write_record();
+	    //writeLogRecord("add_nieuws","ERROR Verplicht inputveld nieuwsbericht is niet gevuld");
 		echo '<p class="errmsg"> ERROR: Nieuwsbericht is een verplicht veld</p>';
 		$focus     = 'nieuwsbericht';
 		$formerror = 1;
@@ -70,7 +81,12 @@ if (isset($_POST['submit']))
 
 		if ($sql_out) 
 		{
-		    writeLogRecord("add_nieuws","INFO Nieuwsbericht is succesvol toegevoegd aan de database");
+		    $log_record = new Writelog();
+		    $log_record->progname = $_SERVER['PHP_SELF'];
+		    $log_record->message_text  = 'Nieuwsbericht is succesvol toegevoegd aan de database';
+		    $log_record->write_record();
+		    //writeLogRecord("add_nieuws","INFO Nieuwsbericht is succesvol toegevoegd aan de database");
+		    
 			echo '<p class="infmsg">Het nieuwsbericht is opgenomen</p>.';
 			$frm_nieuwsheader  = "";
 			$frm_nieuwsbericht = "";
