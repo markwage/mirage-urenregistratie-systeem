@@ -4,6 +4,7 @@ session_start();
 include ("config.php");
 include ("db.php");
 include ("function.php");
+include ("autoload.php");
 
 if (isset($_GET['aktie'])) 
 {
@@ -71,8 +72,8 @@ if ($aktie == 'disp')
     $sql_code = "SELECT * FROM view_uren_get_full_username
                 WHERE terapprovalaangeboden = 1
                 AND approved = 0
-                GROUP BY user, week
-                ORDER BY week, user;";
+                GROUP BY user, jaar, week
+                ORDER BY jaar, week, user;";
 	$sql_out = mysqli_query($dbconn, $sql_code);
 	
 	echo "<center><table>";
@@ -83,13 +84,14 @@ if ($aktie == 'disp')
 	{
 		$username = $sql_rows['user'];
 		$week     = $sql_rows['week'];
+		$jaar     = $sql_rows['jaar'];
 		$voornaam      = $sql_rows['voornaam'];
 		$tussenvoegsel = $sql_rows['tussenvoegsel'];
 		$achternaam    = $sql_rows['achternaam'];
 		
 		echo '<tr class="'.$rowcolor.'">
-			<td><b>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</b></td><td style=\'text-align:center\'>'.$week.'</td>
-			<td><a href="approve.php?aktie=dspuren&user='.$username.'&week='.$week.'"><img class="button" src="./img/buttons/icons8-glasses-48.png" alt="Toon week" title="Toon de uren van deze week" /></a></td>
+			<td><b>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</b></td><td style=\'text-align:center\'>'.$jaar.' '.$week.'</td>
+			<td><a href="approve.php?aktie=dspuren&user='.$username.'&jaar='.$jaar.'&week='.$week.'"><img class="button" src="./img/buttons/icons8-glasses-48.png" alt="Toon week" title="Toon de uren van deze week" /></a></td>
 			</tr>';
 		
 		check_row_color($rowcolor);
@@ -104,6 +106,7 @@ if ($aktie == 'dspuren')
 {
     $username = $_GET['user'];
     $week     = $_GET['week'];
+    $jaar     = $_GET['jaar'];
     
     $sql_code = "SELECT * FROM users
                 WHERE username = '$username'";
@@ -114,7 +117,7 @@ if ($aktie == 'dspuren')
     $achternaam    = $sql_rows['achternaam'];
     $emailadres    = $sql_rows['emailadres'];
     
-    echo "<center><b>Weeknummer: </b>".$week."<br /><b>Medewerker: </b>".$voornaam." ".$tussenvoegsel." ".$achternaam." ";
+    echo "<center><b>Weeknummer: </b>".$jaar." ".$week."<br /><b>Medewerker: </b>".$voornaam." ".$tussenvoegsel." ".$achternaam." ";
     echo "<h3>Overzicht per dag</h3>";
     echo "<center><table>";
     echo "<tr><th>Datum</th><th>Soortuur</th><th>Uren</th></tr>";
@@ -123,6 +126,7 @@ if ($aktie == 'dspuren')
     $sql_code = "SELECT * FROM view_uren_soortuur
                  WHERE user = '$username'
                  AND week = '$week'
+                 AND jaar = '$jaar'
                  ORDER BY datum, soortuur";
     $sql_out = mysqli_query($dbconn, $sql_code);
     
@@ -151,6 +155,7 @@ if ($aktie == 'dspuren')
     $sql_code = "SELECT SUM(uren) as toturen, soortuur, omschrijving FROM view_uren_soortuur
                 WHERE user = '$username'
                 AND week = '$week'
+                AND jaar = '$jaar'
                 GROUP BY soortuur
                 ORDER BY soortuur";
     $sql_out = mysqli_query($dbconn, $sql_code);
@@ -174,6 +179,7 @@ if ($aktie == 'dspuren')
     <form style='background-color:#FFF;' name="approve" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
     <!-- Volgende velden zijn hidden om toch de waarden door te geven voor de update-query -->
     <input type="hidden" name="week" value="<?php if (isset($week)) { echo $week; } ?>">
+    <input type="hidden" name="jaar" value="<?php if (isset($jaar)) { echo $jaar; } ?>">
     <input type="hidden" name="username" value="<?php if (isset($username)) { echo $username; } ?>">
     <input type="hidden" name="jaar" value="<?php if (isset($datum)) { echo substr($datum,0,4); } ?>">
     <!--  Tot hier -->

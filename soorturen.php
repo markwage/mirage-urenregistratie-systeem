@@ -4,6 +4,7 @@ session_start();
 include ("config.php");
 include ("db.php");
 include ("function.php");
+include ("autoload.php");
 
 if (isset($_GET['aktie'])) 
 {

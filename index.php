@@ -4,6 +4,7 @@ session_start();
 include ("./config.php");
 include ("./db.php");
 include ("./function.php");
+include ("autoload.php");
 
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
@@ -20,7 +21,7 @@ include ("header.php");
     
 	<center><table>
 	<tr><th colspan='7' style='text-align:center;'>Overzicht laatste 10 weken</th></tr>
-	<tr><th>jaar</th><th>week</th><th>Ter approval<br />aangeboden</th><th>Approved</th><th>datum</th><th>approved door</th><th> </th></tr>
+	<tr><th>Jaar</th><th>Week</th><th>Ter approval<br />aangeboden</th><th>Approved</th><th>Datum</th><th>Approved door</th><th>Akties</th></tr>
 	
     <?php 
     jaarWeek();

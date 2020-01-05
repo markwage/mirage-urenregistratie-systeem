@@ -2,6 +2,7 @@
 <script src="./js/calendar.js" type="text/javascript"></script>
 <?php
 include ("./calendar_conf.php");
+include ("autoload.php");
 echo '<link href="./css/calendar.css" type="text/css" rel="stylesheet" />';
 $month = isset($_GET['month'])? $_GET['month'] : date('n');
 $pd = mktime (0,0,0,$month,1,date('Y'));// timestamp of the first day

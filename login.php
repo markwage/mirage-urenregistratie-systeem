@@ -4,6 +4,7 @@ session_start();
 include ("./config.php");
 include ("./db.php");
 include ("./function.php");
+include ("autoload.php");
 
 include ("header.php");
 
@@ -52,7 +53,11 @@ if (isset($_POST['submit']))
 		//Error indien password fout
 		if ($_POST['pass'] != $sql_rows['password']) 
 		{
-			writeLogRecord("login","WARN User ".$_POST['username']." probeerde in te loggen met een foutief wachtwoord");
+		    $log_record = new Writelog();
+		    $log_record->progname = $_SERVER['PHP_SELF'];
+		    $log_record->loglevel = 'WARN';
+		    $log_record->message_text  = 'User '.$_POST['username'].' probeerde in te loggen met een foutief wachtwoord';
+		    $log_record->write_record();
 			echo '<blockquote class="error">ERROR: Foutief wachtwoord. Probeer het nogmaals</blockquote>';
 		}
 		else 
@@ -74,7 +79,11 @@ if (isset($_POST['submit']))
 				       WHERE username = '".$_POST['username']."'";
 			$sql_out = mysqli_query($dbconn, $sql_code);
 			header("location: index.php");
-			writeLogRecord("login","User ".$_POST['username']." is succesvol ingelogd.");
+			
+			$log_record = new Writelog();
+			$log_record->progname = $_SERVER['PHP_SELF'];
+			$log_record->message_text  = 'User '.$_POST['username'].' is succesvol ingelogd';
+			$log_record->write_record();
 		}
 	}
 }

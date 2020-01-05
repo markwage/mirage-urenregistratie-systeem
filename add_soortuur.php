@@ -3,6 +3,7 @@ session_start();
 include ("config.php");
 include ("db.php");
 include ("function.php");
+include ("autoload.php");
 
 check_admin();     // Controleren of gebruiker admin-rechten heeft
 check_cookies();   // Controleren of cookie aanwezig is. Zo niet, login-scherm displayen

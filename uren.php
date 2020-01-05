@@ -4,6 +4,7 @@ session_start();
 include ("config.php");
 include ("db.php");
 include ("function.php");
+include ("autoload.php");
 
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
@@ -332,6 +333,7 @@ if($sql_out = mysqli_query($dbconn, $sql_code))
         $ix7b = $ix7 + 1;
         
         echo "<td title='Geef waarde in decimalen. Hierbij is een kwartier 0.25, half uur 0.5 en 45 minuten is 0.75'><input ".$frm_readonly." style='width:3.33vw; text-align:right' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
+              
         
         $totaal_uren_per_soort = number_format($totaal_uren_per_soort + floatval($frm_value), 2);
         
