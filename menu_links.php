@@ -10,6 +10,7 @@ if (isset($_COOKIE['ID_mus']))
         <?php
         echo 'Gebruikersnaam: '.$_SESSION['username'];
         echo '<br />Naam: '.$_SESSION['voornaam'].' '.$_SESSION['tussenvoegsel'].' '.$_SESSION['achternaam'];
+        echo '<br />Email: '.$_SESSION['emailadres'];
         echo '<br />Laatste login: '.$_SESSION['lastloggedin'];
         ?>
         </p>

@@ -14,6 +14,12 @@ check_cookies();
 
 include ("header.php");
 
+?>
+<div id="main">
+<h1>Contactformulier</h1>
+
+<?php 
+
 // Get value from the form
 if(isset($_POST['submit'])) 
 {
@@ -151,10 +157,7 @@ color: #FF0000;
 </head>
 
 <body>
-This is a sample contact form.
-<br><br>
-<span class="required">*</span> indicates a required field
-<br>
+
 <?php
 if (isset($_GET['eror']))
 {
@@ -179,22 +182,29 @@ if (isset($_GET['eror']))
     }
 }
 ?>
-<br>
+
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="contactForm" name="contactForm">
-<label for="fName">First Name:<span class="required">*</span></label>
-<input type="text" name="fName" value="" id="fName">
-<br><br>
-<label for="lName">Last Name:</label>
-<input type="text" name="lName" value="" id="lName">
-<br><br>
-<label for="email">Email Address:<span class="required">*</span></label>
-<input type="text" name="email" value="" id="email">
-<br><br>
-<label for="message">Message:<span class="required">*</span></label>
-<textarea name="message" rows="5" cols="60" id="message"></textarea>
-<br><br>
-<input type="submit" name="submit" id="submit" value="Submit">
+    <p>
+    <label for="fName">Voornaam:<span class="required">*</span></label>
+    <input type="text" name="fName" value="<?php echo $_SESSION['voornaam']; ?>" id="fName">
+    <br><br>
+    
+    <label for="Achternaam">Last Name:</label>
+    <input type="text" name="lName" value="<?php echo $_SESSION['tussenvoegsel'].' '.$_SESSION['achternaam']; ?>" id="lName">
+    <br><br>
+
+    <label for="email">Emailadres:<span class="required">*</span></label>
+    <input type="text" name="email" value="<?php echo $_SESSION['emailadres']; ?>" id="email">
+    <br><br>
+
+    <label for="message">Message:<span class="required">*</span></label>
+    <textarea name="message" rows="5" cols="60" id="message"></textarea>
+    <br><br>
+
+    <input type="submit" name="submit" id="submit" value="Submit">
+    </p>
 </form>
+
 </body>
 </html>
 

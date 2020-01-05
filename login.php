@@ -50,7 +50,7 @@ if (isset($_POST['submit']))
 		$_POST['voornaam']        = $sql_rows['voornaam'];
 		$_POST['tussenvoegsel']   = $sql_rows['tussenvoegsel'];
 		$_POST['achternaam']      = $sql_rows['achternaam'];
-		$_POST['approvenallowed'] = $sql_rows['approvenallowed'];
+		$_POST['emailadres']      = $sql_rows['emailadres'];
 		$_POST['lastloggedin']    = $sql_rows['lastloggedin'];
 		
 		//Error indien password fout
@@ -77,6 +77,7 @@ if (isset($_POST['submit']))
 			$_SESSION['voornaam']        = $_POST['voornaam'];
 			$_SESSION['tussenvoegsel']   = $_POST['tussenvoegsel'];
 			$_SESSION['achternaam']      = $_POST['achternaam'];
+			$_SESSION['emailadres']      = $_POST['emailadres'];
 			$_SESSION['lastloggedin']    = $_POST['lastloggedin'];
 			
 			// update lastloggedin in de tabel
