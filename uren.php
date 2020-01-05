@@ -174,15 +174,15 @@ if($sql_result_approval = mysqli_query($dbconn, $sql_approval))
     }
 }
 
-echo "<table>";
+echo "<center><table>";
 echo "<tr>";
 echo "<td><strong>Weeknummer</strong></td>";
 echo "<td><input style='width:4.66vw' type='number' name='week' id='camp-week' value='".$inputweeknr."' required onchange='this.form.submit()'></td>";
 echo "<td><img class='button' src=\"./img/buttons/icons8-info-48.png\" alt=\"informatie\" title=\"informatie\" /></td><td>".$status."</td";
 echo "</tr>";
 
-echo "</table>";
-echo "<table id='uren_table'>";
+echo "</table></center>";
+echo "<center><table id='uren_table'>";
 echo "<tr>";
 echo "<th>Soortuur</th>";
 
@@ -358,7 +358,7 @@ if($sql_out = mysqli_query($dbconn, $sql_code))
     echo "ERROR: Kan geen connectie met de database maken. ". mysqli_error($dbconn);
 }
 
-echo "</table>";
+echo "</table></center>";
 // This button is needed for when user pushes the ENTER button when changing the weeknumber. Button is not displayed
 echo "<input type='submit' name='dummy' value='None' style='display: none'>";
 
