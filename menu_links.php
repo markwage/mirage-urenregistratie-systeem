@@ -1,12 +1,18 @@
 <?php
 
-if (isset($_COOKIE['ID_mus'])) {
+if (isset($_COOKIE['ID_mus'])) 
+{
     
 	?>
     <div class="sidebox">
-        <h1>Welkom op MUS</h1>
-        <p>Welkom <b><?php echo $_SESSION['voornaam']?></b>.<br /> Je bent nu ingelogd op MUS, het Mirage Urenregistratie Systeem<br /></p>
-        <p>Je kunt nu je uren inzien en je urenverantwoording invullen
+        <h1 class="clear">Welkom</h1>
+        <p>
+        <?php
+        echo 'Gebruikersnaam: '.$_SESSION['username'];
+        echo '<br />Naam: '.$_SESSION['voornaam'].' '.$_SESSION['tussenvoegsel'].' '.$_SESSION['achternaam'];
+        echo '<br />Laatste login: '.$_SESSION['lastloggedin'];
+        ?>
+        </p>
     </div>
 		
 	<div class="sidebox">

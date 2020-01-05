@@ -48,7 +48,10 @@ if (isset($_POST['submit']))
 		$_POST['pass']            = md5($_POST['pass']);
 		$_POST['admin']           = $sql_rows['admin'];
 		$_POST['voornaam']        = $sql_rows['voornaam'];
+		$_POST['tussenvoegsel']   = $sql_rows['tussenvoegsel'];
+		$_POST['achternaam']      = $sql_rows['achternaam'];
 		$_POST['approvenallowed'] = $sql_rows['approvenallowed'];
+		$_POST['lastloggedin']    = $sql_rows['lastloggedin'];
 		
 		//Error indien password fout
 		if ($_POST['pass'] != $sql_rows['password']) 
@@ -72,6 +75,9 @@ if (isset($_POST['submit']))
 			$_SESSION['admin']           = $_POST['admin'];
 			$_SESSION['approvenallowed'] = $_POST['approvenallowed'];
 			$_SESSION['voornaam']        = $_POST['voornaam'];
+			$_SESSION['tussenvoegsel']   = $_POST['tussenvoegsel'];
+			$_SESSION['achternaam']      = $_POST['achternaam'];
+			$_SESSION['lastloggedin']    = $_POST['lastloggedin'];
 			
 			// update lastloggedin in de tabel
 			date_default_timezone_set('Europe/Amsterdam');
