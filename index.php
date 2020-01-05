@@ -20,8 +20,17 @@ include ("header.php");
     ?>
     
 	<center><table>
-	<tr><th colspan='7' style='text-align:center;'>Overzicht laatste 10 weken</th></tr>
-	<tr><th>Jaar</th><th>Week</th><th>Ter approval<br />aangeboden</th><th>Approved</th><th>Datum</th><th>Approved door</th><th>Akties</th></tr>
+	<tr><th colspan='8' style='text-align:center;'>Overzicht laatste 10 weken</th></tr>
+	<tr>
+	    <th>Jaar</th>
+	    <th>Week</th>
+	    <th>Uren<br />ingevuld</th>
+	    <th>Ter approval<br />aangeboden</th>
+	    <th>Approved</th>
+	    <th>Datum<br />approved</th>
+	    <th>Approved door</th>
+	    <th>Akties</th>
+	</tr>
 	
     <?php 
     jaarWeek();
@@ -29,7 +38,7 @@ include ("header.php");
     $rowcolor = 'row-a';
     for($ix1=0; $ix1<10; $ix1++) 
     {
-        $sql_code = "SELECT * FROM uren 
+        $sql_code = "SELECT *, SUM(uren) as toturen FROM uren 
                     WHERE user='$username' 
                     AND jaar='$mainJaar[$ix1]' 
                     AND week='$mainWeek[$ix1]' 
@@ -49,6 +58,7 @@ include ("header.php");
                 $qry_approved              = $sql_row['approved'];
                 $qry_approveddatum         = $sql_row['approveddatum'];
                 $qry_approvedbyuser        = $sql_row['approvedbyuser'];
+                $qry_toturen               = $sql_row['toturen'];
             } 
             else 
             {
@@ -58,30 +68,40 @@ include ("header.php");
     	        $qry_approved              = ' ';
     	        $qry_approveddatum         = ' ';
     	        $qry_approvedbyuser        = ' ';
+    	        $qry_toturen               = 0; 
             }
             
             echo '<tr class="'.$rowcolor.'">';
             echo '<td style="text-align:center;">'.$qry_jaar.'</td>';
             echo '<td style="text-align:center;">'.$qry_week.'</td>';
             
+            if ($qry_toturen > 0)
+            {
+                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="Er zijn uren ingevuld voor deze week" /></td>';
+            }
+            else
+            {
+                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="Er zijn nog geen uren ingevuld voor deze week" /></td>';
+            }
+            
             if ($qry_terapprovalaangeboden == 1) 
             {
-                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-ok-48.png" alt="1" title="is ter approval aangeboden" /></td>';
+                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="is ter approval aangeboden" /></td>';
             }
             else 
             {
-                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-cancel-48.png" alt="0" title="is nog niet ter approval aangeboden" /></td>';
+                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="is nog niet ter approval aangeboden" /></td>';
             }
             
             if ($qry_approved == 1) 
             {
-                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-ok-48.png" alt="1" title="is approved" /></td>';
+                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="is approved" /></td>';
             }
             else 
             {
-                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-cancel-48.png" alt="0" title="is nog niet approved" /></td>';
+                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="is nog niet approved" /></td>';
             }
-            
+                       
             echo "<td>$qry_approveddatum</td>";
             echo "<td>$qry_approvedbyuser</td>";
             

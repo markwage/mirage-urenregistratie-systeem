@@ -240,29 +240,29 @@ if ($aktie == 'disp')
             <td>'.$lastloggedin.'</td>';
 		if ($admin == 1) 
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-ok-48.png" alt="1" title="heeft adminrechten" /></td>';
+		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="heeft adminrechten" /></td>';
 		}
 		else 
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-cancel-48.png" alt="0" title="heeft geen adminrechten" /></td>';
+		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="heeft geen adminrechten" /></td>';
 		}
 		
 		if ($indienst == 1) 
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-ok-48.png" alt="1" title="medewerker is nog in dienst" /></td>';
+		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="medewerker is nog in dienst" /></td>';
 		}
 		else 
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-cancel-48.png" alt="0" title="medewerker is niet meer in dienst" /></td>';
+		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="medewerker is niet meer in dienst" /></td>';
 		}
 		
 		if ($approvenallowed == 1) 
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-ok-48.png" alt="1" title="medewerker heeft rechten om uren te approven" /></td>';
+		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="medewerker heeft rechten om uren te approven" /></td>';
 		}
 		else 
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-cancel-48.png" alt="0" title="medewerker heeft geen rechten om uren te approven" /></td>';
+		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="medewerker heeft geen rechten om uren te approven" /></td>';
 		}
 		
 		echo '<td><a href="users.php?aktie=edit&edtuser='.$username.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
