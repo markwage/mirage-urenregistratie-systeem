@@ -35,6 +35,7 @@ if (isset($_COOKIE['ID_mus']))
 		    <h1>Admin menu</h1>
 		    <ul class="sidemenu">
 		        <li><a href="approve.php?aktie=disp">Openstaande approvals</a></li>
+		        <li><a href="noginteleveren.php?aktie=disp">Nog in te leveren weken</a></li>
 		        <li><a href="users.php?aktie=disp">Usermanagement</a></li>
 		        <li><a href="soorturen.php?aktie=disp">Onderhoud soort uren</a></li>
 	    	    <li><a href="nieuws.php?aktie=disp">Onderhoud nieuwsartikelen</a></li>

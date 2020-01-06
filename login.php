@@ -47,6 +47,7 @@ if (isset($_POST['submit']))
 		$sql_rows['password']     = stripslashes($sql_rows['password']);
 		$_POST['pass']            = md5($_POST['pass']);
 		$_POST['admin']           = $sql_rows['admin'];
+		$_POST['approvenallowed'] = $sql_rows['approvenallowed'];
 		$_POST['voornaam']        = $sql_rows['voornaam'];
 		$_POST['tussenvoegsel']   = $sql_rows['tussenvoegsel'];
 		$_POST['achternaam']      = $sql_rows['achternaam'];
