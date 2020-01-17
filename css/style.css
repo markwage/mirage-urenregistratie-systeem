@@ -34,9 +34,9 @@ a:hover {
 /* headers */
 h1, h2, h3 { font: bold verdana, arial, sans-serif; color: #118981; }
 /* h1 { font-size: 24px; padding-bottom: 13px; } */
-h1 { font-size: 1.6vw; padding-bottom: 0.5vw; }
+h1 { font-size: 1.6vw; padding-bottom: 0.5vw; text-transform: uppercase;}
 /* h2 { font-size: 20px; text-transform: uppercase; } */
-h2 { font-size: 1.33vw; text-transform: uppercase; }
+h2 { font-size: 1.33vw; padding-top: 10px; padding-bottom: 10px; }
 /* h3 { font-size: 16px; padding-top: 10px; padding-bottom: 10px; } */
 h3 { font-size: 1.07; padding-top: 10px; padding-bottom: 10px; }
 /* h4 { font-size: 14px; padding-top: 10px; padding-bottom: 10px; } */

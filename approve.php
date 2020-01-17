@@ -48,13 +48,17 @@ if (isset($_POST['approve']))
 {
     $approvedbyuser = $_SESSION['username'];
     $user           = $_POST['username'];
-    $week           = $_POST['week'];
+    $maand          = $_POST['maand'];
     $jaar           = $_POST['jaar'];
-    $sql_code = "UPDATE uren SET 
-			approveddatum = '".date('Y-m-d')."', approvedbyuser = '".$approvedbyuser."', approved = '1'  
-            WHERE user = '".$user."' AND week = '".$week."' AND jaar = '".$jaar."'";
+    $sql_code = "UPDATE uren
+                 SET approveddatum = '".date('Y-m-d')."',
+                 approvedbyuser = '".$approvedbyuser."',
+                 approved = '1'
+                 WHERE user = '".$user."'
+                 AND month(datum) = '".$maand."'
+                 AND year(datum) = '".$jaar."'";
     $sql_out = mysqli_query($dbconn, $sql_code);
-    writelogrecord("approve","INFO Van user {$user} is week {$jaar}{$week} approved");
+    writelogrecord("approve","INFO Van user {$user} is week {$jaar} {$maand} approved");
 
     header("location: approve.php?aktie=disp");
 }
@@ -64,34 +68,39 @@ if (isset($_POST['approve']))
 //       *******************   START   *******************
 //
 // Dit wordt uitgevoerd wanneer de gebruiker in linkermenu op "Openstaande approvals" klikt
-// Er wordt een lijst met de te approven weken getoond
+// Er wordt een lijst met de te approven maanden getoond, max half jaar terug
 //------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') 
 {
+    $vorig_jaar = date('Y', strtotime('-1 month', time()));
+    $vorige_maand = date('m', strtotime('-1 month', time()));
+    $vorig_jaar_tot = date('Y', strtotime('-6 month', time()));
+    $vorige_maand_tot = date('m', strtotime('-6 month', time()));
     
     $sql_code = "SELECT * FROM view_uren_get_full_username
-                WHERE terapprovalaangeboden = 1
-                AND approved = 0
-                GROUP BY user, jaar, week
-                ORDER BY jaar, week, user;";
+                WHERE approved = 0
+                AND approval_jaar BETWEEN ".$vorig_jaar_tot." AND ".$vorig_jaar. "
+                AND approval_maand BETWEEN ".$vorige_maand_tot." AND ".$vorige_maand. "
+                GROUP BY user, approval_jaar, approval_maand
+                ORDER BY approval_jaar, approval_maand, user;";
 	$sql_out = mysqli_query($dbconn, $sql_code);
 	
 	echo "<center><table>";
-	echo "<tr><th>Medewerker</th><th>Week</th><th></th></tr>";
+	echo "<tr><th>Medewerker</th><th>Maand</th><th></th></tr>";
 	$rowcolor = 'row-a';
 	
 	while($sql_rows = mysqli_fetch_array($sql_out)) 
 	{
 		$username = $sql_rows['user'];
-		$week     = $sql_rows['week'];
-		$jaar     = $sql_rows['jaar'];
+		$maand    = $sql_rows['approval_maand'];
+		$jaar     = $sql_rows['approval_jaar'];
 		$voornaam      = $sql_rows['voornaam'];
 		$tussenvoegsel = $sql_rows['tussenvoegsel'];
 		$achternaam    = $sql_rows['achternaam'];
 		
 		echo '<tr class="'.$rowcolor.'">
-			<td><b>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</b></td><td style=\'text-align:center\'>'.$jaar.' '.$week.'</td>
-			<td><a href="approve.php?aktie=dspuren&user='.$username.'&jaar='.$jaar.'&week='.$week.'"><img class="button" src="./img/buttons/icons8-glasses-48.png" alt="Toon week" title="Toon de uren van deze week" /></a></td>
+			<td><b>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</b></td><td style=\'text-align:center\'>'.$jaar.' '.$maand.'</td>
+			<td><a href="approve.php?aktie=dspuren&user='.$username.'&jaar='.$jaar.'&maand='.$maand.'"><img class="button" src="./img/buttons/icons8-glasses-48.png" alt="Toon week" title="Toon de uren van deze week" /></a></td>
 			</tr>';
 		
 		check_row_color($rowcolor);
@@ -105,7 +114,7 @@ if ($aktie == 'disp')
 if ($aktie == 'dspuren') 
 {
     $username = $_GET['user'];
-    $week     = $_GET['week'];
+    $maand    = $_GET['maand'];
     $jaar     = $_GET['jaar'];
     
     $sql_code = "SELECT * FROM users
@@ -117,7 +126,7 @@ if ($aktie == 'dspuren')
     $achternaam    = $sql_rows['achternaam'];
     $emailadres    = $sql_rows['emailadres'];
     
-    echo "<center><b>Weeknummer: </b>".$jaar." ".$week."<br /><b>Medewerker: </b>".$voornaam." ".$tussenvoegsel." ".$achternaam." ";
+    echo "<center><b>Maand: </b>".$jaar." ".$maand."<br /><b>Medewerker: </b>".$voornaam." ".$tussenvoegsel." ".$achternaam." ";
     echo "<h3>Overzicht per dag</h3>";
     echo "<center><table>";
     echo "<tr><th>Datum</th><th>Soortuur</th><th>Uren</th></tr>";
@@ -125,8 +134,8 @@ if ($aktie == 'dspuren')
     
     $sql_code = "SELECT * FROM view_uren_soortuur
                  WHERE user = '$username'
-                 AND week = '$week'
-                 AND jaar = '$jaar'
+                 AND approval_maand = '$maand'
+                 AND approval_jaar = '$jaar'
                  ORDER BY datum, soortuur";
     $sql_out = mysqli_query($dbconn, $sql_code);
     
@@ -154,8 +163,8 @@ if ($aktie == 'dspuren')
     
     $sql_code = "SELECT SUM(uren) as toturen, soortuur, omschrijving FROM view_uren_soortuur
                 WHERE user = '$username'
-                AND week = '$week'
-                AND jaar = '$jaar'
+                AND approval_maand = '$maand'
+                AND approval_jaar = '$jaar'
                 GROUP BY soortuur
                 ORDER BY soortuur";
     $sql_out = mysqli_query($dbconn, $sql_code);
@@ -178,15 +187,21 @@ if ($aktie == 'dspuren')
     ?>
     <form style='background-color:#FFF;' name="approve" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
     <!-- Volgende velden zijn hidden om toch de waarden door te geven voor de update-query -->
-    <input type="hidden" name="week" value="<?php if (isset($week)) { echo $week; } ?>">
+    <input type="hidden" name="maand" value="<?php if (isset($maand)) { echo $maand; } ?>">
     <input type="hidden" name="jaar" value="<?php if (isset($jaar)) { echo $jaar; } ?>">
     <input type="hidden" name="username" value="<?php if (isset($username)) { echo $username; } ?>">
     <input type="hidden" name="jaar" value="<?php if (isset($datum)) { echo substr($datum,0,4); } ?>">
     <!--  Tot hier -->
     <input class="button" type="submit" name="cancel" value="cancel" formnovalidate>
     <?php 
-    if (!isset($_SESSION['approvenallowed']) || (!$_SESSION['approvenallowed'])) echo '<blockquote>Je hebt geen rechten om te approven</blockquote>';
-    else echo '<input class="button" type="submit" name="approve" value="approve">';
+    if (!isset($_SESSION['approvenallowed']) || (!$_SESSION['approvenallowed'])) 
+    {
+        echo '<blockquote>Je hebt geen rechten om te approven</blockquote>';
+    }
+    else 
+    {
+        echo '<input class="button" type="submit" name="approve" value="approve">';
+    }
     ?>
     </form>
     <?php 

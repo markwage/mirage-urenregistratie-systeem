@@ -309,6 +309,7 @@ function cnv_dateToWeek($datum)
 function jaarWeek() 
 {
     global $mainWeek, $mainJaar;
+    // Datum van vandaag
     $datum = date("d-m-Y");
     $dagen = 0;
     
@@ -324,6 +325,18 @@ function jaarWeek()
     }
 }
 
+//-----------------------------------------------------------------------------
+// Bepalen de startdatum en einddatum van een week
+//-----------------------------------------------------------------------------
+function getStartAndEndDate($week, $year) {
+    $dto = new DateTime();
+    $dto->setISODate($year, $week);
+    $ret['week_start'] = $dto->format('d-m-Y');
+    $dto->modify('+6 days');
+    $ret['week_end'] = $dto->format('d-m-Y');
+    return $ret;
+}
+
 //-------------------------------------------------------------------------
 // Geef weeknummer en jaar door aan de functie
 // Deze geeft de dagnaam (mon - sun) en de datum in dd-mm 
@@ -331,7 +344,7 @@ function jaarWeek()
 //-------------------------------------------------------------------------
 function getWeekdays($weeknr)
 {
-    global $weekDatum, $weekDagNaam, $week, $year, $inputweeknr;
+    global $weekDatum, $weekDagNaam, $weekMaand, $weekJaar, $week, $year, $inputweeknr;
     $inputweeknr = $weeknr;
     $week = substr($inputweeknr, 4, 2);
     $year = substr($inputweeknr, 0, 4);
@@ -339,6 +352,8 @@ function getWeekdays($weeknr)
     for($ix1=0; $ix1<7; $ix1++) 
     {
         $weekDatum[$ix1] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ix1.' days'));
+        $weekMaand[$ix1] = date("m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ix1.' days'));
+        $weekJaar[$ix1] = date("Y", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ix1.' days'));
     }
     
     $weekDagNaam[0] = "Maa";
