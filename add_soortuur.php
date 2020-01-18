@@ -19,12 +19,18 @@ include ("header.php");
  * Dit is het begin van de code wat uitgevoerd wordt indien het formulier is gesubmit
  * Welk gedeelte van de code is afhankelijk van de button waarop geclickt is.
  */
+//------------------------------------------------------------------------------------------------------
+// BUTTON Cancel
+//------------------------------------------------------------------------------------------------------
 if (isset($_POST['cancel'])) 
 {
 	header("location: soorturen.php?aktie=disp");
 }
 
-if (isset($_POST['submit'])) 
+//------------------------------------------------------------------------------------------------------
+// BUTTON Add om record toe te voegen
+//------------------------------------------------------------------------------------------------------
+if (isset($_POST['add_record'])) 
 {
 	form_soorturen_fill('toevoegen');
 	
@@ -57,15 +63,16 @@ if (isset($_POST['submit']))
 	
 	if (!$sql_out) 
 	{
-	    writelogrecord("add_soortuur","ERROR Er is een fout opgetreden bij het uitvoeren van een query -> ".mysqli_error($dbconn));
+	    $log_record = new Writelog();
+	    $log_record->progname = $_SERVER['PHP_SELF'];
+	    $log_record->loglevel = 'ERROR';
+	    $log_record->message_text  = "Er is een fout opgetreden bij het uitvoeren van een query -> ".mysqli_error($dbconn);
+	    $log_record->write_record();
+	    
 	    echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de code. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
 	    $focus     = 'code';
 	    $formerror = 1;
-	    // Proberen om een functie te maken (sqlerror() )en dan een error-screen te displayen.
-	    //   Meegeven scriptnaam, 
-	    // Uitvoeren middels header("location: sql_error.php?message='een message'?errorcode='errorcode'");
-	    // Als dat lukt kan de else weg
 	} 
 	else 
 	{
@@ -74,8 +81,12 @@ if (isset($_POST['submit']))
 	    // Als de soort uur bestaat een error displayen
 	    if ($sql_rows != 0) 
 	    {
-	        writelogrecord("add_soortuur","ERROR Er is geprobeerd soortuur ".$_POST['code']." aan te maken terwijl deze al bestaat");
-		    //echo '<p class="errmsg"> ERROR: Code '.$_POST['code'].' is al aanwezig.</p>';
+	        $log_record = new Writelog();
+	        $log_record->progname = $_SERVER['PHP_SELF'];
+	        $log_record->loglevel = 'WARN';
+	        $log_record->message_text  = "Er is geprobeerd soortuur {$_POST['code']} aan te maken terwijl deze al bestaat";
+	        $log_record->write_record();
+	        
 	        echo "<p class='errmsg'> ERROR: Code {$_POST['code']} is al aanwezig.</p>";
 		    $focus     = 'code';
 		    $formerror = 1;
@@ -98,8 +109,11 @@ if (isset($_POST['submit']))
 
 		if ($sql_out) 
 		{ 
-		    writelogrecord("add_soortuur","INFO Soortuur {$_POST['code']} ({$_POST['omschrijving']}) is succesvol gecreeerd");
-		    echo "<p class='infmsg'>Code <b>{$_POST['code']}</b> is opgenomen</p>.";
+		    $log_record = new Writelog();
+		    $log_record->progname = $_SERVER['PHP_SELF'];
+		    $log_record->message_text  = "Soortuur {$_POST['code']} ({$_POST['omschrijving']}) is succesvol gecreeerd";
+		    $log_record->write_record();
+		    
 			$frm_code         = "";
 			$frm_omschrijving = "";
 			header("location: soorturen.php?aktie=disp"); 
@@ -126,7 +140,7 @@ if (isset($_POST['submit']))
 			<td><input type="text" name="omschrijving" size="60" maxlength="60" value="<?php if (isset($frm_omschrijving)) { echo $frm_omschrijving; } ?>"></td>
 	</table>
 	<br />
-	<input class="button" type="submit" name="submit" value="add soort uur">
+	<input class="button" type="submit" name="add_record" value="add">
 	<input class="button" type="submit" name="cancel" value="cancel">
 	</p>
 </form>

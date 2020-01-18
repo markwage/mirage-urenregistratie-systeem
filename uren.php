@@ -95,7 +95,11 @@ if (isset($_POST['save']) || isset($_POST['approval']))
                             AND jaar='".$year."'
                             AND approved = 0";
         $check_delete_uren = mysqli_query($dbconn, $sql_delete_uren);
-        writelogrecord("uren","INFO Records worden verwijderd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week");
+        $log_record = new Writelog();
+        $log_record->progname = $_SERVER['PHP_SELF'];
+        $log_record->message_text  = "Records worden verwijderd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week";
+        $log_record->write_record();
+        //writelogrecord("uren","INFO Records worden verwijderd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week");
     }
     
     $inputweeknr = $_POST['week'];
@@ -131,7 +135,12 @@ if (isset($_POST['save']) || isset($_POST['approval']))
                     $check_check_datum_approved = mysqli_query($dbconn, $sql_check_datum_approved);
                     if (!$check_check_datum_approved)
                     {
-                        writelogrecord("uren","ERR03INS001Er is een fout opgetreden bij het inserten van uren -> ".mysqli_error($dbconn));
+                        $log_record = new Writelog();
+                        $log_record->progname = $_SERVER['PHP_SELF'];
+                        $log_record->loglevel = 'ERROR';
+                        $log_record->message_text  = "Er is een fout opgetreden bij het selecteren van uren -> ".mysqli_error($dbconn);
+                        $log_record->write_record();
+                        //writelogrecord("uren","ERR03INS001Er is een fout opgetreden bij het inserten van uren -> ".mysqli_error($dbconn));
                     }
                     
                     $rows_check_datum_approved = mysqli_num_rows($check_check_datum_approved);
@@ -151,10 +160,19 @@ if (isset($_POST['save']) || isset($_POST['approval']))
                         
                         if (!$check_insert_uren)
                         {
-                            writelogrecord("uren","ERROR Er is een fout opgetreden bij het inserten van uren -> ".mysqli_error($dbconn));
+                            $log_record = new Writelog();
+                            $log_record->progname = $_SERVER['PHP_SELF'];
+                            $log_record->loglevel = 'ERROR';
+                            $log_record->message_text  = "Er is een fout opgetreden bij het inserten van uren -> ".mysqli_error($dbconn);
+                            $log_record->write_record();
+                            //writelogrecord("uren","ERROR Er is een fout opgetreden bij het inserten van uren -> ".mysqli_error($dbconn));
                         }
                     }
-                    writelogrecord("uren","INFO Records worden toegevoegd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week");
+                    $log_record = new Writelog();
+                    $log_record->progname = $_SERVER['PHP_SELF'];
+                    $log_record->message_text  = "Records worden toegevoegd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week";
+                    $log_record->write_record();
+                    //writelogrecord("uren","INFO Records worden toegevoegd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week");
                 }
             }
         }

@@ -63,7 +63,11 @@ if (isset($_POST['delete']))
 	$sql_code = "DELETE FROM users
                  WHERE username = '$deluser'";
 	$sql_out = mysqli_query($dbconn, $sql_code);
-	writeLogRecord("users","User ".$deluser." is succesvol verwijderd.");
+	$log_record = new Writelog();
+	$log_record->progname = $_SERVER['PHP_SELF'];
+	$log_record->message_text  = "User ".$deluser." is succesvol verwijderd";
+	$log_record->write_record();
+	//writeLogRecord("users","User ".$deluser." is succesvol verwijderd.");
 	header("location: users.php?aktie=disp");
 }
 
@@ -187,7 +191,11 @@ if (isset($_POST['save']))
 	    
 		if ($sql_out) 
 		{ 
-		    writeLogRecord("users","INFO De UPDATE-query is succesvol uitgevoerd voor user ".$frm_username);
+		    $log_record = new Writelog();
+		    $log_record->progname = $_SERVER['PHP_SELF'];
+		    $log_record->message_text  = "De UPDATE-query is succesvol uitgevoerd voor user ".$frm_username;
+		    $log_record->write_record();
+		    //writeLogRecord("users","INFO De UPDATE-query is succesvol uitgevoerd voor user ".$frm_username);
 			echo '<p class="infmsg">User <b>'.$_POST['username'].'</b> is gewijzigd</p>.';
 			$frm_username      = "";
 			$frm_pass          = "";

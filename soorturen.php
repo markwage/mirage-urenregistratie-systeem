@@ -53,7 +53,13 @@ if (isset($_POST['delete']))
 	    if(mysqli_num_rows($sql_out) > 0) 
 	    {
 	        //Errormelding dat deze soortuur niet verwijderd kan worden omdat er nog uren aan gekoppeld zijn
-	        writelogrecord("soorturen","ERROR Soortuur ".$_POST['code']." kon niet verwijderd worden omdat er nog uren aan gekoppeld zijn");
+	        $log_record = new Writelog();
+	        $log_record->progname = $_SERVER['PHP_SELF'];
+	        $log_record->loglevel = 'ERROR';
+	        $log_record->message_text  = $_POST['code']." kon niet verwijderd worden omdat er nog uren aan gekoppeld zijn";
+	        $log_record->write_record();
+	        
+	        //writelogrecord("soorturen","ERROR Soortuur ".$_POST['code']." kon niet verwijderd worden omdat er nog uren aan gekoppeld zijn");
 	        echo '<p class="errmsg"> ERROR: Code kan niet verwijderd worden. Er zijn nog uren gekoppeld aan deze code</p>';
 	        $focus     = 'code';
 	        $formerror = 1;
@@ -63,7 +69,11 @@ if (isset($_POST['delete']))
 	        $sql_code = "DELETE FROM soorturen
                          WHERE code = '$delcode'";
 	        $sql_out = mysqli_query($dbconn, $sql_code);
-	        writelogrecord("soorturen","INFO Soortuur ".$_POST['code']." is succesvol verwijderd");
+	        $log_record = new Writelog();
+	        $log_record->progname = $_SERVER['PHP_SELF'];
+	        $log_record->message_text  = $_POST['code']." is succesvol verwijderd";
+	        $log_record->write_record();
+	        //writelogrecord("soorturen","INFO Soortuur ".$_POST['code']." is succesvol verwijderd");
 	        header("location: soorturen.php?aktie=disp");
 	    }
 	}
@@ -78,7 +88,7 @@ if (isset($_POST['save']))
     
 	if ((!$_POST['code'] || $_POST['code'] == "") && (!$formerror)) 
 	{
-	    writelogrecord("soorturen","ERROR Het veld code is niet ingevuld");
+	    //writelogrecord("soorturen","ERROR Het veld code is niet ingevuld");
 		echo '<p class="errmsg"> ERROR: Code is een verplicht veld</p>';
 		$focus     = 'code';
 		$formerror = 1;
@@ -86,7 +96,7 @@ if (isset($_POST['save']))
 	
 	if ((!$_POST['omschrijving'] || $_POST['omschrijving'] == "") && (!$formerror)) 
 	{
-	    writelogrecord("soorturen","ERROR Het veld omschrijving is niet ingevuld");
+	    //writelogrecord("soorturen","ERROR Het veld omschrijving is niet ingevuld");
 		echo '<p class="errmsg"> ERROR: Omschrijving is een verplicht veld</p>';
 		$focus     = 'omschrijving';
 		$formerror = 1;
@@ -103,14 +113,23 @@ if (isset($_POST['save']))
 		$sql_out = mysqli_query($dbconn, $sql_code) or die ("Error in query: $sql_code. ".mysqli_error($dbconn));
 		
 		if ($sql_out) { 
-		    writelogrecord("soorturen","INFO Soortuur ".$_POST['code']." (".$_POST['omschrijving'].") is succesvol ge-update");
+		    $log_record = new Writelog();
+		    $log_record->progname = $_SERVER['PHP_SELF'];
+		    $log_record->message_text  = $_POST['code']." is succesvol ge-update";
+		    $log_record->write_record();
+		    //writelogrecord("soorturen","INFO Soortuur ".$_POST['code']." (".$_POST['omschrijving'].") is succesvol ge-update");
 			echo '<p class="infmsg">Soort uur <b>'.$_POST['cude'].'</b> is gewijzigd</p>.';
 			$frm_code          = "";
 			$frm_omschrijving  = "";
 		}
 		else 
 		{
-		    writelogrecord("soorturen","ERROR Fout opgetreden bij update van ".$_POST['code']." (".$_POST['omschrijving'].")");
+		    $log_record = new Writelog();
+		    $log_record->progname = $_SERVER['PHP_SELF'];
+		    $log_record->loglevel = 'ERROR';
+		    $log_record->message_text  = "Database fout opgetreden bij update van ".$_POST['code'];
+		    $log_record->write_record();
+		    //writelogrecord("soorturen","ERROR Fout opgetreden bij update van ".$_POST['code']." (".$_POST['omschrijving'].")");
 		    echo '<p class="errmsg">Er is een fout opgetreden bij het updaten van soort uur. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
 		}

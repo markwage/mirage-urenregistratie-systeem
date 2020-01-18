@@ -37,7 +37,12 @@ if (isset($_POST['submit']))
 	
 	if ($sql_num_rows == 0 && $_POST['username'] <> '') 
 	{
-	    writeLogRecord("login","WARN Er werd geprobeerd om in te loggen met een niet bestaande username: ".$_POST['username']);
+	    $log_record = new Writelog();
+	    $log_record->progname = $_SERVER['PHP_SELF'];
+	    $log_record->loglevel = 'WARN';
+	    $log_record->message_text  = "Er werd geprobeerd om in te loggen met een niet bestaande username: ".$_POST['username'];
+	    $log_record->write_record();
+	    // writeLogRecord("login","WARN Er werd geprobeerd om in te loggen met een niet bestaande username: ".$_POST['username']);
 		echo '<blockquote class="error">ERROR: Username is onbekend</blockquote>';
 	}
 	

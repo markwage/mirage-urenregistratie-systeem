@@ -58,7 +58,12 @@ if (isset($_POST['approve']))
                  AND month(datum) = '".$maand."'
                  AND year(datum) = '".$jaar."'";
     $sql_out = mysqli_query($dbconn, $sql_code);
-    writelogrecord("approve","INFO Van user {$user} is week {$jaar} {$maand} approved");
+    
+    $log_record = new Writelog();
+    $log_record->progname = $_SERVER['PHP_SELF'];
+    $log_record->message_text  = "Voor user {$user} is week {$jaar} {$maand} approved";
+    $log_record->write_record();
+    //writelogrecord("approve","INFO Van user {$user} is week {$jaar} {$maand} approved");
 
     header("location: approve.php?aktie=disp");
 }

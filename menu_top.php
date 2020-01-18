@@ -15,7 +15,7 @@ if (isset($_COOKIE['ID_mus']))
 	echo '<li><a href="users.php?aktie=edit&edtuser='.$_SESSION["username"].'">Profiel</a></li>';
 	echo "<li><a href='nieuws.php?aktie=disp'>Nieuws</a></li>";
 }
-echo '<li><a href="contact.php">Contact</a></li>';
+//echo '<li><a href="contact.php">Contact</a></li>';
 echo '</ul>';
 
 ?>

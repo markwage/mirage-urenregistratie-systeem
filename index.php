@@ -52,11 +52,8 @@ include ("header.php");
             {
                 $sql_row = mysqli_fetch_array($sql_out);
                 
-                //$qry_jaar                  = $sql_row['jaar'];
-                //$qry_week                  = $sql_row['week'];
                 $qry_jaar                  = $mainJaar[$ix1];
                 $qry_week                  = $mainWeek[$ix1];
-                //$qry_terapprovalaangeboden = $sql_row['terapprovalaangeboden'];
                 $qry_approved              = $sql_row['approved'];
                 $qry_approveddatum         = $sql_row['approveddatum'];
                 $qry_approvedbyuser        = $sql_row['approvedbyuser'];
@@ -66,7 +63,6 @@ include ("header.php");
             {
     	        $qry_jaar                  = $mainJaar[$ix1];
     	        $qry_week                  = $mainWeek[$ix1];
-    	        //$qry_terapprovalaangeboden = ' ';
     	        $qry_approved              = ' ';
     	        $qry_approveddatum         = ' ';
     	        $qry_approvedbyuser        = ' ';
@@ -74,11 +70,9 @@ include ("header.php");
             }
             
             $week_array = getStartAndEndDate($mainWeek[$ix1],$mainJaar[$ix1]);
-            //echo "Weekstart: ".$week_array['week_start']." <<";
             
             echo '<tr class="'.$rowcolor.'">';
             echo '<td style="text-align:center;"><b>'.$qry_jaar.'</b></td>';
-            //echo "<td style='text-align:center;'>".$qry_week." (".$week_array['week_start']." t/m ".$week_array['week_end'].")</td>";
             echo "<td style='text-align:center;'><b>{$qry_week}</b> ({$week_array['week_start']} t/m {$week_array['week_end']})</td>";
             
             if ($qry_toturen > 0)
@@ -89,15 +83,6 @@ include ("header.php");
             {
                 echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="Er zijn nog geen uren ingevuld voor deze week" /></td>';
             }
-            
-            //if ($qry_terapprovalaangeboden == 1) 
-            //{
-            //    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="is ter approval aangeboden" /></td>';
-            //}
-            //else 
-            //{
-            //    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="is nog niet ter approval aangeboden" /></td>';
-            //}
             
             if ($qry_approved == 1) 
             {

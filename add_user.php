@@ -82,7 +82,12 @@ if (isset($_POST['submit']))
 	//Als username al bestaat een error displayen
 	if ($sql_num_rows != 0) 
 	{
-	    writelogrecord("add_user","ERROR Er is geprobeerd user ".$_POST['username']." aan te maken terwijl deze al bestaat");
+	    $log_record = new Writelog();
+	    $log_record->progname = $_SERVER['PHP_SELF'];
+	    $log_record->loglevel = 'WARN';
+	    $log_record->message_text  = "Er is geprobeerd user {$_POST['username']} aan te maken terwijl deze al bestaat";
+	    $log_record->write_record();
+	    
 		echo '<p class="errmsg"> ERROR: Username '.$_POST['username'].' is al aanwezig.</p>';
 		$focus     = 'username';
 		$formerror = 1;
@@ -91,7 +96,12 @@ if (isset($_POST['submit']))
 	// Controle of beide ingevoerde passwords gelijk zijn
 	if (($_POST['pass'] != $_POST['pass2']) && (!$formerror)) 
 	{
-	    writelogrecord("add_user","ERROR De ingevoerde wachtwoorden zijn niet gelijk");
+	    $log_record = new Writelog();
+	    $log_record->progname = $_SERVER['PHP_SELF'];
+	    $log_record->loglevel = 'WARN';
+	    $log_record->message_text  = "De ingevoerde wachtwoorden zijn niet gelijk";
+	    $log_record->write_record();
+	    
 		echo '<p class="errmsg"> ERROR: De wachtwoorden zijn niet gelijk</p>';
 		$focus     = 'pass2';
 		$formerror = 1;
@@ -146,8 +156,11 @@ if (isset($_POST['submit']))
 	
 		if ($sql_out) 
 		{
-		    writelogrecord("add_user","INFO User ".$_POST['username']." is succesvol aangemaakt");
-			echo '<p class="infmsg">User <b>'.$_POST['username'].'</b> is opgenomen</p>.';
+		    $log_record = new Writelog();
+		    $log_record->progname = $_SERVER['PHP_SELF'];
+		    $log_record->message_text  = "User {$_POST['username']} is succesvol aangemaakt";
+		    $log_record->write_record();
+		    
 			$frm_username      = "";
 			$frm_pass          = "";
 			$frm_pass2         = "";
