@@ -27,7 +27,7 @@ if (isset($_GET['edtweek']))
 }
 else
 {
-    $inputweeknr = date('Y').date('W');
+    $inputweeknr = date('Y')."-W".date('W');
 }
 getWeekdays($inputweeknr);
 
@@ -54,10 +54,10 @@ while($sql_rows1 = mysqli_fetch_array($sql_out1))
 // BUTTON changeWeeknr is op geklikt om een andere week te muteren.
 // Door getWeekdays worden de dagen en data van die nieuwe week berekend
 //------------------------------------------------------------------------------------------------------
-if (isset($_POST['updateweeknr']) || (isset($_POST['week']))) 
+if (isset($_POST['updateweeknr']) || isset($_POST['week']) || isset($_POST['week_nummer']))
 {
-    $inputweeknr = $_POST["week"];
-    getWeekdays($_POST['week']);
+    $inputweeknr = $_POST["week_nummer"];
+    getWeekdays($_POST['week_nummer']);
 }
 
 //------------------------------------------------------------------------------------------------------
@@ -76,7 +76,7 @@ if (isset($_POST['cancel']))
 //------------------------------------------------------------------------------------------------------
 if (isset($_POST['save']) || isset($_POST['approval'])) 
 {
-    getWeekdays($_POST['week']);
+    getWeekdays($_POST['week_nummer']);
     
     $sql_select_uren = "SELECT * FROM uren 
                         WHERE user='".$username."' 
@@ -102,7 +102,7 @@ if (isset($_POST['save']) || isset($_POST['approval']))
         //writelogrecord("uren","INFO Records worden verwijderd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week");
     }
     
-    $inputweeknr = $_POST['week'];
+    $inputweeknr = $_POST['week_nummer'];
     $aantalRijen = count($_POST["dag1"]);
     
     for($ix1=0; $ix1<$aantalRijen; $ix1++) 
@@ -191,7 +191,8 @@ if (isset($_POST['save']) || isset($_POST['approval']))
 echo "<table>";
 echo "<tr>";
 echo "<td><strong>Weeknummer</strong></td>";
-echo "<td><input style='width:4.66vw' type='number' name='week' id='camp-week' value='".$inputweeknr."' required onchange='this.form.submit()'></td>";
+echo "<td><input type='week' style='width:9vw' name='week_nummer' value='".$inputweeknr."' required></td>";
+echo "<td><input class='button' type='submit' name='change_week' value='submit'></td>";
 echo "</tr>";
 echo "</table>";
 
@@ -234,11 +235,10 @@ for($ix3=0; $ix3<7; $ix3++)
 }
 
 // Om regels per soortuur te krijgen
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// 
 //   Er dient ook gechecked te worden of alle dagen van deze week approved zijn
 //   Zo niet dan moet de +-button achteraan gewoon getoond worden
 //   Options veld van soortuur moet wel readonly zijn indien er minimaal één dag approved is
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 $tmp_soortuur = 'eersteloop';
 
@@ -302,13 +302,7 @@ if($sql_out2 = mysqli_query($dbconn, $sql_code2))
                     }
                     if($ix5 == 0)
                     {
-                        if($dag_readonly[$ix5] == 'readonly')
-                        {
-                            echo "<td><select name='soortuur[]' selected>".$option."</select></td>";
-                        }
-                        else {
-                            echo "<td><select name='soortuur[]' selected>".$option."</select></td>";
-                        }
+                        echo "<td><select name='soortuur[]' selected>".$option."</select></td>";
                     }
                     
                     $ix5b = $ix5 + 1;
@@ -416,13 +410,7 @@ if($sql_out2 = mysqli_query($dbconn, $sql_code2))
            
         if($ix7 == 0)
         {
-            if($dag_readonly[0] == 'readonly')
-            {
-                echo "<td><select name='soortuur[]' selected>".$option."</select></td>";
-            }
-            else {
-                echo "<td><select name='soortuur[]' selected>".$option."</select></td>";
-            }
+            echo "<td><select name='soortuur[]' selected>".$option."</select></td>";
         }
         
         $ix7b = $ix7 + 1;

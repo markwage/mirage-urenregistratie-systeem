@@ -21,7 +21,7 @@ if (isset($_COOKIE['ID_mus']))
 	    <ul class="sidemenu">
 	        <li><a href="uren.php?aktie=toevoegen">Uren</a></li>
 	        <!-- <li><a href="uren.php?aktie=disp">Vakantie-uren per kalenderjaar</a></li> -->
-	        <li><a href="rapp_maand.php">Overzicht huidige maand</a></li>
+	        <!-- <li><a href="rapp_maand.php">Overzicht huidige maand</a></li> -->
 	        <li><a href="users.php?aktie=editprof&edtuser=<?php echo $_SESSION["username"] ?>">Mijn profiel</a></li>
 	    </ul>
 	</div>

@@ -135,11 +135,11 @@ function writeLogRecord($phpProg, $logRecord)
 //------------------------------------------------------------------------
 // Display errorscreen indien er een sql error opgetreden is
 //------------------------------------------------------------------------
-function sqlError($phpProg) 
-{
-    writelogrecord('"'.$phpProg.'"',"ERROR Er is een fout opgetreden bij het uitvoeren van een query -> ".mysqli_error($dbconn));
-    
-}
+//function sqlError($phpProg) 
+//{
+//    writelogrecord('"'.$phpProg.'"',"ERROR Er is een fout opgetreden bij het uitvoeren van een query -> ".mysqli_error($dbconn));
+//    
+//}
 
 //------------------------------------------------------------------------
 // Vullen van de frm_variabelen voor invullen van soort uren-scherm
@@ -346,7 +346,7 @@ function getWeekdays($weeknr)
 {
     global $weekDatum, $weekDagNaam, $weekMaand, $weekJaar, $week, $year, $inputweeknr;
     $inputweeknr = $weeknr;
-    $week = substr($inputweeknr, 4, 2);
+    $week = substr($inputweeknr, 6, 2);
     $year = substr($inputweeknr, 0, 4);
     
     for($ix1=0; $ix1<7; $ix1++) 
@@ -355,6 +355,7 @@ function getWeekdays($weeknr)
         $weekMaand[$ix1] = date("m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ix1.' days'));
         $weekJaar[$ix1] = date("Y", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ix1.' days'));
     }
+    
     
     $weekDagNaam[0] = "Maa";
     $weekDagNaam[1] = "Din";

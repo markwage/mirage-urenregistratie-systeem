@@ -19,6 +19,10 @@ else
 // Indien het het wijzigen van het eigen profiel betreft hoeft hij geen admin-rechten te hebben
 if (!$aktie == "editprof") 
 {
+    $log_record = new Writelog();
+    $log_record->progname = $_SERVER['PHP_SELF'];
+    $log_record->message_text  = "Aktie ".$aktie." is uitgevoerd";
+    $log_record->write_record();
     check_admin();
 }
 
@@ -67,7 +71,7 @@ if (isset($_POST['delete']))
 	$log_record->progname = $_SERVER['PHP_SELF'];
 	$log_record->message_text  = "User ".$deluser." is succesvol verwijderd";
 	$log_record->write_record();
-	//writeLogRecord("users","User ".$deluser." is succesvol verwijderd.");
+	
 	header("location: users.php?aktie=disp");
 }
 
@@ -76,6 +80,7 @@ if (isset($_POST['delete']))
 //------------------------------------------------------------------------------------------------------
 if (isset($_POST['save'])) 
 {
+    
     form_user_fill('save');
 	
 	// Checks wanneer password OF verificatiepassword niet leeg zijn
@@ -119,7 +124,7 @@ if (isset($_POST['save']))
 	if (!$_POST['achternaam'] && (!$formerror)) 
 	{
 		//echo '<p class="errmsg"> ERROR: Achternaam is een verplicht veld</p>';
-	    echo '<blockquote class="error">ERROR: Achternaam is een verplich veld</blockquote>';
+	    echo '<blockquote class="error">ERROR: Achternaam is een verplicht veld</blockquote>';
 		$focus     = 'achternaam';
 		$formerror = 1;
 	}
@@ -132,7 +137,8 @@ if (isset($_POST['save']))
 		$formerror = 1;
 	}
 	
-	if ($_SESSION['admin'] && (!$formerror)) 
+	//if ($_SESSION['admin'] && (!$formerror)) 
+	if (!$formerror)
 	{
 		if (!isset($_POST['admin'])) 
 		{
@@ -141,6 +147,15 @@ if (isset($_POST['save']))
 		else 
 		{
 		    $_POST['admin'] = 1;
+		}
+		
+		if (!isset($_POST['uren_invullen']))
+		{
+		    $_POST['uren_invullen'] = 0;
+		}
+		else
+		{
+		    $_POST['uren_invullen'] = 1;
 		}
 		
 		if (!isset($_POST['indienst'])) 
@@ -160,11 +175,11 @@ if (isset($_POST['save']))
 		{
 		    $_POST['approvenallowed'] = 1;
 		}
-	}
+	//}
 	
 	// here we encrypt the password and add slashes if needed
-	if (!$formerror) 
-	{
+	//if (!$formerror) 
+	//{
 	    $sql_code = "UPDATE users SET ";
 	    
 	    if (!$_POST['pass'] == "") 
@@ -180,6 +195,7 @@ if (isset($_POST['save']))
 	    }
 	    
 	    $sql_code .= "admin='".$_POST['admin']."',
+        uren_invullen='".$_POST['uren_invullen']."',
 		voornaam='".$_POST['voornaam']."',
 		tussenvoegsel='".$_POST['tussenvoegsel']."',
 		achternaam='".$_POST['achternaam']."',
@@ -193,9 +209,9 @@ if (isset($_POST['save']))
 		{ 
 		    $log_record = new Writelog();
 		    $log_record->progname = $_SERVER['PHP_SELF'];
-		    $log_record->message_text  = "De UPDATE-query is succesvol uitgevoerd voor user ".$frm_username;
+		    $log_record->message_text  = "De query voor updaten user is succesvol uitgevoerd voor user ".$frm_username;
 		    $log_record->write_record();
-		    //writeLogRecord("users","INFO De UPDATE-query is succesvol uitgevoerd voor user ".$frm_username);
+		    
 			echo '<p class="infmsg">User <b>'.$_POST['username'].'</b> is gewijzigd</p>.';
 			$frm_username      = "";
 			$frm_pass          = "";
@@ -207,10 +223,17 @@ if (isset($_POST['save']))
 		}
 		else 
 		{
-			//echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />
-			//Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
+		    $log_record = new Writelog();
+		    $log_record->progname = $_SERVER['PHP_SELF'];
+		    $log_record->loglevel = 'ERROR';
+		    $log_record->message_text  = "De query voor updaten user is fout gegaan - ".mysqli_error($dbconn);
+		    $log_record->write_record();
 			echo '<blockquote class="error">ERROR: Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</blockquote>';
+		}
+		if ($aktie == 'editprof')
+		{
+		    header("location: users.php?aktie=editprof&user=".$_SESSION['username']);
 		}
 		header("location: users.php?aktie=disp"); 
 	}
@@ -226,7 +249,7 @@ if ($aktie == 'disp')
                  ORDER BY achternaam";
 	$sql_out = mysqli_query($dbconn, $sql_code);
 	echo "<center><table>";
-	echo "<tr><th>Username</th><th>Volledige naam</th><th>Emailadres</th><th>last<br />logged in</th><th>Admin</th><th>Nog in<br />dienst</th><th>Mag<br />approven</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
+	echo "<tr><th>Username</th><th>Volledige naam</th><th>Emailadres</th><th>last<br />logged in</th><th>Admin</th><th>Nog in<br />dienst</th><th>Mag<br />approven</th><th>Uren<br />invullen</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
 	$rowcolor = 'row-a';
 	
 	while($sql_rows = mysqli_fetch_array($sql_out)) 
@@ -239,6 +262,7 @@ if ($aktie == 'disp')
 		$emailadres      = $sql_rows['emailadres'];
 		$lastloggedin    = $sql_rows['lastloggedin'];
 		$admin           = $sql_rows['admin'];
+		$uren_invullen   = $sql_rows['uren_invullen'];
 		$indienst        = $sql_rows['indienst'];
 		$approvenallowed = $sql_rows['approvenallowed'];
 		echo '<tr class="'.$rowcolor.'">
@@ -271,6 +295,15 @@ if ($aktie == 'disp')
 		else 
 		{
 		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="medewerker heeft geen rechten om uren te approven" /></td>';
+		}
+		
+		if ($uren_invullen == 1)
+		{
+		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="verplicht uren invullen" /></td>';
+		}
+		else
+		{
+		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="hoeft geen uren in te vullen" /></td>';
 		}
 		
 		echo '<td><a href="users.php?aktie=edit&edtuser='.$username.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
@@ -312,6 +345,15 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof')
 		    $frm_admin = "";
 		}
 		
+		if ($sql_rows['uren_invullen'] == 1)
+		{
+		    $frm_uren_invullen = "checked";
+		}
+		else
+		{
+		    $frm_uren_invullen = "";
+		}
+		
 		if ($sql_rows['indienst'] == 1) 
 		{
 		    $frm_indienst = "checked";
@@ -348,7 +390,7 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof')
 				<td>Admin</td>
 				<!--  <td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="admin" <?php { echo $frm_admin; } ?>></td> -->
 				<td><div class="onoffswitch">
-    			<input type="checkbox" name="admin" class="onoffswitch-checkbox" id="myonoffswitch" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?><?php { echo $frm_admin; } ?>>
+    			<input type="checkbox" name="admin" class="onoffswitch-checkbox" id="myonoffswitch" <?php if (!$_SESSION['admin']) { echo "disabled "; } ?><?php { echo $frm_admin; } ?>>
     			<label class="onoffswitch-label" for="myonoffswitch">
         			<span class="onoffswitch-inner"></span>
         			<span class="onoffswitch-switch"></span>
@@ -359,7 +401,7 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof')
 				<td>Approven</td>
 				<!--  <td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="admin" <?php { echo $frm_admin; } ?>></td> -->
 				<td><div class="onoffswitch">
-    			<input type="checkbox" name="approvenallowed" class="onoffswitch-checkbox" id="myonoffswitch3" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?><?php { echo $frm_approvenallowed; } ?>>
+    			<input type="checkbox" name="approvenallowed" class="onoffswitch-checkbox" id="myonoffswitch3" <?php if (!$_SESSION['admin']) { echo "disabled "; } ?><?php { echo $frm_approvenallowed; } ?>>
     			<label class="onoffswitch-label" for="myonoffswitch3">
         			<span class="onoffswitch-inner"></span>
         			<span class="onoffswitch-switch"></span>
@@ -382,10 +424,21 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof')
 			</tr>
 			<tr>
 				<td>In dienst</td>
-				<!--  <td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?>name="indienst" <?php { echo $frm_indienst; } ?>></td> -->
+				<!--  <td><input type="checkbox" <?php //if (!$_SESSION['admin']) { echo "disabled "; } ?>name="indienst" <?php //{ echo $frm_indienst; } ?>></td> -->
 				<td><div class="onoffswitch">
-    			<input type="checkbox" name="indienst" class="onoffswitch-checkbox" id="myonoffswitch2" <?php if (!$_SESSION['admin']) { echo "checked disabled "; } ?><?php { echo $frm_indienst; } ?>>
+    			<input type="checkbox" name="indienst" class="onoffswitch-checkbox" id="myonoffswitch2" <?php if (!$_SESSION['admin']) { echo "disabled "; } ?><?php { echo $frm_indienst; } ?>>
     			<label class="onoffswitch-label" for="myonoffswitch2">
+        			<span class="onoffswitch-inner"></span>
+        			<span class="onoffswitch-switch"></span>
+    			</label>
+				</div></td>
+			</tr>
+			<tr>
+				<td>Uren invullen</td>
+				<!--  <td><input type="checkbox" <?php //if (!$_SESSION['admin']) { echo "disabled "; } ?>name="indienst" <?php //{ echo $frm_indienst; } ?>></td> -->
+				<td><div class="onoffswitch">
+    			<input type="checkbox" name="ureninvullen" class="onoffswitch-checkbox" id="myonoffswitch4" <?php if (!$_SESSION['admin']) { echo "disabled "; } ?><?php { echo $frm_uren_invullen; } ?>>
+    			<label class="onoffswitch-label" for="myonoffswitch4">
         			<span class="onoffswitch-inner"></span>
         			<span class="onoffswitch-switch"></span>
     			</label>

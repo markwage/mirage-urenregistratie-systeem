@@ -22,7 +22,7 @@ include ("header.php");
 
 ?>
 <div id="main">		
-	<h1>Openstaande approvals</h1>
+	<h1>Openstaande approvals afgelopen maand</h1>
 			
 <?php 
 
@@ -63,7 +63,6 @@ if (isset($_POST['approve']))
     $log_record->progname = $_SERVER['PHP_SELF'];
     $log_record->message_text  = "Voor user {$user} is week {$jaar} {$maand} approved";
     $log_record->write_record();
-    //writelogrecord("approve","INFO Van user {$user} is week {$jaar} {$maand} approved");
 
     header("location: approve.php?aktie=disp");
 }
@@ -74,6 +73,7 @@ if (isset($_POST['approve']))
 //
 // Dit wordt uitgevoerd wanneer de gebruiker in linkermenu op "Openstaande approvals" klikt
 // Er wordt een lijst met de te approven maanden getoond, max half jaar terug
+// Alleen die maanden worden getoond die niet approved zijn
 //------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') 
 {
@@ -83,12 +83,23 @@ if ($aktie == 'disp')
     $vorige_maand_tot = date('m', strtotime('-6 month', time()));
     
     $sql_code = "SELECT * FROM view_uren_get_full_username
-                WHERE approved = 0
-                AND approval_jaar BETWEEN ".$vorig_jaar_tot." AND ".$vorig_jaar. "
-                AND approval_maand BETWEEN ".$vorige_maand_tot." AND ".$vorige_maand. "
+                WHERE ((approval_jaar BETWEEN ".$vorig_jaar." AND ".$vorig_jaar. "
+                AND approval_maand BETWEEN ".$vorige_maand." AND ".$vorige_maand. ")
+                OR (approval_jaar IS NULL))
+                AND uren_invullen = 1
                 GROUP BY user, approval_jaar, approval_maand
-                ORDER BY approval_jaar, approval_maand, user;";
+                ORDER BY achternaam, user;";
+    
 	$sql_out = mysqli_query($dbconn, $sql_code);
+	
+	if(!$sql_out)
+	{
+	    $log_record = new Writelog();
+	    $log_record->progname = $_SERVER['PHP_SELF'];
+	    $log_record->loglevel = 'ERROR';
+	    $log_record->message_text  = "Select gaat fout: ".$sql_code." - ".mysqli_error($dbconn);
+	    $log_record->write_record();
+	}
 	
 	echo "<center><table>";
 	echo "<tr><th>Medewerker</th><th>Maand</th><th></th></tr>";
@@ -96,25 +107,42 @@ if ($aktie == 'disp')
 	
 	while($sql_rows = mysqli_fetch_array($sql_out)) 
 	{
-		$username = $sql_rows['user'];
+	    $approved = $sql_rows['approved'];
+	    $username = $sql_rows['user'];
 		$maand    = $sql_rows['approval_maand'];
 		$jaar     = $sql_rows['approval_jaar'];
 		$voornaam      = $sql_rows['voornaam'];
 		$tussenvoegsel = $sql_rows['tussenvoegsel'];
 		$achternaam    = $sql_rows['achternaam'];
 		
-		echo '<tr class="'.$rowcolor.'">
-			<td><b>'.$voornaam.' '.$tussenvoegsel.' '.$achternaam.'</b></td><td style=\'text-align:center\'>'.$jaar.' '.$maand.'</td>
+		if(($jaar <> '') && ($approved == 0))
+		{
+		    echo '<tr class="'.$rowcolor.'">
+            <td><b>'.$achternaam.', '.$voornaam.' '.$tussenvoegsel.'</b></td><td style=\'text-align:center\'>'.$jaar.' '.$maand.'</td>
 			<td><a href="approve.php?aktie=dspuren&user='.$username.'&jaar='.$jaar.'&maand='.$maand.'"><img class="button" src="./img/buttons/icons8-glasses-48.png" alt="Toon week" title="Toon de uren van deze week" /></a></td>
 			</tr>';
-		
+		}
+		elseif($jaar == '')
+		{
+		    echo '<tr class="'.$rowcolor.'">
+            <td><b>'.$achternaam.', '.$voornaam.' '.$tussenvoegsel.'</b></td><td style=\'text-align:center\'>'.$jaar.' '.$maand.'</td>
+			<td>Geen gegevens aanwezig over afgelopen maand</td>
+			</tr>';
+		}
+		elseif($approved == 1)
+		{
+		    echo '<tr class="'.$rowcolor.'">
+            <td><b>'.$achternaam.', '.$voornaam.' '.$tussenvoegsel.'</b></td><td style=\'text-align:center\'>'.$jaar.' '.$maand.'</td>
+			<td>Approved</td>
+			</tr>';
+		}
 		check_row_color($rowcolor);
 	}
 	echo "</table></center>";
 }
 
 //------------------------------------------------------------------------------------------------------
-// Wordt uitgevoerd wanneer men op de button klikt om uren van die user / week te displayen
+// Wordt uitgevoerd wanneer men op de button klikt om uren van die user / maand te displayen
 //------------------------------------------------------------------------------------------------------
 if ($aktie == 'dspuren') 
 {
@@ -166,7 +194,7 @@ if ($aktie == 'dspuren')
     
     $rowcolor = 'row-a';
     
-    $sql_code = "SELECT SUM(uren) as toturen, soortuur, omschrijving FROM view_uren_soortuur
+    $sql_code = "SELECT SUM(uren) as toturen, soortuur, omschrijving, approved FROM view_uren_soortuur
                 WHERE user = '$username'
                 AND approval_maand = '$maand'
                 AND approval_jaar = '$jaar'
@@ -175,6 +203,7 @@ if ($aktie == 'dspuren')
     $sql_out = mysqli_query($dbconn, $sql_code);
     while ($sql_rows = mysqli_fetch_array($sql_out)) 
     {
+        $approved     = $sql_rows['approved'];
         $toturen      = $sql_rows['toturen'];
         $soortuur     = $sql_rows['soortuur'];
         $omschrijving = $sql_rows['omschrijving'];
@@ -205,7 +234,10 @@ if ($aktie == 'dspuren')
     }
     else 
     {
-        echo '<input class="button" type="submit" name="approve" value="approve">';
+        if($approved == 0)
+        {
+            echo '<input class="button" type="submit" name="approve" value="approve">';
+        }
     }
     ?>
     </form>
