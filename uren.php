@@ -212,7 +212,17 @@ for($ix6=0; $ix6<7; $ix6++)
                            AND jaar='".$weekJaar[$ix6]."'";
     $check_check_approved = mysqli_query($dbconn, $sql_check_approved);
     
+    if(!$check_check_approved)
+    {
+        $log_record = new Writelog();
+        $log_record->progname = $_SERVER['PHP_SELF'];
+        $log_record->loglevel = 'ERROR';
+        $log_record->message_text  = "Select gaat fout: ".$sql_code." - ".mysqli_error($dbconn);
+        $log_record->write_record();
+    }
+    
     $rows_check_approved = mysqli_num_rows($check_check_approved);
+    
     if($rows_check_approved > 0)
     {
         $dag_readonly[$ix6] = 'readonly';

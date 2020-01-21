@@ -202,7 +202,7 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'dispbericht')
         }
         if ($aktie == 'dispbericht') 
         {
-            echo '<tr><td> </td><td><textarea readonly id="area1" name="nieuwsbericht">'.$frm_nieuwsbericht.'</textarea></td></tr>'; 
+            echo '<tr><td> </td><td style="width:90%; height:90%;"><textarea readonly id="area1" name="nieuwsbericht">'.$frm_nieuwsbericht.'</textarea></td></tr>'; 
         }
         ?>
     </table><br />

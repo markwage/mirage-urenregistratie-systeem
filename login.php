@@ -57,10 +57,22 @@ if (isset($_POST['submit']))
 		$_POST['tussenvoegsel']   = $sql_rows['tussenvoegsel'];
 		$_POST['achternaam']      = $sql_rows['achternaam'];
 		$_POST['emailadres']      = $sql_rows['emailadres'];
+		$_POST['indienst']        = $sql_rows['indienst'];
 		$_POST['lastloggedin']    = $sql_rows['lastloggedin'];
 		
+		//Error indien user niet meer in dienst is
+		if (!$_POST['indienst'])
+		{
+		    $log_record = new Writelog();
+		    $log_record->progname = $_SERVER['PHP_SELF'];
+		    $log_record->loglevel = 'WARN';
+		    $log_record->message_text  = 'User '.$_POST['username'].' probeerde in te loggen terwijl deze niet meer in dienst is';
+		    $log_record->write_record();
+		    echo '<blockquote class="error">ERROR: User is niet meer in dienst</blockquote>';
+		}
+		
 		//Error indien password fout
-		if ($_POST['pass'] != $sql_rows['password']) 
+		elseif ($_POST['pass'] != $sql_rows['password']) 
 		{
 		    $log_record = new Writelog();
 		    $log_record->progname = $_SERVER['PHP_SELF'];
