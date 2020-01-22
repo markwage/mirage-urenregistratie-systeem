@@ -99,7 +99,6 @@ if (isset($_POST['save']) || isset($_POST['approval']))
         $log_record->progname = $_SERVER['PHP_SELF'];
         $log_record->message_text  = "Records worden verwijderd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week";
         $log_record->write_record();
-        //writelogrecord("uren","INFO Records worden verwijderd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week");
     }
     
     $inputweeknr = $_POST['week_nummer'];
@@ -140,7 +139,6 @@ if (isset($_POST['save']) || isset($_POST['approval']))
                         $log_record->loglevel = 'ERROR';
                         $log_record->message_text  = "Er is een fout opgetreden bij het selecteren van uren -> ".mysqli_error($dbconn);
                         $log_record->write_record();
-                        //writelogrecord("uren","ERR03INS001Er is een fout opgetreden bij het inserten van uren -> ".mysqli_error($dbconn));
                     }
                     
                     $rows_check_datum_approved = mysqli_num_rows($check_check_datum_approved);
@@ -165,14 +163,12 @@ if (isset($_POST['save']) || isset($_POST['approval']))
                             $log_record->loglevel = 'ERROR';
                             $log_record->message_text  = "Er is een fout opgetreden bij het inserten van uren -> ".mysqli_error($dbconn);
                             $log_record->write_record();
-                            //writelogrecord("uren","ERROR Er is een fout opgetreden bij het inserten van uren -> ".mysqli_error($dbconn));
                         }
                     }
                     $log_record = new Writelog();
                     $log_record->progname = $_SERVER['PHP_SELF'];
                     $log_record->message_text  = "Records worden toegevoegd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week";
                     $log_record->write_record();
-                    //writelogrecord("uren","INFO Records worden toegevoegd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week");
                 }
             }
         }
@@ -241,7 +237,8 @@ echo "</tr>";
 //------------------------------------------------------------------------------------------------------
 for($ix3=0; $ix3<7; $ix3++) 
 {
-    ${"frm_valueDag$ix3"} = '';
+    //${"frm_valueDag$ix3"} = '';
+    $frm_valueDag[$ix3] = '';
 }
 
 // Om regels per soortuur te krijgen
@@ -298,13 +295,13 @@ if($sql_out2 = mysqli_query($dbconn, $sql_code2))
                     $option .= "<option ".$option_selected." ".$option_disabled." value='".$row_soorturen2['code']."'>".$row_soorturen2['code']." - ".$row_soorturen2['omschrijving']."</option>";
                 }
                 echo "<tr id='row1'>";
-                echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
-               
-                $totaal_uren_per_soort = 0;
                 
+                //==========================================================================================================
+                echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
+                $totaal_uren_per_soort = 0;
                 for($ix5=0; $ix5<7; $ix5++) 
                 {
-                    $frm_value = ${"frm_valueDag$ix5"};
+                    $frm_value = $frm_valueDag[$ix5];
                     if($dag_readonly[$ix5] == 'readonly')
                     {
                         $js_readonly = 'readonly';
@@ -325,7 +322,9 @@ if($sql_out2 = mysqli_query($dbconn, $sql_code2))
                         echo "<td class='totaalkolom'><input readonly style='width:3.33vw; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaal_uren_per_soort."'></td>";
                     }
                 }
+                //================================================================================================================
                 
+                //================================================================================================================
                 if($dag_readonly[6] == '') // of de laatste zondag valt niet in de maand die approved is.
                 {
                     if(isset($js_aantal_dagen_readonly)){
@@ -344,10 +343,12 @@ if($sql_out2 = mysqli_query($dbconn, $sql_code2))
                 
                 echo "<td></td>";
                 echo "</tr>";
+                
+                //=====================================================================================================================
 
                 for($ix4=0; $ix4<7; $ix4++) 
                 {
-                    ${"frm_valueDag$ix4"} = '';
+                    $frm_valueDag[$ix4] = '';
                 }
             }
             
@@ -355,7 +356,7 @@ if($sql_out2 = mysqli_query($dbconn, $sql_code2))
             {
                 if($row_uren2['dagnummer'] == $ix8) 
                 {
-                    ${"frm_valueDag$ix8"} = $row_uren2['uren'];
+                    $frm_valueDag[$ix8] = $row_uren2['uren'];
                 }
             }
             $tmp_soortuur = $row_uren2['soortuur'];
@@ -370,9 +371,8 @@ if($sql_out2 = mysqli_query($dbconn, $sql_code2))
     
     // Loop om de dropdown met soorten uren op te bouwen
     // En om te bepalen of de betreffende soortuur voor de regel geldt waarvoor uren zijn ingevuld
-    // $option_add wordt gebruikt omdat bij het toevoegen van een nieuwe regel de dropdown niet disabled moet zijn
     $option = "";
-    $option_add = "";
+    //$option_add = "";
     
     $sql_code3 = "SELECT * FROM soorturen
                  ORDER BY code";
@@ -404,10 +404,9 @@ if($sql_out2 = mysqli_query($dbconn, $sql_code2))
     echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
     
     $totaal_uren_per_soort = 0;
-    
     for($ix7=0; $ix7<7; $ix7++) 
     {
-        $frm_value = ${"frm_valueDag$ix7"};
+        $frm_value = $frm_valueDag[$ix7];
             // Onderstaande variabele wordt in javascript gebruikt om te bepalen hoevel lege velden readonly moeten zijn
             // De variabele krijgt de hoogste waarda van ix7 als inhoud dag_readonly gelijk is aan readonly
             if($dag_readonly[$ix7] == 'readonly') 
@@ -439,7 +438,8 @@ if($sql_out2 = mysqli_query($dbconn, $sql_code2))
     
     if($dag_readonly[6] == '') // of de laatste zondag valt niet in de maand die approved is.
     {
-        if(isset($js_aantal_dagen_readonly)){
+        if(isset($js_aantal_dagen_readonly))
+        {
             $aantal_dagen_readonly = $js_aantal_dagen_readonly;
         }
         else 
@@ -456,7 +456,9 @@ if($sql_out2 = mysqli_query($dbconn, $sql_code2))
 	echo "</tr>";
 	
 
-} else {
+} 
+else 
+{
     echo "ERROR: Kan geen connectie met de database maken. ". mysqli_error($dbconn);
 }
 

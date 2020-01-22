@@ -9,7 +9,8 @@ class Writelog
     var $loglevel = 'INFO'; // Default loglevel
     var $message_text;
     
-    function __construct() {
+    function __construct() 
+    {
         
         if (isset($_SESSION['username']))
         {
