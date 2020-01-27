@@ -7,7 +7,7 @@ include ("autoload.php");
 
 
 // Connectie met de database maken en database selecteren
-$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
+//$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
 
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
@@ -22,7 +22,7 @@ include ("header.php");
 
 // Get value from the form
 if(isset($_POST['submit'])) 
-{
+{  
 	$fName   = $_POST['fName'];
 	$lName   = $_POST['lName'];
 	$email   = $_POST['email'];
@@ -76,25 +76,55 @@ if(isset($_POST['submit']))
 			}
 			else
 			{
-				// If everything is where it should be then get values and send in an email
-				//foreach ($myvars as $var)
-				//{
-				//	if (isset($_POST[$var]))
-				//	{
-				//		$$var=$_POST[$var];
-				//	}
-				//}
-				
 				// Value are explained below
+				// To send HTML mail, the Content-type header must be set
+			    $headers  = 'MIME-Version: 1.0' . "\r\n";
+			    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+			    // Create email headers
+			    $headers .= 'From: '.$email."\r\n".
+			 			    'Reply-To: '.$email."\r\n" .
+			 			    'X-Mailer: PHP/' . phpversion();
+			    
 				$subject = "Email Contact"; // Subject of email sent to you
-				$add="mark.wage@hotmail.com"; // Real email address to have the email sent to
-				$msg="First Name:          \t$fName\n"; // First name (\t needs to line up with next  line to have a straight email, \n is a <br>
-				$msg.="Last Name:           \t$lName\n"; // Last Name
-				$msg.="Email:               \t$email\n"; // Email
-				$msg.="Message:             \t$message\n"; // Message
-				$mailheaders="From: $email\n"; // Email that the visitor put in the email field.  This will be the from email address
-				$mailheaders.="Reply-To: $email\n"; // Email that the visitor put in the email field.  This will be the reply email address
-				mail("$add", "$subject", $msg, $mailheaders); // This part just adds the headers using the variables from above
+				$aan     = "mark.wage@hotmail.com"; // Real email address to have the email sent to
+				$msg_br  = nl2br($_POST['message']);
+				$inhoud  = '<html><body><table>';
+				$inhoud .= "<tr><td>Voornaam</td><td>$fName</td></tr>"; 
+				$inhoud .= "<tr><td>Achternaam</td><td>$lName</td></tr>"; 
+				$inhoud .= "<tr><td>Emailadres</td><td>$email</td></tr>";
+				$inhoud .= "<tr><td>Onderwerp</td><td>$msg_br</td></tr>";
+				$inhoud .= '</table></body></html>';
+				$log_record = new Writelog();
+				$log_record->progname = $_SERVER['PHP_SELF'];
+				$log_record->loglevel = 'DEBUG';
+				$log_record->message_text  = $subject;
+				$log_record->write_record();
+				
+				$log_record = new Writelog();
+				$log_record->progname = $_SERVER['PHP_SELF'];
+				$log_record->loglevel = 'DEBUG';
+				$log_record->message_text  = $aan;
+				$log_record->write_record();
+				
+				$log_record = new Writelog();
+				$log_record->progname = $_SERVER['PHP_SELF'];
+				$log_record->loglevel = 'DEBUG';
+				$log_record->message_text  = $msg_br;
+				$log_record->write_record();
+				
+				$log_record = new Writelog();
+				$log_record->progname = $_SERVER['PHP_SELF'];
+				$log_record->loglevel = 'DEBUG';
+				$log_record->message_text  = $inhoud;
+				$log_record->write_record();
+				
+				$log_record = new Writelog();
+				$log_record->progname = $_SERVER['PHP_SELF'];
+				$log_record->loglevel = 'DEBUG';
+				$log_record->message_text  = $headers;
+				$log_record->write_record();
+				
+				mail("$aan", "$subject", $inhoud, $headers); // This part just adds the headers using the variables from above
 				header('location:contact.php?error=none');  // Redirect using using none so they can see the email was a success
 			} 
 		}
@@ -118,7 +148,7 @@ if (isset($_GET['eror']))
 
     switch ($error) {
         case "mx":
-            echo "<br><span class='red'>The domain name you entered for your email address does not exsit.  Please try again.</span><br>";
+            echo "<br><span class='red'>The domain name you entered for your email address does not exist.  Please try again.</span><br>";
             break;
         case "format":
             echo "<br><span class='red'>Your email address is not in the correct format, it should look like name@domain.com. Please try again.</span><br>";
@@ -151,27 +181,10 @@ if (isset($_GET['eror']))
 		    <td><input type="text" readonly required name="email" size="50" maxlength="50" value="<?php echo $_SESSION['emailadres']; ?>"></td>
 	    </tr>
 	    <tr>
-		    <td>Onderwerp</td>
+		    <td>Bericht</td>
 		    <td><textarea name="message" rows="5" cols="80" id="message"></textarea></td>
 	    </tr>
 	</table>
-	<!-- 
-    <label for="fName">Voornaam:<span class="required">*</span></label>
-    <input type="text" name="fName" value="<?php //echo $_SESSION['voornaam']; ?>" id="fName">
-    <br><br>
-    
-    <label for="Achternaam">Achternaam:</label>
-    <input type="text" name="lName" value="<?php //echo $_SESSION['tussenvoegsel'].' '.$_SESSION['achternaam']; ?>" id="lName">
-    <br><br>
-
-    <label for="email">Emailadres:<span class="required">*</span></label>
-    <input type="text" name="email" value="<?php //echo $_SESSION['emailadres']; ?>" id="email">
-    <br><br>
-
-    <label for="message">Onderwerp:<span class="required">*</span></label>
-    <textarea name="message" rows="5" cols="60" id="message"></textarea>
-    <br><br>
-    -->
 
     <input class=button type="submit" name="submit" id="submit" value="Submit">
     
