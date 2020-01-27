@@ -52,12 +52,7 @@ if (isset($_POST['delete']))
 	{
 	    if(mysqli_num_rows($sql_out) > 0) 
 	    {
-	        //Errormelding dat deze soortuur niet verwijderd kan worden omdat er nog uren aan gekoppeld zijn
-	        $log_record = new Writelog();
-	        $log_record->progname = $_SERVER['PHP_SELF'];
-	        $log_record->loglevel = 'ERROR';
-	        $log_record->message_text  = $_POST['code']." kon niet verwijderd worden omdat er nog uren aan gekoppeld zijn";
-	        $log_record->write_record();
+	        writelog("soortuur","WARN","De code ".$_POST['code']." kan niet verwijderd worden omdat er nog uren aan gekoppeld zijn");
 	        
 	        echo '<p class="errmsg"> ERROR: Code kan niet verwijderd worden. Er zijn nog uren gekoppeld aan deze code</p>';
 	        $focus     = 'code';
@@ -69,10 +64,7 @@ if (isset($_POST['delete']))
                          WHERE code = '$delcode'";
 	        $sql_out = mysqli_query($dbconn, $sql_code);
 	        
-	        $log_record = new Writelog();
-	        $log_record->progname = $_SERVER['PHP_SELF'];
-	        $log_record->message_text  = $_POST['code']." is succesvol verwijderd";
-	        $log_record->write_record();
+	        writelog("soortuur","INFO","De code ".$_POST['code']." is succesvol verwijderd");
 	        
 	        header("location: soorturen.php?aktie=disp");
 	    }
@@ -111,10 +103,7 @@ if (isset($_POST['save']))
 		$sql_out = mysqli_query($dbconn, $sql_code) or die ("Error in query: $sql_code. ".mysqli_error($dbconn));
 		
 		if ($sql_out) { 
-		    $log_record = new Writelog();
-		    $log_record->progname = $_SERVER['PHP_SELF'];
-		    $log_record->message_text  = $_POST['code']." is succesvol ge-update";
-		    $log_record->write_record();
+		    writelog("soortuur","INFO","De code ".$_POST['code']." is succesvol ge-update");
 		    
 			echo '<p class="infmsg">Soort uur <b>'.$_POST['cude'].'</b> is gewijzigd</p>.';
 			$frm_code          = "";
@@ -122,11 +111,7 @@ if (isset($_POST['save']))
 		}
 		else 
 		{
-		    $log_record = new Writelog();
-		    $log_record->progname = $_SERVER['PHP_SELF'];
-		    $log_record->loglevel = 'ERROR';
-		    $log_record->message_text  = "Database fout opgetreden bij update van ".$_POST['code'];
-		    $log_record->write_record();
+		    writelog("soortuur","ERROR","Database fout opgetreden bij update van  ".$_POST['code']);
 		    
 		    echo '<p class="errmsg">Er is een fout opgetreden bij het updaten van soort uur. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';

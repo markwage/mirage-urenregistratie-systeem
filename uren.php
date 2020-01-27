@@ -95,10 +95,7 @@ if (isset($_POST['save']) || isset($_POST['approval']))
                             AND jaar='".$year."'
                             AND approved = 0";
         $check_delete_uren = mysqli_query($dbconn, $sql_delete_uren);
-        $log_record = new Writelog();
-        $log_record->progname = $_SERVER['PHP_SELF'];
-        $log_record->message_text  = "Records worden verwijderd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week";
-        $log_record->write_record();
+        writelog("uren","INFO","Records zijn verwijderd van week ".$year."-".$week." ivm het updaten van de betreffende week");
     }
     
     $inputweeknr = $_POST['week_nummer'];
@@ -132,11 +129,7 @@ if (isset($_POST['save']) || isset($_POST['approval']))
                     $check_check_datum_approved = mysqli_query($dbconn, $sql_check_datum_approved);
                     if (!$check_check_datum_approved)
                     {
-                        $log_record = new Writelog();
-                        $log_record->progname = $_SERVER['PHP_SELF'];
-                        $log_record->loglevel = 'ERROR';
-                        $log_record->message_text  = "Er is een fout opgetreden bij het selecteren van uren -> ".mysqli_error($dbconn);
-                        $log_record->write_record();
+                        writelog("uren","ERROR","Er is een fout opgetreden bij het selecteren van uren -> ".mysqli_error($dbconn));
                     }
                     
                     $rows_check_datum_approved = mysqli_num_rows($check_check_datum_approved);
@@ -156,17 +149,10 @@ if (isset($_POST['save']) || isset($_POST['approval']))
                         
                         if (!$check_insert_uren)
                         {
-                            $log_record = new Writelog();
-                            $log_record->progname = $_SERVER['PHP_SELF'];
-                            $log_record->loglevel = 'ERROR';
-                            $log_record->message_text  = "Er is een fout opgetreden bij het inserten van uren -> ".mysqli_error($dbconn);
-                            $log_record->write_record();
+                            writelog("uren","ERROR","Er is een fout opgetreden bij het selecteren van uren -> ".mysqli_error($dbconn));
                         }
                     }
-                    $log_record = new Writelog();
-                    $log_record->progname = $_SERVER['PHP_SELF'];
-                    $log_record->message_text  = "Records worden toegevoegd van jaar ".$year." en week ".$week." voor het updaten van de betreffende week";
-                    $log_record->write_record();
+                    writelog("uren","INFO","Records zijn toegevoegd voor week ".$year."-".$week." ivm updaten van de betreffende week");
                 }
             }
         }
@@ -186,7 +172,7 @@ echo "<table>";
 echo "<tr>";
 echo "<td><strong>Weeknummer</strong></td>";
 echo "<td><input type='week' style='width:9vw' name='week_nummer' value='".$inputweeknr."' required></td>";
-echo "<td><input class='button' type='submit' name='change_week' value='submit'></td>";
+echo "<td><input class='button' type='submit' name='change_week' value='refresh'></td>";
 echo "</tr>";
 echo "</table>";
 
@@ -208,11 +194,7 @@ for($ix6=0; $ix6<7; $ix6++)
     
     if(!$check_check_approved)
     {
-        $log_record = new Writelog();
-        $log_record->progname = $_SERVER['PHP_SELF'];
-        $log_record->loglevel = 'ERROR';
-        $log_record->message_text  = "Select gaat fout: ".$sql_code." - ".mysqli_error($dbconn);
-        $log_record->write_record();
+        writelog("uren","ERROR","Select gaat fout: ".$sql_code." - ".mysqli_error($dbconn));
     }
     
     $rows_check_approved = mysqli_num_rows($check_check_approved);

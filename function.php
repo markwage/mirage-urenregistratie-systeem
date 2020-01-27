@@ -115,7 +115,7 @@ function displayUserGegevens()
 //------------------------------------------------------------------------
 // Write logrecord to file 
 //------------------------------------------------------------------------
-function writeLogRecord($phpProg, $logRecord)
+function writelog($progname, $loglevel, $logrecord)
 {
     if (isset($_SESSION['username'])) 
     {
@@ -123,13 +123,13 @@ function writeLogRecord($phpProg, $logRecord)
     } 
     else 
     {
-        $username = "";
+        $username = "onbekend";
     }
     
     $logfile_name = "C:\\wamp64\\www\\mirage-urenregistratie-systeem\\logs\\systemlogMUS.log";
     date_default_timezone_set('Europe/Amsterdam');
     $datumlog = date('Ymd H:i:s');
-    file_put_contents($logfile_name, PHP_EOL.$datumlog.";".$phpProg.";".$username.";".$logRecord, FILE_APPEND);
+    file_put_contents($logfile_name, PHP_EOL.$datumlog.";".$progname.";".$username.";".$loglevel.";".$logrecord, FILE_APPEND);
 }
 
 //------------------------------------------------------------------------

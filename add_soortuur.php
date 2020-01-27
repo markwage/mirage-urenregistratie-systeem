@@ -63,11 +63,7 @@ if (isset($_POST['add_record']))
 	
 	if (!$sql_out) 
 	{
-	    $log_record = new Writelog();
-	    $log_record->progname = $_SERVER['PHP_SELF'];
-	    $log_record->loglevel = 'ERROR';
-	    $log_record->message_text  = "Er is een fout opgetreden bij het uitvoeren van een query -> ".mysqli_error($dbconn);
-	    $log_record->write_record();
+	    writelog("add_soortuur","ERROR","Er is een fout opgetreden bij het uitvoeren van een query -> ".mysqli_error($dbconn));
 	    
 	    echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de code. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
@@ -81,11 +77,7 @@ if (isset($_POST['add_record']))
 	    // Als de soort uur bestaat een error displayen
 	    if ($sql_rows != 0) 
 	    {
-	        $log_record = new Writelog();
-	        $log_record->progname = $_SERVER['PHP_SELF'];
-	        $log_record->loglevel = 'WARN';
-	        $log_record->message_text  = "Er is geprobeerd soortuur {$_POST['code']} aan te maken terwijl deze al bestaat";
-	        $log_record->write_record();
+	        writelog("add_soortuur","WARN","Er is geprobeerd soortuur {$_POST['code']} aan te maken terwijl deze al bestaat");
 	        
 	        echo "<p class='errmsg'> ERROR: Code {$_POST['code']} is al aanwezig.</p>";
 		    $focus     = 'code';
@@ -109,10 +101,7 @@ if (isset($_POST['add_record']))
 
 		if ($sql_out) 
 		{ 
-		    $log_record = new Writelog();
-		    $log_record->progname = $_SERVER['PHP_SELF'];
-		    $log_record->message_text  = "Soortuur {$_POST['code']} ({$_POST['omschrijving']}) is succesvol gecreeerd";
-		    $log_record->write_record();
+		    writelog("add_soortuur","INFO","Soortuur {$_POST['code']} ({$_POST['omschrijving']}) is succesvol gecreeerd");
 		    
 			$frm_code         = "";
 			$frm_omschrijving = "";

@@ -19,10 +19,7 @@ else
 // Indien het het wijzigen van het eigen profiel betreft hoeft hij geen admin-rechten te hebben
 if (!$aktie == "editprof") 
 {
-    $log_record = new Writelog();
-    $log_record->progname = $_SERVER['PHP_SELF'];
-    $log_record->message_text  = "Aktie ".$aktie." is uitgevoerd";
-    $log_record->write_record();
+    writelog("users","INFO","Aktie ".$aktie." is uitgevoerd");
     check_admin();
 }
 
@@ -67,10 +64,7 @@ if (isset($_POST['delete']))
 	$sql_code = "DELETE FROM users
                  WHERE username = '$deluser'";
 	$sql_out = mysqli_query($dbconn, $sql_code);
-	$log_record = new Writelog();
-	$log_record->progname = $_SERVER['PHP_SELF'];
-	$log_record->message_text  = "User ".$deluser." is succesvol verwijderd";
-	$log_record->write_record();
+	writelog("users","INFO","User ".$deluser." is succesvol verwijderd");
 	
 	header("location: users.php?aktie=disp");
 }
@@ -97,7 +91,6 @@ if (isset($_POST['save']))
 		
 		if (!$_POST['pass2'] && (!$formerror)) 
 		{
-		    //echo '<p class="errmsg"> ERROR: Wachtwoord ter verificatie is een verplicht veld</p>';
 			echo '<blockquote class="error">ERROR: Wachtwoord ter verificatie is een verplicht veld</blockquote>';
 			$focus     = 'pass2';
 			$formerror = 1;
@@ -106,7 +99,6 @@ if (isset($_POST['save']))
 		// Check of de wachtwoorden gelijk zijn
 		if (($_POST['pass'] != $_POST['pass2']) && (!$formerror)) 
 		{
-		    //echo '<p class="errmsg"> ERROR: De wachtwoorden zijn niet gelijk</p>';
 		    echo '<blockquote class="error">ERROR: De wachtwoorden zijn niet gelijk. Probeer het nogmaals.</blockquote>';
 		    $focus     = 'pass';
 		    $formerror = 1;
@@ -115,7 +107,6 @@ if (isset($_POST['save']))
 	
 	if ((!$_POST['voornaam'] || $_POST['voornaam'] == "") && (!$formerror)) 
 	{
-		//echo '<p class="errmsg"> ERROR: Voornaam is een verplicht veld</p>';
 	    echo '<blockquote class="error">ERROR: Voornaam is een verplicht veld</blockquote>';
 		$focus     = 'voornaam';
 		$formerror = 1;
@@ -123,7 +114,6 @@ if (isset($_POST['save']))
 	
 	if (!$_POST['achternaam'] && (!$formerror)) 
 	{
-		//echo '<p class="errmsg"> ERROR: Achternaam is een verplicht veld</p>';
 	    echo '<blockquote class="error">ERROR: Achternaam is een verplicht veld</blockquote>';
 		$focus     = 'achternaam';
 		$formerror = 1;
@@ -131,13 +121,11 @@ if (isset($_POST['save']))
 	
 	if (!$_POST['email'] && (!$formerror)) 
 	{
-		//echo '<p class="errmsg"> ERROR: Email is een verplicht veld</p>';
 		echo '<blockquote class="error">ERROR: Emailadres is een verplicht veld</blockquote>';
 		$focus     = 'email';
 		$formerror = 1;
 	}
 	
-	//if ($_SESSION['admin'] && (!$formerror)) 
 	if (!$formerror)
 	{
 		if (!isset($_POST['admin'])) 
@@ -207,10 +195,7 @@ if (isset($_POST['save']))
 	    
 		if ($sql_out) 
 		{ 
-		    $log_record = new Writelog();
-		    $log_record->progname = $_SERVER['PHP_SELF'];
-		    $log_record->message_text  = "De query voor updaten user is succesvol uitgevoerd voor user ".$frm_username;
-		    $log_record->write_record();
+		    writelog("users","INFO","De query voor updaten user is succesvol uitgevoerd voor user ".$frm_username);
 		    
 			echo '<p class="infmsg">User <b>'.$_POST['username'].'</b> is gewijzigd</p>.';
 			$frm_username      = "";
@@ -223,11 +208,7 @@ if (isset($_POST['save']))
 		}
 		else 
 		{
-		    $log_record = new Writelog();
-		    $log_record->progname = $_SERVER['PHP_SELF'];
-		    $log_record->loglevel = 'ERROR';
-		    $log_record->message_text  = "De query voor updaten user is fout gegaan - ".mysqli_error($dbconn);
-		    $log_record->write_record();
+		    writelog("users","ERROR","De query voor updaten user is fout gegaan - ".mysqli_error($dbconn));
 			echo '<blockquote class="error">ERROR: Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</blockquote>';
 		}

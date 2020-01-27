@@ -37,12 +37,7 @@ if (isset($_POST['submit']))
 	
 	if ($sql_num_rows == 0 && $_POST['username'] <> '') 
 	{
-	    $log_record = new Writelog();
-	    $log_record->progname = $_SERVER['PHP_SELF'];
-	    $log_record->loglevel = 'WARN';
-	    $log_record->message_text  = "Er werd geprobeerd om in te loggen met een niet bestaande username: ".$_POST['username'];
-	    $log_record->write_record();
-	    // writeLogRecord("login","WARN Er werd geprobeerd om in te loggen met een niet bestaande username: ".$_POST['username']);
+	    writelog("login","WARN","Er werd geprobeerd om in te loggen met een niet bestaande username: ".$_POST['username']);
 		echo '<blockquote class="error">ERROR: Username is onbekend</blockquote>';
 	}
 	
@@ -63,22 +58,15 @@ if (isset($_POST['submit']))
 		//Error indien user niet meer in dienst is
 		if (!$_POST['indienst'])
 		{
-		    $log_record = new Writelog();
-		    $log_record->progname = $_SERVER['PHP_SELF'];
-		    $log_record->loglevel = 'WARN';
-		    $log_record->message_text  = 'User '.$_POST['username'].' probeerde in te loggen terwijl deze niet meer in dienst is';
-		    $log_record->write_record();
+		    writelog("login","WARN","User ".$_POST['username']." probeerde in te loggen terwijl deze niet meer in dienst is");
 		    echo '<blockquote class="error">ERROR: User is niet meer in dienst</blockquote>';
 		}
 		
 		//Error indien password fout
 		elseif ($_POST['pass'] != $sql_rows['password']) 
 		{
-		    $log_record = new Writelog();
-		    $log_record->progname = $_SERVER['PHP_SELF'];
-		    $log_record->loglevel = 'WARN';
-		    $log_record->message_text  = 'User '.$_POST['username'].' probeerde in te loggen met een foutief wachtwoord';
-		    $log_record->write_record();
+		    writelog("login","WARN","User ".$_POST['username']." probeerde in te loggen met een foutief wachtwoord");
+		    
 			echo '<blockquote class="error">ERROR: Foutief wachtwoord. Probeer het nogmaals</blockquote>';
 		}
 		else 
@@ -106,10 +94,7 @@ if (isset($_POST['submit']))
 			$sql_out = mysqli_query($dbconn, $sql_code);
 			header("location: index.php");
 			
-			$log_record = new Writelog();
-			$log_record->progname = $_SERVER['PHP_SELF'];
-			$log_record->message_text  = 'User '.$_POST['username'].' is succesvol ingelogd';
-			$log_record->write_record();
+			writelog("login","INFO","User ".$_POST['username']." is succesvol ingelogd");
 		}
 	}
 }

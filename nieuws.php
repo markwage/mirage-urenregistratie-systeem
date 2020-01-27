@@ -53,10 +53,7 @@ if (isset($_POST['delete']))
                  WHERE ID = '$delid'";
     $sql_out = mysqli_query($dbconn, $sql_code);
     
-    $log_record = new Writelog();
-    $log_record->progname = $_SERVER['PHP_SELF'];
-    $log_record->message_text  = 'Het nieuwsbericht met id '.$delid.' is verwijderd uit tabel nieuws';
-    $log_record->write_record();
+    writelog("nieuws","INFO","Het nieuwsbericht met id ".$delid." is verwijderd uit tabel nieuws");
     
     header("location: nieuws.php?aktie=disp");
 }
@@ -94,10 +91,7 @@ if (isset($_POST['save']))
         
         if ($sql_out) 
         {
-            $log_record = new Writelog();
-            $log_record->progname = $_SERVER['PHP_SELF'];
-            $log_record->message_text  = 'Het nieuwsbericht met id '.$_POST['ID'].' is gewijzigd';
-            $log_record->write_record();
+            writelog("nieuws","INFO","Het nieuwsbericht met id ".$_POST['ID']." is gewijzigd");
             
             $frm_datum          = "";
             $frm_nieuwsheader   = "";
@@ -145,8 +139,7 @@ if ($aktie == 'disp')
 			echo '<td><a href="nieuws.php?aktie=edit&edtid='.$id.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="wijzigen nieuwsbericht" title="wijzig nieuwsbericht" /></a></td>
 			<td><a href="nieuws.php?aktie=delete&edtid='.$id.'"><img class="button" src="./img/buttons/icons8-trash-can-48.png" alt="delete nieuwsbericht" title="delete het nieuwsbericht" /></a></td>
 			<td><a href="add_nieuws.php"><img class="button" src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwsbericht" title="toevoegen nieuwsbericht" /></a></td>'; 
-			
-        }
+		}
         
         echo '</tr>';
         check_row_color($rowcolor);

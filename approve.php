@@ -59,20 +59,15 @@ if (isset($_POST['approve']))
                  AND year(datum) = '".$jaar."'";
     $sql_out = mysqli_query($dbconn, $sql_code);
     
-    $log_record = new Writelog();
-    $log_record->progname = $_SERVER['PHP_SELF'];
-    $log_record->message_text  = "Voor user {$user} is maand {$jaar} {$maand} approved";
-    $log_record->write_record();
+    writelog("approve","INFO","Voor user {$user} is maand {$jaar}-{$maand} approved");
     
     $sql_insert = "INSERT INTO approvals (maand, jaar, user)
                    VALUES('".$maand."', 
                           '".$jaar."',
                           '".$user."')";
     $sql_out_insert = mysqli_query($dbconn, $sql_insert);
-    $log_record = new Writelog();
-    $log_record->progname = $_SERVER['PHP_SELF'];
-    $log_record->message_text  = "Record succesvol toegevoegd in tabel approvals voor user {$user} periode {$jaar} {$maand}";
-    $log_record->write_record();
+    
+    writelog("approve","INFO","Record succesvol toegevoegd in tabel approvals voor user {$user} periode {$jaar}-{$maand}");
 
     header("location: approve.php?aktie=disp");
 }
@@ -103,12 +98,8 @@ if ($aktie == 'disp')
 	$sql_out = mysqli_query($dbconn, $sql_code);
 	
 	if(!$sql_out)
-	{
-	    $log_record = new Writelog();
-	    $log_record->progname = $_SERVER['PHP_SELF'];
-	    $log_record->loglevel = 'ERROR';
-	    $log_record->message_text  = "Select gaat fout: ".$sql_code." - ".mysqli_error($dbconn);
-	    $log_record->write_record();
+	{	    
+	    writelog("approve","ERROR","Select gaat fout: ".$sql_code." - ".mysqli_error($dbconn));
 	}
 	
 	echo "<center><table>";

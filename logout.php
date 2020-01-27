@@ -13,11 +13,7 @@ $past = time() - 100;
 setcookie('ID_mus', gone, $past);
 setcookie('Key_mus', gone, $past);
 
-$log_record = new Writelog();
-$log_record->progname = $_SERVER['PHP_SELF'];
-$log_record->message_text  = 'User is succesvol uitgelogd';
-$log_record->write_record();
+writelog("logout","INFO","User ".$_POST['username']." is succesvol uitgelogd");
 
-//writeLogRecord("logout","User is succesvol uitgelogd");
 header("location: login.php");
 ?>

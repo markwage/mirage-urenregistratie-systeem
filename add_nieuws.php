@@ -8,9 +8,6 @@ include ("autoload.php");
 // Controleren of gebruiker admin-rechten heeft
 // check_admin();
 
-// Connectie met de database maken en database selecteren
-//$dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);
-
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
 
@@ -38,13 +35,7 @@ if (isset($_POST['submit']))
     }
     
 	if (!$_POST['nieuwsheader']) 
-	{
-	    $log_record = new Writelog();
-	    $log_record->progname = $_SERVER['PHP_SELF'];
-	    $log_record->loglevel = 'ERROR';
-	    $log_record->message_text  = 'Verplicht inputveld nieuwsheader is niet ingevuld';
-	    $log_record->write_record();
-	    
+	{	    
 	    //writeLogRecord("add_nieuws","ERROR Verplicht inputveld nieuwsheader is niet ingevuld");
 		echo '<p class="errmsg"> ERROR: Nieuwsheader is een verplicht veld</p>';
 		$focus     = 'nieuwsheader';
@@ -57,12 +48,6 @@ if (isset($_POST['submit']))
 	
 	if ((!$_POST['nieuwsbericht'])  && (!$formerror)) 
 	{
-	    $log_record = new Writelog();
-	    $log_record->progname = $_SERVER['PHP_SELF'];
-	    $log_record->loglevel = 'ERROR';
-	    $log_record->message_text  = 'Verplicht inputveld nieuwsbericht is niet gevuld';
-	    $log_record->write_record();
-	    //writeLogRecord("add_nieuws","ERROR Verplicht inputveld nieuwsbericht is niet gevuld");
 		echo '<p class="errmsg"> ERROR: Nieuwsbericht is een verplicht veld</p>';
 		$focus     = 'nieuwsbericht';
 		$formerror = 1;
@@ -81,11 +66,7 @@ if (isset($_POST['submit']))
 
 		if ($sql_out) 
 		{
-		    $log_record = new Writelog();
-		    $log_record->progname = $_SERVER['PHP_SELF'];
-		    $log_record->message_text  = 'Nieuwsbericht is succesvol toegevoegd aan de database';
-		    $log_record->write_record();
-		    //writeLogRecord("add_nieuws","INFO Nieuwsbericht is succesvol toegevoegd aan de database");
+		    writelog("add_nieuws","INFO","Nieuwsbericht is succesvol toegevoegd aan de database");
 		    
 			echo '<p class="infmsg">Het nieuwsbericht is opgenomen</p>.';
 			$frm_nieuwsheader  = "";
