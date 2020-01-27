@@ -108,10 +108,8 @@ if (isset($_POST['save']) || isset($_POST['approval']))
     {
         if(trim($_POST["soortuur"][$ix1] != ''))    
         {
-            
             // Check de ingevulde velden op correctheid
             checkIngevuldeUrenPerSoort($ix1);
-            
             
             // Check of de week al voorkomt in de database Indien ja EN al approved dan kunnen de gegevens niet gewijzigd worden
             for($ix2=0; $ix2<7; $ix2++) 
@@ -237,7 +235,6 @@ echo "</tr>";
 //------------------------------------------------------------------------------------------------------
 for($ix3=0; $ix3<7; $ix3++) 
 {
-    //${"frm_valueDag$ix3"} = '';
     $frm_valueDag[$ix3] = '';
 }
 
@@ -270,81 +267,13 @@ if($sql_out2 = mysqli_query($dbconn, $sql_code2))
             {
                 // Loop om de dropdown met soorten uren op te bouwen
                 // En om te bepalen of de betreffende soortuur voor de regel geldt waarvoor uren zijn ingevuld
-                $sql_soorturen2 = mysqli_query($dbconn, "SELECT * FROM soorturen ORDER BY code");
-                $option = "";
                 
-                while($row_soorturen2 = mysqli_fetch_array($sql_soorturen2)) 
-                {
-                    if ($tmp_soortuur == $row_soorturen2['code'])
-                    {
-                        $option_selected = 'selected';
-                        $option_disabled = 'enabled';
-                    }
-                    else
-                    {
-                        $option_selected = '';
-                        if(($dag_readonly[0] == 'readonly') || ($dag_readonly[6] == 'readonly'))
-                        {
-                            $option_disabled = 'disabled';
-                        }
-                        else
-                        {
-                            $option_disabled = 'enabled';
-                        }
-                    }
-                    $option .= "<option ".$option_selected." ".$option_disabled." value='".$row_soorturen2['code']."'>".$row_soorturen2['code']." - ".$row_soorturen2['omschrijving']."</option>";
-                }
+                enablesoortuur();
+                
                 echo "<tr id='row1'>";
                 
-                //==========================================================================================================
-                echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
-                $totaal_uren_per_soort = 0;
-                for($ix5=0; $ix5<7; $ix5++) 
-                {
-                    $frm_value = $frm_valueDag[$ix5];
-                    if($dag_readonly[$ix5] == 'readonly')
-                    {
-                        $js_readonly = 'readonly';
-                        $js_aantal_dagen_readonly = $ix5;
-                    }
-                    if($ix5 == 0)
-                    {
-                        echo "<td><select name='soortuur[]' selected>".$option."</select></td>";
-                    }
-                    
-                    $ix5b = $ix5 + 1;
-                    echo "<td title='Geef waarde in decimalen. Hierbij is een kwartier 0.25, half uur 0.5 en 45 minuten is 0.75'><input ".$dag_readonly[$ix5]." style='width:3.33vw; text-align:right' type='number' name='dag".$ix5b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
-                    
-                    $totaal_uren_per_soort = number_format($totaal_uren_per_soort + floatval($frm_value), 2);
-                    
-                    if($ix5b == 7) 
-                    {
-                        echo "<td class='totaalkolom'><input readonly style='width:3.33vw; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaal_uren_per_soort."'></td>";
-                    }
-                }
-                //================================================================================================================
-                
-                //================================================================================================================
-                if($dag_readonly[6] == '') // of de laatste zondag valt niet in de maand die approved is.
-                {
-                    if(isset($js_aantal_dagen_readonly)){
-                        $aantal_dagen_readonly = $js_aantal_dagen_readonly;
-                    }
-                    else
-                    {
-                        $aantal_dagen_readonly = '';
-                    }
-                    echo "<td><img class='button' src='./img/buttons/icons8-plus-48.png' alt='toevoegen nieuwe regel' title='toevoegen nieuwe regel' onclick='add_row(".$aantal_dagen_readonly.");' /></td>";
-                }
-                else
-                {
-                    echo "<td></td>";
-                }
-                
-                echo "<td></td>";
-                echo "</tr>";
-                
-                //=====================================================================================================================
+                berekenurenpersoort();
+                berekendagenreadonly();
 
                 for($ix4=0; $ix4<7; $ix4++) 
                 {
@@ -371,91 +300,10 @@ if($sql_out2 = mysqli_query($dbconn, $sql_code2))
     
     // Loop om de dropdown met soorten uren op te bouwen
     // En om te bepalen of de betreffende soortuur voor de regel geldt waarvoor uren zijn ingevuld
-    $option = "";
-    //$option_add = "";
-    
-    $sql_code3 = "SELECT * FROM soorturen
-                 ORDER BY code";
-    $sql_out3 = mysqli_query($dbconn, $sql_code3);
-    
-    while($sql_rows3 = mysqli_fetch_array($sql_out3)) 
-    {
-        
-        if ($tmp_soortuur == $sql_rows3['code']) 
-        {
-            $option_selected = 'selected';
-            $option_disabled = 'enabled';
-        } 
-        else 
-        {
-            $option_selected = '';
-            if(($dag_readonly[0] == 'readonly') || ($dag_readonly[6] == 'readonly'))
-            {
-                $option_disabled = 'disabled';
-            }
-            else
-            {
-                $option_disabled = 'enabled';
-            }
-        }
-        $option .= "<option ".$option_selected." ".$option_disabled." value='".$sql_rows3['code']."'>".$sql_rows3['code']." - ".$sql_rows3['omschrijving']."</option>";
-    }
-    
-    echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
-    
-    $totaal_uren_per_soort = 0;
-    for($ix7=0; $ix7<7; $ix7++) 
-    {
-        $frm_value = $frm_valueDag[$ix7];
-            // Onderstaande variabele wordt in javascript gebruikt om te bepalen hoevel lege velden readonly moeten zijn
-            // De variabele krijgt de hoogste waarda van ix7 als inhoud dag_readonly gelijk is aan readonly
-            if($dag_readonly[$ix7] == 'readonly') 
-            {   
-                $js_readonly = 'readonly';
-                $js_aantal_dagen_readonly = $ix7;
-            }
-        
-        // Indien al de eerste dag readonly is mag soortuur niet meer gewijzigd worden
-           
-        if($ix7 == 0)
-        {
-            echo "<td><select name='soortuur[]' selected>".$option."</select></td>";
-        }
-        
-        $ix7b = $ix7 + 1;
-        echo "<td title='Geef waarde in decimalen. Hierbij is een kwartier 0.25, half uur 0.5 en 45 minuten is 0.75'><input ".$dag_readonly[$ix7]." style='width:3.33vw; text-align:right' type='number' name='dag".$ix7b."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
-        
-        $totaal_uren_per_soort = number_format($totaal_uren_per_soort + floatval($frm_value), 2);
-        
-        // Vullen van de totaalkolom
-        if($ix7b == 7) 
-        {
-            echo "<td class='totaalkolom'><input readonly style='width:3.33vw; text-align:right;' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaal_uren_per_soort."'></td>";
-        }
-    }
-
-    // De save button
-    
-    if($dag_readonly[6] == '') // of de laatste zondag valt niet in de maand die approved is.
-    {
-        if(isset($js_aantal_dagen_readonly))
-        {
-            $aantal_dagen_readonly = $js_aantal_dagen_readonly;
-        }
-        else 
-        {
-            $aantal_dagen_readonly = '';    
-        }
-        echo "<td><img class='button' src='./img/buttons/icons8-plus-48.png' alt='toevoegen nieuwe regel' title='toevoegen nieuwe regel' onclick='add_row(".$aantal_dagen_readonly.");' /></td>";
-    }
-    else 
-    {
-        echo "<td></td>";
-    }
-    echo "<td></td>";
-	echo "</tr>";
+	enablesoortuur();
+    berekenurenpersoort();
+    berekendagenreadonly();
 	
-
 } 
 else 
 {

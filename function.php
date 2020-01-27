@@ -215,6 +215,100 @@ function form_user_fill($btn_aktie)
 }
 
 //------------------------------------------------------------------------
+// Bepalen of soortuur enabled of disabled moet zijn
+//------------------------------------------------------------------------
+function enablesoortuur()
+{
+    global $dbconn, $option, $tmp_soortuur, $dag_readonly;
+    $option = "";
+    $sql_soorturen = "SELECT * FROM soorturen
+              ORDER BY code";
+    $sql_out_soorturen = mysqli_query($dbconn, $sql_soorturen);
+    
+    while($row_soorturen = mysqli_fetch_array($sql_out_soorturen))
+    {
+        if ($tmp_soortuur == $row_soorturen['code'])
+        {
+            $option_selected = 'selected';
+            $option_disabled = 'enabled';
+        }
+        else
+        {
+            $option_selected = '';
+            if(($dag_readonly[0] == 'readonly') || ($dag_readonly[6] == 'readonly'))
+            {
+                $option_disabled = 'disabled';
+            }
+            else
+            {
+                $option_disabled = 'enabled';
+            }
+        }
+        $option .= "<option ".$option_selected." ".$option_disabled." value='".$row_soorturen['code']."'>".$row_soorturen['code']." - ".$row_soorturen['omschrijving']."</option>";
+    }
+}
+
+//------------------------------------------------------------------------
+// Controleer de ingevulde uren per Soortuur
+//------------------------------------------------------------------------
+function berekendagenreadonly()
+{
+    global $dag_readonly, $js_aantal_dagen_readonly;
+    if($dag_readonly[6] == '')
+    {
+        if(isset($js_aantal_dagen_readonly))
+        {
+            $aantal_dagen_readonly = $js_aantal_dagen_readonly;
+        }
+        else
+        {
+            $aantal_dagen_readonly = '';
+        }
+        echo "<td><img class='button' src='./img/buttons/icons8-plus-48.png' alt='toevoegen nieuwe regel' title='toevoegen nieuwe regel' onclick='add_row(".$aantal_dagen_readonly.");' /></td>";
+    }
+    else
+    {
+        echo "<td></td>";
+    }
+    echo "<td></td>";
+    echo "</tr>";
+}
+
+//------------------------------------------------------------------------
+// Controleer de ingevulde uren per Soortuur
+//------------------------------------------------------------------------
+function berekenurenpersoort()
+{
+    global $option, $totaal_uren_per_soort, $frm_valueDag, $frm_value, $dag_readonly, $js_readonly, $js_aantal_dagen_readonly;
+    
+    echo '<div id="dropdownSoortUren" data-options="'.$option.'"></div>';
+    $totaal_uren_per_soort = 0;
+    for($ix=0; $ix<7; $ix++)
+    {
+        $frm_value = $frm_valueDag[$ix];
+        if($dag_readonly[$ix] == 'readonly')
+        {
+            $js_readonly = 'readonly';
+            $js_aantal_dagen_readonly = $ix;
+        }
+        if($ix == 0)
+        {
+            echo "<td><select name='soortuur[]' selected>".$option."</select></td>";
+        }
+        
+        $ixb = $ix + 1;
+        echo "<td title='Geef waarde in decimalen. Hierbij is een kwartier 0.25, half uur 0.5 en 45 minuten is 0.75'><input ".$dag_readonly[$ix]." style='width:3.33vw; text-align:right' type='number' name='dag".$ixb."[]' min='0' max='24' step='0.25' size='2' value='".$frm_value."'></td>";
+        
+        $totaal_uren_per_soort = number_format($totaal_uren_per_soort + floatval($frm_value), 2);
+        
+        if($ixb == 7)
+        {
+            echo "<td class='totaalkolom'><input readonly style='width:3.33vw; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='".$totaal_uren_per_soort."'></td>";
+        }
+    }
+}
+
+//------------------------------------------------------------------------
 // Controleer de ingevulde uren per Soortuur
 //------------------------------------------------------------------------
 function checkIngevuldeUrenPerSoort($ix1) 
@@ -240,9 +334,12 @@ function checkIngevuldeUrenPerSoort($ix1)
         $frm_urendag2 = $_POST["dag2"][$ix1];
     }
     
-    if(!isset($_POST["dag3"][$ix1]) || $_POST["dag3"][$ix1] == '') {
+    if(!isset($_POST["dag3"][$ix1]) || $_POST["dag3"][$ix1] == '') 
+    {
         $frm_urendag3=0;
-    } else {
+    } 
+    else 
+    {
         $frm_urendag3 = $_POST["dag3"][$ix1];
     }
     
@@ -349,11 +446,11 @@ function getWeekdays($weeknr)
     $week = substr($inputweeknr, 6, 2);
     $year = substr($inputweeknr, 0, 4);
     
-    for($ix1=0; $ix1<7; $ix1++) 
+    for($ixweek=0; $ixweek<7; $ixweek++) 
     {
-        $weekDatum[$ix1] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ix1.' days'));
-        $weekMaand[$ix1] = date("m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ix1.' days'));
-        $weekJaar[$ix1] = date("Y", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ix1.' days'));
+        $weekDatum[$ixweek] = date("d-m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ixweek.' days'));
+        $weekMaand[$ixweek] = date("m", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ixweek.' days'));
+        $weekJaar[$ixweek] = date("Y", strtotime($year.'W'.str_pad($week, 2, 0, STR_PAD_LEFT).' +'.$ixweek.' days'));
     }
     
     

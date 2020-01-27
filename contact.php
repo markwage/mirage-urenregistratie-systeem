@@ -110,55 +110,7 @@ if(isset($_POST['submit']))
 		header('location:contact.php?error=format');
 	}
 }
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<title>Contact Us</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-body{
-font-family: Verdana, Arial, Helvetica, sans-serif;
-font-size:12px;
-}
-label{
-float: left;
-width: 120px;
-font-weight: bold;
-}
 
-input, textarea{
-width: 280px;
-margin-bottom: 5px;
-}
-
-textarea{
-width: 350px;
-height: 150px;
-}
-
-#submit{
-margin-left: 120px;
-margin-top: 5px;
-width: 90px;
-}
-
-.required{
-color: #FF0000;
-font-size:9px;
-}
-
-.red{
-color: #FF0000;
-
-}
-</style>
-</head>
-
-<body>
-
-<?php
 if (isset($_GET['eror']))
 {
     $error = $_GET['error'];
@@ -185,23 +137,44 @@ if (isset($_GET['eror']))
 
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="contactForm" name="contactForm">
     <p>
+	<table>
+	    <tr>
+		    <td>Voornaam</td>
+		    <td><input type="text" readonly required name="fName" size="10" maxlength="10" value="<?php echo $_SESSION['voornaam']; ?>"></td>
+	    </tr>
+	    <tr>
+		    <td>Achternaam</td>
+		    <td><input type="text" readonly required name="lName" size="18" maxlength="18" value="<?php echo $_SESSION['tussenvoegsel'].' '.$_SESSION['achternaam']; ?>"></td>
+	    </tr>
+	    <tr>
+		    <td>Emailadres</td>
+		    <td><input type="text" readonly required name="email" size="50" maxlength="50" value="<?php echo $_SESSION['emailadres']; ?>"></td>
+	    </tr>
+	    <tr>
+		    <td>Onderwerp</td>
+		    <td><textarea name="message" rows="5" cols="80" id="message"></textarea></td>
+	    </tr>
+	</table>
+	<!-- 
     <label for="fName">Voornaam:<span class="required">*</span></label>
-    <input type="text" name="fName" value="<?php echo $_SESSION['voornaam']; ?>" id="fName">
+    <input type="text" name="fName" value="<?php //echo $_SESSION['voornaam']; ?>" id="fName">
     <br><br>
     
-    <label for="Achternaam">Last Name:</label>
-    <input type="text" name="lName" value="<?php echo $_SESSION['tussenvoegsel'].' '.$_SESSION['achternaam']; ?>" id="lName">
+    <label for="Achternaam">Achternaam:</label>
+    <input type="text" name="lName" value="<?php //echo $_SESSION['tussenvoegsel'].' '.$_SESSION['achternaam']; ?>" id="lName">
     <br><br>
 
     <label for="email">Emailadres:<span class="required">*</span></label>
-    <input type="text" name="email" value="<?php echo $_SESSION['emailadres']; ?>" id="email">
+    <input type="text" name="email" value="<?php //echo $_SESSION['emailadres']; ?>" id="email">
     <br><br>
 
-    <label for="message">Message:<span class="required">*</span></label>
+    <label for="message">Onderwerp:<span class="required">*</span></label>
     <textarea name="message" rows="5" cols="60" id="message"></textarea>
     <br><br>
+    -->
 
-    <input type="submit" name="submit" id="submit" value="Submit">
+    <input class=button type="submit" name="submit" id="submit" value="Submit">
+    
     </p>
 </form>
 
