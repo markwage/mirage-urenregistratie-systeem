@@ -65,6 +65,24 @@ if (isset($_POST['submit']))
 		{
 		    $_POST['approvenallowed'] = 1;
 		}
+		
+		if (!isset($_POST['indienst']))
+		{
+		    $_POST['indienst'] = 0;
+		}
+		else
+		{
+		    $_POST['indienst'] = 1;
+		}
+		
+		if (!isset($_POST['ureninvullen']))
+		{
+		    $_POST['ureninvullen'] = 0;
+		}
+		else
+		{
+		    $_POST['ureninvullen'] = 1;
+		}
 	}
 	
 	// Controleer of de username al in gebruik is
@@ -123,7 +141,7 @@ if (isset($_POST['submit']))
 	// Encrypt password en voeg eventueel slashes toe
 	if (!$formerror) 
 	{ 
-		$_POST['indienst'] = 1;
+		//$_POST['indienst'] = 1;
 		$_POST['pass'] = md5($_POST['pass']);
 		
 		if (!get_magic_quotes_gpc()) 
@@ -133,7 +151,7 @@ if (isset($_POST['submit']))
 		}
 
 		// Record toevoegen in database
-		$sql_code = "INSERT INTO users (username, password, admin, voornaam, tussenvoegsel, achternaam, emailadres, indienst, approvenallowed)
+		$sql_code = "INSERT INTO users (username, password, admin, voornaam, tussenvoegsel, achternaam, emailadres, indienst, approvenallowed, uren_invullen)
 			       VALUES ('".$_POST['username']."', 
 					       '".$_POST['pass']."', 
                            '".$_POST['admin']."',
@@ -142,7 +160,8 @@ if (isset($_POST['submit']))
 					       '".$_POST['achternaam']."',
 					       '".$_POST['email']."',
 					       '".$_POST['indienst']."',
-                           '".$_POST['approvenallowed']."')";
+                           '".$_POST['approvenallowed']."',
+                           '".$_POST['ureninvullen']."')";
 		            
 		$sql_out = mysqli_query($dbconn, $sql_code);
 	
@@ -157,6 +176,8 @@ if (isset($_POST['submit']))
 			$frm_tussenvoegsel = "";
 			$frm_achternaam    = "";
 			$frm_email         = "";
+			$frm_indienst      = "1";
+			$frm_ureninvullen  = "1";
 			header("location: users.php?aktie=disp"); 
 		}
 		else 
@@ -217,6 +238,26 @@ if (isset($_POST['submit']))
 		<tr>
 			<td>Email</td>
 			<td colspan="2"><input type="text" name="email" size="40" maxlength="60" value="<?php if (isset($frm_email)) { echo $frm_email; } ?>"></td>
+		</tr>
+		<tr>
+			<td>In dienst</td>
+			<td><div class="onoffswitch">
+    	    	<input type="checkbox" name="indienst" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
+    		    <label class="onoffswitch-label" for="myonoffswitch2">
+        			<span class="onoffswitch-inner"></span>
+        			<span class="onoffswitch-switch"></span>
+    			</label>
+			</div></td>
+		</tr>
+		<tr>
+			<td>Uren invullen</td>
+			<td><div class="onoffswitch">
+    			<input type="checkbox" name="ureninvullen" class="onoffswitch-checkbox" id="myonoffswitch4" checked>
+    			<label class="onoffswitch-label" for="myonoffswitch4">
+        			<span class="onoffswitch-inner"></span>
+        			<span class="onoffswitch-switch"></span>
+    			</label>
+			</div></td>
 		</tr>
 	</table>
 	<br />
