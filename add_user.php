@@ -169,15 +169,15 @@ if (isset($_POST['submit']))
 		{
 		    writelog("add_user","INFO","User {$_POST['username']} is succesvol aangemaakt");
 		    
-			$frm_username      = "";
-			$frm_pass          = "";
-			$frm_pass2         = "";
-			$frm_voornaam      = "";
-			$frm_tussenvoegsel = "";
-			$frm_achternaam    = "";
-			$frm_email         = "";
-			$frm_indienst      = "1";
-			$frm_ureninvullen  = "1";
+			//$frm_username      = "";
+			//$frm_pass          = "";
+			//$frm_pass2         = "";
+			//$frm_voornaam      = "";
+			//$frm_tussenvoegsel = "";
+			//$frm_achternaam    = "";
+			//$frm_email         = "";
+			//$frm_indienst      = "1";
+			//$frm_ureninvullen  = "1";
 			header("location: users.php?aktie=disp"); 
 		}
 		else 

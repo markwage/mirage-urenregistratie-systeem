@@ -211,6 +211,15 @@ function form_user_fill($btn_aktie)
         {
             $frm_indienst = "";
         }
+        
+        if (isset($_POST['ureninvullen']))
+        {
+            $frm_ureninvullen = $_POST['ureninvullen'];
+        }
+        else
+        {
+            $frm_ureninvullen = "";
+        }
     }
 }
 

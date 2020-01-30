@@ -20,8 +20,6 @@ if (isset($_COOKIE['ID_mus']))
 	    <h1 class="clear">Urenadministratie</h1>
 	    <ul class="sidemenu">
 	        <li><a href="uren.php?aktie=toevoegen">Uren</a></li>
-	        <!-- <li><a href="uren.php?aktie=disp">Vakantie-uren per kalenderjaar</a></li> -->
-	        <!-- <li><a href="rapp_maand.php">Overzicht huidige maand</a></li> -->
 	        <li><a href="users.php?aktie=editprof&edtuser=<?php echo $_SESSION["username"] ?>">Mijn profiel</a></li>
 	    </ul>
 	</div>
@@ -32,7 +30,7 @@ if (isset($_COOKIE['ID_mus']))
 	{
 	    ?>
 		<div class="sidebox">
-		    <h1>Admin menu</h1>
+		    <h1 class="clear">Admin menu</h1>
 		    <ul class="sidemenu">
 		        <li><a href="approve.php?aktie=disp">Openstaande approvals</a></li>
 		        <li><a href="users.php?aktie=disp">Usermanagement</a></li>
@@ -40,6 +38,12 @@ if (isset($_COOKIE['ID_mus']))
 	    	    <li><a href="nieuws.php?aktie=disp">Onderhoud nieuwsartikelen</a></li>
 	    	</ul>
 		</div>
+		<div class="sidebox">
+	    <h1 class="clear">Rapportage</h1>
+	    <ul class="sidemenu">
+	        <li><a href="rpt_uren_urensoort.php">Totaal uren per urensoort</a></li>
+	    </ul>
+	</div>
 		<?php 
 	}
 }		

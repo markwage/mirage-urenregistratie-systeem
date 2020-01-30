@@ -12,7 +12,6 @@ class CheckReadonly
     
     function __construct()
     {
-        //echo '<div id="dropdownSoortUren" data-options="'.$this->option.'"></div>';
         $this->totaal_uren_per_soort = 0;
     }
     

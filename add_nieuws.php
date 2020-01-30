@@ -5,9 +5,6 @@ include ("db.php");
 include ("function.php");
 include ("autoload.php");
 
-// Controleren of gebruiker admin-rechten heeft
-// check_admin();
-
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
 
@@ -25,8 +22,7 @@ if (isset($_POST['cancel']))
 }
 
 if (isset($_POST['submit'])) 
-{ 
-	//form_nieuws_fill('toevoegen');
+{
     $formerror = 0;
     
     if (isset($frm_nieuwsheader)) 
@@ -36,7 +32,6 @@ if (isset($_POST['submit']))
     
 	if (!$_POST['nieuwsheader']) 
 	{	    
-	    //writeLogRecord("add_nieuws","ERROR Verplicht inputveld nieuwsheader is niet ingevuld");
 		echo '<p class="errmsg"> ERROR: Nieuwsheader is een verplicht veld</p>';
 		$focus     = 'nieuwsheader';
 		$formerror = 1;
