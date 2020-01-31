@@ -230,7 +230,7 @@ if ($aktie == 'disp')
                  ORDER BY achternaam";
 	$sql_out = mysqli_query($dbconn, $sql_code);
 	echo "<center><table>";
-	echo "<tr><th>Username</th><th>Volledige naam</th><th>Emailadres</th><th>last<br />logged in</th><th>Admin</th><th>In dienst</th><th>Mag<br />approven</th><th>Uren<br />invullen</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
+	echo "<tr><th>Naam medewerker</th><th>Username</th><th>Emailadres</th><th>last<br />logged in</th><th>Admin</th><th>In dienst</th><th>Mag<br />approven</th><th>Uren<br />invullen</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
 	$rowcolor = 'row-a';
 	
 	while($sql_rows = mysqli_fetch_array($sql_out)) 
@@ -247,8 +247,8 @@ if ($aktie == 'disp')
 		$indienst        = $sql_rows['indienst'];
 		$approvenallowed = $sql_rows['approvenallowed'];
 		echo '<tr class="'.$rowcolor.'">
-			<td><b>'.$username.'</b></td>
-			<td>'.$achternaam.', '.$voornaam.' '.$tussenvoegsel. '</td>
+			<td><strong>'.$achternaam.', '.$voornaam.' '.$tussenvoegsel.'</strong></td>
+            <td>'.$username.'</td>
 			<td>'.$emailadres.'</td>
             <td>'.$lastloggedin.'</td>';
 		if ($admin == 1) 
