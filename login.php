@@ -86,7 +86,8 @@ if (isset($_POST['submit']))
 			$_SESSION['achternaam']      = $_POST['achternaam'];
 			$_SESSION['emailadres']      = $_POST['emailadres'];
 			$_SESSION['lastloggedin']    = $_POST['lastloggedin'];
-			
+			$_SESSION['username_encrypted'] = convert_string('encrypt', $_SESSION['username']);
+			writelog("login","INFO","User ".$_SESSION['username_encrypted']." is succesvol encrypted");
 			// update lastloggedin in de tabel
 			date_default_timezone_set('Europe/Amsterdam');
 			$sql_code = "UPDATE users SET lastloggedin = '".date('Y-m-d H:i:s')."' 

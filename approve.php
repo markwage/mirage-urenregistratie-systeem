@@ -246,6 +246,4 @@ if ($aktie == 'dspuren')
 }
 	
 include ("footer.php");
-?>		
-
-
+?>

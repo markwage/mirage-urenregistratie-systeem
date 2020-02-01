@@ -20,7 +20,7 @@ if (isset($_COOKIE['ID_mus']))
 	    <h1 class="clear">Urenadministratie</h1>
 	    <ul class="sidemenu">
 	        <li><a href="uren.php?aktie=toevoegen">Uren</a></li>
-	        <li><a href="users.php?aktie=editprof&edtuser=<?php echo $_SESSION["username"] ?>">Mijn profiel</a></li>
+	        <li><a href="users.php?aktie=editprof&edtuser=<?php echo $_SESSION["username_encrypted"] ?>">Mijn profiel</a></li>
 	    </ul>
 	</div>
 	
@@ -42,7 +42,7 @@ if (isset($_COOKIE['ID_mus']))
 	    <h1 class="clear">Rapportage</h1>
 	    <ul class="sidemenu">
 	        <li><a href="rpt_uren_urensoort.php">Totaal uren per urensoort</a></li>
-	        <li><a href="#">Opgenomen verlofuren per mdw</a></li>
+	        <li><a href="rpt_verlofuren_medewerker.php">Opgenomen verlofuren per mdw</a></li>
 	    </ul>
 	</div>
 		<?php 

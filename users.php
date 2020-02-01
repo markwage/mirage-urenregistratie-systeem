@@ -286,9 +286,9 @@ if ($aktie == 'disp')
 		{
 		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="hoeft geen uren in te vullen" /></td>';
 		}
-		
-		echo '<td><a href="users.php?aktie=edit&edtuser='.$username.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
-		<td><a href="users.php?aktie=delete&edtuser='.$username.'"><img class="button" src="./img/buttons/icons8-trash-can-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>
+		$username_encrypted = convert_string('encrypt', $username);
+		echo '<td><a href="users.php?aktie=edit&edtuser='.$username_encrypted.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
+		<td><a href="users.php?aktie=delete&edtuser='.$username_encrypted.'"><img class="button" src="./img/buttons/icons8-trash-can-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>
 		<td><a href="add_user.php"><img class="button" src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>
 		</tr>';
 		
@@ -303,7 +303,8 @@ if ($aktie == 'disp')
 //------------------------------------------------------------------------------------------------------
 if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') 
 {
-	$edtuser = $_GET['edtuser'];
+	//$edtuser = $_GET['edtuser'];
+    $edtuser = convert_string('decrypt', $_GET['edtuser']);
 	$focus = "pass";
 	$sql_code = "SELECT * FROM users
                  WHERE username = '$edtuser'";
