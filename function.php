@@ -175,7 +175,7 @@ function form_soorturen_fill($aktie)
 {
     if ($aktie == "save" || $aktie == "toevoegen") 
     {
-        global $frm_code, $frm_omschrijving, $formerror;
+        global $frm_code, $frm_omschrijving, $frm_facturabel, $formerror;
         $formerror = 0;
         
         /**
@@ -186,6 +186,11 @@ function form_soorturen_fill($aktie)
         {
             $frm_ID = $_POST['ID'];
         }
+        //if(!empty($_POST['facturabel']));
+        //{
+        //    echo ">>> ".$_POST['facturabel'];
+        //    $frm_facturabel    = $_POST['facturabel'];
+        //}
         
         $frm_code          = $_POST['code'];
         $frm_omschrijving  = $_POST['omschrijving'];

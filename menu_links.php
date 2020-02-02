@@ -21,6 +21,7 @@ if (isset($_COOKIE['ID_mus']))
 	    <ul class="sidemenu">
 	        <li><a href="uren.php?aktie=toevoegen">Uren</a></li>
 	        <li><a href="users.php?aktie=editprof&edtuser=<?php echo $_SESSION["username_encrypted"] ?>">Mijn profiel</a></li>
+	        <li><a href="rpt_geboekte_uren_per_maand.php?user=<?php echo $_SESSION["username_encrypted"] ?>">Geboekte uren per maand</a></li>
 	    </ul>
 	</div>
 	

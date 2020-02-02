@@ -6,13 +6,13 @@ include ("db.php");
 include ("function.php");
 include ("autoload.php");
 
-if (isset($_GET['aktie'])) 
+if (isset($_GET['aktie']))
 {
-	$aktie = $_GET['aktie'];
+    $aktie = $_GET['aktie'];
 }
-else 
+else
 {
-	$aktie = "";
+    $aktie = "";
 }
 
 check_admin();     // Controleren of gebruiker admin-rechten heeft
@@ -95,19 +95,30 @@ if (isset($_POST['save']))
 	// Update record indien er geen errors zijn
 	if (!$formerror) 
 	{ 
+	    if (!isset($_POST['facturabel']))
+	    {
+	        $_POST['facturabel'] = 0;
+	    }
+	    else
+	    {
+	        $_POST['facturabel'] = 1;
+	    }
+	    
 		$_POST['code'] = strtoupper($_POST['code']);
 		$sql_code = "UPDATE soorturen
-		           SET code = '".$_POST['code']."', 
-		               omschrijving = '".$_POST['omschrijving']."' 
-                   WHERE ID = '".$_POST['ID']."'";
+		             SET code = '".$_POST['code']."', 
+		             omschrijving = '".$_POST['omschrijving']."',
+                     facturabel = '".$_POST['facturabel']."'
+                     WHERE ID = '".$_POST['ID']."'";
 		$sql_out = mysqli_query($dbconn, $sql_code) or die ("Error in query: $sql_code. ".mysqli_error($dbconn));
 		
 		if ($sql_out) { 
 		    writelog("soortuur","INFO","De code ".$_POST['code']." is succesvol ge-update");
 		    
-			echo '<p class="infmsg">Soort uur <b>'.$_POST['cude'].'</b> is gewijzigd</p>.';
+			echo '<p class="infmsg">Soort uur <b>'.$_POST['code'].'</b> is gewijzigd</p>.';
 			$frm_code          = "";
 			$frm_omschrijving  = "";
+			$frm_facturabel    = "";
 		}
 		else 
 		{
@@ -134,7 +145,7 @@ if ($aktie == 'disp')
 	$sql_out = mysqli_query($dbconn, $sql_code);
 	
 	echo "<center><table>";
-	echo "<tr><th>Code</th><th>Omschrijving</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
+	echo "<tr><th>Code</th><th>Omschrijving</th><th>Facturabel</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
 	$rowcolor = 'row-a';
 	
 	while($sql_row = mysqli_fetch_array($sql_out)) 
@@ -142,9 +153,19 @@ if ($aktie == 'disp')
 	    $id           = $sql_row['ID'];
 	    $code         = $sql_row['code'];
 	    $omschrijving = $sql_row['omschrijving'];
+	    $facturabel   = $sql_row['facturabel'];
+	    
+	    if($facturabel == 1)
+	    {
+	        $facturabel_checked = 'checked';
+	    }
+	    else
+	    {
+	        $facturabel_checked = '';
+	    }
 	    
 		echo '<tr class="'.$rowcolor.'">
-			<td><b>'.$code.'</b></td><td>'.$omschrijving.'</td>
+			<td><b>'.$code.'</b></td><td>'.$omschrijving.'</td><td><center><input type="checkbox" id="facturabel" name="facturabel" disabled '.$facturabel_checked.'></center></td>
 			<td><a href="soorturen.php?aktie=edit&edtcode='.$code.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="wijzigen soort uur" title="wijzig soort uur '.$code.'" /></a></td>
 			<td><a href="soorturen.php?aktie=delete&edtcode='.$code.'"><img class="button" src="./img/buttons/icons8-trash-can-48.png" alt="delete soort uur" title="delete soort uur '.$code.'" /></a></td>
 			<td><a href="add_soortuur.php"><img class="button" src="./img/buttons/icons8-plus-48.png" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
@@ -167,13 +188,21 @@ if ($aktie == 'edit' || $aktie == 'delete')
 	
 	while($sql_row = mysqli_fetch_array($sql_out)) 
 	{
-	    global $frm_code, $frm_omschrijving, $formerror;
+	    global $frm_code, $frm_omschrijving, $frm_facturabel, $formerror;
 	    $formerror = 0;
 		$frm_ID           = $sql_row['ID'];
 		$frm_code         = $sql_row['code'];
 		$frm_omschrijving = $sql_row['omschrijving'];
+		$frm_facturabel   = $sql_row['facturabel'];
 	}
-	
+	if($frm_facturabel == 1)
+	{
+	    $facturabel_checked = 'checked';
+	}
+	else
+	{
+	    $facturabel_checked = '';
+	}
     ?>
 	<form name="soorturen" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
  		<p>
@@ -189,6 +218,10 @@ if ($aktie == 'edit' || $aktie == 'delete')
 			<tr>
 				<td>Omschrijving</td>
 				<td><input type="text" name="omschrijving" size="60" maxlength="60" value="<?php if (isset($frm_omschrijving)) { echo $frm_omschrijving; } ?>" required></td>
+			</tr>
+			<tr>
+			    <td>Facturabel</td>
+			    <td><input type="checkbox" id="facturabel" name="facturabel" <?php echo $facturabel_checked; ?>></td>
 			</tr>
 		</table>
 		<br />
@@ -216,6 +249,4 @@ if ($aktie == 'edit' || $aktie == 'delete')
 }
 	
 include ("footer.php");
-?>		
-
-
+?>

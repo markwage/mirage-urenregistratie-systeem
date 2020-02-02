@@ -38,7 +38,7 @@ if (isset($_POST['change_jaar']))
 <form name="uren_per_urensoort" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
 <?php
-
+// Display invoerveld om jaartal in te voeren
 echo "<table>";
 echo "<tr>";
 echo "<td><strong>Jaar</strong></td>";
@@ -88,6 +88,7 @@ else
         $frm_maand[$ix_init]  = ' ';
     }
     
+    
     while($sql_rows = mysqli_fetch_array($sql_out))
     {
         $row_soortuur     = $sql_rows['soortuur'];
@@ -101,7 +102,7 @@ else
             if($frm_soortuur <> 'dummy')
             { 
                 echo '<tr class="'.$rowcolor.'">';
-                echo "<td>".$frm_soortuur."</td><td>".$frm_omschrijving."</td>";
+                echo "<td><strong>".$frm_soortuur."</strong></td><td><strong>".$frm_omschrijving."</strong></td>";
                 for($ix=0; $ix<12; $ix++)
                 {
                     echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
@@ -117,11 +118,19 @@ else
         $frm_maand[$row_maandnr] = $totaal_uren;
     }
     // laatste rij uit de query dus wegschrijven naar formulier
-    echo '<tr class="'.$rowcolor.'">';
-    echo "<td>".$row_soortuur."</td><td>".$row_omschrijving."</td>";
-    for($ix=0; $ix<12; $ix++)
+    // Indien $row_soortuur niet is gevuld dan zijn er geen gegevens van het jaar
+    if(!isset($row_soortuur))
     {
-        echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
+        echo '</table></center><blockquote class="error">ERROR: Er zijn geen gegevens van dit jaar</blockquote>';
+    }
+    else
+    {
+        echo '<tr class="'.$rowcolor.'">';
+        echo "<td><strong>".$row_soortuur."</strong></td><td><strong>".$row_omschrijving."</strong></td>";
+        for($ix=0; $ix<12; $ix++)
+        {
+            echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
+        }
     }
     echo "</tr>";
     writelog("rpt_uren_urensoort","INFO","Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd");

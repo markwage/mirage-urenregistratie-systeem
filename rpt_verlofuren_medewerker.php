@@ -61,7 +61,8 @@ echo "<th>Medewerker</th>
       <th style='width:3.33vw; text-align:right'>Sep</th>
       <th style='width:3.33vw; text-align:right'>Okt</th>
       <th style='width:3.33vw; text-align:right'>Nov</th>
-      <th style='width:3.33vw; text-align:right'>Dec</th>";
+      <th style='width:3.33vw; text-align:right'>Dec</th>
+      <th style='width:4.2vw; text-align:right'>Totaal</th>";
 echo "</tr>";
 $rowcolor = 'row-a';
 
@@ -85,6 +86,7 @@ else
     $frm_voornaam = 'dummy';
     $frm_tussenvoegsel = 'dummy';
     $frm_achternaam = 'dummy';
+    $frm_jaartotaal_uren = 0;
     
     for($ix_init=0; $ix_init<12; $ix_init++)
     {
@@ -106,13 +108,15 @@ else
             if($frm_username <> 'dummy')
             { 
                 echo '<tr class="'.$rowcolor.'">';
-                echo "<td>".$frm_achternaam." ".$frm_tussenvoegsel." ".$frm_voornaam."</td>";
+                echo "<td><strong>".$frm_achternaam." ".$frm_tussenvoegsel." ".$frm_voornaam."</strong></td>";
                 for($ix=0; $ix<12; $ix++)
                 {
                     echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
                     $frm_maand[$ix]  = ' ';
                 }
+                echo "<td style='width:4.2vw; text-align:right'><strong>".number_format($frm_jaartotaal_uren, 2)."</strong></td>";
                 echo "</tr>";
+                $frm_jaartotaal_uren = 0;
                 check_row_color($rowcolor);
             }
         }
@@ -122,13 +126,23 @@ else
         $frm_tussenvoegsel = $row_tussenvoegsel;
         $frm_achternaam = $row_achternaam;
         $frm_maand[$row_maandnr] = $totaal_uren;
+        $frm_jaartotaal_uren = $frm_jaartotaal_uren + $totaal_uren;
     }
     // laatste rij uit de query dus wegschrijven naar formulier
-    echo '<tr class="'.$rowcolor.'">';
-    echo "<td>".$frm_achternaam." ".$frm_tussenvoegsel." ".$frm_voornaam."</td>";
-    for($ix=0; $ix<12; $ix++)
+    // Indien $frm_achternaam leeg is dan zijn er geen gegevens van het betreffende jaar
+    if(!isset($row_username))
     {
-        echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
+        echo '</table></center><blockquote class="error">ERROR: Er zijn geen gegevens van dit jaar</blockquote>';
+    }
+    else
+    {
+        echo '<tr class="'.$rowcolor.'">';
+        echo "<td><strong>".$frm_achternaam." ".$frm_tussenvoegsel." ".$frm_voornaam."</strong></td>";
+        for($ix=0; $ix<12; $ix++)
+        {
+            echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
+        }
+        echo "<td style='width:4.2vw; text-align:right'><strong>".number_format($frm_jaartotaal_uren, 2)."</strong></td>";
     }
     echo "</tr>";
     writelog("rpt_uren_urensoort","INFO","Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd");

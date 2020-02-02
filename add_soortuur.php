@@ -93,10 +93,20 @@ if (isset($_POST['add_record']))
 			$_POST['code'] = addslashes($_POST['code']);
 		}
 		
+		if (!isset($_POST['facturabel']))
+		{
+		    $_POST['facturabel'] = 0;
+		}
+		else
+		{
+		    $_POST['facturabel'] = 1;
+		}
+		
 		// Record toevoegen in database
-		$sql_code = "INSERT INTO soorturen (code, omschrijving)
+		$sql_code = "INSERT INTO soorturen (code, omschrijving, facturabel)
 			         VALUES ('".$_POST['code']."', 
-					         '".$_POST['omschrijving']."')";
+					         '".$_POST['omschrijving']."',
+                             '".$_POST['facturabel']."')";
 		$sql_out = mysqli_query($dbconn, $sql_code);
 
 		if ($sql_out) 
@@ -109,6 +119,7 @@ if (isset($_POST['add_record']))
 		} 
 		else 
 		{
+		    writelog("add_soortuur","ERROR","De query voor toevoegen soortuur is fout gegaan - ".mysqli_error($dbconn));
 			echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de code. Probeer het nogmaals.<br />
 			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
 		}
@@ -127,6 +138,11 @@ if (isset($_POST['add_record']))
 		<tr>
 			<td>Omschrijving</td>
 			<td><input type="text" name="omschrijving" size="60" maxlength="60" value="<?php if (isset($frm_omschrijving)) { echo $frm_omschrijving; } ?>"></td>
+	    </tr>
+	    <tr>
+		    <td>Facturabel</td>
+		    <td><input type="checkbox" id="facturabel" name="facturabel"></td>
+		</tr>
 	</table>
 	<br />
 	<input class="button" type="submit" name="add_record" value="add">
