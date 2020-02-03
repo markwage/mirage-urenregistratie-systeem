@@ -19,7 +19,6 @@ else
 // Indien het het wijzigen van het eigen profiel betreft hoeft hij geen admin-rechten te hebben
 if (!$aktie == "editprof") 
 {
-    writelog("users","INFO","Aktie ".$aktie." is uitgevoerd");
     check_admin();
 }
 
@@ -253,43 +252,43 @@ if ($aktie == 'disp')
             <td>'.$lastloggedin.'</td>';
 		if ($admin == 1) 
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="heeft adminrechten" /></td>';
+		    echo '<td style="text-align:center;"><img class="button" src="./img/icons/checkmark-32.png" alt="1" title="heeft adminrechten" /></td>';
 		}
 		else 
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="heeft geen adminrechten" /></td>';
+		    echo '<td style="text-align:center;"></td>';
 		}
 		
 		if ($indienst == 1) 
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="medewerker is nog in dienst" /></td>';
+		    echo '<td style="text-align:center;"><img class="button" src="./img/icons/checkmark-32.png" alt="1" title="medewerker is nog in dienst" /></td>';
 		}
 		else 
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="medewerker is niet meer in dienst" /></td>';
+		    echo '<td style="text-align:center;"></td>';
 		}
 		
 		if ($approvenallowed == 1) 
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="medewerker heeft rechten om uren te approven" /></td>';
+		    echo '<td style="text-align:center;"><img class="button" src="./img/icons/checkmark-32.png" alt="1" title="medewerker heeft rechten om uren te approven" /></td>';
 		}
 		else 
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="medewerker heeft geen rechten om uren te approven" /></td>';
+		    echo '<td style="text-align:center;"></td>';
 		}
 		
 		if ($uren_invullen == 1)
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="verplicht uren invullen" /></td>';
+		    echo '<td style="text-align:center;"><img class="button" src="./img/icons/checkmark-32.png" alt="1" title="medewerker is verplicht uren in te invullen" /></td>';
 		}
 		else
 		{
-		    echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="hoeft geen uren in te vullen" /></td>';
+		    echo '<td style="text-align:center;"></td>';
 		}
 		$username_encrypted = convert_string('encrypt', $username);
-		echo '<td><a href="users.php?aktie=edit&edtuser='.$username_encrypted.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
-		<td><a href="users.php?aktie=delete&edtuser='.$username_encrypted.'"><img class="button" src="./img/buttons/icons8-trash-can-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>
-		<td><a href="add_user.php"><img class="button" src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>
+		echo '<td><a href="users.php?aktie=edit&edtuser='.$username_encrypted.'"><img class="button" src="./img/icons/edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
+		<td><a href="users.php?aktie=delete&edtuser='.$username_encrypted.'"><img class="button" src="./img/icons/trash-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>
+		<td><a href="add_user.php"><img class="button" src="./img/icons/add-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>
 		</tr>';
 		
 		check_row_color($rowcolor);
@@ -305,6 +304,11 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof')
 {
 	//$edtuser = $_GET['edtuser'];
     $edtuser = convert_string('decrypt', $_GET['edtuser']);
+    if($edtuser == '')
+    {
+        writelog("users","ERROR"," Men heeft geprobeerd om username handmatig aan te passen in de url: ".$_GET['edtuser']);
+        exit("Je hebt geprobeerd om username handmatig aan te passen in de url");
+    }
 	$focus = "pass";
 	$sql_code = "SELECT * FROM users
                  WHERE username = '$edtuser'";

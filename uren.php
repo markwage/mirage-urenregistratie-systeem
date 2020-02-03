@@ -171,7 +171,7 @@ if (isset($_POST['save']) || isset($_POST['approval']))
 echo "<table>";
 echo "<tr>";
 echo "<td><strong>Weeknummer</strong></td>";
-echo "<td><input type='week' style='width:9vw' name='week_nummer' value='".$inputweeknr."' required></td>";
+echo "<td><input type='week' style='width:9.8vw' name='week_nummer' value='".$inputweeknr."' required></td>";
 echo "<td><input class='button' type='submit' name='change_week' value='refresh'></td>";
 echo "</tr>";
 echo "</table>";

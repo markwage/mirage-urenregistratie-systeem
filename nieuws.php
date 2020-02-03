@@ -132,13 +132,13 @@ if ($aktie == 'disp')
         
         if (!isset($_SESSION['admin']) || (!$_SESSION['admin'])) 
         {
-            echo '<td><a href="nieuws.php?aktie=dispbericht&edtid='.$id.'"><img class="button" src="./img/buttons/icons8-glasses-48.png" alt="display nieuwsbericht" title="display volledig nieuwsbericht" /></a></td>';
+            echo '<td><a href="nieuws.php?aktie=dispbericht&edtid='.$id.'"><img class="button" src="./img/icons/view-48.png" alt="display nieuwsbericht" title="display volledig nieuwsbericht" /></a></td>';
         } 
         else 
         {
-			echo '<td><a href="nieuws.php?aktie=edit&edtid='.$id.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="wijzigen nieuwsbericht" title="wijzig nieuwsbericht" /></a></td>
-			<td><a href="nieuws.php?aktie=delete&edtid='.$id.'"><img class="button" src="./img/buttons/icons8-trash-can-48.png" alt="delete nieuwsbericht" title="delete het nieuwsbericht" /></a></td>
-			<td><a href="add_nieuws.php"><img class="button" src="./img/buttons/icons8-plus-48.png" alt="toevoegen nieuwsbericht" title="toevoegen nieuwsbericht" /></a></td>'; 
+			echo '<td><a href="nieuws.php?aktie=edit&edtid='.$id.'"><img class="button" src="./img/icons/edit-48.png" alt="wijzigen nieuwsbericht" title="wijzig nieuwsbericht" /></a></td>
+			<td><a href="nieuws.php?aktie=delete&edtid='.$id.'"><img class="button" src="./img/icons/trash-48.png" alt="delete nieuwsbericht" title="delete het nieuwsbericht" /></a></td>
+			<td><a href="add_nieuws.php"><img class="button" src="./img/icons/add-48.png" alt="toevoegen nieuwsbericht" title="toevoegen nieuwsbericht" /></a></td>'; 
 		}
         
         echo '</tr>';

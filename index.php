@@ -77,27 +77,27 @@ include ("header.php");
             
             if ($qry_toturen > 0)
             {
-                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="Er zijn uren ingevuld voor deze week" /></td>';
+                echo '<td style="text-align:center;"><img class="button" src="./img/icons/checkmark-32.png" alt="1" title="Er zijn uren ingevuld voor deze week" /></td>';
             }
             else
             {
-                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="Er zijn nog geen uren ingevuld voor deze week" /></td>';
+                echo '<td style="text-align:center;"></td>';
             }
             
             if ($qry_approved == 1) 
             {
-                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-up-48.png" alt="1" title="is approved" /></td>';
+                echo '<td style="text-align:center;"><img class="button" src="./img/icons/checkmark-32.png" alt="1" title="is approved" /></td>';
             }
             else 
             {
-                echo '<td style="text-align:center;"><img class="button" src="./img/buttons/icons8-thumbs-down-48.png" alt="0" title="is nog niet approved" /></td>';
+                echo '<td style="text-align:center;"></td>';
             }
                        
             echo "<td>$qry_approveddatum</td>";
             echo "<td>$qry_approvedbyuser</td>";
             
             // Nu een button displayen om die betreffende week te muteren
-            echo '<td><a href="uren.php?edtweek='.$qry_jaar."-W".$qry_week.'"><img class="button" src="./img/buttons/icons8-edit-48.png" alt="Toon uren van deze week" title="Toon uren van deze week" /></a></td>';
+            echo '<td><a href="uren.php?edtweek='.$qry_jaar."-W".$qry_week.'"><img class="button" src="./img/icons/edit-48.png" alt="Toon uren van deze week" title="Toon uren van deze week" /></a></td>';
             
             echo '</tr>';
             

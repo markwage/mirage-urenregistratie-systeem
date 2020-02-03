@@ -153,7 +153,8 @@ function writelog($progname, $loglevel, $logrecord)
         $username = "onbekend";
     }
     
-    $logfile_name = "C:\\wamp64\\www\\mirage-urenregistratie-systeem\\logs\\systemlogMUS.log";
+    //$logfile_name = "C:\\wamp64\\www\\mirage-urenregistratie-systeem\\logs\\systemlogMUS.log";
+    $logfile_name = ".\\logs\\systemlogMUS.log";
     date_default_timezone_set('Europe/Amsterdam');
     $datumlog = date('Ymd H:i:s');
     file_put_contents($logfile_name, PHP_EOL.$datumlog.";".$progname.";".$username.";".$loglevel.";".$logrecord, FILE_APPEND);
@@ -305,7 +306,7 @@ function berekendagenreadonly()
         {
             $aantal_dagen_readonly = '';
         }
-        echo "<td><img class='button' src='./img/buttons/icons8-plus-48.png' alt='toevoegen nieuwe regel' title='toevoegen nieuwe regel' onclick='add_row(".$aantal_dagen_readonly.");' /></td>";
+        echo "<td><img class='button' src='./img/icons/add-48.png' alt='toevoegen nieuwe regel' title='toevoegen nieuwe regel' onclick='add_row(".$aantal_dagen_readonly.");' /></td>";
     }
     else
     {

@@ -108,7 +108,7 @@ else
             if($frm_username <> 'dummy')
             { 
                 echo '<tr class="'.$rowcolor.'">';
-                echo "<td><strong>".$frm_achternaam." ".$frm_tussenvoegsel." ".$frm_voornaam."</strong></td>";
+                echo "<td><strong>".$frm_achternaam.", ".$frm_voornaam." ".$frm_tussenvoegsel."</strong></td>";
                 for($ix=0; $ix<12; $ix++)
                 {
                     echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
@@ -137,7 +137,7 @@ else
     else
     {
         echo '<tr class="'.$rowcolor.'">';
-        echo "<td><strong>".$frm_achternaam." ".$frm_tussenvoegsel." ".$frm_voornaam."</strong></td>";
+        echo "<td><strong>".$frm_achternaam.", ".$frm_voornaam." ".$frm_tussenvoegsel."</strong></td>";
         for($ix=0; $ix<12; $ix++)
         {
             echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
@@ -145,7 +145,7 @@ else
         echo "<td style='width:4.2vw; text-align:right'><strong>".number_format($frm_jaartotaal_uren, 2)."</strong></td>";
     }
     echo "</tr>";
-    writelog("rpt_uren_urensoort","INFO","Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd");
+    writelog("rpt_verlofuren_medewerker","INFO","Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd");
 }
 echo "</table></center>";
 // This button is needed for when user pushes the ENTER button when changing the yearnumber. Button is not displayed

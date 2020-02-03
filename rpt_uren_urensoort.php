@@ -10,6 +10,21 @@ include ("autoload.php");
 check_cookies();
 include ("header.php");
 
+if (isset($_GET['username']))
+{
+    //decrypt username
+    $username_decrypted = convert_string('decrypt', $_GET['username']);
+    if($username_decrypted == '')
+    {
+        writelog("rpt_uren_urensoort","ERROR"," Men heeft geprobeerd om username handmatig aan te passen in de url: ".$_GET['username']);
+        exit("Je hebt geprobeerd om username handmatig aan te passen in de url");
+    }
+}
+else
+{
+    $username_decrypted = "";
+}
+
 ?>
 <div id="main">
 	<h1>Overzicht uren per urensoort</h1>
@@ -67,11 +82,23 @@ $rowcolor = 'row-a';
 
 // Hier komt het ophalen en optellen van de uren
 
-$sql_code = "SELECT soortuur, omschrijving, approval_maand, SUM(uren) AS totaal_uren
-             FROM view_uren_soortuur
-             WHERE approval_jaar = ".$inputjaar."
-             GROUP BY approval_maand, soortuur
-             ORDER BY soortuur, approval_maand";
+if($username_decrypted == "")
+{
+    $sql_code = "SELECT soortuur, omschrijving, approval_maand, SUM(uren) AS totaal_uren
+                 FROM view_uren_soortuur
+                 WHERE approval_jaar = ".$inputjaar."
+                 GROUP BY approval_maand, soortuur
+                 ORDER BY soortuur, approval_maand";
+}
+else
+{
+    $sql_code = "SELECT soortuur, omschrijving, approval_maand, SUM(uren) AS totaal_uren
+                 FROM view_uren_soortuur
+                 WHERE approval_jaar = ".$inputjaar."
+                 AND user = '".$username_decrypted."'
+                 GROUP BY approval_maand, soortuur
+                 ORDER BY soortuur, approval_maand";
+}
 
 $sql_out = mysqli_query($dbconn, $sql_code);
 if(!$sql_out)

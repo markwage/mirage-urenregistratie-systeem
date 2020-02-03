@@ -120,7 +120,7 @@ if ($aktie == 'disp')
 		{
 		    echo '<tr class="'.$rowcolor.'">
             <td><b>'.$achternaam.', '.$voornaam.' '.$tussenvoegsel.'</b></td><td style=\'text-align:center\'>'.$jaar.' '.$maand.'</td>
-			<td><a href="approve.php?aktie=dspuren&user='.$username.'&jaar='.$jaar.'&maand='.$maand.'"><img class="button" src="./img/buttons/icons8-glasses-48.png" alt="Toon week" title="Toon de uren van deze week" /></a></td>
+			<td><a href="approve.php?aktie=dspuren&user='.$username.'&jaar='.$jaar.'&maand='.$maand.'"><img class="button" src="./img/icons/view-48.png" alt="Toon week" title="Toon de uren van deze week" /></a></td>
 			</tr>';
 		}
 		elseif($jaar == '')
