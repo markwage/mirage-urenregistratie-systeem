@@ -19,12 +19,9 @@ if (isset($_COOKIE['ID_mus']))
 	<div class="sidebox">
 	    <h1 class="clear">Urenadministratie</h1>
 	    <ul class="sidemenu">
-	        <li><a href="uren.php?aktie=toevoegen">Uren</a></li>
-	        <li><a href="users.php?aktie=editprof&edtuser=<?php echo $_SESSION["username_encrypted"] ?>">Mijn profiel</a></li>
-	        <!-- 
-	        <li><a href="rpt_geboekte_uren_per_maand.php?user=<?php echo $_SESSION["username_encrypted"] ?>">Geboekte uren per maand</a></li>
-	        -->
+	        <li><a href="uren.php?aktie=toevoegen">Uren boeken</a></li>
 	        <li><a href="rpt_uren_urensoort.php?username=<?php echo $_SESSION["username_encrypted"] ?>">Mijn geboekte uren per maand</a></li>
+	        <li><a href="users.php?aktie=editprof&edtuser=<?php echo $_SESSION["username_encrypted"] ?>">Mijn profiel</a></li>
 	    </ul>
 	</div>
 	
@@ -40,6 +37,7 @@ if (isset($_COOKIE['ID_mus']))
 		        <li><a href="users.php?aktie=disp">Usermanagement</a></li>
 		        <li><a href="soorturen.php?aktie=disp">Onderhoud soort uren</a></li>
 	    	    <li><a href="nieuws.php?aktie=disp">Onderhoud nieuwsartikelen</a></li>
+	    	    <li><a href="display_systemlog.php" target="_blank">Display systemlog</a></li>
 	    	</ul>
 		</div>
 		<div class="sidebox">
@@ -48,7 +46,7 @@ if (isset($_COOKIE['ID_mus']))
 	        <li><a href="rpt_uren_urensoort.php">Totaal uren per urensoort</a></li>
 	        <li><a href="rpt_verlofuren_medewerker.php">Opgenomen verlofuren per mdw</a></li>
 	    </ul>
-	</div>
+	    </div>
 		<?php 
 	}
 }		

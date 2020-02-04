@@ -52,21 +52,37 @@ include ("header.php");
             {
                 $sql_row = mysqli_fetch_array($sql_out);
                 
-                $qry_jaar                  = $mainJaar[$ix1];
-                $qry_week                  = $mainWeek[$ix1];
-                $qry_approved              = $sql_row['approved'];
-                $qry_approveddatum         = $sql_row['approveddatum'];
-                $qry_approvedbyuser        = $sql_row['approvedbyuser'];
-                $qry_toturen               = $sql_row['toturen'];
+                $qry_jaar           = $mainJaar[$ix1];
+                $qry_week           = $mainWeek[$ix1];
+                $qry_approved       = $sql_row['approved'];
+                $qry_approveddatum  = $sql_row['approveddatum'];
+                $qry_approvedbyuser = $sql_row['approvedbyuser'];
+                $qry_toturen        = $sql_row['toturen'];
+                
+                $sql_code_name = "SELECT voornaam, tussenvoegsel, achternaam FROM users
+                             WHERE username='$qry_approvedbyuser'";
+                if($sql_out_name = mysqli_query($dbconn, $sql_code_name))
+                {
+                    if(mysqli_num_rows($sql_out_name) > 0)
+                    {
+                        $sql_row_name = mysqli_fetch_array($sql_out_name);
+                        $qry_naam_approver = $sql_row_name['voornaam']." ".$sql_row_name['tussenvoegsel']." ".$sql_row_name['achternaam'];
+                    }
+                    else
+                    {
+                        $qry_naam_approver = "";
+                    }
+                }
             } 
             else 
             {
-    	        $qry_jaar                  = $mainJaar[$ix1];
-    	        $qry_week                  = $mainWeek[$ix1];
-    	        $qry_approved              = ' ';
-    	        $qry_approveddatum         = ' ';
-    	        $qry_approvedbyuser        = ' ';
-    	        $qry_toturen               = 0; 
+    	        $qry_jaar           = $mainJaar[$ix1];
+    	        $qry_week           = $mainWeek[$ix1];
+    	        $qry_approved       = ' ';
+    	        $qry_approveddatum  = ' ';
+    	        $qry_approvedbyuser = ' ';
+    	        $qry_naam_approver  = ' ';
+    	        $qry_toturen        = 0; 
             }
             
             $week_array = getStartAndEndDate($mainWeek[$ix1],$mainJaar[$ix1]);
@@ -94,10 +110,17 @@ include ("header.php");
             }
                        
             echo "<td>$qry_approveddatum</td>";
-            echo "<td>$qry_approvedbyuser</td>";
+            echo "<td>$qry_naam_approver</td>";
             
-            // Nu een button displayen om die betreffende week te muteren
-            echo '<td><a href="uren.php?edtweek='.$qry_jaar."-W".$qry_week.'"><img class="button" src="./img/icons/edit-48.png" alt="Toon uren van deze week" title="Toon uren van deze week" /></a></td>';
+            // Nu een button displayen om die betreffende week te muteren als de volledige week approved is
+            if($qry_approved == 1)
+            {
+                echo '<td><a href="uren.php?edtweek='.$qry_jaar."-W".$qry_week.'"><img class="button" src="./img/icons/view-48.png" alt="Toon uren van deze week" title="Toon uren van deze week" /></a></td>';
+            }
+            else
+            {
+                echo '<td><a href="uren.php?edtweek='.$qry_jaar."-W".$qry_week.'"><img class="button" src="./img/icons/edit-48.png" alt="Toon uren van deze week" title="Toon uren van deze week" /></a></td>';
+            }
             
             echo '</tr>';
             

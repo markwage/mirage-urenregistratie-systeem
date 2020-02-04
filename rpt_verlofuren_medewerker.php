@@ -108,7 +108,7 @@ else
             if($frm_username <> 'dummy')
             { 
                 echo '<tr class="'.$rowcolor.'">';
-                echo "<td><strong>".$frm_achternaam.", ".$frm_voornaam." ".$frm_tussenvoegsel."</strong></td>";
+                echo "<td>".$frm_achternaam.", ".$frm_voornaam." ".$frm_tussenvoegsel."</td>";
                 for($ix=0; $ix<12; $ix++)
                 {
                     echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
@@ -137,7 +137,7 @@ else
     else
     {
         echo '<tr class="'.$rowcolor.'">';
-        echo "<td><strong>".$frm_achternaam.", ".$frm_voornaam." ".$frm_tussenvoegsel."</strong></td>";
+        echo "<td>".$frm_achternaam.", ".$frm_voornaam." ".$frm_tussenvoegsel."</td>";
         for($ix=0; $ix<12; $ix++)
         {
             echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";

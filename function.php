@@ -153,21 +153,31 @@ function writelog($progname, $loglevel, $logrecord)
         $username = "onbekend";
     }
     
-    //$logfile_name = "C:\\wamp64\\www\\mirage-urenregistratie-systeem\\logs\\systemlogMUS.log";
-    $logfile_name = ".\\logs\\systemlogMUS.log";
+    $logfile_name = "logs/system.log";
     date_default_timezone_set('Europe/Amsterdam');
     $datumlog = date('Ymd H:i:s');
     file_put_contents($logfile_name, PHP_EOL.$datumlog.";".$progname.";".$username.";".$loglevel.";".$logrecord, FILE_APPEND);
 }
 
 //------------------------------------------------------------------------
-// Display errorscreen indien er een sql error opgetreden is
+// Write debuglogrecords to file
 //------------------------------------------------------------------------
-//function sqlError($phpProg) 
-//{
-//    writelogrecord('"'.$phpProg.'"',"ERROR Er is een fout opgetreden bij het uitvoeren van een query -> ".mysqli_error($dbconn));
-//    
-//}
+function writedebug($logrecord)
+{
+    if (isset($_SESSION['username']))
+    {
+        $username = $_SESSION['username'];
+    }
+    else
+    {
+        $username = "onbekend";
+    }
+    
+    $logfile_name = ".\\logs\\debug.log";
+    date_default_timezone_set('Europe/Amsterdam');
+    $datumlog = date('Ymd H:i:s');
+    file_put_contents($logfile_name, PHP_EOL.$datumlog.";".$logrecord, FILE_APPEND);
+}
 
 //------------------------------------------------------------------------
 // Vullen van de frm_variabelen voor invullen van soort uren-scherm
@@ -207,11 +217,16 @@ function form_user_fill($btn_aktie)
     if ($btn_aktie == "save" || $btn_aktie == "toevoegen") 
     {
         global $frm_username, $frm_pass, $frm_pass2, $frm_admin, $frm_voornaam, $frm_tussenvoegsel, $frm_achternaam,
-        $frm_email, $frm_indienst, $formerror;
+        $frm_email, $frm_indienst, $frm_uren_invullen, $frm_approvenallowed, $formerror;
+        
         $formerror = 0;
         $frm_username      = $_POST['username'];
         $frm_pass          = $_POST['pass'];
         $frm_pass2         = $_POST['pass2'];
+        $frm_voornaam      = $_POST['voornaam'];
+        $frm_tussenvoegsel = $_POST['tussenvoegsel'];
+        $frm_achternaam    = $_POST['achternaam'];
+        $frm_email         = $_POST['email'];
         
         if (isset($_POST['admin'])) 
         {
@@ -219,7 +234,7 @@ function form_user_fill($btn_aktie)
         } 
         else 
         {
-            $frm_admin = "";
+            $frm_admin = 0;
         }
         
         if (isset($_POST['approvenallowed'])) 
@@ -228,13 +243,8 @@ function form_user_fill($btn_aktie)
         } 
         else 
         {
-            $frm_approvenallowed = "";
+            $frm_approvenallowed = 0;
         }
-        
-        $frm_voornaam      = $_POST['voornaam'];
-        $frm_tussenvoegsel = $_POST['tussenvoegsel'];
-        $frm_achternaam    = $_POST['achternaam'];
-        $frm_email         = $_POST['email'];
         
         if (isset($_POST['indienst'])) 
         {
@@ -242,16 +252,16 @@ function form_user_fill($btn_aktie)
         } 
         else 
         {
-            $frm_indienst = "";
+            $frm_indienst = 0;
         }
         
-        if (isset($_POST['ureninvullen']))
+        if (isset($_POST['uren_invullen']))
         {
-            $frm_ureninvullen = $_POST['ureninvullen'];
+            $frm_uren_invullen = $_POST['uren_invullen'];
         }
         else
         {
-            $frm_ureninvullen = "";
+            $frm_uren_invullen = 0;
         }
     }
 }

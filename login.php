@@ -54,6 +54,8 @@ if (isset($_POST['submit']))
 		$_POST['emailadres']      = $sql_rows['emailadres'];
 		$_POST['indienst']        = $sql_rows['indienst'];
 		$_POST['lastloggedin']    = $sql_rows['lastloggedin'];
+		$_POST['uren_invullen']   = $sql_rows['uren_invullen'];
+		
 		
 		//Error indien user niet meer in dienst is
 		if (!$_POST['indienst'])
@@ -65,7 +67,8 @@ if (isset($_POST['submit']))
 		//Error indien password fout
 		elseif ($_POST['pass'] != $sql_rows['password']) 
 		{
-		    writelog("login","WARN","User ".$_POST['username']." probeerde in te loggen met een foutief wachtwoord");
+		    writelog("login","DEBUG","User ".$_POST['username']." probeerde in te loggen met een foutief wachtwoord - ".$_POST['pass']);
+		    writelog("login","DEBUG","Het wachtwoord in de database: - ".$sql_rows['password']);
 		    
 			echo '<blockquote class="error">ERROR: Foutief wachtwoord. Probeer het nogmaals</blockquote>';
 		}
@@ -86,8 +89,11 @@ if (isset($_POST['submit']))
 			$_SESSION['achternaam']      = $_POST['achternaam'];
 			$_SESSION['emailadres']      = $_POST['emailadres'];
 			$_SESSION['lastloggedin']    = $_POST['lastloggedin'];
+			$_SESSION['indienst']        = $_POST['indienst'];
+			$_SESSION['uren_invullen']   = $_POST['uren_invullen'];
+			
 			$_SESSION['username_encrypted'] = convert_string('encrypt', $_SESSION['username']);
-			writelog("login","INFO","User ".$_SESSION['username_encrypted']." is succesvol encrypted");
+			writelog("login","INFO","User is succesvol encrypted");
 			// update lastloggedin in de tabel
 			date_default_timezone_set('Europe/Amsterdam');
 			$sql_code = "UPDATE users SET lastloggedin = '".date('Y-m-d H:i:s')."' 
@@ -108,7 +114,7 @@ if (isset($_POST['submit']))
 				<label>Name</label>
 				<input name="username" type="text" maxlength="40" />
 				<label>Password</label>
-				<input name="pass" type="password" maxlength="50" />
+				<input name="pass" type="password" maxlength="32"/>
 				<br /><br />	
 				<input class="button" name="submit" type="submit" value="login" />		
 				</p>		

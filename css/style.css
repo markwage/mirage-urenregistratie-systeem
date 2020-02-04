@@ -34,7 +34,7 @@ a:hover {
 /* headers */
 h1, h2, h3 { font: bold verdana, arial, sans-serif; color: #118981; }
 /* h1 { font-size: 24px; padding-bottom: 13px; } */
-h1 { font-size: 1.6vw; padding-bottom: 0.5vw; text-transform: uppercase;}
+h1 { font-size: 1.6vw; padding-bottom: 0.5vw;}
 /* h2 { font-size: 20px; text-transform: uppercase; } */
 h2 { font-size: 1.33vw; padding-top: 10px; padding-bottom: 10px; }
 /* h3 { font-size: 16px; padding-top: 10px; padding-bottom: 10px; } */
@@ -150,6 +150,13 @@ input {
 input[type="checkbox"]{
   width: 18px; /*Desired width*/
   height: 18px; /*Desired height*/
+}
+/* Normaal werkt readonly niet voor checkboxes echter met onderstaande 
+   wordt de checkbox niet aanpasbaar
+   Je kan ook disabled gebruiken in de form maar dan woordt de value
+   van POST niet gebruikt. */ 
+input[type='checkbox'][readonly]{
+    pointer-events: none;
 }
 
 input:focus {

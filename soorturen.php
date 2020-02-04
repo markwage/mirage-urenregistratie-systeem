@@ -165,7 +165,7 @@ if ($aktie == 'disp')
 	    }
 	    
 		echo '<tr class="'.$rowcolor.'">
-			<td><b>'.$code.'</b></td><td>'.$omschrijving.'</td><td><center><input type="checkbox" id="facturabel" name="facturabel" disabled '.$facturabel_checked.'></center></td>
+			<td><b>'.$code.'</b></td><td>'.$omschrijving.'</td><td><center><input type="checkbox" id="facturabel" name="facturabel" readonly '.$facturabel_checked.'></center></td>
 			<td><a href="soorturen.php?aktie=edit&edtcode='.$code.'"><img class="button" src="./img/icons/edit-48.png" alt="wijzigen soort uur" title="wijzig soort uur '.$code.'" /></a></td>
 			<td><a href="soorturen.php?aktie=delete&edtcode='.$code.'"><img class="button" src="./img/icons/trash-48.png" alt="delete soort uur" title="delete soort uur '.$code.'" /></a></td>
 			<td><a href="add_soortuur.php"><img class="button" src="./img/icons/add-48.png" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>

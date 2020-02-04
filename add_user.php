@@ -199,9 +199,9 @@ if (isset($_POST['submit']))
 		</tr>
 		<tr>
 			<td>Wachtwoord</td>
-			<td><input type="password" name="pass" maxlength="10" value="<?php if (isset($frm_pass)) { echo $frm_pass; } ?>"></td>
+			<td><input type="password" name="pass" maxlength="32" value="<?php if (isset($frm_pass)) { echo $frm_pass; } ?>"></td>
 			<td>Confirm</td>
-			<td><input type="password" name="pass2" maxlength="10" value="<?php if (isset($frm_pass2)) { echo $frm_pass2; } ?>"></td>
+			<td><input type="password" name="pass2" maxlength="32" value="<?php if (isset($frm_pass2)) { echo $frm_pass2; } ?>"></td>
 		</tr>
 		<tr>
 			<td>Admin</td>

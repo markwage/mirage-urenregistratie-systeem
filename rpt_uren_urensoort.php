@@ -129,7 +129,7 @@ else
             if($frm_soortuur <> 'dummy')
             { 
                 echo '<tr class="'.$rowcolor.'">';
-                echo "<td><strong>".$frm_soortuur."</strong></td><td><strong>".$frm_omschrijving."</strong></td>";
+                echo "<td>".$frm_soortuur."</td><td>".$frm_omschrijving."</td>";
                 for($ix=0; $ix<12; $ix++)
                 {
                     echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
@@ -148,12 +148,12 @@ else
     // Indien $row_soortuur niet is gevuld dan zijn er geen gegevens van het jaar
     if(!isset($row_soortuur))
     {
-        echo '</table></center><blockquote class="error">ERROR: Er zijn geen gegevens van dit jaar</blockquote>';
+        echo '</table></center><blockquote class="error">ERROR: Er zijn geen gegevens aanwezig over dit jaar</blockquote>';
     }
     else
     {
         echo '<tr class="'.$rowcolor.'">';
-        echo "<td><strong>".$row_soortuur."</strong></td><td><strong>".$row_omschrijving."</strong></td>";
+        echo "<td>".$row_soortuur."</td><td>".$row_omschrijving."</td>";
         for($ix=0; $ix<12; $ix++)
         {
             echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
