@@ -25,6 +25,15 @@ else
     $username_decrypted = "";
 }
 
+if(isset($_GET['fullname']) && ($_GET['fullname'] <> ""))
+{
+    $fullname_decrypted = "Medewerker: ".convert_string('decrypt', $_GET['fullname']);
+}
+else
+{
+    $fullname_decrypted = "";
+}
+
 ?>
 <div id="main">
 	<h1>Overzicht uren per urensoort</h1>
@@ -59,6 +68,9 @@ echo "<tr>";
 echo "<td><strong>Jaar</strong></td>";
 echo "<td><input type='number' style='width:3.2vw' name='jaartal' min='2019' max='2300' value='".$inputjaar."'>";
 echo "<td><input class='button' type='submit' name='change_jaar' value='refresh'></td>";
+echo "<td style='width:17vw; text-align:right'><strong>".$fullname_decrypted."</strong></td>";
+
+//echo "<td><strong>Medewerker: ".$_SESSION['voornaam']." ".$_SESSION['tussenvoegsel']." ".$_SESSION['achternaam']."</strong></td>";
 echo "</tr>";
 echo "</table>";
 

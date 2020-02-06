@@ -15,7 +15,9 @@ include ("header.php");
 	<h1>Toevoegen nieuwe user</h1>
 			
 <?php 
-//This code runs if the form has been submitted
+//-------------------------------------------------------------------------
+// This code runs if the form has been submitted
+//-------------------------------------------------------------------------
 if (isset($_POST['cancel'])) 
 {
 	header("location: users.php?aktie=disp");
@@ -142,6 +144,7 @@ if (isset($_POST['submit']))
 	if (!$formerror) 
 	{ 
 		//$_POST['indienst'] = 1;
+		$decrypted_pass = $_POST['pass'];
 		$_POST['pass'] = md5($_POST['pass']);
 		
 		if (!get_magic_quotes_gpc()) 
@@ -169,21 +172,46 @@ if (isset($_POST['submit']))
 		{
 		    writelog("add_user","INFO","User {$_POST['username']} is succesvol aangemaakt");
 		    
-			//$frm_username      = "";
-			//$frm_pass          = "";
-			//$frm_pass2         = "";
-			//$frm_voornaam      = "";
-			//$frm_tussenvoegsel = "";
-			//$frm_achternaam    = "";
-			//$frm_email         = "";
-			//$frm_indienst      = "1";
-			//$frm_ureninvullen  = "1";
 			header("location: users.php?aktie=disp"); 
+			
+			$mail_to = $frm_email;
+			$mail_subject = 'Welkom op Mirage Urenregistratie Systeem';
+			$mail_from = 'mark.wage@hotmail.com';
+			
+			// Aanmaken email headers
+			$headers  = 'MIME-Version: 1.0' . "\r\n";
+			$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+			$headers .= 'From: '.$mail_from."\r\n".
+			 			'Reply-To: '.$mail_from."\r\n" .
+			 			'X-Mailer: PHP/' . phpversion();
+			
+			// Creeeren van de email message
+			$message = '<html><body>';
+			$message .= '<h1>Welkom '.$frm_voornaam.'</h1>';
+			$message .= '<p style="font:18px;">Er is voor jou een userid opgenomen in Mirage Urenregistratie Systeem</p>';
+			$message .= '<p style="font:18px;">Ga hiervoor naar '.$_SERVER['SERVER_NAME'].' en logon met onderstaande gegevens</p>';
+			$message .= '<table>';
+			$message .= '<tr><td>Username</td><td>'.$frm_username.'</td></tr>';
+			$message .= '<tr><td>Wachtwoord</td><td>'.$decrypted_pass.'</td></tr>';
+			$message .= '<tr><td>Volledige naam</td><td>'.$frm_voornaam.' '.$frm_tussenvoegsel.' '.$frm_achternaam.'</td></tr>';
+			$message .= '<tr><td>Emailadres</td><td>'.$frm_email.'</td></tr>';
+			$message .= '</table>';
+			$message .= '</body></html>';
+			
+			// Versturen van de email
+			if(mail($mail_to, $mail_subject, $message, $headers)){
+			    echo '<blockquote>De mail is succesvol verstuurd.</blockquote>';
+			    writelog("add_user","INFO","Mail succesvol verstuurd naar ".$mail_to." ivm aanmaken userid ".$frm_username);
+			} else{
+			    echo '<blockquote class="errmsg">Het was niet mogelijk om de mail te versturen. Probeer het nogmaals.</blockquote>';
+			    writelog("add_user","ERROR","Het is niet gelukt om een mail te versturen naar ".$mail_to." ivm aanmaken userid ".$frm_username);
+			}
+			
 		}
 		else 
 		{
-			echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />
-			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
+			echo '<blockquote class="errmsg">Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />
+			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</blockquote>';
 		}
 	}
 } 
@@ -205,25 +233,12 @@ if (isset($_POST['submit']))
 		</tr>
 		<tr>
 			<td>Admin</td>
-			<!-- <td><input type="checkbox" name="admin"></td> -->
-			<td><div class="onoffswitch">
-    			<input type="checkbox" name="admin" class="onoffswitch-checkbox" id="myonoffswitch">
-    			<label class="onoffswitch-label" for="myonoffswitch">
-        			<span class="onoffswitch-inner"></span>
-        			<span class="onoffswitch-switch"></span>
-    			</label>
-			</div></td>
+			<td><input type="checkbox" name="admin"></td>
+			
 		</tr>
 		<tr>
 			<td>Approven</td>
-			<!-- <td><input type="checkbox" name="admin"></td> -->
-			<td><div class="onoffswitch">
-    			<input type="checkbox" name="approvenallowed" class="onoffswitch-checkbox" id="myonoffswitch3">
-    			<label class="onoffswitch-label" for="myonoffswitch3">
-        			<span class="onoffswitch-inner"></span>
-        			<span class="onoffswitch-switch"></span>
-    			</label>
-			</div></td>
+			<td><input type="checkbox" name="approvenallowed"></td>
 		</tr>
 		<tr>
 			<td>Voornaam</td>
@@ -241,23 +256,11 @@ if (isset($_POST['submit']))
 		</tr>
 		<tr>
 			<td>In dienst</td>
-			<td><div class="onoffswitch">
-    	    	<input type="checkbox" name="indienst" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
-    		    <label class="onoffswitch-label" for="myonoffswitch2">
-        			<span class="onoffswitch-inner"></span>
-        			<span class="onoffswitch-switch"></span>
-    			</label>
-			</div></td>
+			<td><input type="checkbox" name="indienst"></td>
 		</tr>
 		<tr>
 			<td>Uren invullen</td>
-			<td><div class="onoffswitch">
-    			<input type="checkbox" name="ureninvullen" class="onoffswitch-checkbox" id="myonoffswitch4" checked>
-    			<label class="onoffswitch-label" for="myonoffswitch4">
-        			<span class="onoffswitch-inner"></span>
-        			<span class="onoffswitch-switch"></span>
-    			</label>
-			</div></td>
+			<td><input type="checkbox" name="ureninvullen"></td>
 		</tr>
 	</table>
 	<br />

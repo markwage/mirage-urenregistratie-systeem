@@ -47,27 +47,87 @@ if (isset($_POST['cancel']))
 if (isset($_POST['approve'])) 
 {
     $approvedbyuser = $_SESSION['username'];
-    $user           = $_POST['username'];
+    $username       = $_POST['username'];
     $maand          = $_POST['maand'];
     $jaar           = $_POST['jaar'];
+    $emailadres     = $_POST['emailadres'];
     $sql_code = "UPDATE uren
                  SET approveddatum = '".date('Y-m-d')."',
                  approvedbyuser = '".$approvedbyuser."',
                  approved = '1'
-                 WHERE user = '".$user."'
+                 WHERE user = '".$username."'
                  AND month(datum) = '".$maand."'
                  AND year(datum) = '".$jaar."'";
     $sql_out = mysqli_query($dbconn, $sql_code);
     
-    writelog("approve","INFO","Voor user {$user} is maand {$jaar}-{$maand} approved");
+    writelog("approve","INFO","Voor user {$username} is maand {$jaar}-{$maand} approved");
     
     $sql_insert = "INSERT INTO approvals (maand, jaar, user)
                    VALUES('".$maand."', 
                           '".$jaar."',
-                          '".$user."')";
+                          '".$username."')";
     $sql_out_insert = mysqli_query($dbconn, $sql_insert);
     
-    writelog("approve","INFO","Record succesvol toegevoegd in tabel approvals voor user {$user} periode {$jaar}-{$maand}");
+    writelog("approve","INFO","Record succesvol toegevoegd in tabel approvals voor user {$username} periode {$jaar}-{$maand}");
+    
+    //Versturen mail naar user dat de maand approved is
+        $mail_to = $emailadres;
+        $mail_subject = 'Uren van '.$jaar.'-'.$maand.' zijn approved';
+        $mail_from = 'mark.wage@hotmail.com';
+        
+        // Aanmaken email headers
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= 'From: '.$mail_from."\r\n".
+            'CC: mjwage@gmail.com' . "\r\n".
+            'Reply-To: '.$mail_from."\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+        
+        // Creeeren van de email message
+        //$message = '<html>';
+        mail_message_header();
+        //$message .='<body>';
+        $message .= '<p>De uren van gebruiker '.$username.' betreffende maand <strong>'.$jaar.'-'.$maand.'</strong> zijn approved in Mirage Urenregistratie Systeem<br />Approved door: '.$approvedbyuser.'</p>';
+                
+        // Display totaal per soortuur
+        $message .= '<p><strong>Totaal per urensoort</strong></p>';
+        $message .= '<table>';
+        $message .= '<tr><th colspan="2" style="text-align:left">Soort uur</th><th style="text-align:right">Totaal</th></tr>';
+        
+        $rowcolor = 'row-a';
+        
+        $sql_code = "SELECT SUM(uren) as toturen, soortuur, omschrijving, approved FROM view_uren_soortuur
+                WHERE user = '$username'
+                AND approval_maand = '$maand'
+                AND approval_jaar = '$jaar'
+                GROUP BY soortuur
+                ORDER BY soortuur";
+        $sql_out = mysqli_query($dbconn, $sql_code);
+        while ($sql_rows = mysqli_fetch_array($sql_out))
+        {
+            $approved     = $sql_rows['approved'];
+            $toturen      = $sql_rows['toturen'];
+            $soortuur     = $sql_rows['soortuur'];
+            $omschrijving = $sql_rows['omschrijving'];
+            
+            $message .= '<tr class="'.$rowcolor.'"><td>'.$soortuur.'</td><td>'.$omschrijving.'</td><td style=\'text-align:right\'><strong>'.$toturen.'</strong></td></tr>';
+            
+            check_row_color($rowcolor);
+        }
+        
+        $message .= '</table>';
+        $message .= '</body></html>';
+        writedebug("message voor de mail: ".$message);
+        // Versturen van de email
+        if($_SERVER['SERVER_NAME'] <> 'localhost')
+        {
+            if(mail($mail_to, $mail_subject, $message, $headers)){
+                writelog("approve","INFO","Mail succesvol verstuurd naar ".$mail_to." ivm approven uren user ".$_POST['username']);
+            } else{
+                echo '<blockquote class="errmsg">Het was niet mogelijk om de mail te versturen. Probeer het nogmaals.</blockquote>';
+                writelog("approve","ERROR","Het is niet gelukt om een mail te versturen naar ".$mail_to." ivm approven uren".$_POST['username']);
+            }
+        }
 
     header("location: approve.php?aktie=disp");
 }
@@ -225,6 +285,7 @@ if ($aktie == 'dspuren')
     <input type="hidden" name="maand" value="<?php if (isset($maand)) { echo $maand; } ?>">
     <input type="hidden" name="jaar" value="<?php if (isset($jaar)) { echo $jaar; } ?>">
     <input type="hidden" name="username" value="<?php if (isset($username)) { echo $username; } ?>">
+    <input type="hidden" name="emailadres" value="<?php if (isset($emailadres)) { echo $emailadres; } ?>">
     <input type="hidden" name="jaar" value="<?php if (isset($datum)) { echo substr($datum,0,4); } ?>">
     <!--  Tot hier -->
     <input class="button" type="submit" name="cancel" value="cancel" formnovalidate>

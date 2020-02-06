@@ -152,11 +152,12 @@ if (isset($_POST['save']) || isset($_POST['approval']))
                             writelog("uren","ERROR","Er is een fout opgetreden bij het selecteren van uren -> ".mysqli_error($dbconn));
                         }
                     }
-                    writelog("uren","INFO","Records zijn toegevoegd voor week ".$year."-".$week." ivm updaten van de betreffende week");
+                    //writelog("uren","INFO","Records zijn toegevoegd voor week ".$year."-".$week." ivm updaten van de betreffende week");
                 }
             }
         }
     }
+    writelog("uren","INFO","Records zijn toegevoegd voor week ".$year."-".$week." ivm updaten van de betreffende week");
 }
 ?>
 

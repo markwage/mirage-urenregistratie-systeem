@@ -173,7 +173,7 @@ function writedebug($logrecord)
         $username = "onbekend";
     }
     
-    $logfile_name = ".\\logs\\debug.log";
+    $logfile_name = "logs/debug.log";
     date_default_timezone_set('Europe/Amsterdam');
     $datumlog = date('Ymd H:i:s');
     file_put_contents($logfile_name, PHP_EOL.$datumlog.";".$logrecord, FILE_APPEND);
@@ -197,11 +197,6 @@ function form_soorturen_fill($aktie)
         {
             $frm_ID = $_POST['ID'];
         }
-        //if(!empty($_POST['facturabel']));
-        //{
-        //    echo ">>> ".$_POST['facturabel'];
-        //    $frm_facturabel    = $_POST['facturabel'];
-        //}
         
         $frm_code          = $_POST['code'];
         $frm_omschrijving  = $_POST['omschrijving'];
@@ -513,6 +508,41 @@ function getWeekdays($weeknr)
     $weekDagNaam[4] = "Vrij";
     $weekDagNaam[5] = "Zat";
     $weekDagNaam[6] = "Zon";
+}
+
+//-----------------------------------------------------------------------------
+// Style voor de verstuurde mails
+//-----------------------------------------------------------------------------
+function mail_message_header()
+{
+    global $message;
+    $message  = '
+<html>
+<body>
+<style type="text/css">
+table {
+    border: 1px solid black;
+	border-collapse: collapse;
+	margin: 10px 15px;	
+}
+th {
+	background: #13C3B7;
+	padding-left: 5px;
+	padding-right: 5px;
+	color: white;
+	text-align: left;
+}
+td {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+tr.row-a {
+	background: white;
+}
+tr.row-b {
+	background: #d0fffb; 
+}
+</style>';
 }
 
 ?>

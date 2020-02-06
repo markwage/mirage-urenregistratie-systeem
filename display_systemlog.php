@@ -39,7 +39,6 @@ if (isset($_POST['clean']))
     writelog("display_systemlog","INFO","De systemlog file is geschoond. Inhoud is verwijderd.");
     
     echo '<script>alert("De systemlog file is geschoond. Inhoud is verwijderd.")</script>';
-    
     echo "<script>window.close();</script>";
 }
 ?>

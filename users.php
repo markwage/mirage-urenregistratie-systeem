@@ -214,7 +214,8 @@ if (isset($_POST['save']))
 		achternaam='".$_POST['achternaam']."',
 		emailadres='".$_POST['email']."',
 		indienst='".$_POST['indienst']."',
-        approvenallowed='".$_POST['approvenallowed']."' 
+        approvenallowed='".$_POST['approvenallowed']."',
+        wrong_password_count=0 
         WHERE username = '".$_POST['username']."'";
 	    
 	    $sql_out = mysqli_query($dbconn, $sql_code);
@@ -325,14 +326,15 @@ if ($aktie == 'disp')
 		    echo '<td style="text-align:center;"></td>';
 		}
 		
-		
+		$fullname = $voornaam.' '.$tussenvoegsel.' '.$achternaam;
 		$username_encrypted = convert_string('encrypt', $username);
+		$fullname_encrypted = convert_string('encrypt', $fullname);
 		
-		echo '<td><a href="users.php?aktie=edit&edtuser='.$username_encrypted.'"><img class="button" src="./img/icons/edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>
-		<td><a href="users.php?aktie=delete&edtuser='.$username_encrypted.'"><img class="button" src="./img/icons/trash-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>
-        <td><a href="rpt_uren_urensoort.php?username='.$username_encrypted.'"><img class="button" src="./img/icons/stopwatch-48.png" alt="jaaroverzicht" title="display jaaroverzicht per urensoort voor '.$username.'" /></a></td>
-		<td><a href="add_user.php"><img class="button" src="./img/icons/add-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>
-		</tr>';
+		echo '<td><a href="users.php?aktie=edit&edtuser='.$username_encrypted.'"><img class="button" src="./img/icons/edit-48.png" alt="wijzigen user" title="wijzig user '.$username.'" /></a></td>';
+		echo '<td><a href="users.php?aktie=delete&edtuser='.$username_encrypted.'"><img class="button" src="./img/icons/trash-48.png" alt="delete user" title="delete user '.$username.'" /></a></td>';
+        echo '<td><a href="rpt_uren_urensoort.php?username='.$username_encrypted.'&fullname='.$fullname_encrypted.'"><img class="button" src="./img/icons/stopwatch-48.png" alt="jaaroverzicht" title="display jaaroverzicht per urensoort voor '.$username.'" /></a></td>';
+		echo '<td><a href="add_user.php"><img class="button" src="./img/icons/add-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>';
+		echo '</tr>';
 		
 		check_row_color($rowcolor);
 	}

@@ -55,7 +55,7 @@ if (isset($_POST['submit']))
 		$_POST['indienst']        = $sql_rows['indienst'];
 		$_POST['lastloggedin']    = $sql_rows['lastloggedin'];
 		$_POST['uren_invullen']   = $sql_rows['uren_invullen'];
-		
+		$wrong_pass_count         = $sql_rows['wrong_password_count'];
 		
 		//Error indien user niet meer in dienst is
 		if (!$_POST['indienst'])
@@ -65,19 +65,78 @@ if (isset($_POST['submit']))
 		}
 		
 		//Error indien password fout
-		elseif ($_POST['pass'] != $sql_rows['password']) 
+		elseif ((($_POST['pass'] != $sql_rows['password'])) ||  ($wrong_pass_count >= 3))
 		{
-		    writelog("login","DEBUG","User ".$_POST['username']." probeerde in te loggen met een foutief wachtwoord - ".$_POST['pass']);
-		    writelog("login","DEBUG","Het wachtwoord in de database: - ".$sql_rows['password']);
-		    
-			echo '<blockquote class="error">ERROR: Foutief wachtwoord. Probeer het nogmaals</blockquote>';
+		    $wrong_pass_count++;
+		    $sql_code_wrong_pass = "UPDATE users SET wrong_password_count = ".$wrong_pass_count."
+				                    WHERE username = '".$_POST['username']."'";
+		    $sql_out_wrong_pass = mysqli_query($dbconn, $sql_code_wrong_pass);
+		    if(!$sql_out_wrong_pass) 
+		    {
+		        writelog("login","ERROR","De query voor updaten user tijden login is fout gegaan - ".mysqli_error($dbconn));
+		    }
+		    if($wrong_pass_count >= 3)
+		    {
+		        writelog("login","ERROR","User ".$_POST['username']." heeft meer dan 3 keer met een foutief wachtwoord ingelogd en is nu geblokkeerd");
+		        writedebug("servername: ".$_SERVER['SERVER_NAME']);
+		        
+		        if($_SERVER['SERVER_NAME'] <> 'localhost') 
+		        {
+		            $mail_to = $_POST['emailadres'];
+		            $mail_subject = 'User is geblokkeerd voor Mirage Urenregistratie Systeem';
+		            $mail_from = 'mark.wage@hotmail.com';
+		        
+		            // Aanmaken email headers
+		            $headers  = 'MIME-Version: 1.0' . "\r\n";
+		            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		            $headers .= 'From: '.$mail_from."\r\n".
+		  		                'CC: mark.wage@mirage.nl, mjwage@gmail.com' . "\r\n".
+		  		                'Reply-To: '.$mail_from."\r\n" .
+		  		                'X-Mailer: PHP/' . phpversion();
+		        
+		            // Creeeren van de email message
+		            $message = '<html><body>';
+		            $message .= 'Hoi '.$_POST['voornaam'].',';
+		            $message .= '<p>Jouw userid <strong>'.$_POST['username'].'</strong> is <strong>geblokkeerd</strong> in Mirage Urenregistratie Systeem<br />';
+		            $message .= 'Reden hiervoor is dat er met dit userid drie keer of meer is geprobeerd in te loggen met een foutief wachtwoord.</p>';
+		            $message .= '<p>Om je userid weer te laten resetten dien je met kantoor te bellen. Je zal dan een nieuw wachtwoord krijgen waarna je weer met dit nieuwe wachtwoord kunt inloggen. Je kunt daarna je wachtwoord zelf wijzigen.</p>';
+		            $message .= '</body></html>';
+		        
+		            // Versturen van de email
+		            if(mail($mail_to, $mail_subject, $message, $headers)){
+		                //echo '<blockquote>De mail is succesvol verstuurd.</blockquote>';
+		                writelog("add_user","INFO","Mail succesvol verstuurd naar ".$mail_to." ivm geblokkeerd userid ".$_POST['username']);
+		            } else{
+		                echo '<blockquote class="errmsg">Het was niet mogelijk om de mail te versturen. Probeer het nogmaals.</blockquote>';
+		                writelog("add_user","ERROR","Het is niet gelukt om een mail te versturen naar ".$mail_to." ivm geblokkeerd userid ".$_POST['username']);
+		            }
+		        }
+		        
+		        echo '<blockquote class="error">ERROR: Er is drie keer of meer geprobeerd met deze user in te loggen met een foutief wachtwoord.<br />Bel naar kantoor om het userid te laten resetten.<br /><br /></blockquote>';
+		        exit();
+		    }
+		    else
+		    {
+		        writelog("login","WARN","User ".$_POST['username']." probeerde in te loggen met een foutief wachtwoord (count: ".$wrong_pass_count.")");
+		        echo '<blockquote class="error">ERROR: Het opgegeven wachtwoord is niet correct.</blockquote>';
+		    }
 		}
 		else 
 		{
 			// Toevoegen cookie indien username-password correct
 			$_POST['username'] = stripslashes($_POST['username']);
+			writedebug("servername is ".$_SERVER['HTTP_HOST']);
+			
+			if($_SERVER['HTTP_HOST'] == 'localhost')
+			{
+			    $hour = time() + 86400; // Cookie is 24 uur geldig
+			}
+			else
+			{
+			    $hour = time() + 1800;  // cookie is 30 minuten geldig
+			}
 			//$hour = time() + 1800;  // cookie is 30 minuten geldig
-			$hour = time() + 86400; // Cookie is 24 uur geldig
+			//$hour = time() + 86400; // Cookie is 24 uur geldig
 			setcookie('ID_mus', $_POST['username'], $hour);
 			setcookie('Key_mus', $_POST['pass'], $hour);
 			
@@ -93,11 +152,11 @@ if (isset($_POST['submit']))
 			$_SESSION['uren_invullen']   = $_POST['uren_invullen'];
 			
 			$_SESSION['username_encrypted'] = convert_string('encrypt', $_SESSION['username']);
-			writelog("login","INFO","User is succesvol encrypted");
 			// update lastloggedin in de tabel
 			date_default_timezone_set('Europe/Amsterdam');
-			$sql_code = "UPDATE users SET lastloggedin = '".date('Y-m-d H:i:s')."' 
-				       WHERE username = '".$_POST['username']."'";
+			$sql_code = "UPDATE users SET lastloggedin = '".date('Y-m-d H:i:s')."',
+                         wrong_password_count = 0 
+				         WHERE username = '".$_POST['username']."'";
 			$sql_out = mysqli_query($dbconn, $sql_code);
 			header("location: index.php");
 			
