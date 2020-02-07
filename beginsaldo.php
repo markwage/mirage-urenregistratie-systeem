@@ -68,7 +68,7 @@ if (isset($_POST['change_jaar'])) {
     echo "</tr>";
     $rowcolor = 'row-a';
 
-    // Hier komt het ophalen en optellen van de uren
+    // Hier komt het ophalen en optellen van de uren.
     $sql_code = "SELECT * FROM view_users_verlofuren
                  WHERE jaar = " . $inputjaar;
     writedebug("beginsaldo-query: " . $sql_code);
