@@ -5,10 +5,15 @@ include ("config.php");
 include ("header.php");
 
 ?>
-<div id="main">		
+<div id="main">
 	<h1>Onvoldoende rechten</h1>
-	<p class="errmsg">Je hebt onvoldoende rechten om deze aktie uit te voeren.</p><br /><br /><br /><br />
+	<p class="errmsg">Je hebt onvoldoende rechten om deze aktie uit te
+		voeren.</p>
+	<br />
+	<br />
+	<br />
+	<br />
 
-<?php 
+<?php
 include ("footer.php"); 
 ?>

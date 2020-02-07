@@ -1,9 +1,12 @@
 /********************************************
    HTML ELEMENTS
-********************************************/ 
+********************************************/
 
 /* top elements */
-* { padding: 0; margin: 0; }
+* {
+	padding: 0;
+	margin: 0;
+}
 
 body {
 	/* position: fixed; */
@@ -20,27 +23,46 @@ body {
 }
 
 /* links */
-a { 
-	background: inherit; 
-	color: #72A545; 
-	text-decoration: none; 
+a {
+	background: inherit;
+	color: #72A545;
+	text-decoration: none;
 }
-a:hover { 
-	background: inherit; 
-	color: #006699; 
-	text-decoration: underline; 
+
+a:hover {
+	background: inherit;
+	color: #006699;
+	text-decoration: underline;
 }
 
 /* headers */
-h1, h2, h3 { font: bold verdana, arial, sans-serif; color: #118981; }
+h1, h2, h3 {
+	font: bold verdana, arial, sans-serif;
+	color: #118981;
+}
 /* h1 { font-size: 24px; padding-bottom: 13px; } */
-h1 { font-size: 1.6vw; padding-bottom: 0.5vw;}
+h1 {
+	font-size: 1.6vw;
+	padding-bottom: 0.5vw;
+}
 /* h2 { font-size: 20px; text-transform: uppercase; } */
-h2 { font-size: 1.33vw; padding-top: 10px; padding-bottom: 10px; }
+h2 {
+	font-size: 1.33vw;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
 /* h3 { font-size: 16px; padding-top: 10px; padding-bottom: 10px; } */
-h3 { font-size: 1.07; padding-top: 10px; padding-bottom: 10px; }
+h3 {
+	font-size: 1.07;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
 /* h4 { font-size: 14px; padding-top: 10px; padding-bottom: 10px; } */
-h4 { font-size: 0.93; padding-top: 10px; padding-bottom: 10px; }
+h4 {
+	font-size: 0.93;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
 
 p, h1, h2, h3 {
 	margin: 10px 15px;
@@ -48,11 +70,10 @@ p, h1, h2, h3 {
 
 ul, ol {
 	margin: 10px 30px;
-	padding: 0 15px;		
+	padding: 0 15px;
 }
 
 /* images */
-
 img {
 	border: 0px;
 	width: 16px;
@@ -60,18 +81,19 @@ img {
 }
 
 acronym {
-  cursor: help;
-  border-bottom: 1px solid #777;
+	cursor: help;
+	border-bottom: 1px solid #777;
 }
+
 blockquote {
-	margin: 15px; 	
-	padding: 0 0 0 20px;  	
-  	background-color: #FAFAFA; 
+	margin: 15px;
+	padding: 0 0 0 20px;
+	background-color: #FAFAFA;
 	background-position: 8px 10px;
-	border: 1px solid #f2f2f2; 
-	border-left: 3px solid #13C3B7;  
-	font: 0.8vw verdana, arial, sans-serif; 
-	color: #666666;	
+	border: 1px solid #f2f2f2;
+	border-left: 3px solid #13C3B7;
+	font: 0.8vw verdana, arial, sans-serif;
+	color: #666666;
 }
 
 blockquote.error {
@@ -82,11 +104,13 @@ blockquote.error {
 /* start - table */
 table {
 	border-collapse: collapse;
-	margin: 10px 15px;	
+	margin: 10px 15px;
 }
+
 th strong {
 	color: black;
 }
+
 th {
 	background: #13C3B7;
 	height: 1.33vh;
@@ -97,11 +121,13 @@ th {
 	color: white;
 	text-align: left;
 	border-left: 1px solid #13C3B7;
-	
 }
+
 tr {
 	/* height: 20px; */
+	
 }
+
 td {
 	padding: 5px 5px 5px 5px;
 	/* padding-top: 5px; */
@@ -110,17 +136,21 @@ td {
 	/* border-left: 1px solid #FFF;
 	border-bottom: solid 1px #ffffff; */
 }
-td.first,th.first {
+
+td.first, th.first {
 	border-left: 0px;
 }
+
 td.totaalkolom input {
 	background-color: #13C3B7;
-	font-weight:bold;
+	font-weight: bold;
 	color: white;
 }
+
 tr.row-a {
 	background: white;
 }
+
 tr.row-b {
 	background: #d0fffb; /* was eafffd */
 }
@@ -133,30 +163,32 @@ form {
 	border: 1px solid #eafffd;
 	background-color: #eafffd;
 }
+
 label {
-	display:block;
-	font-weight:bold;
-	margin:5px 0;
+	display: block;
+	font-weight: bold;
+	margin: 5px 0;
 }
+
 input {
 	padding: 5px 5px 5px 5px;
 	border: 1px solid #333;
 	/* font: normal 13px verdana, arial, sans-serif; */
-	font: normal 0.8vw verdana, arial, sans-serif; 
+	font: normal 0.8vw verdana, arial, sans-serif;
 	/* color:#777; */
 	margin-bottom: 4px;
 }
 
-input[type="checkbox"]{
-  width: 18px; /*Desired width*/
-  height: 18px; /*Desired height*/
+input[type="checkbox"] {
+	width: 18px; /*Desired width*/
+	height: 18px; /*Desired height*/
 }
 /* Normaal werkt readonly niet voor checkboxes echter met onderstaande 
    wordt de checkbox niet aanpasbaar
    Je kan ook disabled gebruiken in de form maar dan woordt de value
-   van POST niet gebruikt. */ 
-input[type='checkbox'][readonly]{
-    pointer-events: none;
+   van POST niet gebruikt. */
+input[type='checkbox'][readonly] {
+	pointer-events: none;
 }
 
 input:focus {
@@ -165,20 +197,22 @@ input:focus {
 /* Selects any <input> element that is read-only */
 /* Supported in Firefox with a prefix */
 input:-moz-read-only {
-  background-color: #e4e4e4;
+	background-color: #e4e4e4;
 }
 
 /* Supported in Blink/WebKit/Edge without a prefix */
 input:read-only {
-  background-color: #e4e4e4;
+	background-color: #e4e4e4;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  -moz-appearance: none;
-  appearance: none;
-  margin: 0; 
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button
+	{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin: 0;
 }
+
 select {
 	padding: 5px 5px 5px 5px;
 	border: 1px solid #333;
@@ -187,6 +221,7 @@ select {
 	/* color:#777; */
 	margin-bottom: 4px;
 }
+
 textarea {
 	width: 100%;
 	padding: 5px;
@@ -198,9 +233,11 @@ textarea {
 	/*vdisplay: block;v*/
 	color: black;
 }
+
 textarea:read-only {
-  background-color: #e4e4e4;
+	background-color: #e4e4e4;
 }
+
 textarea:focus {
 	background-color: #f4f9f9;
 }
@@ -223,11 +260,9 @@ img.button {
 	height: 1.5vw;
 }
 
-
 /***********************
 	  LAYOUT
 ************************/
-
 #header-content, #content, #footer-content {
 	width: 95%;
 }
@@ -236,38 +271,45 @@ img.button {
 #header {
 	height: 110px;
 	/* height: 40.5vh; */
-	text-align: left;	
+	text-align: left;
 	background-color: black;
 }
-#header-content {	
-	margin: 0 auto; padding: 0;
+
+#header-content {
+	margin: 0 auto;
+	padding: 0;
 	position: relative;
 }
+
 #header-content h1#logo {
-	position: absolute;	
+	position: absolute;
 	/* font: bold 45px verdana, arial, sans-serif; */
 	font: bold 3vw verdana, arial, sans-serif;
-	letter-spacing: -2px; 
+	letter-spacing: -2px;
 	color: #FFF;
-	margin: 0; padding: 0;		
-	
+	margin: 0;
+	padding: 0;
 	/* change the values of left and top to adjust the position of the logo */
-	top: 0; left: 0px;
+	top: 0;
+	left: 0px;
 }
+
 #header-content h1#logo a {
 	text-decoration: none;
 	color: #FFF;
 }
+
 #header-content #slogan {
-	position: absolute;	
+	position: absolute;
 	/* font: bold 13px verdana, arial, sans-serif; */
 	font: bold 0.8vw verdana, arial, sans-serif;
 	text-transform: none;
-	color: #FFF;	
-	margin: 1vw 0 0 0; padding: 0;
-	
+	color: #FFF;
+	margin: 1vw 0 0 0;
+	padding: 0;
 	/* change the values of left and top to adjust the position of the slogan */
-	top: 55px; left: 40px;
+	top: 55px;
+	left: 40px;
 }
 
 /* header menu */
@@ -283,27 +325,30 @@ img.button {
 	margin: 0;
 	padding: 0;
 }
+
 #header-content li {
 	display: inline;
 }
+
 #header-content li a {
 	float: left;
 	display: block;
-	padding: 3px 12px;	
+	padding: 3px 12px;
 	color: #FFF;
 	background-color: black;
 	text-decoration: none;
 	border-right: 1px solid #272727;
 }
+
 #header-content li a:hover {
 	background: #13C3B7;
 	color: #FFF;
 }
-#header-content li a#current  {
+
+#header-content li a#current {
 	background: #13C3B7;
 	color: #FFF;
 }
-
 
 /* content */
 #content-wrap {
@@ -312,8 +357,9 @@ img.button {
 	float: right;
 	width: 100%;
 }
+
 #content {
-	text-align: left;	
+	text-align: left;
 	padding: 0;
 	margin: 0 auto;
 }
@@ -322,15 +368,17 @@ img.button {
 #sidebar {
 	float: left;
 	width: 20%;
-	margin: 0 10px 10px 0; 
-	padding: 0;	
-}	
+	margin: 0 10px 10px 0;
+	padding: 0;
+}
+
 #sidebar h1 {
 	padding: 10px 0px 5px 10px;
-	margin: 0;	
+	margin: 0;
 	/* font: bold 18px verdana, arial, sans-serif; */
 	font: bold 1vw verdana, arial, sans-serif;
 }
+
 .sidebox {
 	background: #F5F5F5;
 	border: 1px solid #EFEDED;
@@ -339,42 +387,48 @@ img.button {
 
 /* sidebar menu */
 #sidebar ul.sidemenu {
-	list-style:none;
+	list-style: none;
 	margin: 10px 0 15px 0;
 	padding: 0;
-	background: #F2F2F2;			
+	background: #F2F2F2;
 }
+
 #sidebar ul.sidemenu li {
-	padding: 0px 10px; 
+	padding: 0px 10px;
 }
+
 #sidebar ul.sidemenu a {
-	display:block;
+	display: block;
 	font: normal 0.8vw verdana, arial, sans-serif;
 	/* font-weight:normal; */
 	color: #333;
-	height: 1.5em;	
-	padding:.3em 0 0 15px;
+	height: 1.5em;
+	padding: .3em 0 0 15px;
 	line-height: 1.5em;
 	border-bottom: 1px dashed #D4D4D4;
-	text-decoration:none;
+	text-decoration: none;
 }
-#sidebar ul.sidemenu a.top{	
+
+#sidebar ul.sidemenu a.top {
 	border-top: 1px dashed #D4D4D4;
 }
+
 #sidebar ul.sidemenu a:hover {
 	padding: .3em 0 .3em 10px;
-	border-left: 5px solid  #0c726b;
-	color: #0c726b;		
+	border-left: 5px solid #0c726b;
+	color: #0c726b;
 }
 
 /* main */
 #main {
 	float: left;
-	width: 78%;	
-	margin: 0 0 10px 0; padding: 0;	
+	width: 78%;
+	margin: 0 0 10px 0;
+	padding: 0;
 	border: 2px solid;
 	border-color: #0c726b;
 }
+
 #main h1 {
 	padding: 10px 0px 13px 5px;
 	margin: 0 0 0 10px;
@@ -382,6 +436,7 @@ img.button {
 	/* font: bold 24px verdana, arial, sans-serif; */
 	font: bold 1.6vw verdana, arial, sans-serif;
 }
+
 #main ul li {
 	list-style-image: url(../img/bullet.gif);
 }
@@ -412,61 +467,100 @@ img.button {
 #footer {
 	float: right;
 	clear: both;
-	margin: 0; padding: 0;
+	margin: 0;
+	padding: 0;
 	font: normal 0.6vw verdana, arial, sans-serif;
-	text-align: right;	width: 33%;
+	text-align: right;
+	width: 33%;
 	padding: 0 0 30px 0;
 }
 
 /* additional classes */
-.clear { clear: both; }
-.gray  { color: #BFBFBF; }
+.clear {
+	clear: both;
+}
+
+.gray {
+	color: #BFBFBF;
+}
 
 /*---------------------------------------------------*/
 /* Onderstaande heeft betrekking op de on-off switch */
 /*---------------------------------------------------*/
 .onoffswitch {
-    position: relative; width: 46px;
-    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+	position: relative;
+	width: 46px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 }
+
 .onoffswitch-checkbox {
-    display: none;
+	display: none;
 }
+
 .onoffswitch-label {
-    display: block; overflow: hidden; cursor: pointer;
-    border: 2px solid #999999; border-radius: 18px;
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border: 2px solid #999999;
+	border-radius: 18px;
 }
+
 .onoffswitch-inner {
-    display: block; width: 200%; margin-left: -100%;
-    transition: margin 0.3s ease-in 0s;
+	display: block;
+	width: 200%;
+	margin-left: -100%;
+	transition: margin 0.3s ease-in 0s;
 }
+
 .onoffswitch-inner:before, .onoffswitch-inner:after {
-    display: block; float: left; width: 50%; height: 17px; padding: 0; line-height: 17px;
-    font-size: 10px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
-    box-sizing: border-box;
+	display: block;
+	float: left;
+	width: 50%;
+	height: 17px;
+	padding: 0;
+	line-height: 17px;
+	font-size: 10px;
+	color: white;
+	font-family: Trebuchet, Arial, sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
 }
+
 .onoffswitch-inner:before {
-    content: "ON";
-    padding-left: 5px;
-    background-color: #13C3B7; color: #FFFFFF;
+	content: "ON";
+	padding-left: 5px;
+	background-color: #13C3B7;
+	color: #FFFFFF;
 }
+
 .onoffswitch-inner:after {
-    content: "OFF";
-    padding-right: 5px;
-    background-color: #EEEEEE; color: #999999;
-    text-align: right;
+	content: "OFF";
+	padding-right: 5px;
+	background-color: #EEEEEE;
+	color: #999999;
+	text-align: right;
 }
+
 .onoffswitch-switch {
-    display: block; width: 8px; margin: 4.5px;
-    background: #FFFFFF;
-    position: absolute; top: 0; bottom: 0;
-    right: 25px;
-    border: 2px solid #999999; border-radius: 18px;
-    transition: all 0.3s ease-in 0s; 
+	display: block;
+	width: 8px;
+	margin: 4.5px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 25px;
+	border: 2px solid #999999;
+	border-radius: 18px;
+	transition: all 0.3s ease-in 0s;
 }
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-    margin-left: 0;
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+	margin-left: 0;
 }
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-    right: 0px; 
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
+	right: 0px;
 }

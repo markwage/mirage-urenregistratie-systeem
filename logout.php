@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 include ("./config.php");
@@ -13,7 +12,7 @@ $past = time() - 100;
 setcookie('ID_mus', gone, $past);
 setcookie('Key_mus', gone, $past);
 
-writelog("logout","INFO","User ".$_POST['username']." is succesvol uitgelogd");
+writelog("logout", "INFO", "User " . $_POST['username'] . " is succesvol uitgelogd");
 
 header("location: login.php");
 ?>
