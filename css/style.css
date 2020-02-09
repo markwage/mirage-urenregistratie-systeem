@@ -418,6 +418,12 @@ img.button {
 	border-left: 5px solid #0c726b;
 	color: #0c726b;
 }
+#sidebar_sub li ul {
+	display:none;
+}
+#sidebar_sub li:hover ul {
+	display: block;
+}
 
 /* main */
 #main {
