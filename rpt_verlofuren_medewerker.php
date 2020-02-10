@@ -50,6 +50,7 @@ echo "</table>";
 echo "<center><table id='verlofuren_mdw'>";
 echo "<tr>";
 echo "<th>Medewerker</th>
+      <th style='width:3.33vw; text-align:right'>Begin<br />saldo</th>
       <th style='width:3.33vw; text-align:right'>Jan</th>
       <th style='width:3.33vw; text-align:right'>Feb</th>
       <th style='width:3.33vw; text-align:right'>Maa</th>
@@ -62,12 +63,12 @@ echo "<th>Medewerker</th>
       <th style='width:3.33vw; text-align:right'>Okt</th>
       <th style='width:3.33vw; text-align:right'>Nov</th>
       <th style='width:3.33vw; text-align:right'>Dec</th>
-      <th style='width:4.2vw; text-align:right'>Totaal</th>";
+      <th style='width:4.2vw; text-align:right'>Totaal</th>
+      <th style='width:4.2vw; text-align:right'>Huidig<br />saldo</th>";
 echo "</tr>";
 $rowcolor = 'row-a';
 
 // Hier komt het ophalen en optellen van de uren
-
 $sql_code = "SELECT user, voornaam, tussenvoegsel, achternaam, approval_maand, SUM(uren) AS totaal_uren
              FROM view_uren_get_full_username
              WHERE approval_jaar = " . $inputjaar . "
@@ -84,6 +85,7 @@ if (! $sql_out) {
     $frm_tussenvoegsel = 'dummy';
     $frm_achternaam = 'dummy';
     $frm_jaartotaal_uren = 0;
+    $frm_eindsaldo = 0;
 
     for ($ix_init = 0; $ix_init < 12; $ix_init ++) {
         $frm_maand[$ix_init] = ' ';
@@ -97,18 +99,38 @@ if (! $sql_out) {
         // maandnr - 1 omdat array bij 0 begint
         $row_maandnr = $sql_rows['approval_maand'] - 1;
         $totaal_uren = $sql_rows['totaal_uren'];
+        
+        
 
         if ($row_username != $frm_username) {
             if ($frm_username != 'dummy') {
+                //Ophalen van de beginsaldo van de verlofuren
+                $sql_beginsaldo_qry = "SELECT beginsaldo
+                           FROM beginsaldo
+                           WHERE username = '" . $frm_username . "'
+                           AND jaar = " . $inputjaar . ";";
+                writedebug("select beginsaldo: " . $sql_beginsaldo_qry);
+                $sql_beginsaldo_out = mysqli_query($dbconn, $sql_beginsaldo_qry);
+                if (! $sql_beginsaldo_out) {
+                    writelog("rpt_verlofuren_medewerker", "ERROR", "Ophalen van de beginsaldi per medewerker gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+                }
+                while ($sql_beginsaldo_rows = mysqli_fetch_array($sql_beginsaldo_out)) {
+                    $frm_beginsaldo = $sql_beginsaldo_rows['beginsaldo'];
+                }
+                
                 echo '<tr class="' . $rowcolor . '">';
                 echo "<td>" . $frm_achternaam . ", " . $frm_voornaam . " " . $frm_tussenvoegsel . "</td>";
+                echo "<td style='text-align:right'>" . number_format($frm_beginsaldo, 2) . "</td>";
                 for ($ix = 0; $ix < 12; $ix ++) {
                     echo "<td style='width:3.33vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
                     $frm_maand[$ix] = ' ';
                 }
                 echo "<td style='width:4.2vw; text-align:right'><strong>" . number_format($frm_jaartotaal_uren, 2) . "</strong></td>";
+                $frm_eindsaldo = $frm_beginsaldo - $frm_jaartotaal_uren;
+                echo "<td style='width:4.2vw; text-align:right'><strong>" . number_format($frm_eindsaldo, 2) . "</strong></td>";
                 echo "</tr>";
                 $frm_jaartotaal_uren = 0;
+                $frm_eindsaldo = 0;
                 check_row_color($rowcolor);
             }
         }
@@ -119,18 +141,38 @@ if (! $sql_out) {
         $frm_achternaam = $row_achternaam;
         $frm_maand[$row_maandnr] = $totaal_uren;
         $frm_jaartotaal_uren = $frm_jaartotaal_uren + $totaal_uren;
+        
+        
     }
     // laatste rij uit de query dus wegschrijven naar formulier
     // Indien $frm_achternaam leeg is dan zijn er geen gegevens van het betreffende jaar
     if (! isset($row_username)) {
         echo '</table></center><blockquote class="error">ERROR: Er zijn geen gegevens van dit jaar</blockquote>';
     } else {
+        
+        //Ophalen van de beginsaldo van de verlofuren
+        $sql_beginsaldo_qry = "SELECT beginsaldo
+                           FROM beginsaldo
+                           WHERE username = '" . $frm_username . "'
+                           AND jaar = " . $inputjaar . ";";
+        writedebug("select beginsaldo: " . $sql_beginsaldo_qry);
+        $sql_beginsaldo_out = mysqli_query($dbconn, $sql_beginsaldo_qry);
+        if (! $sql_beginsaldo_out) {
+            writelog("rpt_verlofuren_medewerker", "ERROR", "Ophalen van de beginsaldi per medewerker gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+        }
+        while ($sql_beginsaldo_rows = mysqli_fetch_array($sql_beginsaldo_out)) {
+            $frm_beginsaldo = $sql_beginsaldo_rows['beginsaldo'];
+        }
+        
         echo '<tr class="' . $rowcolor . '">';
         echo "<td>" . $frm_achternaam . ", " . $frm_voornaam . " " . $frm_tussenvoegsel . "</td>";
+        echo "<td style='text-align:right'>" . number_format($frm_beginsaldo, 2) . "</td>";
         for ($ix = 0; $ix < 12; $ix ++) {
             echo "<td style='width:3.33vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
         }
         echo "<td style='width:4.2vw; text-align:right'><strong>" . number_format($frm_jaartotaal_uren, 2) . "</strong></td>";
+        $frm_eindsaldo = $frm_beginsaldo - $frm_jaartotaal_uren;
+        echo "<td style='width:4.2vw; text-align:right'><strong>" . number_format($frm_eindsaldo, 2) . "</strong></td>";
     }
     echo "</tr>";
     writelog("rpt_verlofuren_medewerker", "INFO", "Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd");

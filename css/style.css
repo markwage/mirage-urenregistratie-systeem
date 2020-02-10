@@ -147,7 +147,7 @@ td.totaalkolom input {
 	color: white;
 }
 
-tr.row-a {
+tr.row-a, input.row-a {
 	background: white;
 }
 

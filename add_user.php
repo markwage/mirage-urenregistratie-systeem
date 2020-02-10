@@ -127,6 +127,13 @@ if (isset($_POST['submit'])) {
             $_POST['pass'] = addslashes($_POST['pass']);
             $_POST['username'] = addslashes($_POST['username']);
         }
+        
+        // Insert beginsaldo verlofuren
+        $sql_saldo_qry = "INSERT INTO beginsaldo (username, jaar, beginsaldo)
+                          VALUES('" . $_POST['username'] . "',
+                                 " . date('Y') . ",
+                                 " . $_POST['beginsaldo'] . ")";
+        $sql_saldo_out = mysqli_query($dbconn, $sql_saldo_qry);
 
         // Record toevoegen in database
         $sql_code = "INSERT INTO users (username, password, admin, voornaam, tussenvoegsel, achternaam, emailadres, indienst, approvenallowed, uren_invullen)
@@ -241,6 +248,10 @@ if (isset($_POST['submit'])) {
 			<tr>
 				<td>Uren invullen</td>
 				<td><input type="checkbox" name="ureninvullen"></td>
+			</tr>
+			<tr>
+				<td>Beginsaldo verlofuren</td>
+				<td><input style="width:2.3vw; text-align:right" type="number" name="beginsaldo" value=240></td>
 			</tr>
 		</table>
 		<br /> <input class="button" type="submit" name="submit"

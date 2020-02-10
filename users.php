@@ -64,10 +64,25 @@ if (isset($_POST['cancel'])) {
 // ------------------------------------------------------------------------------------------------------
 if (isset($_POST['delete'])) {
     $deluser = $_POST['username'];
-    $sql_code = "DELETE FROM users
+    $sql_users_code = "DELETE FROM users
                  WHERE username = '$deluser'";
-    $sql_out = mysqli_query($dbconn, $sql_code);
-    writelog("users", "INFO", "User " . $deluser . " is succesvol verwijderd");
+    $sql_users_out = mysqli_query($dbconn, $sql_users_code);
+    writelog("users", "INFO", "User " . $deluser . " is succesvol verwijderd uit tabel users");
+    
+    $sql_uren_qry = "DELETE FROM uren
+                 WHERE username = '$deluser'";
+    $sql_uren_out = mysqli_query($dbconn, $sql_uren_qry);
+    writelog("users", "INFO", "User " . $deluser . " is succesvol verwijderd uit tabel uren");
+    
+    $sql_approvals_qry = "DELETE FROM approvals
+                 WHERE user = '$deluser'";
+    $sql_approvals_out = mysqli_query($dbconn, $sql_approvals_qry);
+    writelog("users", "INFO", "User " . $deluser . " is succesvol verwijderd uit tabel approvals");
+    
+    $sql_beginsaldo_qry = "DELETE FROM beginsaldo
+                 WHERE username = '$deluser'";
+    $sql_beginsaldo_out = mysqli_query($dbconn, $sql_beginsaldo_qry);
+    writelog("users", "INFO", "User " . $deluser . " is succesvol verwijderd uit tabel beginsaldo");
 
     header("location: users.php?aktie=disp");
 }
