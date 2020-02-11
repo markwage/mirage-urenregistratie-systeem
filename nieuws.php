@@ -105,14 +105,14 @@ if ($aktie == 'disp') {
     echo "<center><table>";
     echo "<tr><th>Datum</th><th>Nieuwsheader</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
 
-    $rowcolor = 'row-a';
+    //$rowcolor = 'row-a';
 
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $id = $sql_rows['ID'];
         $datum = $sql_rows['datum'];
         $nieuwsheader = $sql_rows['nieuwsheader'];
 
-        echo '<tr class="' . $rowcolor . '">
+        echo '<tr class="colored">
 		<td>' . $datum . '</td><td>' . $nieuwsheader . '</td>';
 
         if (! isset($_SESSION['admin']) || (! $_SESSION['admin'])) {
@@ -124,7 +124,7 @@ if ($aktie == 'disp') {
         }
 
         echo '</tr>';
-        check_row_color($rowcolor);
+        //check_row_color($rowcolor);
     }
     echo "</table></center>";
 }

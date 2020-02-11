@@ -127,7 +127,7 @@ if ($aktie == 'disp') {
 
     echo "<center><table>";
     echo "<tr><th>Code</th><th>Omschrijving</th><th>Facturabel</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
-    $rowcolor = 'row-a';
+    //$rowcolor = 'row-a';
 
     while ($sql_row = mysqli_fetch_array($sql_out)) {
         $id = $sql_row['ID'];
@@ -141,13 +141,14 @@ if ($aktie == 'disp') {
             $facturabel_checked = '';
         }
 
-        echo '<tr class="' . $rowcolor . '">
+        //echo '<tr class="' . $rowcolor . '">
+        echo '<tr class="colored">
 			<td><b>' . $code . '</b></td><td>' . $omschrijving . '</td><td><center><input type="checkbox" id="facturabel" name="facturabel" readonly ' . $facturabel_checked . '></center></td>
 			<td><a href="soorturen.php?aktie=edit&edtcode=' . $code . '"><img class="button" src="./img/icons/edit-48.png" alt="wijzigen soort uur" title="wijzig soort uur ' . $code . '" /></a></td>
 			<td><a href="soorturen.php?aktie=delete&edtcode=' . $code . '"><img class="button" src="./img/icons/trash-48.png" alt="delete soort uur" title="delete soort uur ' . $code . '" /></a></td>
 			<td><a href="add_soortuur.php"><img class="button" src="./img/icons/add-48.png" alt="toevoegen soort uur" title="toevoegen soort uur" /></a></td>
 			</tr>';
-        check_row_color($rowcolor);
+        //check_row_color($rowcolor);
     }
     echo "</table></center>";
 }

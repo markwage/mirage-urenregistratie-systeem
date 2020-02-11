@@ -67,7 +67,6 @@ if (isset($_POST['submit'])) {
             }
             if ($wrong_pass_count >= 3) {
                 writelog("login", "ERROR", "User " . $_POST['username'] . " heeft meer dan 3 keer met een foutief wachtwoord ingelogd en is nu geblokkeerd");
-                writedebug("servername: " . $_SERVER['SERVER_NAME']);
 
                 if ($_SERVER['SERVER_NAME'] != 'localhost') {
                     $mail_to = $_POST['emailadres'];
@@ -106,7 +105,6 @@ if (isset($_POST['submit'])) {
         } else {
             // Toevoegen cookie indien username-password correct
             $_POST['username'] = stripslashes($_POST['username']);
-            writedebug("servername is " . $_SERVER['HTTP_HOST']);
 
             if ($_SERVER['HTTP_HOST'] == 'localhost') {
                 $hour = time() + 86400; // Cookie is 24 uur geldig

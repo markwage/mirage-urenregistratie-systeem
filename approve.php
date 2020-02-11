@@ -86,7 +86,7 @@ if (isset($_POST['approve'])) {
     $message .= '<table>';
     $message .= '<tr><th colspan="2" style="text-align:left">Soort uur</th><th style="text-align:right">Totaal</th></tr>';
 
-    $rowcolor = 'row-a';
+    //$rowcolor = 'row-a';
 
     $sql_code = "SELECT SUM(uren) as toturen, soortuur, omschrijving, approved FROM view_uren_soortuur
                 WHERE user = '$username'
@@ -101,14 +101,13 @@ if (isset($_POST['approve'])) {
         $soortuur = $sql_rows['soortuur'];
         $omschrijving = $sql_rows['omschrijving'];
 
-        $message .= '<tr class="' . $rowcolor . '"><td>' . $soortuur . '</td><td>' . $omschrijving . '</td><td style=\'text-align:right\'><strong>' . $toturen . '</strong></td></tr>';
+        $message .= '<tr class="colored"><td>' . $soortuur . '</td><td>' . $omschrijving . '</td><td style=\'text-align:right\'><strong>' . $toturen . '</strong></td></tr>';
 
-        check_row_color($rowcolor);
+        //check_row_color($rowcolor);
     }
 
     $message .= '</table>';
     $message .= '</body></html>';
-    writedebug("message voor de mail: " . $message);
     // Versturen van de email
     if ($_SERVER['SERVER_NAME'] != 'localhost') {
         if (mail($mail_to, $mail_subject, $message, $headers)) {
@@ -152,7 +151,7 @@ if ($aktie == 'disp') {
 
     echo "<center><table>";
     echo "<tr><th>Medewerker</th><th>Maand</th><th></th></tr>";
-    $rowcolor = 'row-a';
+    //$rowcolor = 'row-a';
 
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $approved = $sql_rows['approved'];
@@ -164,22 +163,22 @@ if ($aktie == 'disp') {
         $achternaam = $sql_rows['achternaam'];
 
         if (($jaar != '') && ($approved == 0)) {
-            echo '<tr class="' . $rowcolor . '">
+            echo '<tr class="colored">
             <td><b>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td><a href="approve.php?aktie=dspuren&user=' . $username . '&jaar=' . $jaar . '&maand=' . $maand . '"><img class="button" src="./img/icons/view-48.png" alt="Toon week" title="Toon de uren van deze week" /></a></td>
 			</tr>';
         } elseif ($jaar == '') {
-            echo '<tr class="' . $rowcolor . '">
+            echo '<tr class="colored">
             <td><b>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td>Geen gegevens aanwezig over afgelopen maand</td>
 			</tr>';
         } elseif ($approved == 1) {
-            echo '<tr class="' . $rowcolor . '">
+            echo '<tr class="colored">
             <td><b>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td>Approved</td>
 			</tr>';
         }
-        check_row_color($rowcolor);
+        //check_row_color($rowcolor);
     }
     echo "</table></center>";
 }
@@ -205,7 +204,7 @@ if ($aktie == 'dspuren') {
     echo "<h3>Overzicht per dag</h3>";
     echo "<center><table>";
     echo "<tr><th>Datum</th><th>Soortuur</th><th>Uren</th></tr>";
-    $rowcolor = 'row-a';
+    //$rowcolor = 'row-a';
 
     $sql_code = "SELECT * FROM view_uren_soortuur
                  WHERE user = '$username'
@@ -220,11 +219,11 @@ if ($aktie == 'dspuren') {
         $uren = $sql_rows['uren'];
         $omschrijving_soortuur = $sql_rows['omschrijving'];
 
-        echo '<tr class="' . $rowcolor . '">
+        echo '<tr class="colored">
 			<td><b>' . $datum . '</b></td><td>' . $soortuur . ' - ' . $omschrijving_soortuur . '</td><td style=\'text-align:right\'>' . $uren . '</td>
             </tr>';
 
-        check_row_color($rowcolor);
+        //check_row_color($rowcolor);
     }
     echo "</table></center>";
 
@@ -233,7 +232,7 @@ if ($aktie == 'dspuren') {
     echo "<center><table>";
     echo "<tr><th>Soort uur</th><th>Totaal</th></tr>";
 
-    $rowcolor = 'row-a';
+    //$rowcolor = 'row-a';
 
     $sql_code = "SELECT SUM(uren) as toturen, soortuur, omschrijving, approved FROM view_uren_soortuur
                 WHERE user = '$username'
@@ -248,11 +247,11 @@ if ($aktie == 'dspuren') {
         $soortuur = $sql_rows['soortuur'];
         $omschrijving = $sql_rows['omschrijving'];
 
-        echo '<tr class="' . $rowcolor . '">
+        echo '<tr class="colored">
 			<td>' . $soortuur . ' - ' . $omschrijving . '</td><td style=\'text-align:right\'>' . $toturen . '</td>
             </tr>';
 
-        check_row_color($rowcolor);
+        //check_row_color($rowcolor);
     }
 
     echo "</table></center>";

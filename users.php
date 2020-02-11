@@ -70,7 +70,7 @@ if (isset($_POST['delete'])) {
     writelog("users", "INFO", "User " . $deluser . " is succesvol verwijderd uit tabel users");
     
     $sql_uren_qry = "DELETE FROM uren
-                 WHERE username = '$deluser'";
+                 WHERE user = '$deluser'";
     $sql_uren_out = mysqli_query($dbconn, $sql_uren_qry);
     writelog("users", "INFO", "User " . $deluser . " is succesvol verwijderd uit tabel uren");
     
@@ -232,7 +232,7 @@ if ($aktie == 'disp') {
           <th><center>Mag<br />approven</center></th>
           <th><center>Uren<br />invullen</center></th>
           <th colspan="4"><center>Akties</center></th></tr>';
-    $rowcolor = 'row-a';
+    //$rowcolor = 'row-a';
 
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $id = $sql_rows['ID'];
@@ -247,7 +247,7 @@ if ($aktie == 'disp') {
         $indienst = $sql_rows['indienst'];
         $approvenallowed = $sql_rows['approvenallowed'];
 
-        echo '<tr class="' . $rowcolor . '">
+        echo '<tr class="colored">
 			<td>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</td>
             <td>' . $username . '</td>
 			<td>' . $emailadres . '</td>
@@ -286,7 +286,7 @@ if ($aktie == 'disp') {
         echo '<td><a href="add_user.php"><img class="button" src="./img/icons/add-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>';
         echo '</tr>';
 
-        check_row_color($rowcolor);
+        //check_row_color($rowcolor);
     }
     echo "</table></center>";
 }

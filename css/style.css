@@ -1,7 +1,7 @@
 /********************************************
    HTML ELEMENTS
 ********************************************/
-
+@alternate_row_background_color: #DDD;
 /* top elements */
 * {
 	padding: 0;
@@ -123,9 +123,11 @@ th {
 	border-left: 1px solid #13C3B7;
 }
 
-tr {
-	/* height: 20px; */
-	
+tr.colored:nth-child(odd) {
+      background-color: #d0fffb;
+}
+tr.colored:nth-child(even) {
+      background-color: white;
 }
 
 td {
@@ -161,7 +163,7 @@ form {
 	margin: 10px 15px;
 	padding: 0;
 	border: 1px solid #eafffd;
-	background-color: #eafffd;
+	background-color: #eafffd; 
 }
 
 label {

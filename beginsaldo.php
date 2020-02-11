@@ -84,8 +84,6 @@ if (isset($_POST['init_verlofuren_ja'])) {
 if (isset($_POST['save'])) {
     $inputjaar = ($_POST['jaartal']);
     $aantal_rijen = count($_POST['beginsaldo']);
-    writedebug("Aantal rijen uit de query en die worden getoond op het scherm: " . $aantal_rijen);
-
     
     for ($ix1 = 0; $ix1 < $aantal_rijen; $ix1 ++) {
         $frm_ID = $_POST['ID'][$ix1];
@@ -162,7 +160,7 @@ if($aantal_rijen == 0) {
     echo "<tr>";
     echo "<th></th><th colspan='1'>Naam medewerker</th><th style='width:2.8vw; text-align:right'>Beginsaldo</th>";
     echo "</tr>";
-    $rowcolor = 'row-a';
+    //$rowcolor = 'row-a';
 
     while ($sql_row = mysqli_fetch_array($sql_out)) {
         $ID            = $sql_row['ID'];
@@ -172,13 +170,13 @@ if($aantal_rijen == 0) {
         $achternaam    = $sql_row['achternaam'];
         $beginsaldo    = $sql_row['beginsaldo'];
     
-        echo '<tr class="' . $rowcolor . '">';
+        echo '<tr class="colored">';
         echo '<td><input style="display:none" type="text" name="ID[]" value="' . $ID . '" readonly></td>';
         echo '<td style="display:none">' . $username . '</td>';
         echo '<td>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</td>';
         echo '<td><input style="width:2.8vw; text-align:right" type="number" name="beginsaldo[]" value="' . $beginsaldo . '"></td>';
         echo '</tr>';
-        check_row_color($rowcolor);
+        //check_row_color($rowcolor);
     }
 
     echo "</table></center>";

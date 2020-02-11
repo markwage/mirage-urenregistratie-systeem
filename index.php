@@ -41,7 +41,7 @@ include ("header.php");
     <?php
     jaarWeek();
 
-    $rowcolor = 'row-a';
+    //$rowcolor = 'row-a';
     for ($ix1 = 0; $ix1 < 10; $ix1 ++) {
         $sql_code = "SELECT *, SUM(uren) as toturen FROM uren 
                     WHERE user='$username' 
@@ -84,7 +84,7 @@ include ("header.php");
 
             $week_array = getStartAndEndDate($mainWeek[$ix1], $mainJaar[$ix1]);
 
-            echo '<tr class="' . $rowcolor . '">';
+            echo '<tr class="colored">';
             echo '<td style="text-align:center;"><b>' . $qry_jaar . '</b></td>';
             echo "<td style='text-align:center;'><b>{$qry_week}</b> ({$week_array['week_start']} t/m {$week_array['week_end']})</td>";
 
@@ -112,7 +112,7 @@ include ("header.php");
 
             echo '</tr>';
 
-            check_row_color($rowcolor);
+            //check_row_color($rowcolor);
         } else {
             echo "ERROR: Could not be able to execute $sql_code. " . mysqli_error($dbconn);
         }

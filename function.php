@@ -52,15 +52,15 @@ function check_admin()
 // ------------------------------------------------------------------------
 // Bepalen wat de kleur van de tabelrij moet zijn op het scherm
 // ------------------------------------------------------------------------
-function check_row_color($current_row_color)
-{
-    global $rowcolor;
-    if ($current_row_color == 'row-a') {
-        $rowcolor = 'row-b';
-    } else {
-        $rowcolor = 'row-a';
-    }
-}
+//function check_row_color($current_row_color)
+//{
+//    global $rowcolor;
+//    if ($current_row_color == 'row-a') {
+//        $rowcolor = 'row-b';
+//    } else {
+//        $rowcolor = 'row-a';
+//    }
+//}
 
 // ------------------------------------------------------------------------
 // Cursor op een bepaald veld in het formulier zetten

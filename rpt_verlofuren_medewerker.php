@@ -12,7 +12,7 @@ include ("header.php");
 
 ?>
 <div id="main">
-	<h1>Opgenomen verlofuren per medewerker</h1>
+	<h1>Overzicht verlofuren medewerkers</h1>
 
 <?php
 displayUserGegevens();
@@ -50,29 +50,29 @@ echo "</table>";
 echo "<center><table id='verlofuren_mdw'>";
 echo "<tr>";
 echo "<th>Medewerker</th>
-      <th style='width:3.33vw; text-align:right'>Begin<br />saldo</th>
-      <th style='width:3.33vw; text-align:right'>Jan</th>
-      <th style='width:3.33vw; text-align:right'>Feb</th>
-      <th style='width:3.33vw; text-align:right'>Maa</th>
-      <th style='width:3.33vw; text-align:right'>Apr</th>
-      <th style='width:3.33vw; text-align:right'>Mei</th>
-      <th style='width:3.33vw; text-align:right'>Jun</th>
-      <th style='width:3.33vw; text-align:right'>Jul</th>
-      <th style='width:3.33vw; text-align:right'>Aug</th>
-      <th style='width:3.33vw; text-align:right'>Sep</th>
-      <th style='width:3.33vw; text-align:right'>Okt</th>
-      <th style='width:3.33vw; text-align:right'>Nov</th>
-      <th style='width:3.33vw; text-align:right'>Dec</th>
+      <th style='width:2.85vw; text-align:right'>Begin<br />saldo</th>
+      <th style='width:2.85vw; text-align:right'>Jan</th>
+      <th style='width:2.85vw; text-align:right'>Feb</th>
+      <th style='width:2.85vw; text-align:right'>Maa</th>
+      <th style='width:2.85vw; text-align:right'>Apr</th>
+      <th style='width:2.85vw; text-align:right'>Mei</th>
+      <th style='width:2.85vw; text-align:right'>Jun</th>
+      <th style='width:2.85vw; text-align:right'>Jul</th>
+      <th style='width:2.85vw; text-align:right'>Aug</th>
+      <th style='width:2.85vw; text-align:right'>Sep</th>
+      <th style='width:2.85vw; text-align:right'>Okt</th>
+      <th style='width:2.85vw; text-align:right'>Nov</th>
+      <th style='width:2.85vw; text-align:right'>Dec</th>
       <th style='width:4.2vw; text-align:right'>Totaal</th>
       <th style='width:4.2vw; text-align:right'>Huidig<br />saldo</th>";
 echo "</tr>";
-$rowcolor = 'row-a';
+//$rowcolor = 'row-a';
 
 // Hier komt het ophalen en optellen van de uren
 $sql_code = "SELECT user, voornaam, tussenvoegsel, achternaam, approval_maand, SUM(uren) AS totaal_uren
              FROM view_uren_get_full_username
-             WHERE approval_jaar = " . $inputjaar . "
-             AND soortuur = 'MIR001VL'
+             WHERE (approval_jaar = " . $inputjaar . " OR approval_jaar IS NULL)
+             AND (soortuur = 'MIR001VL' OR soortuur IS NULL)
              GROUP BY approval_maand, user
              ORDER BY achternaam, approval_maand";
 
@@ -109,29 +109,29 @@ if (! $sql_out) {
                            FROM beginsaldo
                            WHERE username = '" . $frm_username . "'
                            AND jaar = " . $inputjaar . ";";
-                writedebug("select beginsaldo: " . $sql_beginsaldo_qry);
                 $sql_beginsaldo_out = mysqli_query($dbconn, $sql_beginsaldo_qry);
+                
                 if (! $sql_beginsaldo_out) {
                     writelog("rpt_verlofuren_medewerker", "ERROR", "Ophalen van de beginsaldi per medewerker gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
                 }
                 while ($sql_beginsaldo_rows = mysqli_fetch_array($sql_beginsaldo_out)) {
                     $frm_beginsaldo = $sql_beginsaldo_rows['beginsaldo'];
+               
+                    echo '<tr class="colored">';
+                    echo "<td>" . $frm_achternaam . ", " . $frm_voornaam . " " . $frm_tussenvoegsel . "</td>";
+                    echo "<td style='text-align:right'>" . number_format($frm_beginsaldo, 2) . "</td>";
+                    for ($ix = 0; $ix < 12; $ix ++) {
+                        echo "<td style='width:2.85vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
+                        $frm_maand[$ix] = ' ';
+                    }
+                    echo "<td style='width:4.2vw; text-align:right'><strong>" . number_format($frm_jaartotaal_uren, 2) . "</strong></td>";
+                    $frm_eindsaldo = $frm_beginsaldo - $frm_jaartotaal_uren;
+                    echo "<td style='width:4.2vw; text-align:right'><strong>" . number_format($frm_eindsaldo, 2) . "</strong></td>";
+                    echo "</tr>";
+                    $frm_jaartotaal_uren = 0;
+                    $frm_eindsaldo = 0;
+                    //check_row_color($rowcolor);
                 }
-                
-                echo '<tr class="' . $rowcolor . '">';
-                echo "<td>" . $frm_achternaam . ", " . $frm_voornaam . " " . $frm_tussenvoegsel . "</td>";
-                echo "<td style='text-align:right'>" . number_format($frm_beginsaldo, 2) . "</td>";
-                for ($ix = 0; $ix < 12; $ix ++) {
-                    echo "<td style='width:3.33vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
-                    $frm_maand[$ix] = ' ';
-                }
-                echo "<td style='width:4.2vw; text-align:right'><strong>" . number_format($frm_jaartotaal_uren, 2) . "</strong></td>";
-                $frm_eindsaldo = $frm_beginsaldo - $frm_jaartotaal_uren;
-                echo "<td style='width:4.2vw; text-align:right'><strong>" . number_format($frm_eindsaldo, 2) . "</strong></td>";
-                echo "</tr>";
-                $frm_jaartotaal_uren = 0;
-                $frm_eindsaldo = 0;
-                check_row_color($rowcolor);
             }
         }
 
@@ -155,24 +155,23 @@ if (! $sql_out) {
                            FROM beginsaldo
                            WHERE username = '" . $frm_username . "'
                            AND jaar = " . $inputjaar . ";";
-        writedebug("select beginsaldo: " . $sql_beginsaldo_qry);
         $sql_beginsaldo_out = mysqli_query($dbconn, $sql_beginsaldo_qry);
         if (! $sql_beginsaldo_out) {
             writelog("rpt_verlofuren_medewerker", "ERROR", "Ophalen van de beginsaldi per medewerker gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
         }
         while ($sql_beginsaldo_rows = mysqli_fetch_array($sql_beginsaldo_out)) {
             $frm_beginsaldo = $sql_beginsaldo_rows['beginsaldo'];
+            
+            echo '<tr class="colored">';
+            echo "<td>" . $frm_achternaam . ", " . $frm_voornaam . " " . $frm_tussenvoegsel . "</td>";
+            echo "<td style='text-align:right'>" . number_format($frm_beginsaldo, 2) . "</td>";
+            for ($ix = 0; $ix < 12; $ix ++) {
+                echo "<td style='width:2.85vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
+            }
+            echo "<td style='width:4.2vw; text-align:right'><strong>" . number_format($frm_jaartotaal_uren, 2) . "</strong></td>";
+            $frm_eindsaldo = $frm_beginsaldo - $frm_jaartotaal_uren;
+            echo "<td style='width:4.2vw; text-align:right'><strong>" . number_format($frm_eindsaldo, 2) . "</strong></td>";
         }
-        
-        echo '<tr class="' . $rowcolor . '">';
-        echo "<td>" . $frm_achternaam . ", " . $frm_voornaam . " " . $frm_tussenvoegsel . "</td>";
-        echo "<td style='text-align:right'>" . number_format($frm_beginsaldo, 2) . "</td>";
-        for ($ix = 0; $ix < 12; $ix ++) {
-            echo "<td style='width:3.33vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
-        }
-        echo "<td style='width:4.2vw; text-align:right'><strong>" . number_format($frm_jaartotaal_uren, 2) . "</strong></td>";
-        $frm_eindsaldo = $frm_beginsaldo - $frm_jaartotaal_uren;
-        echo "<td style='width:4.2vw; text-align:right'><strong>" . number_format($frm_eindsaldo, 2) . "</strong></td>";
     }
     echo "</tr>";
     writelog("rpt_verlofuren_medewerker", "INFO", "Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd");

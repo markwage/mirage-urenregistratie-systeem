@@ -10,6 +10,7 @@ include ("autoload.php");
 check_cookies();
 include ("header.php");
 
+global $username_decrypted, $fullname_decrypted;
 if (isset($_GET['username'])) {
     // decrypt username
     $username_decrypted = convert_string('decrypt', $_GET['username']);
@@ -43,6 +44,8 @@ $inputjaar = date('Y');
 // ------------------------------------------------------------------------------------------------------
 if (isset($_POST['change_jaar'])) {
     $inputjaar = $_POST["jaartal"];
+    $fullname_decrypted = $_POST['fullname_decrypted'];
+    $username_decrypted = $_POST['username_decrypted'];
 }
 
 // ---------------------------------------------------------------------------------
@@ -62,6 +65,9 @@ echo "<td><strong>Jaar</strong></td>";
 echo "<td><input type='number' style='width:3.2vw' name='jaartal' min='2019' max='2300' value='" . $inputjaar . "'>";
 echo "<td><input class='button' type='submit' name='change_jaar' value='refresh'></td>";
 echo "<td style='width:17vw; text-align:right'><strong>" . $fullname_decrypted . "</strong></td>";
+// volgende twee regels zijn nodig. Ze worden niet op het scherm getoond maar de variabelen zijn nodig bij refresh van het scherm
+echo "<td><input type='text' style='display:none' name='username_decrypted' value='" . $username_decrypted . "'></td>";
+echo "<td><input type='text' style='display:none' name='fullname_decrypted' value='" . $fullname_decrypted . "'></td>";
 
 // echo "<td><strong>Medewerker: ".$_SESSION['voornaam']." ".$_SESSION['tussenvoegsel']." ".$_SESSION['achternaam']."</strong></td>";
 echo "</tr>";
@@ -70,20 +76,20 @@ echo "</table>";
 echo "<center><table id='uren_soortuur'>";
 echo "<tr>";
 echo "<th colspan='2'>Soortuur</th>
-      <th style='width:3.33vw; text-align:right'>Jan</th>
-      <th style='width:3.33vw; text-align:right'>Feb</th>
-      <th style='width:3.33vw; text-align:right'>Maa</th>
-      <th style='width:3.33vw; text-align:right'>Apr</th>
-      <th style='width:3.33vw; text-align:right'>Mei</th>
-      <th style='width:3.33vw; text-align:right'>Jun</th>
-      <th style='width:3.33vw; text-align:right'>Jul</th>
-      <th style='width:3.33vw; text-align:right'>Aug</th>
-      <th style='width:3.33vw; text-align:right'>Sep</th>
-      <th style='width:3.33vw; text-align:right'>Okt</th>
-      <th style='width:3.33vw; text-align:right'>Nov</th>
-      <th style='width:3.33vw; text-align:right'>Dec</th>";
+      <th style='width:2.85vw; text-align:right'>Jan</th>
+      <th style='width:2.85vw; text-align:right'>Feb</th>
+      <th style='width:2.85vw; text-align:right'>Maa</th>
+      <th style='width:2.85vw; text-align:right'>Apr</th>
+      <th style='width:2.85vw; text-align:right'>Mei</th>
+      <th style='width:2.85vw; text-align:right'>Jun</th>
+      <th style='width:2.85vw; text-align:right'>Jul</th>
+      <th style='width:2.85vw; text-align:right'>Aug</th>
+      <th style='width:2.85vw; text-align:right'>Sep</th>
+      <th style='width:2.85vw; text-align:right'>Okt</th>
+      <th style='width:2.85vw; text-align:right'>Nov</th>
+      <th style='width:2.85vw; text-align:right'>Dec</th>";
 echo "</tr>";
-$rowcolor = 'row-a';
+//$rowcolor = 'row-a';
 
 // Hier komt het ophalen en optellen van de uren
 
@@ -122,14 +128,14 @@ if (! $sql_out) {
 
         if ($row_soortuur != $frm_soortuur) {
             if ($frm_soortuur != 'dummy') {
-                echo '<tr class="' . $rowcolor . '">';
+                echo '<tr class="colored">';
                 echo "<td>" . $frm_soortuur . "</td><td>" . $frm_omschrijving . "</td>";
                 for ($ix = 0; $ix < 12; $ix ++) {
-                    echo "<td style='width:3.33vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
+                    echo "<td style='width:2.85vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
                     $frm_maand[$ix] = ' ';
                 }
                 echo "</tr>";
-                check_row_color($rowcolor);
+                //check_row_color($rowcolor);
             }
         }
 
@@ -140,12 +146,12 @@ if (! $sql_out) {
     // laatste rij uit de query dus wegschrijven naar formulier
     // Indien $row_soortuur niet is gevuld dan zijn er geen gegevens van het jaar
     if (! isset($row_soortuur)) {
-        echo '</table></center><blockquote class="error">ERROR: Er zijn geen gegevens aanwezig over dit jaar</blockquote>';
+        echo '</table></center><blockquote>INFO: Er zijn geen gegevens aanwezig over dit jaar</blockquote>';
     } else {
-        echo '<tr class="' . $rowcolor . '">';
+        echo '<tr class="colored">';
         echo "<td>" . $row_soortuur . "</td><td>" . $row_omschrijving . "</td>";
         for ($ix = 0; $ix < 12; $ix ++) {
-            echo "<td style='width:3.33vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
+            echo "<td style='width:2.85vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
         }
     }
     echo "</tr>";
