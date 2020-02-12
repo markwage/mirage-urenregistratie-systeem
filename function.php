@@ -86,6 +86,9 @@ function displayUserGegevens()
     $sql_code = "SELECT * FROM users
                  WHERE username = 'username'";
     $sql_out = mysqli_query($dbconn, $sql_code);
+    if (! $sql_out) {
+        writelog("function displayUserGegevens", "ERROR", "Ophalen van de gegevens gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+    }
 
     while ($sql_row = mysqli_fetch_array($sql_out)) {
         $user_id = $sql_row['ID'];

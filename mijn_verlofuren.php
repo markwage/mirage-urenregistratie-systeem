@@ -15,7 +15,7 @@ include ("header.php");
 	<h1>Overzicht opgenomen verlofuren</h1>
 
 <?php
-displayUserGegevens();
+//displayUserGegevens();
 
 // Bepalen jaartal (= huidig jaar)
 $inputjaar = date('Y');
@@ -67,9 +67,9 @@ $sql_out = mysqli_query($dbconn, $sql_code);
 if (! $sql_out) {
     writelog("mijn_verlofuren", "ERROR", "Ophalen van de verlofuren per medewerker gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
 } else {
-    $maandnr = '';
-    $dagnr   = '';
-    $uren    = '';
+    //$maandnr = '';
+    //$dagnr   = '';
+    //$uren    = '';
     $totaal_opgenomen = 0;
     
     $arr_uren[0][0]='Januari';
@@ -119,8 +119,9 @@ if (! $sql_out) {
     //echo "</tr>";
     writelog("mijn_verlofuren", "INFO", "Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd");
 }
-echo "</div>"; // end id=verlofuren
+
 echo "</table></center>";
+
 
 // Display overzicht beginsaldo en huidige saldo
 $sql_beginsaldo_qry = "SELECT beginsaldo
@@ -146,6 +147,7 @@ while ($sql_beginsaldo_rows = mysqli_fetch_array($sql_beginsaldo_out)) {
     echo "</tr>";
     echo "</table>";
 }
+echo "</div>"; // end id=verlofuren
 
 // This button is needed for when user pushes the ENTER button when changing the yearnumber. Button is not displayed
 echo "<input type='submit' name='dummy' value='None' style='display: none'>";
