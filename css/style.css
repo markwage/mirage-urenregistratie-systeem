@@ -185,6 +185,12 @@ input[type="checkbox"] {
 	width: 18px; /*Desired width*/
 	height: 18px; /*Desired height*/
 }
+
+#verlof {
+	font: normal 0.6vw verdana, arial, sans-serif;
+}
+
+
 /* Normaal werkt readonly niet voor checkboxes echter met onderstaande 
    wordt de checkbox niet aanpasbaar
    Je kan ook disabled gebruiken in de form maar dan woordt de value

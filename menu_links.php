@@ -18,6 +18,7 @@ if (isset($_COOKIE['ID_mus'])) {
 	<h1 class="clear">Urenadministratie</h1>
 	<ul class="sidemenu">
 		<li><a href="uren.php?aktie=toevoegen">Uren boeken</a></li>
+		<li><a href="mijn_verlofuren.php">Overzicht verlofuren</a></li>
 		<li><a href="rpt_uren_urensoort.php?username=<?php echo $_SESSION["username_encrypted"] ?>">Mijn geboekte uren per maand</a></li>
 		<li><a href="users.php?aktie=editprof&edtuser=<?php echo $_SESSION["username_encrypted"] ?>">Mijn profiel</a></li>
 		<?php if ($_SESSION['admin']) { echo '<li><a href="beginsaldo.php">Beginsaldi verlofuren</a></li>'; } ?>
