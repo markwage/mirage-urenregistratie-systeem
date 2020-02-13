@@ -6,19 +6,35 @@ include ("db.php");
 include ("function.php");
 include ("autoload.php");
 
+if (isset($_GET['user'])) {
+    // decrypt username
+    $username_decrypted = convert_string('decrypt', $_GET['user']);
+    writedebug("mijn_verlofuren voor ".$username_decrypted);
+    if ($username_decrypted == '') {
+        writelog("mijn_verlofuren", "ERROR", " Men heeft geprobeerd om username handmatig aan te passen in de url: " . $_GET['username']);
+        exit("Je hebt geprobeerd om username handmatig aan te passen in de url");
+    }
+} else {
+    $username_decrypted = $_SESSION['username'];
+}
+
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
 check_cookies();
 include ("header.php");
 
 ?>
 <div id="main">
-	<h1>Overzicht opgenomen verlofuren</h1>
+<h1>Overzicht opgenomen verlofuren</h1>
 
 <?php
 //displayUserGegevens();
 
 // Bepalen jaartal (= huidig jaar)
-$inputjaar = date('Y');
+if (isset($_GET['jaar'])) {
+    $inputjaar = $_GET['jaar'];
+} else {
+    $inputjaar = date('Y');
+}
 
 // ------------------------------------------------------------------------------------------------------
 // Refresh butto changejaar is op geklikt om een andere week te muteren.
@@ -54,23 +70,24 @@ for($ix=1; $ix<32; $ix++) {
     echo '<th style="width:1.45vw; text-align:right">' . $ix . '</th>';
 }
 
-
 echo "</tr>";
+if(isset($username_decrypted)) {
+    $qry_username = $username_decrypted;
+} else {
+    $qry_username = $_SESSION['username'];
+}
 
-$sql_code = "SELECT username, approval_maand, approval_dag, uren
+$sql_code = "SELECT username, approval_maand, approval_dag, uren, beginsaldo, fullname   
              FROM view_verlofuren
              WHERE approval_jaar = " . $inputjaar . " 
-             AND username = '". $_SESSION['username'] . "'
+             AND username = '". $qry_username . "'
              ORDER BY approval_maand, approval_dag";
 
 $sql_out = mysqli_query($dbconn, $sql_code);
 if (! $sql_out) {
     writelog("mijn_verlofuren", "ERROR", "Ophalen van de verlofuren per medewerker gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
 } else {
-    //$maandnr = '';
-    //$dagnr   = '';
-    //$uren    = '';
-    $totaal_opgenomen = 0;
+    $frm_totaal_opgenomen = 0;
     
     $arr_uren[0][0]='Januari';
     $arr_uren[1][0]='Februari';
@@ -93,13 +110,14 @@ if (! $sql_out) {
     
     //
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
-        $maandnr = $sql_rows['approval_maand'];
-        $dagnr   = $sql_rows['approval_dag'];
-        $uren    = $sql_rows['uren'];
+        $maandnr              = $sql_rows['approval_maand'];
+        $dagnr                = $sql_rows['approval_dag'];
+        $uren                 = $sql_rows['uren'];
+        $frm_beginsaldo       = $sql_rows['beginsaldo'];
+        $frm_fullname         = $sql_rows['fullname'];
+        $frm_totaal_opgenomen = $frm_totaal_opgenomen + $uren;
         
         $arr_uren[$maandnr - 1][$dagnr] = $uren;
-        $totaal_opgenomen = $totaal_opgenomen + $uren;
-        
     }
     for($ix3=0; $ix3<12; $ix3++) {
         for($ix4=0; $ix4<32; $ix4++) {            
@@ -111,8 +129,6 @@ if (! $sql_out) {
                 if($ix4 == 32) {
                     echo '</tr>';
                 }
-            
-           
         }
     }
     
@@ -122,31 +138,19 @@ if (! $sql_out) {
 
 echo "</table></center>";
 
+echo "<table>";
+echo '<tr>';
+echo '<td>Gegevens '. $frm_fullname . '</td>';
+echo '<tr>';
+echo "<td>Beginsaldo:</td>";
+echo "<td style='text-align:right'>" . number_format($frm_beginsaldo, 2) . "</td>";
+echo "</tr>";
+echo '<tr>';
+echo "<td>Totaal opgenomen:</td>";
+echo "<td style='text-align:right'>" . number_format($frm_totaal_opgenomen, 2) . "</td>";
+echo "</tr>";
+echo "</table>";
 
-// Display overzicht beginsaldo en huidige saldo
-$sql_beginsaldo_qry = "SELECT beginsaldo
-                           FROM beginsaldo
-                           WHERE username = '" . $_SESSION['username'] . "'
-                           AND jaar = " . $inputjaar . ";";
-$sql_beginsaldo_out = mysqli_query($dbconn, $sql_beginsaldo_qry);
-if (! $sql_beginsaldo_out) {
-    writelog("mijn_verlofuren", "ERROR", "Ophalen van de beginsaldi van de medewerker gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
-}
-
-while ($sql_beginsaldo_rows = mysqli_fetch_array($sql_beginsaldo_out)) {
-    $frm_beginsaldo = $sql_beginsaldo_rows['beginsaldo'];
-    echo "<table>";
-    echo '<tr>';
-    echo "<td>Beginsaldo:</td>";
-    echo "<td style='text-align:right'>" . number_format($frm_beginsaldo, 2) . "</td>";
-    echo "</tr>";
-    echo '<tr>';
-    echo "<td>Totaal opgenomen:</td>";
-    echo "<td style='text-align:right'>" . number_format($totaal_opgenomen, 2) . "</td>";
-    
-    echo "</tr>";
-    echo "</table>";
-}
 echo "</div>"; // end id=verlofuren
 
 // This button is needed for when user pushes the ENTER button when changing the yearnumber. Button is not displayed

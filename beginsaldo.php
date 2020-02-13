@@ -15,7 +15,7 @@ include ("header.php");
 	<h1>Beginsaldi verlofuren</h1>
 
 <?php
-displayUserGegevens();
+//displayUserGegevens();
 
 // ------------------------------------------------------------------------------------------------------
 // Bepalen welk jaar gedisplayed moet worden. 
@@ -100,6 +100,7 @@ if (isset($_POST['save'])) {
             writelog("beginsaldo", "INFO", "Records zijn ge-update over jaar " . $inputjaar);
         }
     }
+    echo '<blockquote>INFO: De gegevens zijn succesvol gesaved</blockquote>';
     
 }
 
@@ -155,12 +156,10 @@ if($aantal_rijen == 0) {
     </form>
 	</div>
     <?php 	
-} else{
-    //$SQL_NUM_ROWS = mysqli_num_rows($sql_out);
+} else {
     echo "<tr>";
     echo "<th></th><th colspan='1'>Naam medewerker</th><th style='width:2.8vw; text-align:right'>Beginsaldo</th>";
     echo "</tr>";
-    //$rowcolor = 'row-a';
 
     while ($sql_row = mysqli_fetch_array($sql_out)) {
         $ID            = $sql_row['ID'];
@@ -173,10 +172,9 @@ if($aantal_rijen == 0) {
         echo '<tr class="colored">';
         echo '<td><input style="display:none" type="text" name="ID[]" value="' . $ID . '" readonly></td>';
         echo '<td style="display:none">' . $username . '</td>';
-        echo '<td>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</td>';
+        echo '<td style="height:1.2vw;">' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</td>';
         echo '<td><input style="width:2.8vw; text-align:right" type="number" name="beginsaldo[]" value="' . $beginsaldo . '"></td>';
         echo '</tr>';
-        //check_row_color($rowcolor);
     }
 
     echo "</table></center>";
@@ -188,8 +186,8 @@ if($aantal_rijen == 0) {
 
 ?>
 </form>
-	</div>
-	<!-- ------------------------------------------------------------------------------
+</div>
+<!-- ------------------------------------------------------------------------------
   Einde van het formulier
 ------------------------------------------------------------------------------  -->
 

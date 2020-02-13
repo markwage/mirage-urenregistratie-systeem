@@ -15,7 +15,7 @@ if (isset($_GET['username'])) {
     // decrypt username
     $username_decrypted = convert_string('decrypt', $_GET['username']);
     if ($username_decrypted == '') {
-        writelog("rpt_uren_urensoort", "ERROR", " Men heeft geprobeerd om username handmatig aan te passen in de url: " . $_GET['username']);
+        writelog("mijn_verlofuren", "ERROR", " Men heeft geprobeerd om username handmatig aan te passen in de url: " . $_GET['username']);
         exit("Je hebt geprobeerd om username handmatig aan te passen in de url");
     }
 } else {
@@ -33,7 +33,7 @@ if (isset($_GET['fullname']) && ($_GET['fullname'] != "")) {
 	<h1>Overzicht uren per urensoort</h1>
 
 <?php
-displayUserGegevens();
+//displayUserGegevens();
 
 // Bepalen jaartal (= huidig jaar)
 $inputjaar = date('Y');
@@ -129,7 +129,7 @@ if (! $sql_out) {
         if ($row_soortuur != $frm_soortuur) {
             if ($frm_soortuur != 'dummy') {
                 echo '<tr class="colored">';
-                echo "<td>" . $frm_soortuur . "</td><td>" . $frm_omschrijving . "</td>";
+                echo "<td style='height:1.2vw;'>" . $frm_soortuur . "</td><td>" . $frm_omschrijving . "</td>";
                 for ($ix = 0; $ix < 12; $ix ++) {
                     echo "<td style='width:2.85vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
                     $frm_maand[$ix] = ' ';

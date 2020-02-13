@@ -156,6 +156,7 @@ if ($aktie == 'disp') {
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $approved = $sql_rows['approved'];
         $username = $sql_rows['user'];
+        $encrypted_username = convert_string('encrypt', $username);
         $maand = $sql_rows['approval_maand'];
         $jaar = $sql_rows['approval_jaar'];
         $voornaam = $sql_rows['voornaam'];
@@ -164,17 +165,17 @@ if ($aktie == 'disp') {
 
         if (($jaar != '') && ($approved == 0)) {
             echo '<tr class="colored">
-            <td><b>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
-			<td><a href="approve.php?aktie=dspuren&user=' . $username . '&jaar=' . $jaar . '&maand=' . $maand . '"><img class="button" src="./img/icons/view-48.png" alt="Toon week" title="Toon de uren van deze week" /></a></td>
+            <td style="height:1.2vw;"><b>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
+			<td><a href="approve.php?aktie=dspuren&user=' . $encrypted_username . '&jaar=' . $jaar . '&maand=' . $maand . '"><img class="button" src="./img/icons/view-48.png" alt="Toon week" title="Toon/approve de uren van deze maand" /></a></td>
 			</tr>';
         } elseif ($jaar == '') {
             echo '<tr class="colored">
-            <td><b>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
+            <td style="height:1.2vw;"><b>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td>Geen gegevens aanwezig over afgelopen maand</td>
 			</tr>';
         } elseif ($approved == 1) {
             echo '<tr class="colored">
-            <td><b>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
+            <td style="height:1.2vw;"><b>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td>Approved</td>
 			</tr>';
         }
@@ -187,7 +188,7 @@ if ($aktie == 'disp') {
 // Wordt uitgevoerd wanneer men op de button klikt om uren van die user / maand te displayen
 // ------------------------------------------------------------------------------------------------------
 if ($aktie == 'dspuren') {
-    $username = $_GET['user'];
+    $username = convert_string('decrypt',$_GET['user']);
     $maand = $_GET['maand'];
     $jaar = $_GET['jaar'];
 
@@ -258,22 +259,15 @@ if ($aktie == 'dspuren') {
 
     // Display buttons. Met behulp van een formulier
     ?>
-    <form style='background-color: #FFF;' name="approve"
-		action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-		<!-- Volgende velden zijn hidden om toch de waarden door te geven voor de update-query -->
-		<input type="hidden" name="maand"
-			value="<?php if (isset($maand)) { echo $maand; } ?>"> <input
-			type="hidden" name="jaar"
-			value="<?php if (isset($jaar)) { echo $jaar; } ?>"> <input
-			type="hidden" name="username"
-			value="<?php if (isset($username)) { echo $username; } ?>"> <input
-			type="hidden" name="emailadres"
-			value="<?php if (isset($emailadres)) { echo $emailadres; } ?>"> <input
-			type="hidden" name="jaar"
-			value="<?php if (isset($datum)) { echo substr($datum,0,4); } ?>">
-		<!--  Tot hier -->
-		<input class="button" type="submit" name="cancel" value="cancel"
-			formnovalidate>
+    <form style='background-color: #FFF;' name="approve" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+	<!-- Volgende velden zijn hidden om toch de waarden door te geven voor de update-query -->
+	<input type="hidden" name="maand" value="<?php if (isset($maand)) { echo $maand; } ?>"> 
+	<input type="hidden" name="jaar" value="<?php if (isset($jaar)) { echo $jaar; } ?>"> 
+	<input type="hidden" name="username" value="<?php if (isset($username)) { echo $username; } ?>"> 
+	<input type="hidden" name="emailadres" value="<?php if (isset($emailadres)) { echo $emailadres; } ?>"> 
+	<input type="hidden" name="jaar" value="<?php if (isset($datum)) { echo substr($datum,0,4); } ?>">
+	<!--  Tot hier -->
+	<input class="button" type="submit" name="cancel" value="cancel" formnovalidate>
     <?php
     if (! isset($_SESSION['approvenallowed']) || (! $_SESSION['approvenallowed'])) {
         echo '<blockquote>Je hebt geen rechten om te approven</blockquote>';

@@ -15,7 +15,7 @@ include ("header.php");
 	<h1>Urenadministratie</h1>
 
 <?php
-displayUserGegevens();
+//displayUserGegevens();
 
 // Indien weeknr en jaar is doorgegeven via url dan dit de inputweeknr maken
 // Anders is vandaag de inputdatum
@@ -72,7 +72,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
     getWeekdays($_POST['week_nummer']);
 
     $sql_select_uren = "SELECT * FROM uren 
-                        WHERE user='" . $username . "' 
+                        WHERE user='" . $_SESSION['username'] . "' 
                         AND week='" . $week . "' 
                         AND jaar='" . $year . "'";
     $check_select_uren = mysqli_query($dbconn, $sql_select_uren);
@@ -83,7 +83,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
 
     if (mysqli_num_rows($check_select_uren) > 0) {
         $sql_delete_uren = "DELETE FROM uren 
-                            WHERE user='" . $username . "' 
+                            WHERE user='" . $_SESSION['username'] . "' 
                             AND week='" . $week . "' 
                             AND jaar='" . $year . "'
                             AND approved = 0";
@@ -112,7 +112,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
                     // moeten zijn omdat de week verwijderd is. Indien wel dan was deze dus al approved
 
                     $sql_check_datum_approved = "SELECT * FROM uren
-                                                 WHERE user='" . $username . "' 
+                                                 WHERE user='" . $_SESSION['username'] . "' 
                                                  AND datum='" . $datum . "'
                                                  AND soortuur='" . $_POST['soortuur'][$ix1] . "'";
                     $check_check_datum_approved = mysqli_query($dbconn, $sql_check_datum_approved);
@@ -131,7 +131,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
                                                    '" . $_POST['soortuur'][$ix1] . "', 
                                                    '" . $datum . "', 
                                                    '" . $urenarray[$ix2] . "', 
-                                                   '" . $username . "')";
+                                                   '" . $_SESSION['username'] . "')";
                         $check_insert_uren = mysqli_query($dbconn, $sql_insert_uren);
 
                         if (! $check_insert_uren) {
@@ -174,7 +174,7 @@ for ($ix6 = 0; $ix6 < 7; $ix6 ++) {
     echo "<th><center>" . $weekDatum[$ix6] . "<br>" . $weekDagNaam[$ix6] . "</center></th>";
 
     $sql_check_approved = "SELECT * FROM approvals
-                           WHERE user='" . $username . "'
+                           WHERE user='" . $_SESSION['username'] . "'
                            AND maand='" . $weekMaand[$ix6] . "'
                            AND jaar='" . $weekJaar[$ix6] . "'";
     $check_check_approved = mysqli_query($dbconn, $sql_check_approved);
@@ -211,7 +211,7 @@ for ($ix3 = 0; $ix3 < 7; $ix3 ++) {
 $tmp_soortuur = 'eersteloop';
 
 $sql_code2 = "SELECT * FROM uren 
-             WHERE user='" . $username . "' 
+             WHERE user='" . $_SESSION['username'] . "' 
              AND week='" . $week . "' 
              AND jaar='" . $year . "' 
              ORDER BY soortuur, dagnummer";

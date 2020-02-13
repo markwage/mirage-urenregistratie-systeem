@@ -50,19 +50,6 @@ function check_admin()
 }
 
 // ------------------------------------------------------------------------
-// Bepalen wat de kleur van de tabelrij moet zijn op het scherm
-// ------------------------------------------------------------------------
-//function check_row_color($current_row_color)
-//{
-//    global $rowcolor;
-//    if ($current_row_color == 'row-a') {
-//        $rowcolor = 'row-b';
-//    } else {
-//        $rowcolor = 'row-a';
-//    }
-//}
-
-// ------------------------------------------------------------------------
 // Cursor op een bepaald veld in het formulier zetten
 // ------------------------------------------------------------------------
 function setfocus($formnaam, $veldnaam)
@@ -86,9 +73,6 @@ function displayUserGegevens()
     $sql_code = "SELECT * FROM users
                  WHERE username = 'username'";
     $sql_out = mysqli_query($dbconn, $sql_code);
-    if (! $sql_out) {
-        writelog("function displayUserGegevens", "ERROR", "Ophalen van de gegevens gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
-    }
 
     while ($sql_row = mysqli_fetch_array($sql_out)) {
         $user_id = $sql_row['ID'];
