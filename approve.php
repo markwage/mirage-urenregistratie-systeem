@@ -54,6 +54,10 @@ if (isset($_POST['approve'])) {
                  AND month(datum) = '" . $maand . "'
                  AND year(datum) = '" . $jaar . "'";
     $sql_out = mysqli_query($dbconn, $sql_code);
+    if (!$sql_out) {
+        writelog("approve", "ERROR", "Update uren gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+    }
 
     writelog("approve", "INFO", "Voor user {$username} is maand {$jaar}-{$maand} approved");
 
@@ -62,6 +66,10 @@ if (isset($_POST['approve'])) {
                           '" . $jaar . "',
                           '" . $username . "')";
     $sql_out_insert = mysqli_query($dbconn, $sql_insert);
+    if (!$sql_out_insert) {
+        writelog("approve", "ERROR", "Insert van approval in tabel approvals gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+    }
 
     writelog("approve", "INFO", "Record succesvol toegevoegd in tabel approvals voor user {$username} periode {$jaar}-{$maand}");
 
@@ -76,9 +84,7 @@ if (isset($_POST['approve'])) {
     $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mjwage@gmail.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
     // Creeeren van de email message
-    // $message = '<html>';
     mail_message_header();
-    // $message .='<body>';
     $message .= '<p>De uren van gebruiker ' . $username . ' betreffende maand <strong>' . $jaar . '-' . $maand . '</strong> zijn approved in Mirage Urenregistratie Systeem<br />Approved door: ' . $approvedbyuser . '</p>';
 
     // Display totaal per soortuur
@@ -95,6 +101,11 @@ if (isset($_POST['approve'])) {
                 GROUP BY soortuur
                 ORDER BY soortuur";
     $sql_out = mysqli_query($dbconn, $sql_code);
+    if (!$sql_out) {
+        writelog("approve", "ERROR", "Select van uren gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+    }
+    
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $approved = $sql_rows['approved'];
         $toturen = $sql_rows['toturen'];
@@ -103,11 +114,11 @@ if (isset($_POST['approve'])) {
 
         $message .= '<tr class="colored"><td>' . $soortuur . '</td><td>' . $omschrijving . '</td><td style=\'text-align:right\'><strong>' . $toturen . '</strong></td></tr>';
 
-        //check_row_color($rowcolor);
     }
 
     $message .= '</table>';
-    $message .= '</body></html>';
+    mail_message_footer($message);
+    //$message .= '</body></html>';
     // Versturen van de email
     if ($_SERVER['SERVER_NAME'] != 'localhost') {
         if (mail($mail_to, $mail_subject, $message, $headers)) {
@@ -144,9 +155,9 @@ if ($aktie == 'disp') {
                 ORDER BY achternaam, user;";
 
     $sql_out = mysqli_query($dbconn, $sql_code);
-
-    if (! $sql_out) {
-        writelog("approve", "ERROR", "Select gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+    if (!$sql_out) {
+        writelog("approve", "ERROR", "Selecteren gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
     }
 
     echo "<center><table>";
@@ -195,6 +206,10 @@ if ($aktie == 'dspuren') {
     $sql_code = "SELECT * FROM users
                 WHERE username = '$username'";
     $sql_out = mysqli_query($dbconn, $sql_code);
+    if (!$sql_out) {
+        writelog("approve", "ERROR", "Selecteen van users gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+    }
     $sql_rows = mysqli_fetch_array($sql_out);
     $voornaam = $sql_rows['voornaam'];
     $tussenvoegsel = $sql_rows['tussenvoegsel'];
@@ -213,6 +228,10 @@ if ($aktie == 'dspuren') {
                  AND approval_jaar = '$jaar'
                  ORDER BY datum, soortuur";
     $sql_out = mysqli_query($dbconn, $sql_code);
+    if (!$sql_out) {
+        writelog("approve", "ERROR", "Select view_uren_soortuur gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+    }
 
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $datum = $sql_rows['datum'];
@@ -242,6 +261,11 @@ if ($aktie == 'dspuren') {
                 GROUP BY soortuur
                 ORDER BY soortuur";
     $sql_out = mysqli_query($dbconn, $sql_code);
+    if (!$sql_out) {
+        writelog("approve", "ERROR", "Benaderen database gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+    }
+    
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $approved = $sql_rows['approved'];
         $toturen = $sql_rows['toturen'];

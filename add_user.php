@@ -165,17 +165,18 @@ if (isset($_POST['submit'])) {
             $headers .= 'From: ' . $mail_from . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
             // Creeeren van de email message
-            $message = '<html><body>';
+            mail_message_header();
             $message .= '<h1>Welkom ' . $frm_voornaam . '</h1>';
-            $message .= '<p style="font:18px;">Er is voor jou een userid opgenomen in Mirage Urenregistratie Systeem</p>';
-            $message .= '<p style="font:18px;">Ga hiervoor naar ' . $_SERVER['SERVER_NAME'] . ' en logon met onderstaande gegevens</p>';
+            $message .= '<p>Er is voor jou een userid opgenomen in Mirage Urenregistratie Systeem</p>';
+            $message .= '<p>Ga hiervoor naar ' . $_SERVER['SERVER_NAME'] . ' en logon met onderstaande gegevens</p>';
             $message .= '<table>';
             $message .= '<tr><td>Username</td><td>' . $frm_username . '</td></tr>';
             $message .= '<tr><td>Wachtwoord</td><td>' . $decrypted_pass . '</td></tr>';
             $message .= '<tr><td>Volledige naam</td><td>' . $frm_voornaam . ' ' . $frm_tussenvoegsel . ' ' . $frm_achternaam . '</td></tr>';
             $message .= '<tr><td>Emailadres</td><td>' . $frm_email . '</td></tr>';
             $message .= '</table>';
-            $message .= '</body></html>';
+            mail_message_footer($message);
+            //$message .= '</body></html>';
 
             // Versturen van de email
             if (mail($mail_to, $mail_subject, $message, $headers)) {
@@ -186,8 +187,8 @@ if (isset($_POST['submit'])) {
                 writelog("add_user", "ERROR", "Het is niet gelukt om een mail te versturen naar " . $mail_to . " ivm aanmaken userid " . $frm_username);
             }
         } else {
-            echo '<blockquote class="errmsg">Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />
-			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</blockquote>';
+            writelog("add_user", "ERROR", "Er is een fout opgetreden bij het toevoegen van een nieuwe user - " . mysqli_error($dbconn));
+            exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
         }
     }
 }
@@ -197,8 +198,6 @@ if (isset($_POST['submit'])) {
 <form name="AddUser" action="<?php echo $_SERVER['PHP_SELF']; ?>"
 		method="post">
 		<p>
-		
-		
 		<table>
 			<tr>
 				<td><b>Username:</b></td>

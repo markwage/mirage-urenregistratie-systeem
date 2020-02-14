@@ -439,7 +439,7 @@ function getWeekdays($weeknr)
 }
 
 // -----------------------------------------------------------------------------
-// Style voor de verstuurde mails
+// Style voor de verstuurde mails - header incl styling
 // -----------------------------------------------------------------------------
 function mail_message_header()
 {
@@ -448,6 +448,12 @@ function mail_message_header()
 <html>
 <body>
 <style type="text/css">
+body {
+    font: normal 16px verdana, arial, sans-serif;
+}
+h1 {
+    font: bold 20px verdana, arial, sans-serif;
+}
 table {
     border: 1px solid black;
 	border-collapse: collapse;
@@ -464,13 +470,25 @@ td {
 	padding-left: 5px;
 	padding-right: 5px;
 }
-tr.row-a {
-	background: white;
+tr.colored:nth-child(odd) {
+      background-color: #d0fffb;
 }
-tr.row-b {
-	background: #d0fffb; 
+tr.colored:nth-child(even) {
+      background-color: white;
 }
 </style>';
+}
+
+// -----------------------------------------------------------------------------
+// Style voor de verstuurde mails footer
+// -----------------------------------------------------------------------------
+function mail_message_footer($message)
+{
+    global $message;
+    $message .= '<br /><br /><br /><img src="img/logo_mail_footer.png>';
+    $message .= '<p style="font-size:10px;">&copy; copyright 2020 <strong><a href="http://www.mirage.nl">Mirage Automatisering BV</a></strong><br /> ';
+    $message .= 'Dit is een geautomatiseerd bericht vanuit Mirage Urenregistratie Systeem</p>';
+    $message .= '</body></html>';
 }
 
 ?>
