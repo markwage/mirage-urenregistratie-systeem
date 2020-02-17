@@ -64,6 +64,7 @@ if (isset($_POST['submit'])) {
             $sql_out_wrong_pass = mysqli_query($dbconn, $sql_code_wrong_pass);
             if (! $sql_out_wrong_pass) {
                 writelog("login", "ERROR", "De query voor updaten user tijden login is fout gegaan - " . mysqli_error($dbconn));
+                exit($MSGDB001E);
             }
             if ($wrong_pass_count >= 3) {
                 writelog("login", "ERROR", "User " . $_POST['username'] . " heeft meer dan 3 keer met een foutief wachtwoord ingelogd en is nu geblokkeerd");
@@ -76,15 +77,20 @@ if (isset($_POST['submit'])) {
                     // Aanmaken email headers
                     $headers = 'MIME-Version: 1.0' . "\r\n";
                     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-                    $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mark.wage@mirage.nl, mjwage@gmail.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+                    $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mark.wage@mirage.nl, mark.wage@outlook.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
                     // Creeeren van de email message
-                    $message = '<html><body>';
+                    mail_message_header();
                     $message .= 'Hoi ' . $_POST['voornaam'] . ',';
-                    $message .= '<p>Jouw userid <strong>' . $_POST['username'] . '</strong> is <strong>geblokkeerd</strong> in Mirage Urenregistratie Systeem<br />';
-                    $message .= 'Reden hiervoor is dat er met dit userid drie keer of meer is geprobeerd in te loggen met een foutief wachtwoord.</p>';
-                    $message .= '<p>Om je userid weer te laten resetten dien je met kantoor te bellen. Je zal dan een nieuw wachtwoord krijgen waarna je weer met dit nieuwe wachtwoord kunt inloggen. Je kunt daarna je wachtwoord zelf wijzigen.</p>';
-                    $message .= '</body></html>';
+                    if($wrong_pass_count == 3) {
+                        $message .= '<p>Jouw userid <strong>' . $_POST['username'] . '</strong> is <strong>geblokkeerd</strong> in Mirage Urenregistratie Systeem<br />';
+                        $message .= 'Reden hiervoor is dat er met dit userid drie keer of meer is geprobeerd in te loggen met een foutief wachtwoord.</p>';
+                    } else {
+                        $message .= '<p>Er is wederom geprobeerd om met jouw userid <strong>' . $_POST['username'] . '</strong> in te loggen in Mirage Urenregistratie Systeem met een foutief wachtwoord<br />';
+                        $message .= 'Dit was poging nummer '. $wrong_pass_count;
+                    }
+                    $message .= '<p>Om je userid te laten resetten dien je met kantoor te bellen. Je zal dan een nieuw wachtwoord krijgen waarna je weer met dit nieuwe wachtwoord kunt inloggen. Je kunt daarna je wachtwoord zelf wijzigen.</p>';
+                    mail_message_footer($message);
 
                     // Versturen van de email
                     if (mail($mail_to, $mail_subject, $message, $headers)) {
@@ -143,17 +149,15 @@ if (isset($_POST['submit'])) {
 // indien niet ingelogd het inlogform displayen
 ?>
 	
-			<h3>Login</h3>
-	<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-		<p>
-			<label>Name</label> <input name="username" type="text" maxlength="40" />
-			<label>Password</label> <input name="pass" type="password"
-				maxlength="32" /> <br />
-			<br /> <input class="button" name="submit" type="submit"
-				value="login" />
-		</p>
-	</form>
-	<br />
+<h3>Login</h3>
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+<p>
+<label>Name</label><input name="username" type="text" maxlength="40" />
+<label>Password</label> <input name="pass" type="password"maxlength="32" /><br /><br /> 
+<input class="button" name="submit" type="submit" value="login" />
+</p>
+</form>
+<br />
 </div>
 
 <!-- content-wrap ends here -->

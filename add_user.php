@@ -162,21 +162,26 @@ if (isset($_POST['submit'])) {
             // Aanmaken email headers
             $headers = 'MIME-Version: 1.0' . "\r\n";
             $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-            $headers .= 'From: ' . $mail_from . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+            $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mark.wage@outlook.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
             // Creeeren van de email message
             mail_message_header();
             $message .= '<h1>Welkom ' . $frm_voornaam . '</h1>';
-            $message .= '<p>Er is voor jou een userid opgenomen in Mirage Urenregistratie Systeem</p>';
-            $message .= '<p>Ga hiervoor naar ' . $_SERVER['SERVER_NAME'] . ' en logon met onderstaande gegevens</p>';
-            $message .= '<table>';
-            $message .= '<tr><td>Username</td><td>' . $frm_username . '</td></tr>';
-            $message .= '<tr><td>Wachtwoord</td><td>' . $decrypted_pass . '</td></tr>';
-            $message .= '<tr><td>Volledige naam</td><td>' . $frm_voornaam . ' ' . $frm_tussenvoegsel . ' ' . $frm_achternaam . '</td></tr>';
-            $message .= '<tr><td>Emailadres</td><td>' . $frm_email . '</td></tr>';
+            $message .= '<p>Er is voor jou een userid opgenomen in Mirage Urenregistratie Systeem<br />';
+            $message .= 'Deze urenregistratie dien je vanaf nu te gebruiken voor het doorgeven van je uren.<br />';
+            $message .= 'Met deze urenregistratie kun je zelf ook in één oogopslag zien of de uren van een maand approved zijn en tevens kun je zien wat het huidige saldo is van je verlofuren.<br />';
+            $message .= 'Ga naar http://' . $_SERVER['SERVER_NAME'] . ' om in te loggen met onderstaande gegevens</p>';
+            $message .= '<table id="mail">';
+            $message .= '<tr><td>Username<br />Wachtwoord<br />Volledige naam<br />Emailadres</td><td>' . $frm_username . '<br />'. $decrypted_pass . '<br />'. $frm_voornaam . ' ' . $frm_tussenvoegsel . ' ' . $frm_achternaam .'<br />'. $frm_email .'</td></tr>';
             $message .= '</table>';
+            $message .= '<br /><lu>';
+            $message .= 'Het wachtwoord dient aan de volgende eisen te voldoen:';
+            $message .= '<li>Moet minimaal 8 characters lang zijn.</li>';
+            $message .= '<li>Moet minimaal 1 lower case character bevatten</li>';
+            $message .= '<li>Moet minimaal 1 upper case character bevatten</li>';
+            $message .= '<li>Moet minimaal 1 special character bevatten</li></lu>';
+            $message .= '<p>Heb je nog vragen en/of opmerkingen laat het ons weten.</p>';
             mail_message_footer($message);
-            //$message .= '</body></html>';
 
             // Versturen van de email
             if (mail($mail_to, $mail_subject, $message, $headers)) {
@@ -188,7 +193,7 @@ if (isset($_POST['submit'])) {
             }
         } else {
             writelog("add_user", "ERROR", "Er is een fout opgetreden bij het toevoegen van een nieuwe user - " . mysqli_error($dbconn));
-            exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+            exit($MSGDB001E);
         }
     }
 }

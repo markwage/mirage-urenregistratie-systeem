@@ -58,9 +58,7 @@ if (isset($_POST['add_record'])) {
 
     if (! $sql_out) {
         writelog("add_soortuur", "ERROR", "Er is een fout opgetreden bij het uitvoeren van een query -> " . mysqli_error($dbconn));
-
-        echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de code. Probeer het nogmaals.<br />
-			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
+        exit($MSGDB001E);
         $focus = 'code';
         $formerror = 1;
     } else {
@@ -103,8 +101,7 @@ if (isset($_POST['add_record'])) {
             header("location: soorturen.php?aktie=disp");
         } else {
             writelog("add_soortuur", "ERROR", "De query voor toevoegen soortuur is fout gegaan - " . mysqli_error($dbconn));
-            echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van de code. Probeer het nogmaals.<br />
-			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
+            exit($MSGDB001E);
         }
     }
 }

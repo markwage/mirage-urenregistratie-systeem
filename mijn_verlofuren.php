@@ -79,13 +79,14 @@ if(isset($username_decrypted)) {
 
 $sql_code = "SELECT username, approval_maand, approval_dag, uren, beginsaldo, fullname   
              FROM view_verlofuren
-             WHERE approval_jaar = " . $inputjaar . " 
+             WHERE (approval_jaar = " . $inputjaar . " OR approval_jaar IS NULL) 
              AND username = '". $qry_username . "'
              ORDER BY approval_maand, approval_dag";
 
 $sql_out = mysqli_query($dbconn, $sql_code);
 if (! $sql_out) {
     writelog("mijn_verlofuren", "ERROR", "Ophalen van de verlofuren per medewerker gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+    exit($MSGDB001E);
 } else {
     $frm_totaal_opgenomen = 0;
     
@@ -109,6 +110,8 @@ if (! $sql_out) {
     }
     
     //
+    
+    
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $maandnr              = $sql_rows['approval_maand'];
         $dagnr                = $sql_rows['approval_dag'];
@@ -117,22 +120,37 @@ if (! $sql_out) {
         $frm_fullname         = $sql_rows['fullname'];
         $frm_totaal_opgenomen = $frm_totaal_opgenomen + $uren;
         
+        // Onderstaande query is nodig indien de user nog geen vakantie-uren heeft opgenomen. De join tusen uren en beginsaldo lukt dan niet
+        // omdat er van die user in dat jaar geen rijen in uren aanwezig zijn
+        if(!$frm_beginsaldo || $frm_beginsaldo == "") {
+            $sql_code_beginsaldo = "SELECT beginsaldo
+                                    FROM beginsaldo
+                                    WHERE jaar = " . $inputjaar . "
+                                    AND username = '". $qry_username . "';";
+            $sql_out_beginsaldo = mysqli_query($dbconn, $sql_code_beginsaldo);
+            if (! $sql_out_beginsaldo) {
+                writelog("mijn_verlofuren", "ERROR", "Ophalen van de beginsaldo is fout gegaan: " . $sql_code . " - " . mysqli_error($dbconn));
+                exit($MSGDB001E);
+            }
+            while ($sql_rows_beginsaldo = mysqli_fetch_array($sql_out_beginsaldo)) {
+                $frm_beginsaldo = $sql_rows_beginsaldo['beginsaldo'];
+            }
+        }
+        
         $arr_uren[$maandnr - 1][$dagnr] = $uren;
     }
     for($ix3=0; $ix3<12; $ix3++) {
-        for($ix4=0; $ix4<32; $ix4++) {            
-            
-                if($ix4 == 0) {
-                    echo '<tr class="colored">';
-                }
-                echo '<td style="width:1.45vw">' . $arr_uren[$ix3][$ix4] . '</td>';
-                if($ix4 == 32) {
-                    echo '</tr>';
-                }
+        for($ix4=0; $ix4<32; $ix4++) {
+            if($ix4 == 0) {
+                echo '<tr class="colored">';
+            }
+            echo '<td style="width:1.45vw">' . $arr_uren[$ix3][$ix4] . '</td>';
+            if($ix4 == 32) {
+                echo '</tr>';
+            }
         }
     }
     
-    //echo "</tr>";
     writelog("mijn_verlofuren", "INFO", "Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd");
 }
 

@@ -36,6 +36,10 @@ $option = "";
 $sql_code1 = "SELECT * FROM soorturen
              ORDER BY code";
 $sql_out1 = mysqli_query($dbconn, $sql_code1);
+if(!$sql_out1) {
+    writelog("uren", "ERROR", "Select soorturen fout gegaan" . mysqli_error($dbconn));
+    exit($MSGDB001E);
+}
 
 while ($sql_rows1 = mysqli_fetch_array($sql_out1)) {
     $option .= "<option value='" . $sql_rows1['code'] . "'>" . $sql_rows1['code'] . " - " . $sql_rows1['omschrijving'] . "</option>";
@@ -76,6 +80,10 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
                         AND week='" . $week . "' 
                         AND jaar='" . $year . "'";
     $check_select_uren = mysqli_query($dbconn, $sql_select_uren);
+    if(!$check_select_uren) {
+        writelog("uren", "ERROR", "Select from uren fout gegaan" . mysqli_error($dbconn));
+        exit($MSGDB001E);
+    }
 
     // --------------------------------------------------------------------------
     // niet de uren verwijderen die al approved zijn in de vorige maand
@@ -88,6 +96,10 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
                             AND jaar='" . $year . "'
                             AND approved = 0";
         $check_delete_uren = mysqli_query($dbconn, $sql_delete_uren);
+        if(!$check_delete_uren) {
+            writelog("uren", "ERROR", "Delete from uren fout gegaan" . mysqli_error($dbconn));
+            exit($MSGDB001E);
+        }
         writelog("uren", "INFO", "Records zijn verwijderd van week " . $year . "-" . $week . " ivm het updaten van de betreffende week");
     }
 
@@ -118,6 +130,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
                     $check_check_datum_approved = mysqli_query($dbconn, $sql_check_datum_approved);
                     if (! $check_check_datum_approved) {
                         writelog("uren", "ERROR", "Er is een fout opgetreden bij het selecteren van uren -> " . mysqli_error($dbconn));
+                        exit($MSGDB001E);
                     }
 
                     $rows_check_datum_approved = mysqli_num_rows($check_check_datum_approved);
@@ -136,6 +149,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
 
                         if (! $check_insert_uren) {
                             writelog("uren", "ERROR", "Er is een fout opgetreden bij het selecteren van uren -> " . mysqli_error($dbconn));
+                            exit($MSGDB001E);
                         }
                     }
                     // writelog("uren","INFO","Records zijn toegevoegd voor week ".$year."-".$week." ivm updaten van de betreffende week");
@@ -180,7 +194,8 @@ for ($ix6 = 0; $ix6 < 7; $ix6 ++) {
     $check_check_approved = mysqli_query($dbconn, $sql_check_approved);
 
     if (! $check_check_approved) {
-        writelog("uren", "ERROR", "Select gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+        writelog("uren", "ERROR", "Select from approvals gaat fout: " . mysqli_error($dbconn));
+        exit($MSGDB001E);
     }
 
     $rows_check_approved = mysqli_num_rows($check_check_approved);
@@ -215,6 +230,11 @@ $sql_code2 = "SELECT * FROM uren
              AND week='" . $week . "' 
              AND jaar='" . $year . "' 
              ORDER BY soortuur, dagnummer";
+if(!$sql_code2) {
+    writelog("uren", "ERROR", "Select from uren fout gegaan" . mysqli_error($dbconn));
+    exit($MSGDB001E);
+}
+
 if ($sql_out2 = mysqli_query($dbconn, $sql_code2)) {
     $sql_rows2 = mysqli_num_rows($sql_out2);
     if (mysqli_num_rows($sql_out2) > 0) {

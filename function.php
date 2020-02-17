@@ -27,7 +27,11 @@ function check_cookies()
         $pass = $_COOKIE['Key_mus'];
         $sql_code = "SELECT * FROM users
                      WHERE username = '$username'";
-        $check = mysqli_query($dbconn, $sql_code) or die(mysqli_error($dbconn));
+        $check = mysqli_query($dbconn, $sql_code);
+        if(!$sql_code) {
+            writelog("function", "ERROR", "Selecteren van users gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+            exit("<br />MSGDB001E Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.<br />");
+        }
 
         while ($info = mysqli_fetch_array($check)) {
             if ($pass != $info['password']) {
@@ -445,14 +449,17 @@ function mail_message_header()
 {
     global $message;
     $message = '
-<html>
-<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+
 <style type="text/css">
 body {
-    font: normal 16px verdana, arial, sans-serif;
+    font: normal 12px verdana, arial, sans-serif;
 }
 h1 {
-    font: bold 20px verdana, arial, sans-serif;
+    font: bold 14px verdana, arial, sans-serif;
 }
 table {
     border: 1px solid black;
@@ -469,14 +476,25 @@ th {
 td {
 	padding-left: 5px;
 	padding-right: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
-tr.colored:nth-child(odd) {
+tr {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+/*
+table#mail tr.colored:nth-child(odd) {
       background-color: #d0fffb;
 }
-tr.colored:nth-child(even) {
+table#mail tr.colored:nth-child(even) {
       background-color: white;
 }
-</style>';
+*/
+</style>
+</head>
+
+<body>';
 }
 
 // -----------------------------------------------------------------------------
@@ -485,7 +503,7 @@ tr.colored:nth-child(even) {
 function mail_message_footer($message)
 {
     global $message;
-    $message .= '<br /><br /><br /><img src="img/logo_mail_footer.png>';
+    $message .= '<br />Met vriendelijke groet,<br />Beheerders van <strong>mus</strong><br /><br /><img src="http://'.$_SERVER['SERVER_NAME'].'/img/logo_mail_footer.png" width="600" height="115"><br /><br />';
     $message .= '<p style="font-size:10px;">&copy; copyright 2020 <strong><a href="http://www.mirage.nl">Mirage Automatisering BV</a></strong><br /> ';
     $message .= 'Dit is een geautomatiseerd bericht vanuit Mirage Urenregistratie Systeem</p>';
     $message .= '</body></html>';

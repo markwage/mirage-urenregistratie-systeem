@@ -8,10 +8,9 @@
 <link rel="stylesheet" href="./css/calendar.css" type="text/css" />
 <title>Mirage urenregistratie</title>
 
-<script language="javascript" src="./js/functions.js"></script>
+<script type="text/javascript" src="./js/functions.js"></script>
 <script type="text/javascript" src="./js/calendar.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	</head>
 	<body>

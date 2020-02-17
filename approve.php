@@ -56,7 +56,7 @@ if (isset($_POST['approve'])) {
     $sql_out = mysqli_query($dbconn, $sql_code);
     if (!$sql_out) {
         writelog("approve", "ERROR", "Update uren gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
-        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+        exit($MSGDB001E);
     }
 
     writelog("approve", "INFO", "Voor user {$username} is maand {$jaar}-{$maand} approved");
@@ -68,7 +68,7 @@ if (isset($_POST['approve'])) {
     $sql_out_insert = mysqli_query($dbconn, $sql_insert);
     if (!$sql_out_insert) {
         writelog("approve", "ERROR", "Insert van approval in tabel approvals gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
-        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+        exit($MSGDB001E);
     }
 
     writelog("approve", "INFO", "Record succesvol toegevoegd in tabel approvals voor user {$username} periode {$jaar}-{$maand}");
@@ -81,7 +81,7 @@ if (isset($_POST['approve'])) {
     // Aanmaken email headers
     $headers = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mjwage@gmail.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+    $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mark.wage@outlook.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
     // Creeeren van de email message
     mail_message_header();
@@ -94,7 +94,7 @@ if (isset($_POST['approve'])) {
 
     //$rowcolor = 'row-a';
 
-    $sql_code = "SELECT SUM(uren) as toturen, soortuur, omschrijving, approved FROM view_uren_soortuur
+    $sql_code = "SELECT sum(uren) AS toturen, soortuur, omschrijving, approved FROM view_uren_soortuur
                 WHERE user = '$username'
                 AND approval_maand = '$maand'
                 AND approval_jaar = '$jaar'
@@ -102,23 +102,22 @@ if (isset($_POST['approve'])) {
                 ORDER BY soortuur";
     $sql_out = mysqli_query($dbconn, $sql_code);
     if (!$sql_out) {
-        writelog("approve", "ERROR", "Select van uren gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
-        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+        writelog("approve", "ERROR", "Select van uren gaat fout bij het aanmaken van een mail: " . $sql_code . " - " . mysqli_error($dbconn));
+        exit($MSGDB001E);
     }
     
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
-        $approved = $sql_rows['approved'];
-        $toturen = $sql_rows['toturen'];
-        $soortuur = $sql_rows['soortuur'];
+        $approved     = $sql_rows['approved'];
+        $totaal_uren  = $sql_rows['toturen'];
+        $soortuur     = $sql_rows['soortuur'];
         $omschrijving = $sql_rows['omschrijving'];
 
-        $message .= '<tr class="colored"><td>' . $soortuur . '</td><td>' . $omschrijving . '</td><td style=\'text-align:right\'><strong>' . $toturen . '</strong></td></tr>';
+        $message .= '<tr class="colored"><td>' . $soortuur . '</td><td>' . $omschrijving . '</td><td style=\'text-align:right\'><strong>' . $totaal_uren . '</strong></td></tr>';
 
     }
 
     $message .= '</table>';
     mail_message_footer($message);
-    //$message .= '</body></html>';
     // Versturen van de email
     if ($_SERVER['SERVER_NAME'] != 'localhost') {
         if (mail($mail_to, $mail_subject, $message, $headers)) {
@@ -151,13 +150,12 @@ if ($aktie == 'disp') {
                 AND approval_maand BETWEEN " . $vorige_maand . " AND " . $vorige_maand . ")
                 OR (approval_jaar IS NULL))
                 AND uren_invullen = 1
-                GROUP BY user, approval_jaar, approval_maand
-                ORDER BY achternaam, user;";
-
+                GROUP BY username, approval_jaar, approval_maand
+                ORDER BY fullname;";
     $sql_out = mysqli_query($dbconn, $sql_code);
     if (!$sql_out) {
         writelog("approve", "ERROR", "Selecteren gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
-        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+        exit($MSGDB001E);
     }
 
     echo "<center><table>";
@@ -166,31 +164,28 @@ if ($aktie == 'disp') {
 
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $approved = $sql_rows['approved'];
-        $username = $sql_rows['user'];
+        $username = $sql_rows['username'];
         $encrypted_username = convert_string('encrypt', $username);
         $maand = $sql_rows['approval_maand'];
         $jaar = $sql_rows['approval_jaar'];
-        $voornaam = $sql_rows['voornaam'];
-        $tussenvoegsel = $sql_rows['tussenvoegsel'];
-        $achternaam = $sql_rows['achternaam'];
+        $fullname = $sql_rows['fullname'];
 
         if (($jaar != '') && ($approved == 0)) {
             echo '<tr class="colored">
-            <td style="height:1.2vw;"><b>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
+            <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td><a href="approve.php?aktie=dspuren&user=' . $encrypted_username . '&jaar=' . $jaar . '&maand=' . $maand . '"><img class="button" src="./img/icons/view-48.png" alt="Toon week" title="Toon/approve de uren van deze maand" /></a></td>
 			</tr>';
         } elseif ($jaar == '') {
             echo '<tr class="colored">
-            <td style="height:1.2vw;"><b>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
-			<td>Geen gegevens aanwezig over afgelopen maand</td>
+            <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
+			<td>Nog geen gegevens aanwezig</td>
 			</tr>';
         } elseif ($approved == 1) {
             echo '<tr class="colored">
-            <td style="height:1.2vw;"><b>' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
+            <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td>Approved</td>
 			</tr>';
         }
-        //check_row_color($rowcolor);
     }
     echo "</table></center>";
 }
@@ -208,7 +203,7 @@ if ($aktie == 'dspuren') {
     $sql_out = mysqli_query($dbconn, $sql_code);
     if (!$sql_out) {
         writelog("approve", "ERROR", "Selecteen van users gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
-        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+        exit($MSGDB001E);
     }
     $sql_rows = mysqli_fetch_array($sql_out);
     $voornaam = $sql_rows['voornaam'];
@@ -220,7 +215,6 @@ if ($aktie == 'dspuren') {
     echo "<h3>Overzicht per dag</h3>";
     echo "<center><table>";
     echo "<tr><th>Datum</th><th>Soortuur</th><th>Uren</th></tr>";
-    //$rowcolor = 'row-a';
 
     $sql_code = "SELECT * FROM view_uren_soortuur
                  WHERE user = '$username'
@@ -230,20 +224,18 @@ if ($aktie == 'dspuren') {
     $sql_out = mysqli_query($dbconn, $sql_code);
     if (!$sql_out) {
         writelog("approve", "ERROR", "Select view_uren_soortuur gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
-        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+        exit($MSGDB001E);
     }
 
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
-        $datum = $sql_rows['datum'];
-        $soortuur = $sql_rows['soortuur'];
-        $uren = $sql_rows['uren'];
+        $datum                 = $sql_rows['datum'];
+        $soortuur              = $sql_rows['soortuur'];
+        $uren                  = $sql_rows['uren'];
         $omschrijving_soortuur = $sql_rows['omschrijving'];
 
         echo '<tr class="colored">
 			<td><b>' . $datum . '</b></td><td>' . $soortuur . ' - ' . $omschrijving_soortuur . '</td><td style=\'text-align:right\'>' . $uren . '</td>
             </tr>';
-
-        //check_row_color($rowcolor);
     }
     echo "</table></center>";
 
@@ -252,9 +244,7 @@ if ($aktie == 'dspuren') {
     echo "<center><table>";
     echo "<tr><th>Soort uur</th><th>Totaal</th></tr>";
 
-    //$rowcolor = 'row-a';
-
-    $sql_code = "SELECT SUM(uren) as toturen, soortuur, omschrijving, approved FROM view_uren_soortuur
+    $sql_code = "SELECT SUM(uren) AS totaal_uren, soortuur, omschrijving, approved FROM view_uren_soortuur
                 WHERE user = '$username'
                 AND approval_maand = '$maand'
                 AND approval_jaar = '$jaar'
@@ -263,20 +253,18 @@ if ($aktie == 'dspuren') {
     $sql_out = mysqli_query($dbconn, $sql_code);
     if (!$sql_out) {
         writelog("approve", "ERROR", "Benaderen database gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
-        exit("Fout opgetreden bij benaderen van de database. Probeer het nogmaals. Indien de fout zich blijft voordoen neem dan contact op met de beheerders.");
+        exit($MSGDB001E);
     }
     
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
-        $approved = $sql_rows['approved'];
-        $toturen = $sql_rows['toturen'];
-        $soortuur = $sql_rows['soortuur'];
+        $approved     = $sql_rows['approved'];
+        $totaal_uren  = $sql_rows['totaal_uren'];
+        $soortuur     = $sql_rows['soortuur'];
         $omschrijving = $sql_rows['omschrijving'];
 
         echo '<tr class="colored">
-			<td>' . $soortuur . ' - ' . $omschrijving . '</td><td style=\'text-align:right\'>' . $toturen . '</td>
+			<td>' . $soortuur . ' - ' . $omschrijving . '</td><td style=\'text-align:right\'>' . $totaal_uren . '</td>
             </tr>';
-
-        //check_row_color($rowcolor);
     }
 
     echo "</table></center>";

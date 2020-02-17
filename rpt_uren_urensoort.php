@@ -68,8 +68,6 @@ echo "<td style='width:17vw; text-align:right'><strong>" . $fullname_decrypted .
 // volgende twee regels zijn nodig. Ze worden niet op het scherm getoond maar de variabelen zijn nodig bij refresh van het scherm
 echo "<td><input type='text' style='display:none' name='username_decrypted' value='" . $username_decrypted . "'></td>";
 echo "<td><input type='text' style='display:none' name='fullname_decrypted' value='" . $fullname_decrypted . "'></td>";
-
-// echo "<td><strong>Medewerker: ".$_SESSION['voornaam']." ".$_SESSION['tussenvoegsel']." ".$_SESSION['achternaam']."</strong></td>";
 echo "</tr>";
 echo "</table>";
 
@@ -89,7 +87,6 @@ echo "<th colspan='2'>Soortuur</th>
       <th style='width:2.85vw; text-align:right'>Nov</th>
       <th style='width:2.85vw; text-align:right'>Dec</th>";
 echo "</tr>";
-//$rowcolor = 'row-a';
 
 // Hier komt het ophalen en optellen van de uren
 
@@ -109,8 +106,9 @@ if ($username_decrypted == "") {
 }
 
 $sql_out = mysqli_query($dbconn, $sql_code);
-if (! $sql_out) {
+if (!$sql_out) {
     writelog("rpt_uren_urensoort", "ERROR", "Ophalen van de uren per urensoort gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+    exit($MSGDB001E);
 } else {
     $frm_soortuur = "dummy";
     $frm_omschrijving = 'dummy';
@@ -135,7 +133,6 @@ if (! $sql_out) {
                     $frm_maand[$ix] = ' ';
                 }
                 echo "</tr>";
-                //check_row_color($rowcolor);
             }
         }
 

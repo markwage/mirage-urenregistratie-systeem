@@ -103,7 +103,8 @@ for ($ix1 = 0; $ix1 < 10; $ix1 ++) {
 
         //check_row_color($rowcolor);
     } else {
-        echo "ERROR: Could not be able to execute $sql_code. " . mysqli_error($dbconn);
+        writelog("index", "ERROR", "De select query is fout gegaan - " . mysqli_error($dbconn));
+        exit($MSGDB001E);
     }
 }
 

@@ -94,20 +94,17 @@ if (isset($_POST['save'])) {
 		             omschrijving = '" . $_POST['omschrijving'] . "',
                      facturabel = '" . $_POST['facturabel'] . "'
                      WHERE ID = '" . $_POST['ID'] . "'";
-        $sql_out = mysqli_query($dbconn, $sql_code) or die("Error in query: $sql_code. " . mysqli_error($dbconn));
-
-        if ($sql_out) {
+        $sql_out = mysqli_query($dbconn, $sql_code);
+        if (!$sql_out) {
+            writelog("soorturen", "ERROR", "Update van soorturen gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+            exit($MSGDB001E);
+        } else {
             writelog("soortuur", "INFO", "De code " . $_POST['code'] . " is succesvol ge-update");
-
+         
             echo '<p class="infmsg">Soort uur <b>' . $_POST['code'] . '</b> is gewijzigd</p>.';
             $frm_code = "";
             $frm_omschrijving = "";
             $frm_facturabel = "";
-        } else {
-            writelog("soortuur", "ERROR", "Database fout opgetreden bij update van  " . $_POST['code']);
-
-            echo '<p class="errmsg">Er is een fout opgetreden bij het updaten van soort uur. Probeer het nogmaals.<br />
-			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
         }
         header("location: soorturen.php?aktie=disp");
     }

@@ -61,6 +61,7 @@ if (isset($_POST['init_verlofuren_ja'])) {
     $sql_users_out = mysqli_query($dbconn, $sql_users_qry);
     if (! $sql_users_out) {
         writelog("beginsaldo", "ERROR", "Er is een fout opgetreden bij het inserten van de beginsaldi verlofuren -> " . mysqli_error($dbconn));
+        exit($MSGDB001E);
     }
     
     while ($sql_users_rows = mysqli_fetch_array($sql_users_out)) {
@@ -94,14 +95,15 @@ if (isset($_POST['save'])) {
                      WHERE ID = " . $frm_ID;
         $sql_out = mysqli_query($dbconn, $sql_code);
 
-        if (! $sql_out) {
+        if (!$sql_out) {
             writelog("beginsaldo", "ERROR", "Er is een fout opgetreden bij het updaten van de beginsaldi verlofuren -> " . mysqli_error($dbconn));
+            exit($MSGDB001E);
         } else {
             writelog("beginsaldo", "INFO", "Records zijn ge-update over jaar " . $inputjaar);
         }
     }
-    echo '<blockquote>INFO: De gegevens zijn succesvol gesaved</blockquote>';
-    
+    //echo '<blockquote>INFO: De gegevens zijn succesvol gesaved</blockquote>';
+    $frm_message = '<blockquote>INFO: De gegevens zijn succesvol gesaved</blockquote>';
 }
 
 ?>
@@ -113,6 +115,9 @@ if (isset($_POST['save'])) {
 <form name="beginsaldo" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
 <?php
+if(isset($frm_message)) {
+    echo $frm_message;
+}
 
 echo "<table>";
 echo "<tr>";
@@ -123,16 +128,14 @@ echo "</tr>";
 echo "</table>";
 
 echo "<center><table id='uren_beginsaldo'>";
-//echo "<tr>";
-//echo "<th></th><th>Username</th><th>Naam medewerker</th><th style='width:2.8vw; text-align:right'>Beginsaldo</th>";
-//echo "</tr>";
 
 $sql_code = "SELECT * FROM view_users_verlofuren
                  WHERE jaar = " . $inputjaar . "
-                 ORDER BY achternaam";
+                 ORDER BY fullname";
 $sql_out = mysqli_query($dbconn, $sql_code);
-if (! $sql_out) {
+if (!$sql_out) {
     writelog("beginsaldo", "ERROR", "Er is een fout opgetreden bij het selecteren van de beginsaldi verlofuren -> " . mysqli_error($dbconn));
+    exit($MSGDB001E);
 }
 
 $aantal_rijen = mysqli_num_rows($sql_out);
@@ -164,15 +167,13 @@ if($aantal_rijen == 0) {
     while ($sql_row = mysqli_fetch_array($sql_out)) {
         $ID            = $sql_row['ID'];
         $username      = $sql_row['username'];
-        $voornaam      = $sql_row['voornaam'];
-        $tussenvoegsel = $sql_row['tussenvoegsel'];
-        $achternaam    = $sql_row['achternaam'];
+        $fullname      = $sql_row['fullname'];
         $beginsaldo    = $sql_row['beginsaldo'];
     
         echo '<tr class="colored">';
         echo '<td><input style="display:none" type="text" name="ID[]" value="' . $ID . '" readonly></td>';
         echo '<td style="display:none">' . $username . '</td>';
-        echo '<td style="height:1.2vw;">' . $achternaam . ', ' . $voornaam . ' ' . $tussenvoegsel . '</td>';
+        echo '<td style="height:1.2vw;">' . $fullname . '</td>';
         echo '<td><input style="width:2.8vw; text-align:right" type="number" name="beginsaldo[]" value="' . $beginsaldo . '"></td>';
         echo '</tr>';
     }

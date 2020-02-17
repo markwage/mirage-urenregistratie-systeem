@@ -67,6 +67,10 @@ if (isset($_POST['delete'])) {
     $sql_users_code = "DELETE FROM users
                  WHERE username = '$deluser'";
     $sql_users_out = mysqli_query($dbconn, $sql_users_code);
+    if(!$sql_users_out) {
+        writelog("users", "ERROR", "Delete from users is fout gegaan" . mysqli_error($dbconn));
+        exit($MSGDB001E);
+    }
     writelog("users", "INFO", "User " . $deluser . " is succesvol verwijderd uit tabel users");
     
     $sql_uren_qry = "DELETE FROM uren
@@ -110,6 +114,21 @@ if (isset($_POST['save'])) {
         // Check of de wachtwoorden gelijk zijn
         if (($_POST['pass'] != $_POST['pass2']) && (! $formerror)) {
             echo '<blockquote class="error">ERROR: De wachtwoorden zijn niet gelijk. Probeer het nogmaals.</blockquote>';
+            $focus = 'pass';
+            $formerror = 1;
+        }
+        // Validate password strength
+        $uppercase = preg_match('@[A-Z]@', $_POST['pass']);
+        $lowercase = preg_match('@[a-z]@', $_POST['pass']);
+        $number    = preg_match('@[0-9]@', $_POST['pass']);
+        $specialChars = preg_match('@[^\w]@', $_POST['pass']);
+        
+        if((!$uppercase || !$lowercase || !$number || !$specialChars || strlen($_POST['pass']) < 8) && (!$formerror)) {
+            echo '<blockquote class="error">ERROR: Het wachtwoord voldoet niet aan de volgende eisen:<br />
+                  - Moet minimaal 8 characters lang zijn.<br />
+                  - Moet minimaal 1 lower case character bevatten.<br />
+                  - Moet minimaal 1 upper case character bevatten.<br />
+                  - Moet minimaal 1 special character bevatten</blockquote>';
             $focus = 'pass';
             $formerror = 1;
         }
@@ -203,8 +222,7 @@ if (isset($_POST['save'])) {
             $frm_email = "";
         } else {
             writelog("users", "ERROR", "De query voor updaten user is fout gegaan - " . mysqli_error($dbconn));
-            echo '<blockquote class="error">ERROR: Er is een fout opgetreden bij het toevoegen van de user. Probeer het nogmaals.<br />
-			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</blockquote>';
+            exit($MSGDB001E);
         }
         if ($aktie == 'editprof') {
             header("location: users.php?aktie=editprof&edtuser=" . $_SESSION['edtuser']);
@@ -307,6 +325,7 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
     $sql_out = mysqli_query($dbconn, $sql_code);
     if (! $sql_out) {
         writelog("users", "ERROR", "Er is een fout opgetreden bij het selecteren van users -> " . mysqli_error($dbconn));
+        exit($MSGDB001E);
     }
 
     while ($sql_rows = mysqli_fetch_array($sql_out)) {

@@ -89,6 +89,7 @@ $sql_code = "SELECT username, fullname, SUM(uren) AS totaal_uren, beginsaldo,
 $sql_out = mysqli_query($dbconn, $sql_code);
 if (! $sql_out) {
     writelog("verlofuren_mdw", "ERROR", "Ophalen van de verlofuren per medewerker gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+    exit($MSGDB001E);
 } else {
     
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
@@ -121,7 +122,6 @@ if (! $sql_out) {
         } else {
             echo '<td> </td>';
         }
-        //echo '<td><a href="mijn_verlofuren.php?aktie=dspmdw&user=' . $encrypted_username . '&jaar=' . $inputjaar . '"><img class="button" src="./img/icons/view-48.png" alt="Toon medewerker" title="Toon de verlofuren van deze medewerker" /></a></td>';
         echo "</tr>";
         $frm_totaal_uren = 0;
         $frm_eindsaldo = 0;
