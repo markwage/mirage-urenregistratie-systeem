@@ -174,33 +174,26 @@ if ($aktie == 'edit' || $aktie == 'delete') {
         $facturabel_checked = '';
     }
     ?>
-	<form name="soorturen" action="<?php echo $_SERVER['PHP_SELF']; ?>"
-		method="post">
+	<form name="soorturen" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 		<p>
 		
 		
 		<table>
 			<tr>
 				<td>ID</td>
-				<td><input type="text" readonly name="ID" size="4" maxlength="8"
-					value="<?php if (isset($frm_ID)) { echo $frm_ID; } ?>"></td>
+				<td><input type="text" readonly name="ID" size="4" maxlength="8" value="<?php if (isset($frm_ID)) { echo $frm_ID; } ?>"></td>
 			</tr>
 			<tr>
 				<td>Code</td>
-				<td><input style="text-transform: uppercase" type="text" name="code"
-					size="10" maxlength="8"
-					value="<?php if (isset($frm_code)) { echo $frm_code; } ?>" required></td>
+				<td><input style="text-transform: uppercase" type="text" readonly name="code" size="10" maxlength="8" value="<?php if (isset($frm_code)) { echo $frm_code; } ?>" required></td>
 			</tr>
 			<tr>
 				<td>Omschrijving</td>
-				<td><input type="text" name="omschrijving" size="60" maxlength="60"
-					value="<?php if (isset($frm_omschrijving)) { echo $frm_omschrijving; } ?>"
-					required></td>
+				<td><input type="text" name="omschrijving" size="60" maxlength="60" value="<?php if (isset($frm_omschrijving)) { echo $frm_omschrijving; } ?>" required></td>
 			</tr>
 			<tr>
 				<td>Facturabel</td>
-				<td><input type="checkbox" id="facturabel" name="facturabel"
-					<?php echo $facturabel_checked; ?>></td>
+				<td><input type="checkbox" id="facturabel" name="facturabel" <?php echo $facturabel_checked; ?>></td>
 			</tr>
 		</table>
 		<br />
@@ -212,8 +205,7 @@ if ($aktie == 'edit' || $aktie == 'delete') {
     }
     ?>
 		
-		<input class="button" type="submit" name="cancel" value="cancel"
-			formnovalidate>
+		<input class="button" type="submit" name="cancel" value="cancel" formnovalidate>
 		</p>
 	</form>
 	<br />		

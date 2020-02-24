@@ -3,7 +3,7 @@ session_start();
 
 include ("config.php");
 include ("db.php");
-//include ("./mysqli_connect.php");
+include ("./mysqli_connect.php");
 include ("function.php");
 include ("autoload.php");
 

@@ -112,7 +112,7 @@ if (isset($_POST['submit'])) {
             // Toevoegen cookie indien username-password correct
             $_POST['username'] = stripslashes($_POST['username']);
 
-            if ($_SERVER['HTTP_HOST'] == 'localhost') {
+            if (($_SERVER['HTTP_HOST'] == 'localhost') || ($_POST['admin']) || ($_SERVER['HTTP_HOST'] == 'onedrivehost')) {
                 $hour = time() + 86400; // Cookie is 24 uur geldig
             } else {
                 $hour = time() + 1800; // cookie is 30 minuten geldig

@@ -386,7 +386,7 @@ function cnv_dateToWeek($datum)
 // ------------------------------------------------------------------------
 function jaarWeek()
 {
-    global $mainWeek, $mainJaar;
+    global $week_nr, $jaar_nr;
     // Datum van vandaag
     $datum = date("d-m-Y");
     $dagen = 0;
@@ -396,19 +396,19 @@ function jaarWeek()
 
         // "o" laat het correcte jaar zien aan het einde van het jaar of het begin
         // 31-12-2019: Y > 2019
-        // o > 2020 (wat correct is omdat die dag in eerste week van nieuwe jaar valt)
-        $mainWeek[$ix1] = date("W", strtotime("+$dagen day " . $datum));
-        $mainJaar[$ix1] = date("o", strtotime("+$dagen day " . $datum));
+        //             o > 2020 (wat correct is omdat die dag in eerste week van nieuwe jaar valt)
+        $jaar_nr[$ix1] = date("o", strtotime("+$dagen day " . $datum));
+        $week_nr[$ix1] = date("W", strtotime("+$dagen day " . $datum));
     }
 }
 
 // -----------------------------------------------------------------------------
 // Bepalen de startdatum en einddatum van een week
 // -----------------------------------------------------------------------------
-function getStartAndEndDate($week, $year)
+function getStartAndEndDate($week, $jaar)
 {
     $dto = new DateTime();
-    $dto->setISODate($year, $week);
+    $dto->setISODate($jaar, $week);
     $ret['week_start'] = $dto->format('d-m-Y');
     $dto->modify('+6 days');
     $ret['week_end'] = $dto->format('d-m-Y');

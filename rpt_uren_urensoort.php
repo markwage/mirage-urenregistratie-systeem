@@ -30,7 +30,7 @@ if (isset($_GET['fullname']) && ($_GET['fullname'] != "")) {
 
 ?>
 <div id="main">
-	<h1>Overzicht uren per urensoort</h1>
+	<h1>Geboekte uren per urensoort</h1>
 
 <?php
 //displayUserGegevens();
@@ -91,13 +91,13 @@ echo "</tr>";
 // Hier komt het ophalen en optellen van de uren
 
 if ($username_decrypted == "") {
-    $sql_code = "SELECT soortuur, omschrijving, approval_maand, SUM(uren) AS totaal_uren
+    $sql_code = "SELECT soortuur, omschrijving, approval_maand, approved, SUM(uren) AS totaal_uren
                  FROM view_uren_soortuur
                  WHERE approval_jaar = " . $inputjaar . "
                  GROUP BY approval_maand, soortuur
                  ORDER BY soortuur, approval_maand";
 } else {
-    $sql_code = "SELECT soortuur, omschrijving, approval_maand, SUM(uren) AS totaal_uren
+    $sql_code = "SELECT soortuur, omschrijving, approval_maand, approved, SUM(uren) AS totaal_uren
                  FROM view_uren_soortuur
                  WHERE approval_jaar = " . $inputjaar . "
                  AND user = '" . $username_decrypted . "'
@@ -115,6 +115,7 @@ if (!$sql_out) {
 
     for ($ix_init = 0; $ix_init < 12; $ix_init ++) {
         $frm_maand[$ix_init] = ' ';
+        $maand_approved[$ix_init] = ' ';
     }
 
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
@@ -123,14 +124,20 @@ if (!$sql_out) {
         // maandnr - 1 omdat array bij 0 begint
         $row_maandnr = $sql_rows['approval_maand'] - 1;
         $totaal_uren = $sql_rows['totaal_uren'];
+        //$maand_approved = $sql_rows['approved'];
 
         if ($row_soortuur != $frm_soortuur) {
             if ($frm_soortuur != 'dummy') {
                 echo '<tr class="colored">';
                 echo "<td style='height:1.2vw;'>" . $frm_soortuur . "</td><td>" . $frm_omschrijving . "</td>";
                 for ($ix = 0; $ix < 12; $ix ++) {
-                    echo "<td style='width:2.85vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
+                    if($maand_approved[$ix] == 1) {
+                        echo "<td style='width:2.85vw; text-align:right;'>" . $frm_maand[$ix] . "</td>";
+                    } else {
+                        echo "<td style='width:2.85vw; text-align:right; color:red'>" . $frm_maand[$ix] . "</td>";
+                    }
                     $frm_maand[$ix] = ' ';
+                    $maand_approved[$ix] = ' ';
                 }
                 echo "</tr>";
             }
@@ -139,6 +146,7 @@ if (!$sql_out) {
         $frm_soortuur = $row_soortuur;
         $frm_omschrijving = $row_omschrijving;
         $frm_maand[$row_maandnr] = $totaal_uren;
+        $maand_approved[$row_maandnr] = $sql_rows['approved'];
     }
     // laatste rij uit de query dus wegschrijven naar formulier
     // Indien $row_soortuur niet is gevuld dan zijn er geen gegevens van het jaar
@@ -148,7 +156,12 @@ if (!$sql_out) {
         echo '<tr class="colored">';
         echo "<td>" . $row_soortuur . "</td><td>" . $row_omschrijving . "</td>";
         for ($ix = 0; $ix < 12; $ix ++) {
-            echo "<td style='width:2.85vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
+            //writedebug("Approved: ".$maand_approved);
+            if($maand_approved[$ix] == 1) {
+                echo "<td style='width:2.85vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
+            } else {
+                echo "<td style='width:2.85vw; text-align:right; color:red'>" . $frm_maand[$ix] . "</td>";
+            }
         }
     }
     echo "</tr>";

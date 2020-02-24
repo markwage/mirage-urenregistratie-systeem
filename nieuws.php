@@ -46,9 +46,9 @@ if (isset($_POST['delete'])) {
     $sql_code = "DELETE FROM nieuws
                  WHERE ID = '$delid'";
     $sql_out = mysqli_query($dbconn, $sql_code);
-
+    
     writelog("nieuws", "INFO", "Het nieuwsbericht met id " . $delid . " is verwijderd uit tabel nieuws");
-
+    
     header("location: nieuws.php?aktie=disp");
 }
 
@@ -57,31 +57,31 @@ if (isset($_POST['delete'])) {
 // ------------------------------------------------------------------------------------------------------
 if (isset($_POST['save'])) {
     $formerror = 0;
-
+    
     if ((! $_POST['nieuwsheader'] || $_POST['nieuwsheader'] == "") && (! $formerror)) {
         echo '<p class="errmsg"> ERROR: Nieuwsheader is een verplicht veld</p>';
         $focus = 'nieuwsheader';
         $formerror = 1;
     }
-
+    
     if ((! $_POST['nieuwsbericht'] || $_POST['nieuwsbericht'] == "") && (! $formerror)) {
         echo '<p class="errmsg"> ERROR: Nieuwsbericht is een verplicht veld</p>';
         $focus = 'nieuwsbericht';
         $formerror = 1;
     }
-
+    
     if (! $formerror) {
-        $sql_code = "UPDATE nieuws 
-                     SET datum = '" . $_POST['datum'] . "', 
+        $sql_code = "UPDATE nieuws
+                     SET datum = '" . $_POST['datum'] . "',
 		                 nieuwsheader = '" . $_POST['nieuwsheader'] . "',
-                         nieuwsbericht = '" . $_POST['nieuwsbericht'] . "' 
+                         nieuwsbericht = '" . $_POST['nieuwsbericht'] . "'
                      WHERE ID = '" . $_POST['ID'] . "'";
-
+        
         $sql_out = mysqli_query($dbconn, $sql_code);
-
+        
         if ($sql_out) {
             writelog("nieuws", "INFO", "Het nieuwsbericht met id " . $_POST['ID'] . " is gewijzigd");
-
+            
             $frm_datum = "";
             $frm_nieuwsheader = "";
             $frm_nieuwsbericht = "";
@@ -98,23 +98,23 @@ if (isset($_POST['save'])) {
 // Er wordt een lijst met de uren getoond
 // ------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') {
-    $sql_code = "SELECT * FROM nieuws 
+    $sql_code = "SELECT * FROM nieuws
                  ORDER BY datum desc";
     $sql_out = mysqli_query($dbconn, $sql_code);
-
+    
     echo "<center><table>";
     echo "<tr><th>Datum</th><th>Nieuwsheader</th><th colspan=\"3\" align=\"center\">Akties</th></tr>";
-
+    
     //$rowcolor = 'row-a';
-
+    
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $id = $sql_rows['ID'];
         $datum = $sql_rows['datum'];
         $nieuwsheader = $sql_rows['nieuwsheader'];
-
+        
         echo '<tr class="colored">
 		<td>' . $datum . '</td><td>' . $nieuwsheader . '</td>';
-
+        
         if (! isset($_SESSION['admin']) || (! $_SESSION['admin'])) {
             echo '<td><a href="nieuws.php?aktie=dispbericht&edtid=' . $id . '"><img class="button" src="./img/icons/view-48.png" alt="display nieuwsbericht" title="display volledig nieuwsbericht" /></a></td>';
         } else {
@@ -122,7 +122,7 @@ if ($aktie == 'disp') {
 			<td><a href="nieuws.php?aktie=delete&edtid=' . $id . '"><img class="button" src="./img/icons/trash-48.png" alt="delete nieuwsbericht" title="delete het nieuwsbericht" /></a></td>
 			<td><a href="add_nieuws.php"><img class="button" src="./img/icons/add-48.png" alt="toevoegen nieuwsbericht" title="toevoegen nieuwsbericht" /></a></td>';
         }
-
+        
         echo '</tr>';
         //check_row_color($rowcolor);
     }
@@ -137,14 +137,14 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'dispbericht') {
     if ($aktie == 'edit' || $aktie == 'delete') {
         check_admin();
     }
-
+    
     $edtid = $_GET['edtid'];
     $focus = "nieuwsheader";
-
-    $sql_code = "SELECT * FROM nieuws 
+    
+    $sql_code = "SELECT * FROM nieuws
                  WHERE id = '$edtid'";
     $sql_out = mysqli_query($dbconn, $sql_code);
-
+    
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $frm_ID = $sql_rows['ID'];
         $frm_datum = $sql_rows['datum'];
@@ -208,4 +208,3 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'dispbericht') {
 
 include ("footer.php");
 ?>		
-

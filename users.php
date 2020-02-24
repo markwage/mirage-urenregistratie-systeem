@@ -60,6 +60,13 @@ if (isset($_POST['cancel'])) {
 }
 
 // ------------------------------------------------------------------------------------------------------
+// BUTTON Nieuw
+// ------------------------------------------------------------------------------------------------------
+if (isset($_POST['add'])) {
+    header("location: add_user.php");
+}
+
+// ------------------------------------------------------------------------------------------------------
 // BUTTON Delete
 // ------------------------------------------------------------------------------------------------------
 if (isset($_POST['delete'])) {
@@ -303,11 +310,10 @@ if ($aktie == 'disp') {
         echo '<td><a href="rpt_uren_urensoort.php?username=' . $username_encrypted . '&fullname=' . $fullname_encrypted . '"><img class="button" src="./img/icons/stopwatch-48.png" alt="jaaroverzicht" title="display jaaroverzicht per urensoort voor ' . $username . '" /></a></td>';
         echo '<td><a href="add_user.php"><img class="button" src="./img/icons/add-48.png" alt="toevoegen nieuwe user" title="toevoegen nieuwe user" /></a></td>';
         echo '</tr>';
-
-        //check_row_color($rowcolor);
     }
     echo "</table></center>";
 }
+
 
 // ------------------------------------------------------------------------------------------------------
 // Wordt uitgevoerd wanneer men op de button klikt om te wijzigen of te deleten of om het eigen
@@ -366,83 +372,52 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
         }
     }
     ?>
-	<form name="AddUser" action="<?php echo $_SERVER['PHP_SELF']; ?>"
-		method="post">
-		<p>
-		
-		
-		<table>
-			<tr>
-				<td><b>Username</b></td>
-				<td><input
-					<?php if ($aktie == "edit" || $aktie == "editprof") { echo "readonly"; } ?>
-					type="text" name="username" maxlength="40"
-					value="<?php if (isset($frm_username)) echo $frm_username;?>"></td>
-			</tr>
-			<tr>
-				<td>Wachtwoord</td>
-				<td><input type="password" name="pass" maxlength="32"
-					value="<?php if (isset($frm_pass)) echo $frm_pass;?>"></td>
-				<td>Confirm</td>
-				<td><input type="password" name="pass2" maxlength="32"
-					value="<?php if (isset($frm_pass2)) echo $frm_pass2;?>"></td>
-			</tr>
-			<tr>
-				<td>Admin</td>
-				<td><input type="checkbox"
-					<?php if (!$_SESSION['admin']) { echo "readonly "; } ?>
-					name="admin" value=<?php if (isset($frm_admin)) echo $frm_admin;?>
-					<?php echo $frm_admin_checked;?>></td>
-
-			</tr>
-			<tr>
-				<td>Approven</td>
-				<td><input type="checkbox"
-					<?php if (!$_SESSION['admin']) { echo "readonly "; } ?>
-					name="approvenallowed"
-					value=<?php if (isset($frm_approvenallowed)) echo $frm_approvenallowed;?>
-					<?php echo $frm_approvenallowed_checked;?>></td>
-
-
-			</tr>
-			<tr>
-				<td>Voornaam</td>
-				<td><input type="text" name="voornaam" maxlength="24"
-					value="<?php if (isset($frm_voornaam)) { echo $frm_voornaam; } ?>"></td>
-			</tr>
-			<tr>
-				<td>Tussenv.</td>
-				<td><input type="text" name="tussenvoegsel" maxlength="10"
-					value="<?php if (isset($frm_tussenvoegsel)) echo $frm_tussenvoegsel;?>"></td>
-				<td>Achternaam</td>
-				<td><input type="text" name="achternaam" maxlength="40"
-					value="<?php if (isset($frm_achternaam)) echo $frm_achternaam;?>"></td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td colspan="2"><input type="text" name="email" size="40"
-					maxlength="60"
-					value="<?php if (isset($frm_email)) echo $frm_email;?>"></td>
-			</tr>
-			<tr>
-				<td>In dienst</td>
-				<td><input type="checkbox"
-					<?php if (!$_SESSION['admin']) echo "readonly ";?> name="indienst"
-					value=<?php if (isset($frm_indienst)) echo $frm_indienst;?>
-					<?php echo $frm_indienst_checked;?>></td>
-			</tr>
-			<tr>
-				<td>Uren invullen</td>
-				<td><input type="checkbox"
-					<?php if (!$_SESSION['admin']) echo "readonly "; ?>
-					name="uren_invullen"
-					value=<?php if (isset($frm_uren_invullen)) echo $frm_uren_invullen; ?>
-					<?php echo $frm_uren_invullen_checked;?>></td>
-
-			</tr>
-		</table>
-		<br />
-		<?php
+	<form name="AddUser" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+	<p>	
+	<table>
+		<tr>
+			<td><b>Username</b></td>
+			<td><input <?php if ($aktie == "edit" || $aktie == "editprof") { echo "readonly"; } ?> type="text" name="username" maxlength="40" value="<?php if (isset($frm_username)) echo $frm_username;?>"></td>
+		</tr>
+		<tr>
+			<td>Wachtwoord</td>
+			<td><input type="password" name="pass" maxlength="32" value="<?php if (isset($frm_pass)) echo $frm_pass;?>"></td>
+			<td>Confirm</td>
+			<td><input type="password" name="pass2" maxlength="32" value="<?php if (isset($frm_pass2)) echo $frm_pass2;?>"></td>
+		</tr>
+		<tr>
+			<td>Admin</td>
+			<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "readonly "; } ?> name="admin" value=<?php if (isset($frm_admin)) echo $frm_admin;?> <?php echo $frm_admin_checked;?>></td>
+		</tr>
+		<tr>
+			<td>Approven</td>
+			<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "readonly "; } ?> name="approvenallowed" value=<?php if (isset($frm_approvenallowed)) echo $frm_approvenallowed;?><?php echo $frm_approvenallowed_checked;?>></td>
+		</tr>
+		<tr>
+			<td>Voornaam</td>
+			<td><input type="text" name="voornaam" maxlength="24" value="<?php if (isset($frm_voornaam)) { echo $frm_voornaam; } ?>"></td>
+		</tr>
+		<tr>
+			<td>Tussenv.</td>
+			<td><input type="text" name="tussenvoegsel" maxlength="10" value="<?php if (isset($frm_tussenvoegsel)) echo $frm_tussenvoegsel;?>"></td>
+			<td>Achternaam</td>
+			<td><input type="text" name="achternaam" maxlength="40" value="<?php if (isset($frm_achternaam)) echo $frm_achternaam;?>"></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td colspan="2"><input type="text" name="email" size="40" maxlength="60" value="<?php if (isset($frm_email)) echo $frm_email;?>"></td>
+		</tr>
+		<tr>
+			<td>In dienst</td>
+			<td><input type="checkbox"<?php if (!$_SESSION['admin']) echo "readonly ";?> name="indienst" value=<?php if (isset($frm_indienst)) echo $frm_indienst;?><?php echo $frm_indienst_checked;?>></td>
+		</tr>
+		<tr>
+			<td>Uren invullen</td>
+			<td><input type="checkbox" <?php if (!$_SESSION['admin']) echo "readonly "; ?> name="uren_invullen" value=<?php if (isset($frm_uren_invullen)) echo $frm_uren_invullen; ?> <?php echo $frm_uren_invullen_checked;?>></td>
+		</tr>
+	</table>
+	<br />
+	<?php
     if ($aktie == 'edit' || $aktie == 'editprof') {
         echo '<input class="button" type="submit" name="save" value="save">';
     }
@@ -450,8 +425,8 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
         echo '<input class="button" type="submit" name="delete" value="delete" onClick="return confirmDelUser()">';
     }
     ?>
-		<input class="button" type="submit" name="cancel" value="cancel">
-		</p>
+	<input class="button" type="submit" name="cancel" value="cancel">
+	</p>
 	</form>
 	<br />		
 	<?php
