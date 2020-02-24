@@ -134,7 +134,7 @@ if (!$sql_out) {
                     if($maand_approved[$ix] == 1) {
                         echo "<td style='width:2.85vw; text-align:right;'>" . $frm_maand[$ix] . "</td>";
                     } else {
-                        echo "<td style='width:2.85vw; text-align:right; color:red'>" . $frm_maand[$ix] . "</td>";
+                        echo "<td style='width:2.85vw; text-align:right; font-style:italic'>" . $frm_maand[$ix] . "</td>";
                     }
                     $frm_maand[$ix] = ' ';
                     $maand_approved[$ix] = ' ';
@@ -160,7 +160,7 @@ if (!$sql_out) {
             if($maand_approved[$ix] == 1) {
                 echo "<td style='width:2.85vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
             } else {
-                echo "<td style='width:2.85vw; text-align:right; color:red'>" . $frm_maand[$ix] . "</td>";
+                echo "<td style='width:2.85vw; text-align:right; font-style:italic'>" . $frm_maand[$ix] . "</td>";
             }
         }
     }
@@ -168,6 +168,7 @@ if (!$sql_out) {
     writelog("rpt_uren_urensoort", "INFO", "Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd");
 }
 echo "</table></center>";
+
 // This button is needed for when user pushes the ENTER button when changing the yearnumber. Button is not displayed
 echo "<input type='submit' name='dummy' value='None' style='display: none'>";
 ?>

@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
 				                    WHERE username = '" . $_POST['username'] . "'";
             $sql_out_wrong_pass = mysqli_query($dbconn, $sql_code_wrong_pass);
             if (! $sql_out_wrong_pass) {
-                writelog("login", "ERROR", "De query voor updaten user tijden login is fout gegaan - " . mysqli_error($dbconn));
+                writelog("login", "ERROR", "De query voor updaten user tijdens login is fout gegaan - " . mysqli_error($dbconn));
                 exit($MSGDB001E);
             }
             if ($wrong_pass_count >= 3) {
@@ -72,12 +72,13 @@ if (isset($_POST['submit'])) {
                 if ($_SERVER['SERVER_NAME'] != 'localhost') {
                     $mail_to = $_POST['emailadres'];
                     $mail_subject = 'User is geblokkeerd voor Mirage Urenregistratie Systeem';
-                    $mail_from = 'mark.wage@hotmail.com';
+                    //$mail_from = 'mark.wage@hotmail.com';
 
                     // Aanmaken email headers
                     $headers = 'MIME-Version: 1.0' . "\r\n";
                     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-                    $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mark.wage@mirage.nl, mark.wage@outlook.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+                    //$headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mark.wage@mirage.nl, mark.wage@outlook.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+                    $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: ' . $mail_CC . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
                     // Creeeren van de email message
                     mail_message_header();
@@ -87,7 +88,7 @@ if (isset($_POST['submit'])) {
                         $message .= 'Reden hiervoor is dat er met dit userid drie keer of meer is geprobeerd in te loggen met een foutief wachtwoord.</p>';
                     } else {
                         $message .= '<p>Er is wederom geprobeerd om met jouw userid <strong>' . $_POST['username'] . '</strong> in te loggen in Mirage Urenregistratie Systeem met een foutief wachtwoord<br />';
-                        $message .= 'Dit was poging nummer '. $wrong_pass_count;
+                        $message .= 'Dit was poging nummer <strong>'. $wrong_pass_count . '</strong>';
                     }
                     $message .= '<p>Om je userid te laten resetten dien je met kantoor te bellen. Je zal dan een nieuw wachtwoord krijgen waarna je weer met dit nieuwe wachtwoord kunt inloggen. Je kunt daarna je wachtwoord zelf wijzigen.</p>';
                     mail_message_footer($message);
@@ -122,16 +123,16 @@ if (isset($_POST['submit'])) {
             setcookie('ID_mus', $_POST['username'], $hour);
             setcookie('Key_mus', $_POST['pass'], $hour);
 
-            $_SESSION['username'] = $_POST['username'];
-            $_SESSION['admin'] = $_POST['admin'];
+            $_SESSION['username']        = $_POST['username'];
+            $_SESSION['admin']           = $_POST['admin'];
             $_SESSION['approvenallowed'] = $_POST['approvenallowed'];
-            $_SESSION['voornaam'] = $_POST['voornaam'];
-            $_SESSION['tussenvoegsel'] = $_POST['tussenvoegsel'];
-            $_SESSION['achternaam'] = $_POST['achternaam'];
-            $_SESSION['emailadres'] = $_POST['emailadres'];
-            $_SESSION['lastloggedin'] = $_POST['lastloggedin'];
-            $_SESSION['indienst'] = $_POST['indienst'];
-            $_SESSION['uren_invullen'] = $_POST['uren_invullen'];
+            $_SESSION['voornaam']        = $_POST['voornaam'];
+            $_SESSION['tussenvoegsel']   = $_POST['tussenvoegsel'];
+            $_SESSION['achternaam']      = $_POST['achternaam'];
+            $_SESSION['emailadres']      = $_POST['emailadres'];
+            $_SESSION['lastloggedin']    = $_POST['lastloggedin'];
+            $_SESSION['indienst']        = $_POST['indienst'];
+            $_SESSION['uren_invullen']   = $_POST['uren_invullen'];
 
             $_SESSION['username_encrypted'] = convert_string('encrypt', $_SESSION['username']);
             // update lastloggedin in de tabel

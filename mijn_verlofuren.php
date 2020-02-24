@@ -176,11 +176,15 @@ echo "<input type='submit' name='dummy' value='None' style='display: none'>";
 ?>
 
 </form>
-	</div>
-	<!-- ------------------------------------------------------------------------------
+</div>
+<!-- ------------------------------------------------------------------------------
   Einde van het formulier
 ------------------------------------------------------------------------------  -->
 
 <?php
+if (! isset($focus)) {
+    $focus = 'jaartal';
+}
+setfocus('verlofuren_per_medewerker', $focus);
 include ("footer.php");
 ?>

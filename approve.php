@@ -76,12 +76,13 @@ if (isset($_POST['approve'])) {
     // Versturen mail naar user dat de maand approved is
     $mail_to = $emailadres;
     $mail_subject = 'Uren van ' . $jaar . '-' . $maand . ' zijn approved';
-    $mail_from = 'mark.wage@hotmail.com';
+    //$mail_from = 'mark.wage@hotmail.com';
 
     // Aanmaken email headers
     $headers = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mark.wage@outlook.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+    //$headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mark.wage@outlook.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+    $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: ' . $mail_CC . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
     // Creeeren van de email message
     mail_message_header();
@@ -140,6 +141,7 @@ if (isset($_POST['approve'])) {
 // Alleen die maanden worden getoond die niet approved zijn
 // ------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') {
+    ?> <form name="disp" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> <?php 
     $vorig_jaar = date('Y', strtotime('-1 month', time()));
     $vorige_maand = date('m', strtotime('-1 month', time()));
     // $vorig_jaar_tot = date('Y', strtotime('-6 month', time()));
@@ -188,12 +190,14 @@ if ($aktie == 'disp') {
         }
     }
     echo "</table></center>";
+    echo "</form>";
 }
 
 // ------------------------------------------------------------------------------------------------------
 // Wordt uitgevoerd wanneer men op de button klikt om uren van die user / maand te displayen
 // ------------------------------------------------------------------------------------------------------
 if ($aktie == 'dspuren') {
+    ?> <form name="disp" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> <?php
     $username = convert_string('decrypt',$_GET['user']);
     $maand = $_GET['maand'];
     $jaar = $_GET['jaar'];
@@ -271,7 +275,7 @@ if ($aktie == 'dspuren') {
 
     // Display buttons. Met behulp van een formulier
     ?>
-    <form style='background-color: #FFF;' name="approve" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <!--  <form style='background-color: #FFF;' name="approve" action="<?php //echo $_SERVER['PHP_SELF']; ?>" method="post"> -->
 	<!-- Volgende velden zijn hidden om toch de waarden door te geven voor de update-query -->
 	<input type="hidden" name="maand" value="<?php if (isset($maand)) { echo $maand; } ?>"> 
 	<input type="hidden" name="jaar" value="<?php if (isset($jaar)) { echo $jaar; } ?>"> 

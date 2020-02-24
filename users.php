@@ -62,7 +62,7 @@ if (isset($_POST['cancel'])) {
 // ------------------------------------------------------------------------------------------------------
 // BUTTON Nieuw
 // ------------------------------------------------------------------------------------------------------
-if (isset($_POST['add'])) {
+if (isset($_POST['nieuw'])) {
     header("location: add_user.php");
 }
 
@@ -244,9 +244,7 @@ if (isset($_POST['save'])) {
 // Er wordt een lijst met de users getoond
 // ------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') {
-    $sql_code = "SELECT * FROM users
-                 ORDER BY achternaam";
-    $sql_out = mysqli_query($dbconn, $sql_code);
+    ?> <form name="disp" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> <?php 
     echo '<center><table>';
     echo '<tr><th>Naam medewerker</th>
           <th>Username</th>
@@ -257,8 +255,10 @@ if ($aktie == 'disp') {
           <th><center>Mag<br />approven</center></th>
           <th><center>Uren<br />invullen</center></th>
           <th colspan="4"><center>Akties</center></th></tr>';
-    //$rowcolor = 'row-a';
-
+    
+    $sql_code = "SELECT * FROM users
+                 ORDER BY achternaam";
+    $sql_out = mysqli_query($dbconn, $sql_code);
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $id = $sql_rows['ID'];
         $username = $sql_rows['username'];
@@ -312,6 +312,8 @@ if ($aktie == 'disp') {
         echo '</tr>';
     }
     echo "</table></center>";
+    echo '<input class="button" type="submit" name="nieuw" value="nieuw">';
+    echo "</form>";
 }
 
 

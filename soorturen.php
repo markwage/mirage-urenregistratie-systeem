@@ -36,6 +36,13 @@ if (isset($_POST['cancel'])) {
 }
 
 // ------------------------------------------------------------------------------------------------------
+// BUTTON Nieuw
+// ------------------------------------------------------------------------------------------------------
+if (isset($_POST['nieuw'])) {
+    header("location: add_soortuur.php");
+}
+
+// ------------------------------------------------------------------------------------------------------
 // BUTTON Delete
 // ------------------------------------------------------------------------------------------------------
 if (isset($_POST['delete'])) {
@@ -118,6 +125,7 @@ if (isset($_POST['save'])) {
 // Er wordt een lijst met de soorten uren getoond waarop uren geboekt kunnen worden
 // ------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') {
+    ?> <form name="disp" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> <?php 
     $sql_code = "SELECT * FROM soorturen
                  ORDER BY code";
     $sql_out = mysqli_query($dbconn, $sql_code);
@@ -148,6 +156,8 @@ if ($aktie == 'disp') {
         //check_row_color($rowcolor);
     }
     echo "</table></center>";
+    echo '<input class="button" type="submit" name="nieuw" value="nieuw">';
+    echo "</form>";
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -155,7 +165,7 @@ if ($aktie == 'disp') {
 // ------------------------------------------------------------------------------------------------------
 if ($aktie == 'edit' || $aktie == 'delete') {
     $edtcode = $_GET['edtcode'];
-    $focus = "code";
+    $focus = "omschrijving";
     $sql_code = "SELECT * FROM soorturen
                  WHERE code = '$edtcode'";
     $sql_out = mysqli_query($dbconn, $sql_code);
@@ -185,7 +195,7 @@ if ($aktie == 'edit' || $aktie == 'delete') {
 			</tr>
 			<tr>
 				<td>Code</td>
-				<td><input style="text-transform: uppercase" type="text" readonly name="code" size="10" maxlength="8" value="<?php if (isset($frm_code)) { echo $frm_code; } ?>" required></td>
+				<td><input type="text" readonly name="code" size="10" maxlength="10" value="<?php if (isset($frm_code)) { echo $frm_code; } ?>" ></td>
 			</tr>
 			<tr>
 				<td>Omschrijving</td>
@@ -211,7 +221,7 @@ if ($aktie == 'edit' || $aktie == 'delete') {
 	<br />		
 	<?php
     if (! isset($focus)) {
-        $focus = 'code';
+        $focus = 'omschrijving';
     }
     setfocus('soorturen', $focus);
 }

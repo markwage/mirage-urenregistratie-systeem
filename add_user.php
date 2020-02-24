@@ -157,19 +157,20 @@ if (isset($_POST['submit'])) {
 
             $mail_to = $frm_email;
             $mail_subject = 'Welkom op Mirage Urenregistratie Systeem';
-            $mail_from = 'mark.wage@hotmail.com';
+            //$mail_from = 'mark.wage@hotmail.com';
 
             // Aanmaken email headers
             $headers = 'MIME-Version: 1.0' . "\r\n";
             $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-            $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mark.wage@outlook.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+            //$headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mark.wage@outlook.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+            $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: ' . $mail_CC . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
             // Creeeren van de email message
             mail_message_header();
             $message .= '<h1>Welkom ' . $frm_voornaam . '</h1>';
             $message .= '<p>Er is voor jou een userid opgenomen in Mirage Urenregistratie Systeem<br />';
             $message .= 'Deze urenregistratie dien je vanaf nu te gebruiken voor het doorgeven van je uren.<br />';
-            $message .= 'Met deze urenregistratie kun je zelf ook in één oogopslag zien of de uren van een maand approved zijn en tevens kun je zien wat het huidige saldo is van je verlofuren.<br />';
+            $message .= 'Met deze urenregistratie heb je zelf ook meer inzicht in je geboekte uren en je opgenomen verlofuren.<br />';
             $message .= 'Ga naar http://' . $_SERVER['SERVER_NAME'] . ' om in te loggen met onderstaande gegevens</p>';
             $message .= '<table id="mail">';
             $message .= '<tr><td>Username<br />Wachtwoord<br />Volledige naam<br />Emailadres</td><td>' . $frm_username . '<br />'. $decrypted_pass . '<br />'. $frm_voornaam . ' ' . $frm_tussenvoegsel . ' ' . $frm_achternaam .'<br />'. $frm_email .'</td></tr>';
@@ -182,6 +183,8 @@ if (isset($_POST['submit'])) {
             $message .= '<li>Moet minimaal 1 special character bevatten</li></lu>';
             $message .= '<p>Heb je nog vragen en/of opmerkingen laat het ons weten.</p>';
             mail_message_footer($message);
+            writedebug($headers);
+            writedebug($message);
 
             // Versturen van de email
             if (mail($mail_to, $mail_subject, $message, $headers)) {

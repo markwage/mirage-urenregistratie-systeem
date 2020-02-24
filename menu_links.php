@@ -22,7 +22,6 @@ if (isset($_SESSION['username'])) {
     		<li><a href="mijn_verlofuren.php">Mijn verlofuren</a></li>
     		<li><a href="rpt_uren_urensoort.php?username=<?php echo $_SESSION["username_encrypted"] ?>">Mijn geboekte uren per maand</a></li>
     		<li><a href="users.php?aktie=editprof&edtuser=<?php echo $_SESSION["username_encrypted"] ?>">Mijn profiel</a></li>
-    		<?php if ($_SESSION['admin']) { echo '<li><a href="beginsaldo.php">Beginsaldi verlofuren</a></li>'; } ?>
     	</ul>
         </div>
     
@@ -34,8 +33,9 @@ if (isset($_SESSION['username'])) {
     	    <h1 class="clear">Admin menu</h1>
     	    <ul class="sidemenu">
     		    <li><a href="approve.php?aktie=disp">Openstaande approvals</a></li>
-    		    <li><a href="users.php?aktie=disp">Medewerkers</a></li>
+    		    <li><a href="users.php?aktie=disp">Onderhoud medewerkers</a></li>
     		    <li><a href="soorturen.php?aktie=disp">Onderhoud soort uren</a></li>
+    		    <li><a href="beginsaldo.php">Beginsaldi verlofuren</a></li>
     	    </ul>
             </div>
             <div class="sidebox">
