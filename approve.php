@@ -76,12 +76,10 @@ if (isset($_POST['approve'])) {
     // Versturen mail naar user dat de maand approved is
     $mail_to = $emailadres;
     $mail_subject = 'Uren van ' . $jaar . '-' . $maand . ' zijn approved';
-    //$mail_from = 'mark.wage@hotmail.com';
 
     // Aanmaken email headers
     $headers = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    //$headers .= 'From: ' . $mail_from . "\r\n" . 'CC: mark.wage@outlook.com' . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
     $headers .= 'From: ' . $mail_from . "\r\n" . 'CC: ' . $mail_CC . "\r\n" . 'Reply-To: ' . $mail_from . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
     // Creeeren van de email message
@@ -92,8 +90,6 @@ if (isset($_POST['approve'])) {
     $message .= '<p><strong>Totaal per urensoort</strong></p>';
     $message .= '<table>';
     $message .= '<tr><th colspan="2" style="text-align:left">Soort uur</th><th style="text-align:right">Totaal</th></tr>';
-
-    //$rowcolor = 'row-a';
 
     $sql_code = "SELECT sum(uren) AS toturen, soortuur, omschrijving, approved FROM view_uren_soortuur
                 WHERE user = '$username'
@@ -114,7 +110,6 @@ if (isset($_POST['approve'])) {
         $omschrijving = $sql_rows['omschrijving'];
 
         $message .= '<tr class="colored"><td>' . $soortuur . '</td><td>' . $omschrijving . '</td><td style=\'text-align:right\'><strong>' . $totaal_uren . '</strong></td></tr>';
-
     }
 
     $message .= '</table>';
@@ -162,7 +157,6 @@ if ($aktie == 'disp') {
 
     echo "<center><table>";
     echo "<tr><th>Medewerker</th><th>Maand</th><th></th></tr>";
-    //$rowcolor = 'row-a';
 
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
         $approved = $sql_rows['approved'];
@@ -197,7 +191,9 @@ if ($aktie == 'disp') {
 // Wordt uitgevoerd wanneer men op de button klikt om uren van die user / maand te displayen
 // ------------------------------------------------------------------------------------------------------
 if ($aktie == 'dspuren') {
-    ?> <form name="disp" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> <?php
+    ?> 
+    <form name="disp" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
+    <?php
     $username = convert_string('decrypt',$_GET['user']);
     $maand = $_GET['maand'];
     $jaar = $_GET['jaar'];

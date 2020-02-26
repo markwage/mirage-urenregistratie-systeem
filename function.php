@@ -19,7 +19,7 @@ function errormessage($error_header, $error_message)
 // ------------------------------------------------------------------------
 function check_cookies()
 {
-    if (isset($_COOKIE['ID_mus'])) {
+    if ((isset($_COOKIE['ID_mus'])) && ($_SESSION['lastloggedin'] != "1970-01-01 00:00:00")) {
         // Indien aanwezig word je naar de volgende page ge-redirect
         include ("./db.php");
         $dbconn = mysqli_connect($dbhost, $dbuser, $dbpassw, $dbname);

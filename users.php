@@ -16,6 +16,7 @@ if (isset($_GET['aktie'])) {
         $aktie = "";
     }
 }
+
 if (isset($_GET['edtuser'])) {
     $edtuser = $_GET['edtuser'];
     $_SESSION['edtuser'] = $_GET['edtuser'];
@@ -139,6 +140,12 @@ if (isset($_POST['save'])) {
             $focus = 'pass';
             $formerror = 1;
         }
+        
+        // Het wachtwoord is gewijzigd. Niet door de user zelf maar door een admin
+        // Dan zet lastloggedin weer naar 1970 zodat user verplicht wachtwoord moet wijzigen
+        if((!$formerror) && ($_POST['username'] != $_SESSION['username'])) {
+            $frm_lastloggedin = '1970-01-01 00:00:00';
+        }
     }
 
     if ((! $_POST['voornaam'] || $_POST['voornaam'] == "") && (! $formerror)) {
@@ -202,6 +209,11 @@ if (isset($_POST['save'])) {
             }
             $sql_code .= "password='" . $_POST['pass'] . "',";
         }
+        if(isset($frm_lastloggedin) && ($frm_lastloggedin !="")) {
+            $lastloggedin = $frm_lastloggedin;
+        } else {
+            $lastloggedin = $_POST['lastloggedin'];
+        }
 
         $sql_code .= "admin='" . $_POST['admin'] . "',
         uren_invullen='" . $_POST['uren_invullen'] . "',
@@ -211,6 +223,7 @@ if (isset($_POST['save'])) {
 		emailadres='" . $_POST['email'] . "',
 		indienst='" . $_POST['indienst'] . "',
         approvenallowed='" . $_POST['approvenallowed'] . "',
+        lastloggedin='" . $lastloggedin . "',
         wrong_password_count=0 
         WHERE username = '" . $_POST['username'] . "'";
 
@@ -342,35 +355,34 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
         $frm_tussenvoegsel = $sql_rows['tussenvoegsel'];
         $frm_achternaam = $sql_rows['achternaam'];
         $frm_email = $sql_rows['emailadres'];
-
+        $frm_admin = $sql_rows['admin'];
+        $frm_approvenallowed = $sql_rows['approvenallowed'];
+        $frm_indienst = $sql_rows['indienst'];
+        $frm_uren_invullen = $sql_rows['uren_invullen'];
+        $frm_lastloggedin = $sql_rows['lastloggedin'];
+        
         if ($sql_rows['admin'] == 1) {
-            $frm_admin = $sql_rows['admin'];
             $frm_admin_checked = "checked";
         } else {
-            $frm_admin = 0;
             $frm_admin_checked = "";
         }
-
-        if ($sql_rows['uren_invullen'] == 1) {
-            $frm_uren_invullen = $sql_rows['uren_invullen'];
-            $frm_uren_invullen_checked = "checked";
-        } else {
-            $frm_uren_invullen = 0;
-            $frm_uren_invullen_checked = "";
-        }
-
-        $frm_indienst = $sql_rows['indienst'];
-        if ($sql_rows['indienst'] == 1) {
-            $frm_indienst_checked = "checked";
-        } else {
-            $frm_indienst_checked = "";
-        }
-
-        $frm_approvenallowed = $sql_rows['approvenallowed'];
+        
         if ($sql_rows['approvenallowed'] == 1) {
             $frm_approvenallowed_checked = "checked";
         } else {
             $frm_approvenallowed_checked = "";
+        }
+
+        if ($sql_rows['uren_invullen'] == 1) {
+            $frm_uren_invullen_checked = "checked";
+        } else {
+            $frm_uren_invullen_checked = "";
+        }
+
+        if ($sql_rows['indienst'] == 1) {
+            $frm_indienst_checked = "checked";
+        } else {
+            $frm_indienst_checked = "";
         }
     }
     ?>
@@ -393,7 +405,7 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 		</tr>
 		<tr>
 			<td>Approven</td>
-			<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "readonly "; } ?> name="approvenallowed" value=<?php if (isset($frm_approvenallowed)) echo $frm_approvenallowed;?><?php echo $frm_approvenallowed_checked;?>></td>
+			<td><input type="checkbox" <?php if (!$_SESSION['admin']) { echo "readonly "; } ?> name="approvenallowed" value=<?php if (isset($frm_approvenallowed)) echo $frm_approvenallowed;?> <?php echo $frm_approvenallowed_checked;?>></td>
 		</tr>
 		<tr>
 			<td>Voornaam</td>
@@ -411,11 +423,12 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 		</tr>
 		<tr>
 			<td>In dienst</td>
-			<td><input type="checkbox"<?php if (!$_SESSION['admin']) echo "readonly ";?> name="indienst" value=<?php if (isset($frm_indienst)) echo $frm_indienst;?><?php echo $frm_indienst_checked;?>></td>
+			<td><input type="checkbox" <?php if (!$_SESSION['admin']) echo "readonly ";?> name="indienst" value=<?php if (isset($frm_indienst)) echo $frm_indienst;?> <?php echo $frm_indienst_checked;?>></td>
 		</tr>
 		<tr>
 			<td>Uren invullen</td>
 			<td><input type="checkbox" <?php if (!$_SESSION['admin']) echo "readonly "; ?> name="uren_invullen" value=<?php if (isset($frm_uren_invullen)) echo $frm_uren_invullen; ?> <?php echo $frm_uren_invullen_checked;?>></td>
+			<td><input type="hidden" name="lastloggedin" value="<?php if (isset($frm_lastloggedin)) echo $frm_lastloggedin;?>"></td>
 		</tr>
 	</table>
 	<br />

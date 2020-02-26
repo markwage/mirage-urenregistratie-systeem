@@ -10,7 +10,7 @@ include ("header.php");
 
 ?>
 <div id="main">
-	<h1>Urenregistratie</h1>
+<h1>Urenregistratie</h1>
 			
 <?php
 // Indien het Login form is submitted
@@ -29,6 +29,10 @@ if (isset($_POST['submit'])) {
                  WHERE username = '" . $_POST['username'] . "'";
 
     $sql_out = mysqli_query($dbconn, $sql_code);
+    if (! $sql_out) {
+        writelog("login", "ERROR", "select users gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+        exit($MSGDB001E);
+    }
     // Error indien username wel ingevuld maar onbekend
     $sql_num_rows = mysqli_num_rows($sql_out);
 
@@ -133,17 +137,26 @@ if (isset($_POST['submit'])) {
             $_SESSION['lastloggedin']    = $_POST['lastloggedin'];
             $_SESSION['indienst']        = $_POST['indienst'];
             $_SESSION['uren_invullen']   = $_POST['uren_invullen'];
-
             $_SESSION['username_encrypted'] = convert_string('encrypt', $_SESSION['username']);
-            // update lastloggedin in de tabel
-            date_default_timezone_set('Europe/Amsterdam');
-            $sql_code = "UPDATE users SET lastloggedin = '" . date('Y-m-d H:i:s') . "',
-                         wrong_password_count = 0 
+            
+            //Scherm displayen om wachtwoord te wijzigen indien lastloggedin 1970 is
+            if($_SESSION['lastloggedin'] == "1970-01-01 00:00:00") {
+                header("location: wijzig_wachtwoord.php");
+            } else {
+                // update lastloggedin in de tabel
+                date_default_timezone_set('Europe/Amsterdam');
+                $sql_code = "UPDATE users SET lastloggedin = '" . date('Y-m-d H:i:s') . "',
+                         wrong_password_count = 0
 				         WHERE username = '" . $_POST['username'] . "'";
-            $sql_out = mysqli_query($dbconn, $sql_code);
-            header("location: index.php");
-
-            writelog("login", "INFO", "User " . $_POST['username'] . " is succesvol ingelogd");
+                $sql_out = mysqli_query($dbconn, $sql_code);
+                if (!$sql_out) {
+                    writelog("login", "ERROR", "Update users gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+                    exit($MSGDB001E);
+                }
+                $_SESSION['lastloggedin'] = date('Y-m-d H:i:s');
+                header("location: index.php");
+                writelog("login", "INFO", "User " . $_POST['username'] . " is succesvol ingelogd");
+            }
         }
     }
 }

@@ -12,6 +12,10 @@ if(!isset($_SESSION['username'])) {
     header("location: login.php");
 }
 
+if($_SESSION['lastloggedin'] == "1970-01-01 00:00:00") {
+    header("location: wijzig_wachtwoord.php");
+}
+
 include ("header.php");
 
 ?>
@@ -41,7 +45,6 @@ include ("header.php");
 <?php
 jaarWeek();
 
-//$rowcolor = 'row-a';
 for ($ix1 = 0; $ix1 < 10; $ix1 ++) {
     $sql_code = "SELECT *, SUM(uren) as toturen FROM uren 
                  WHERE user='" . $_SESSION['username'] . "' 

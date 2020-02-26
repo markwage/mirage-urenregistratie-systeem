@@ -75,36 +75,7 @@ if (isset($_POST['submit'])) {
                 $inhoud .= "<tr><td>Emailadres</td><td>$email</td></tr>";
                 $inhoud .= "<tr><td>Onderwerp</td><td>$msg_br</td></tr>";
                 $inhoud .= '</table></body></html>';
-                $log_record = new Writelog();
-                $log_record->progname = $_SERVER['PHP_SELF'];
-                $log_record->loglevel = 'DEBUG';
-                $log_record->message_text = $subject;
-                $log_record->write_record();
-
-                $log_record = new Writelog();
-                $log_record->progname = $_SERVER['PHP_SELF'];
-                $log_record->loglevel = 'DEBUG';
-                $log_record->message_text = $aan;
-                $log_record->write_record();
-
-                $log_record = new Writelog();
-                $log_record->progname = $_SERVER['PHP_SELF'];
-                $log_record->loglevel = 'DEBUG';
-                $log_record->message_text = $msg_br;
-                $log_record->write_record();
-
-                $log_record = new Writelog();
-                $log_record->progname = $_SERVER['PHP_SELF'];
-                $log_record->loglevel = 'DEBUG';
-                $log_record->message_text = $inhoud;
-                $log_record->write_record();
-
-                $log_record = new Writelog();
-                $log_record->progname = $_SERVER['PHP_SELF'];
-                $log_record->loglevel = 'DEBUG';
-                $log_record->message_text = $headers;
-                $log_record->write_record();
-
+                
                 mail("$aan", "$subject", $inhoud, $headers); // This part just adds the headers using the variables from above
                 header('location:contact.php?error=none'); // Redirect using using none so they can see the email was a success
             }
@@ -140,39 +111,30 @@ if (isset($_GET['eror'])) {
 }
 ?>
 
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"
-		id="contactForm" name="contactForm">
-		<p>
-		
-		
-		<table>
-			<tr>
-				<td>Voornaam</td>
-				<td><input type="text" readonly required name="fName" size="10"
-					maxlength="10" value="<?php echo $_SESSION['voornaam']; ?>"></td>
-			</tr>
-			<tr>
-				<td>Achternaam</td>
-				<td><input type="text" readonly required name="lName" size="18"
-					maxlength="18"
-					value="<?php echo $_SESSION['tussenvoegsel'].' '.$_SESSION['achternaam']; ?>"></td>
-			</tr>
-			<tr>
-				<td>Emailadres</td>
-				<td><input type="text" readonly required name="email" size="50"
-					maxlength="50" value="<?php echo $_SESSION['emailadres']; ?>"></td>
-			</tr>
-			<tr>
-				<td>Bericht</td>
-				<td><textarea name="message" rows="5" cols="80" id="message"></textarea></td>
-			</tr>
-		</table>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="contactForm" name="contactForm">
+<p>
+<table>
+	<tr>
+		<td>Voornaam</td>
+		<td><input type="text" readonly required name="fName" size="10" maxlength="10" value="<?php echo $_SESSION['voornaam']; ?>"></td>
+	</tr>
+	<tr>
+		<td>Achternaam</td>
+		<td><input type="text" readonly required name="lName" size="18" maxlength="18" value="<?php echo $_SESSION['achternaam'].' '.$_SESSION['tussenvoegsel']; ?>"></td>
+	</tr>
+	<tr>
+		<td>Emailadres</td>
+		<td><input type="text" readonly required name="email" size="50" maxlength="50" value="<?php echo $_SESSION['emailadres']; ?>"></td>
+	</tr>
+	<tr>
+		<td>Bericht</td>
+		<td><textarea name="message" rows="5" cols="80" id="message"></textarea></td>
+	</tr>
+</table>
 
-		<input class=button type="submit" name="submit" id="submit"
-			value="Submit">
+<input class=button type="submit" name="submit" id="submit" value="Submit">
 
-		</p>
-	</form>
-
-	</body>
-	</html>
+</p>
+</form>
+</body>
+</html>

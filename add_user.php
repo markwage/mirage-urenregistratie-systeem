@@ -183,8 +183,6 @@ if (isset($_POST['submit'])) {
             $message .= '<li>Moet minimaal 1 special character bevatten</li></lu>';
             $message .= '<p>Heb je nog vragen en/of opmerkingen laat het ons weten.</p>';
             mail_message_footer($message);
-            writedebug($headers);
-            writedebug($message);
 
             // Versturen van de email
             if (mail($mail_to, $mail_subject, $message, $headers)) {
