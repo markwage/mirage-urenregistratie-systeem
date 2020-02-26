@@ -24,8 +24,7 @@ $inputjaar = date('Y');
 // Refresh butto changejaar is op geklikt om een andere week te muteren.
 // Door getWeekdays worden de dagen en data van die nieuwe week berekend
 //------------------------------------------------------------------------------------------------------
-if (isset($_POST['change_jaar']))
-{
+if (isset($_POST['change_jaar'])) {
     $inputjaar = $_POST["jaartal"];
 }
 
@@ -76,25 +75,20 @@ $sql_code = "SELECT user, voornaam, tussenvoegsel, achternaam, approval_maand, S
              ORDER BY achternaam, approval_maand";
 
 $sql_out = mysqli_query($dbconn, $sql_code);
-if(!$sql_out)
-{
+if(!$sql_out) {
     writelog("rpt_verlofuren_medewerker","ERROR","Ophalen van de verlofuren per medewerker gaat fout: ".$sql_code." - ".mysqli_error($dbconn));
-}
-else
-{
+} else {
     $frm_username = "dummy";
     $frm_voornaam = 'dummy';
     $frm_tussenvoegsel = 'dummy';
     $frm_achternaam = 'dummy';
     $frm_jaartotaal_uren = 0;
     
-    for($ix_init=0; $ix_init<12; $ix_init++)
-    {
+    for($ix_init=0; $ix_init<12; $ix_init++) {
         $frm_maand[$ix_init]  = ' ';
     }
     
-    while($sql_rows = mysqli_fetch_array($sql_out))
-    {
+    while($sql_rows = mysqli_fetch_array($sql_out)) {
         $row_username      = $sql_rows['user'];
         $row_voornaam      = $sql_rows['voornaam'];
         $row_tussenvoegsel = $sql_rows['tussenvoegsel'];
@@ -103,14 +97,11 @@ else
         $row_maandnr       = $sql_rows['approval_maand'] - 1;
         $totaal_uren       = $sql_rows['totaal_uren'];
         
-        if($row_username <> $frm_username)
-        {
-            if($frm_username <> 'dummy')
-            { 
+        if($row_username <> $frm_username) {
+            if($frm_username <> 'dummy') { 
                 echo '<tr class="'.$rowcolor.'">';
                 echo "<td>".$frm_achternaam.", ".$frm_voornaam." ".$frm_tussenvoegsel."</td>";
-                for($ix=0; $ix<12; $ix++)
-                {
+                for($ix=0; $ix<12; $ix++) {
                     echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
                     $frm_maand[$ix]  = ' ';
                 }
@@ -130,16 +121,12 @@ else
     }
     // laatste rij uit de query dus wegschrijven naar formulier
     // Indien $frm_achternaam leeg is dan zijn er geen gegevens van het betreffende jaar
-    if(!isset($row_username))
-    {
+    if(!isset($row_username)) {
         echo '</table></center><blockquote class="error">ERROR: Er zijn geen gegevens van dit jaar</blockquote>';
-    }
-    else
-    {
+    } else {
         echo '<tr class="'.$rowcolor.'">';
         echo "<td>".$frm_achternaam.", ".$frm_voornaam." ".$frm_tussenvoegsel."</td>";
-        for($ix=0; $ix<12; $ix++)
-        {
+        for($ix=0; $ix<12; $ix++) {
             echo "<td style='width:3.33vw; text-align:right'>".$frm_maand[$ix]."</td>";
         }
         echo "<td style='width:4.2vw; text-align:right'><strong>".number_format($frm_jaartotaal_uren, 2)."</strong></td>";

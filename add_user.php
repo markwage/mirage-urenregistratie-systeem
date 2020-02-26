@@ -119,7 +119,6 @@ if (isset($_POST['submit'])) {
 
     // Encrypt password en voeg eventueel slashes toe
     if (! $formerror) {
-        // $_POST['indienst'] = 1;
         $decrypted_pass = $_POST['pass'];
         $_POST['pass'] = md5($_POST['pass']);
 
@@ -157,7 +156,6 @@ if (isset($_POST['submit'])) {
 
             $mail_to = $frm_email;
             $mail_subject = 'Welkom op Mirage Urenregistratie Systeem';
-            //$mail_from = 'mark.wage@hotmail.com';
 
             // Aanmaken email headers
             $headers = 'MIME-Version: 1.0' . "\r\n";

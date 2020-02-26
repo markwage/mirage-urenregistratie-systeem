@@ -15,7 +15,6 @@ include ("header.php");
 	<h1>Beginsaldi verlofuren</h1>
 
 <?php
-//displayUserGegevens();
 
 // ------------------------------------------------------------------------------------------------------
 // Bepalen welk jaar gedisplayed moet worden. 
@@ -38,7 +37,6 @@ if (isset($_GET['edtjaar'])) {
 // ------------------------------------------------------------------------------------------------------
 if (isset($_POST['change_jaar'])) {
     $inputjaar = $_POST["jaartal"];
-    //getWeekdays($_POST['week_nummer']);
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -102,7 +100,6 @@ if (isset($_POST['save'])) {
             writelog("beginsaldo", "INFO", "Records zijn ge-update over jaar " . $inputjaar);
         }
     }
-    //echo '<blockquote>INFO: De gegevens zijn succesvol gesaved</blockquote>';
     $frm_message = '<blockquote>INFO: De gegevens zijn succesvol gesaved</blockquote>';
 }
 

@@ -15,7 +15,6 @@ include ("header.php");
 	<h1>Urenadministratie</h1>
 
 <?php
-//displayUserGegevens();
 
 // Indien weeknr en jaar is doorgegeven via url dan dit de inputweeknr maken
 // Anders is vandaag de inputdatum
@@ -152,7 +151,6 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
                             exit($MSGDB001E);
                         }
                     }
-                    // writelog("uren","INFO","Records zijn toegevoegd voor week ".$year."-".$week." ivm updaten van de betreffende week");
                 }
             }
         }

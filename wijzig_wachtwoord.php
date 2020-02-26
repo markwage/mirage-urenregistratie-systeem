@@ -7,9 +7,7 @@ include ("autoload.php");
 
 //check_admin(); // Controleren of gebruiker admin-rechten heeft
 //check_cookies(); // Controleren of cookie aanwezig is. Zo niet, login-scherm displayen
-writedebug("Voor de header");
 include ("header_first_logon.php");
-writedebug("Na de header");
 
 ?>
 <div id="main">

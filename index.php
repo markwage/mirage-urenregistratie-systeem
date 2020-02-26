@@ -22,10 +22,6 @@ include ("header.php");
 <div id="main">
 <h1>Mirage Urenadministratie</h1>
     
-<?php
-//displayUserGegevens();
-?>
-    
 <center>
 <table>
 <tr>
@@ -34,8 +30,6 @@ include ("header.php");
 <tr>
     <th>Jaar</th>
 	<th>Week</th>
-	<!-- <th>Uren<br />ingevuld</th>           -->
-	<!-- <th>Ter approval<br />aangeboden</th> -->
 	<th>Approved</th>
 	<th>Datum<br />approved</th>
 	<th>Approved door</th>

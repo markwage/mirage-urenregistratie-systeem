@@ -15,7 +15,6 @@ include ("header.php");
 	<h1>Overzicht verlofuren medewerkers</h1>
 
 <?php
-//displayUserGegevens();
 
 // Bepalen jaartal (= huidig jaar)
 $inputjaar = date('Y');
@@ -31,11 +30,9 @@ if (isset($_POST['change_jaar'])) {
 // ---------------------------------------------------------------------------------
 // Begin van het formulier
 // ---------------------------------------------------------------------------------
-
 ?>
 <div id="form_div">
-		<form name="verlofuren_per_medewerker"
-			action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form name="verlofuren_per_medewerker" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
 <?php
 
@@ -134,8 +131,8 @@ echo "<input type='submit' name='dummy' value='None' style='display: none'>";
 ?>
 
 </form>
-	</div>
-	<!-- ------------------------------------------------------------------------------
+</div>
+<!-- ------------------------------------------------------------------------------
   Einde van het formulier
 ------------------------------------------------------------------------------  -->
 

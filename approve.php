@@ -270,15 +270,15 @@ if ($aktie == 'dspuren') {
     echo "</table></center>";
 
     // Display buttons. Met behulp van een formulier
-    ?>
-    <!--  <form style='background-color: #FFF;' name="approve" action="<?php //echo $_SERVER['PHP_SELF']; ?>" method="post"> -->
-	<!-- Volgende velden zijn hidden om toch de waarden door te geven voor de update-query -->
+	//Volgende velden zijn hidden om toch de waarden door te geven voor de update-query
+	?>
+	
 	<input type="hidden" name="maand" value="<?php if (isset($maand)) { echo $maand; } ?>"> 
 	<input type="hidden" name="jaar" value="<?php if (isset($jaar)) { echo $jaar; } ?>"> 
 	<input type="hidden" name="username" value="<?php if (isset($username)) { echo $username; } ?>"> 
 	<input type="hidden" name="emailadres" value="<?php if (isset($emailadres)) { echo $emailadres; } ?>"> 
 	<input type="hidden" name="jaar" value="<?php if (isset($datum)) { echo substr($datum,0,4); } ?>">
-	<!--  Tot hier -->
+	
 	<input class="button" type="submit" name="cancel" value="cancel" formnovalidate>
     <?php
     if (! isset($_SESSION['approvenallowed']) || (! $_SESSION['approvenallowed'])) {

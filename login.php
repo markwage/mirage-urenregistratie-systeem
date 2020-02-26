@@ -76,7 +76,6 @@ if (isset($_POST['submit'])) {
                 if ($_SERVER['SERVER_NAME'] != 'localhost') {
                     $mail_to = $_POST['emailadres'];
                     $mail_subject = 'User is geblokkeerd voor Mirage Urenregistratie Systeem';
-                    //$mail_from = 'mark.wage@hotmail.com';
 
                     // Aanmaken email headers
                     $headers = 'MIME-Version: 1.0' . "\r\n";
@@ -99,7 +98,6 @@ if (isset($_POST['submit'])) {
 
                     // Versturen van de email
                     if (mail($mail_to, $mail_subject, $message, $headers)) {
-                        // echo '<blockquote>De mail is succesvol verstuurd.</blockquote>';
                         writelog("add_user", "INFO", "Mail succesvol verstuurd naar " . $mail_to . " ivm geblokkeerd userid " . $_POST['username']);
                     } else {
                         echo '<blockquote class="errmsg">Het was niet mogelijk om de mail te versturen. Probeer het nogmaals.</blockquote>';
@@ -122,8 +120,6 @@ if (isset($_POST['submit'])) {
             } else {
                 $hour = time() + 1800; // cookie is 30 minuten geldig
             }
-            // $hour = time() + 1800; // cookie is 30 minuten geldig
-            // $hour = time() + 86400; // Cookie is 24 uur geldig
             setcookie('ID_mus', $_POST['username'], $hour);
             setcookie('Key_mus', $_POST['pass'], $hour);
 

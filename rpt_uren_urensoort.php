@@ -33,7 +33,6 @@ if (isset($_GET['fullname']) && ($_GET['fullname'] != "")) {
 	<h1>Geboekte uren per urensoort</h1>
 
 <?php
-//displayUserGegevens();
 
 // Bepalen jaartal (= huidig jaar)
 $inputjaar = date('Y');
@@ -124,7 +123,6 @@ if (!$sql_out) {
         // maandnr - 1 omdat array bij 0 begint
         $row_maandnr = $sql_rows['approval_maand'] - 1;
         $totaal_uren = $sql_rows['totaal_uren'];
-        //$maand_approved = $sql_rows['approved'];
 
         if ($row_soortuur != $frm_soortuur) {
             if ($frm_soortuur != 'dummy') {
@@ -156,7 +154,6 @@ if (!$sql_out) {
         echo '<tr class="colored">';
         echo "<td>" . $row_soortuur . "</td><td>" . $row_omschrijving . "</td>";
         for ($ix = 0; $ix < 12; $ix ++) {
-            //writedebug("Approved: ".$maand_approved);
             if($maand_approved[$ix] == 1) {
                 echo "<td style='width:2.85vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
             } else {

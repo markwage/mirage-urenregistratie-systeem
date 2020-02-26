@@ -27,7 +27,6 @@ include ("header.php");
 <h1>Overzicht opgenomen verlofuren</h1>
 
 <?php
-//displayUserGegevens();
 
 // Bepalen jaartal (= huidig jaar)
 if (isset($_GET['jaar'])) {
