@@ -213,14 +213,29 @@ if ($aktie == 'dspuren') {
 
     echo "<center><b>Maand: </b>" . $jaar . " " . $maand . "<br /><b>Medewerker: </b>" . $voornaam . " " . $tussenvoegsel . " " . $achternaam . " ";
     echo "<h3>Overzicht per dag</h3>";
+    
+    echo '<div id="approve">';
     echo "<center><table>";
-    echo "<tr><th>Datum</th><th>Soortuur</th><th>Uren</th></tr>";
+    //echo "<tr><th>Datum</th><th>Soortuur</th><th>Uren</th></tr>";
+    echo "<tr>";
+    echo '<th style="width:10.25vw;">Soortuur</th>';
+    for($ix=1; $ix<32; $ix++) {
+        echo '<th style="width:1.25vw; text-align:right">' . $ix . '</th>';
+    }
 
-    $sql_code = "SELECT * FROM view_uren_soortuur
-                 WHERE user = '$username'
-                 AND approval_maand = '$maand'
-                 AND approval_jaar = '$jaar'
-                 ORDER BY datum, soortuur";
+    // Creeeren van het SQL statement.
+    $sql_code = "SELECT *,";
+    for($ix=1; $ix<31; $ix++) {
+        $sql_code .= "SUM(CASE WHEN approval_dag = '".$ix."' THEN uren END) AS `".$ix."`,";
+    }
+    $sql_code .= "SUM(CASE WHEN approval_dag = '31' THEN uren END) AS `31`
+        FROM view_uren_soortuur
+            WHERE USER = '".$username."'
+            AND approval_maand = '".$maand."'
+            AND approval_jaar = '".$jaar."'
+            GROUP BY soortuur
+            ORDER BY soortuur, datum"; 
+    
     $sql_out = mysqli_query($dbconn, $sql_code);
     if (!$sql_out) {
         writelog("approve", "ERROR", "Select view_uren_soortuur gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
@@ -228,16 +243,20 @@ if ($aktie == 'dspuren') {
     }
 
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
-        $datum                 = $sql_rows['datum'];
+        //$datum                 = $sql_rows['datum'];
         $soortuur              = $sql_rows['soortuur'];
-        $uren                  = $sql_rows['uren'];
+        //$uren                  = $sql_rows['uren'];
         $omschrijving_soortuur = $sql_rows['omschrijving'];
 
-        echo '<tr class="colored">
-			<td><b>' . $datum . '</b></td><td>' . $soortuur . ' - ' . $omschrijving_soortuur . '</td><td style=\'text-align:right\'>' . $uren . '</td>
-            </tr>';
+        echo '<tr class="colored">';
+		echo "<td>".$soortuur." - ".$omschrijving_soortuur."</td>";
+		for($ix=1; $ix<32; $ix++) {
+		    echo "<td style='text-align:right'>".$sql_rows[$ix]."</td>";
+        }
+        echo '</tr>';
     }
     echo "</table></center>";
+    echo "</div>";  // Einde div approve
 
     // Display totaal per soortuur
     echo "<h3>Totaal per urensoort</h3>";

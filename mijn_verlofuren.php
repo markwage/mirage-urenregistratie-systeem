@@ -3,7 +3,7 @@ session_start();
 
 include ("config.php");
 include ("db.php");
-//include ("./mysqli_connect.php");
+include ("mysqli_connect.php");
 include ("function.php");
 include ("autoload.php");
 
@@ -71,88 +71,77 @@ for($ix=1; $ix<32; $ix++) {
 
 echo "</tr>";
 if(isset($username_decrypted)) {
-    $qry_username = $username_decrypted;
+    $username = $username_decrypted;
 } else {
-    $qry_username = $_SESSION['username'];
+    $username = $_SESSION['username'];
 }
 
-$sql_code = "SELECT username, approval_maand, approval_dag, uren, beginsaldo, fullname
-             FROM view_verlofuren
-             WHERE (approval_jaar = " . $inputjaar . " OR approval_jaar IS NULL)
-             AND username = '". $qry_username . "'
-             ORDER BY approval_maand, approval_dag";
+$frm_totaal_opgenomen = 0;
 
-$sql_out = mysqli_query($dbconn, $sql_code);
-if (! $sql_out) {
-    writelog("mijn_verlofuren", "ERROR", "Ophalen van de verlofuren per medewerker gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
+$arr_uren[0][0]  = 'Januari';
+$arr_uren[1][0]  = 'Februari';
+$arr_uren[2][0]  = 'Maart';
+$arr_uren[3][0]  = 'April';
+$arr_uren[4][0]  = 'Mei';
+$arr_uren[5][0]  = 'Juni';
+$arr_uren[6][0]  = 'Juli';
+$arr_uren[7][0]  = 'Augustus';
+$arr_uren[8][0]  = 'September';
+$arr_uren[9][0]  = 'Oktober';
+$arr_uren[10][0] = 'November';
+$arr_uren[11][0] = 'December';
+
+for($ix1=0; $ix1<12; $ix1++) {
+    for($ix2=1; $ix2<32; $ix2++) {
+        $arr_uren[$ix1][$ix2] = ' ';
+    }
+}
+
+try {
+    $stmt_verlof = $mysqli->prepare("SELECT approval_maand, approval_dag, uren, beginsaldo, fullname FROM view_verlofuren WHERE (approval_jaar = ? OR approval_jaar IS NULL) AND username = ? ORDER BY approval_maand, approval_dag");
+    $stmt_verlof->bind_param("is", $inputjaar, $username);
+    $stmt_verlof->execute();
+} catch(Exception $e) {
+    writelog("mijn_verlofuren", "ERROR", $e);
     exit($MSGDB001E);
-} else {
-    $frm_totaal_opgenomen = 0;
-
-    $arr_uren[0][0]='Januari';
-    $arr_uren[1][0]='Februari';
-    $arr_uren[2][0]='Maart';
-    $arr_uren[3][0]='April';
-    $arr_uren[4][0]='Mei';
-    $arr_uren[5][0]='Juni';
-    $arr_uren[6][0]='Juli';
-    $arr_uren[7][0]='Augustus';
-    $arr_uren[8][0]='September';
-    $arr_uren[9][0]='Oktober';
-    $arr_uren[10][0]='November';
-    $arr_uren[11][0]='December';
-
-    for($ix1=0; $ix1<12; $ix1++) {
-        for($ix2=1; $ix2<32; $ix2++) {
-            $arr_uren[$ix1][$ix2] = ' ';
-        }
-    }
-
-    //
-
-
-    while ($sql_rows = mysqli_fetch_array($sql_out)) {
-        $maandnr              = $sql_rows['approval_maand'];
-        $dagnr                = $sql_rows['approval_dag'];
-        $uren                 = $sql_rows['uren'];
-        $frm_beginsaldo       = $sql_rows['beginsaldo'];
-        $frm_fullname         = $sql_rows['fullname'];
-        $frm_totaal_opgenomen = $frm_totaal_opgenomen + $uren;
-
-        // Onderstaande query is nodig indien de user nog geen vakantie-uren heeft opgenomen. De join tusen uren en beginsaldo lukt dan niet
-        // omdat er van die user in dat jaar geen rijen in uren aanwezig zijn
-        if(!$frm_beginsaldo || $frm_beginsaldo == "") {
-            $sql_code_beginsaldo = "SELECT beginsaldo
-                                    FROM beginsaldo
-                                    WHERE jaar = " . $inputjaar . "
-                                    AND username = '". $qry_username . "';";
-            $sql_out_beginsaldo = mysqli_query($dbconn, $sql_code_beginsaldo);
-            if (! $sql_out_beginsaldo) {
-                writelog("mijn_verlofuren", "ERROR", "Ophalen van de beginsaldo is fout gegaan: " . $sql_code . " - " . mysqli_error($dbconn));
-                exit($MSGDB001E);
-            }
-            while ($sql_rows_beginsaldo = mysqli_fetch_array($sql_out_beginsaldo)) {
-                $frm_beginsaldo = $sql_rows_beginsaldo['beginsaldo'];
-            }
-        }
-
-        $arr_uren[$maandnr - 1][$dagnr] = $uren;
-    }
-    for($ix3=0; $ix3<12; $ix3++) {
-        for($ix4=0; $ix4<32; $ix4++) {
-            if($ix4 == 0) {
-                echo '<tr class="colored">';
-            }
-            echo '<td style="width:1.45vw">' . $arr_uren[$ix3][$ix4] . '</td>';
-            if($ix4 == 32) {
-                echo '</tr>';
-            }
-        }
-    }
-
-    writelog("mijn_verlofuren", "INFO", "Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd");
 }
+$stmt_verlof->bind_result($maandnr, $dagnr, $uren, $frm_beginsaldo, $frm_fullname);
 
+while($stmt_verlof->fetch()) { 
+    $frm_totaal_opgenomen = $frm_totaal_opgenomen + $uren;
+
+    // Onderstaande query is nodig indien de user nog geen vakantie-uren heeft opgenomen. De join tusen uren en beginsaldo lukt dan niet
+    // omdat er van die user in dat jaar geen rijen in uren aanwezig zijn
+    if(!$frm_beginsaldo || $frm_beginsaldo == "") {
+        try {
+            $stmt_saldo = $mysqli->prepare("SELECT beginsaldo FROM beginsaldo WHERE jaar = ? AND username = ?");
+            $stmt_saldo->bind_param("is", $inputjaar, $username);
+            $stmt_saldo->execute();
+        } catch(Exception $e) {
+            writelog("mijn_verlofuren", "ERROR", $e);
+            exit($MSGDB001E);
+        }
+        $stmt_saldo->bind_result($frm_beginsaldo);
+        $stmt_sel->fetch();
+    }
+
+    $arr_uren[$maandnr - 1][$dagnr] = $uren;
+}
+for($ix3=0; $ix3<12; $ix3++) {
+    for($ix4=0; $ix4<32; $ix4++) {
+        if($ix4 == 0) {
+            echo '<tr class="colored">';
+            echo '<td style="width:5.45vw">' . $arr_uren[$ix3][$ix4] . '</td>';
+        } else {
+            echo '<td style="width:1.45vw; text-align:right">' . $arr_uren[$ix3][$ix4] . '</td>';
+        }
+        if($ix4 == 32) {
+            echo '</tr>';
+        }
+    }
+}
+writelog("mijn_verlofuren", "INFO", "Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd");
+//}
 echo "</table></center>";
 
 echo "<table>";

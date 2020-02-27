@@ -16,8 +16,8 @@ body {
 	right: 0;
 	margin: 0;
 	padding: 0;
-	/* font: normal 13px verdana, arial, sans-serif; */
-	font: normal 0.8vw verdana, arial, sans-serif;
+	/* font: normal 13px calibri, arial, sans-serif; */
+	font: normal 0.8vw calibri, arial, sans-serif;
 	color: black;
 	background: #FFF url(../img/bg.jpg) repeat-x;
 }
@@ -37,7 +37,7 @@ a:hover {
 
 /* headers */
 h1, h2, h3 {
-	font: bold verdana, arial, sans-serif;
+	font: bold calibri, arial, sans-serif;
 	color: #118981;
 }
 /* h1 { font-size: 24px; padding-bottom: 13px; } */
@@ -92,7 +92,7 @@ blockquote {
 	background-position: 8px 10px; 
 	border: 1px solid #f2f2f2; */
 	border-left: 3px solid #13C3B7;
-	font: 0.8vw verdana, arial, sans-serif;
+	font: 0.8vw calibri, arial, sans-serif;
 	color: #666666;
 }
 
@@ -175,8 +175,8 @@ label {
 input {
 	padding: 5px 5px 5px 5px;
 	border: 1px solid #333;
-	/* font: normal 13px verdana, arial, sans-serif; */
-	font: normal 0.8vw verdana, arial, sans-serif;
+	/* font: normal 13px calibri, arial, sans-serif; */
+	font: normal 0.8vw calibri, arial, sans-serif;
 	/* color:#777; */
 	margin-bottom: 4px;
 }
@@ -187,7 +187,11 @@ input[type="checkbox"] {
 }
 
 #verlof {
-	font: normal 0.6vw verdana, arial, sans-serif;
+	font: normal 0.6vw calibri, arial, sans-serif;
+}
+
+#approve {
+	font: normal 0.6vw calibri, arial, sans-serif;
 }
 
 
@@ -225,8 +229,8 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 select {
 	padding: 5px 5px 5px 5px;
 	border: 1px solid #333;
-	/* font: normal 13px verdana, arial, sans-serif; */
-	font: normal 0.8vw verdana, arial, sans-serif;
+	/* font: normal 13px calibri, arial, sans-serif; */
+	font: normal 0.8vw calibri, arial, sans-serif;
 	/* color:#777; */
 	margin-bottom: 4px;
 }
@@ -239,8 +243,8 @@ select:focus {
 textarea {
 	width: 100%;
 	padding: 5px;
-	/* font: normal 13px verdana, arial, sans-serif; */
-	font: normal 0.8vw verdana, arial, sans-serif;
+	/* font: normal 13px calibri, arial, sans-serif; */
+	font: normal 0.8vw calibri, arial, sans-serif;
 	border: 1px solid #333;
 	min-height: 100px;
 	/* op commentaar ivm scrollbars overflow: hidden; */
@@ -260,8 +264,8 @@ textarea:focus {
 input.button {
 	margin-left: 10px;
 	/* margin-right: 10px; */
-	/* font: bold 13px verdana, arial, sans-serif; */
-	font: bold 0.8vw verdana, arial, sans-serif;
+	/* font: bold 13px calibri, arial, sans-serif; */
+	font: bold 0.8vw calibri, arial, sans-serif;
 	/* background: #FFF url(../img/gradientbg.jpg) repeat-x; */
 	padding: 5px 8px 5px 8px;
 	color: black;
@@ -298,8 +302,8 @@ img.button {
 
 #header-content h1#logo {
 	position: absolute;
-	/* font: bold 45px verdana, arial, sans-serif; */
-	font: bold 3vw verdana, arial, sans-serif;
+	/* font: bold 45px calibri, arial, sans-serif; */
+	font: bold 3vw calibri, arial, sans-serif;
 	letter-spacing: -2px;
 	color: #FFF;
 	margin: 0;
@@ -316,8 +320,8 @@ img.button {
 
 #header-content #slogan {
 	position: absolute;
-	/* font: bold 13px verdana, arial, sans-serif; */
-	font: bold 0.8vw verdana, arial, sans-serif;
+	/* font: bold 13px calibri, arial, sans-serif; */
+	font: bold 0.8vw calibri, arial, sans-serif;
 	text-transform: none;
 	color: #FFF;
 	margin: 1vw 0 0 0;
@@ -333,8 +337,8 @@ img.button {
 	/* right: 0px; top: 15px; */
 	left: 27%;
 	top: 55px;
-	/* font: bolder 17px verdana, arial, sans-serif; */
-	font: bolder 1.3vw verdana, arial, sans-serif;
+	/* font: bolder 17px calibri, arial, sans-serif; */
+	font: bolder 1.3vw calibri, arial, sans-serif;
 	color: #FFF;
 	list-style: none;
 	margin: 0;
@@ -390,8 +394,8 @@ img.button {
 #sidebar h1 {
 	padding: 10px 0px 5px 10px;
 	margin: 0;
-	/* font: bold 18px verdana, arial, sans-serif; */
-	font: bold 1vw verdana, arial, sans-serif;
+	/* font: bold 18px calibri, arial, sans-serif; */
+	font: bold 1vw calibri, arial, sans-serif;
 }
 
 .sidebox {
@@ -414,7 +418,7 @@ img.button {
 
 #sidebar ul.sidemenu a {
 	display: block;
-	font: normal 0.8vw verdana, arial, sans-serif;
+	font: normal 0.8vw calibri, arial, sans-serif;
 	/* font-weight:normal; */
 	color: #333;
 	height: 1.5em;
@@ -454,8 +458,8 @@ img.button {
 	padding: 10px 0px 13px 5px;
 	margin: 0 0 0 10px;
 	border-bottom: 1px solid #f2f2f2;
-	/* font: bold 24px verdana, arial, sans-serif; */
-	font: bold 1.6vw verdana, arial, sans-serif;
+	/* font: bold 24px calibri, arial, sans-serif; */
+	font: bold 1.6vw calibri, arial, sans-serif;
 }
 
 #main ul li {
@@ -469,7 +473,7 @@ img.button {
 	background-position: 8px 10px;
 	border: 1px solid #f2f2f2;
 	border-left: 3px solid red;
-	font: 0.8vw verdana, arial, sans-serif;
+	font: 0.8vw calibri, arial, sans-serif;
 	color: red;
 }
 
@@ -480,7 +484,7 @@ img.button {
 	background-position: 8px 10px;
 	border: 1px solid #f2f2f2;
 	border-left: 3px solid #0c726b;
-	font: 0.8vw verdana, arial, sans-serif;
+	font: 0.8vw calibri, arial, sans-serif;
 	font-weight: bold;
 }
 
@@ -490,7 +494,7 @@ img.button {
 	clear: both;
 	margin: 0;
 	padding: 0;
-	font: normal 0.6vw verdana, arial, sans-serif;
+	font: normal 0.6vw calibri, arial, sans-serif;
 	text-align: right;
 	width: 33%;
 	padding: 0 0 30px 0;
