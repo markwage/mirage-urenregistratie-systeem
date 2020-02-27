@@ -7,3 +7,15 @@
 20200226 21:03:08;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
 20200226 21:03:23;rpt_verlofuren_medewerker;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
 20200226 21:03:28;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200226 21:27:08;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20200226 21:58:00;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200226 22:14:12;add_nieuws;mwage;INFO;Nieuwsbericht is succesvol toegevoegd aan de database
+20200226 22:14:38;nieuws;mwage;INFO;Het nieuwsbericht met id 33 is verwijderd uit tabel nieuws
+20200226 22:16:45;add_nieuws;mwage;INFO;Nieuwsbericht is succesvol toegevoegd aan de database
+20200226 22:17:06;nieuws;mwage;INFO;Het nieuwsbericht met id 34 is verwijderd uit tabel nieuws
+20200226 22:55:41;logout;mwage;INFO;User  is succesvol uitgelogd
+20200227 09:28:21;login;mwage;INFO;User mwage is succesvol ingelogd
+20200227 09:28:39;add_nieuws;mwage;INFO;Nieuwsbericht is succesvol toegevoegd aan de database
+20200227 09:28:44;nieuws;mwage;INFO;Het nieuwsbericht met id 35 is gewijzigd
+20200227 09:28:50;nieuws;mwage;INFO;Het nieuwsbericht met id 35 is gewijzigd
+20200227 09:28:58;nieuws;mwage;INFO;Het nieuwsbericht met id 35 is verwijderd uit tabel nieuws
