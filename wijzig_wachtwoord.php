@@ -89,7 +89,6 @@ if (isset($_POST['submit'])) {
         }
     }
 }
-writedebug("Net voor het begin van het formulier");
 ?>
  
 <form name="wijzigWachtwoord" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

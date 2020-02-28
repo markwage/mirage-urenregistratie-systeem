@@ -84,10 +84,8 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
         exit($MSGDB001E);
     }
 
-    // --------------------------------------------------------------------------
     // niet de uren verwijderen die al approved zijn in de vorige maand
-    // --------------------------------------------------------------------------
-
+    // Dit komt voor omdat maandovergang in de week valt
     if (mysqli_num_rows($check_select_uren) > 0) {
         $sql_delete_uren = "DELETE FROM uren 
                             WHERE user='" . $_SESSION['username'] . "' 

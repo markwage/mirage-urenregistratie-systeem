@@ -9,7 +9,7 @@
 //---------------------------------------------------------------------------------------------
 // Mail
 $mail_from = 'mark.wage@hotmail.com';
-$mail_CC   = 'mjwage@gmail.com';
+$mail_CC   = 'mark.wage@outlook.com';
 
 //---------------------------------------------------------------------------------------------
 // Algemene messages die op het scherm getoond worden

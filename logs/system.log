@@ -113,3 +113,49 @@
 20200227 21:04:31;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
 20200227 21:09:12;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
 20200227 21:09:40;logout;mwage;INFO;User  is succesvol uitgelogd
+20200227 22:59:47;login;mwage;INFO;User mwage is succesvol ingelogd
+20200227 23:00:07;approve;mwage;INFO;Voor user mjansen is maand -1 approved
+20200227 23:00:07;approve;mwage;INFO;Record succesvol toegevoegd in tabel approvals voor user mjansen periode -1
+20200227 23:12:22;approve;mwage;INFO;Voor user mjansen is maand -1 approved
+20200227 23:12:22;approve;mwage;INFO;Record succesvol toegevoegd in tabel approvals voor user mjansen periode -1
+20200227 23:16:10;logout;mwage;INFO;User  is succesvol uitgelogd
+20200227 23:22:36;login;mwage;WARN;User mwage probeerde in te loggen met een foutief wachtwoord (count: 1)
+20200227 23:22:42;login;mwage;INFO;User mwage is succesvol ingelogd
+20200227 23:22:51;approve;mwage;INFO;Voor user mjansen is maand -1 approved
+20200227 23:22:51;approve;mwage;INFO;Record succesvol toegevoegd in tabel approvals voor user mjansen periode -1
+20200227 23:25:46;approve;mwage;INFO;Voor user mjansen is maand -1 approved
+20200227 23:25:46;approve;mwage;ERROR;Insert van approval in tabel approvals gaat fout: UPDATE uren
+                 SET approveddatum = '2020-02-27',
+                 approvedbyuser = 'mwage',
+                 approved = '1'
+                 WHERE user = 'mjansen'
+                 AND month(datum) = '1'
+                 AND year(datum) = '' - Incorrect integer value: '' for column 'jaar' at row 1
+20200227 23:31:15;approve;mwage;INFO;Voor user mjansen is maand 2020-1 approved
+20200227 23:31:15;approve;mwage;INFO;Record succesvol toegevoegd in tabel approvals voor user mjansen periode 2020-1
+20200227 23:31:55;logout;mwage;INFO;User  is succesvol uitgelogd
+20200228 10:20:46;login;mwage;INFO;User mwage is succesvol ingelogd
+20200228 10:29:42;logout;mwage;INFO;User  is succesvol uitgelogd
+20200228 10:29:48;login;demo;INFO;User demo is succesvol ingelogd
+20200228 10:30:02;logout;demo;INFO;User  is succesvol uitgelogd
+20200228 10:30:09;login;mwage;INFO;User mwage is succesvol ingelogd
+20200228 10:32:17;logout;mwage;INFO;User  is succesvol uitgelogd
+20200228 10:32:22;login;demo;INFO;User demo is succesvol ingelogd
+20200228 10:33:55;logout;demo;INFO;User  is succesvol uitgelogd
+20200228 10:34:00;login;mwage;INFO;User mwage is succesvol ingelogd
+20200228 10:34:06;approve;mwage;INFO;Voor user demo is maand 2020-1 approved
+20200228 10:34:06;approve;mwage;INFO;Record succesvol toegevoegd in tabel approvals voor user demo periode 2020-1
+20200228 10:34:09;logout;mwage;INFO;User  is succesvol uitgelogd
+20200228 10:34:17;login;demo;INFO;User demo is succesvol ingelogd
+20200228 11:09:22;mijn_verlofuren;demo;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200228 11:09:45;rpt_uren_urensoort;demo;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20200228 11:21:41;logout;demo;INFO;User  is succesvol uitgelogd
+20200228 14:41:18;login;mwage;INFO;User mwage is succesvol ingelogd
+20200228 15:24:02;add_user;mwage;ERROR;Er is een fout opgetreden bij het toevoegen van een nieuwe user - 
+20200228 15:25:06;add_user;mwage;ERROR;Er is een fout opgetreden bij het toevoegen van een nieuwe user - 
+20200228 15:30:02;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar  ivm aanmaken userid 
+20200228 15:39:00;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar demomirage@mirage.nl ivm aanmaken userid 
+20200228 15:41:48;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar demomirage@mirage.nl ivm aanmaken userid 
+20200228 20:56:16;login;mwage;INFO;User mwage is succesvol ingelogd
+20200228 22:04:58;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20200228 22:05:02;rpt_verlofuren_medewerker;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd

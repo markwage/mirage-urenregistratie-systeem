@@ -456,15 +456,15 @@ function mail_message_header()
 
 <style type="text/css">
 body {
-    font: normal 12px calibri, arial, sans-serif;
+    font: normal 16px calibri, arial, sans-serif;
 }
 h1 {
-    font: bold 14px calibri, arial, sans-serif;
+    font: bold 20px calibri, arial, sans-serif;
 }
 table {
     border: 1px solid black;
 	border-collapse: collapse;
-	margin: 10px 15px;	
+	/* margin: 10px 15px; */	
 }
 th {
 	background: #13C3B7;

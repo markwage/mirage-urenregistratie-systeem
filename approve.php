@@ -3,6 +3,7 @@ session_start();
 
 include ("config.php");
 include ("db.php");
+include ("mysqli_connect.php");
 include ("function.php");
 include ("autoload.php");
 
@@ -35,6 +36,17 @@ include ("header.php");
 // ------------------------------------------------------------------------------------------------------
 if (isset($_POST['cancel'])) {
     header("location: approve.php?aktie=disp");
+}
+
+// ------------------------------------------------------------------------------------------------------
+// BUTTON Disapprove
+// ------------------------------------------------------------------------------------------------------
+if (isset($_POST['afkeuren'])) {
+    $encrypted_username = convert_string('encrypt', $_POST['username']);
+    $maand = $_POST['maand'];
+    $jaar = $_POST['jaar'];
+    $emailadres = $_POST['emailadres'];
+    header("location: afkeuren.php?username=".$encrypted_username."&jaar=".$_POST['jaar']."&maand=".$_POST['maand']);
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -224,6 +236,7 @@ if ($aktie == 'dspuren') {
     }
 
     // Creeeren van het SQL statement.
+    // De variabele wordt in meerdere regels uitgebreid middels .=
     $sql_code = "SELECT *,";
     for($ix=1; $ix<31; $ix++) {
         $sql_code .= "SUM(CASE WHEN approval_dag = '".$ix."' THEN uren END) AS `".$ix."`,";
@@ -243,9 +256,7 @@ if ($aktie == 'dspuren') {
     }
 
     while ($sql_rows = mysqli_fetch_array($sql_out)) {
-        //$datum                 = $sql_rows['datum'];
         $soortuur              = $sql_rows['soortuur'];
-        //$uren                  = $sql_rows['uren'];
         $omschrijving_soortuur = $sql_rows['omschrijving'];
 
         echo '<tr class="colored">';
@@ -296,7 +307,7 @@ if ($aktie == 'dspuren') {
 	<input type="hidden" name="jaar" value="<?php if (isset($jaar)) { echo $jaar; } ?>"> 
 	<input type="hidden" name="username" value="<?php if (isset($username)) { echo $username; } ?>"> 
 	<input type="hidden" name="emailadres" value="<?php if (isset($emailadres)) { echo $emailadres; } ?>"> 
-	<input type="hidden" name="jaar" value="<?php if (isset($datum)) { echo substr($datum,0,4); } ?>">
+	<!--  <input type="hidden" name="jaar" value="<?php //if (isset($datum)) { echo substr($datum,0,4); } ?>"> -->
 	
 	<input class="button" type="submit" name="cancel" value="cancel" formnovalidate>
     <?php
@@ -305,6 +316,7 @@ if ($aktie == 'dspuren') {
     } else {
         if ($approved == 0) {
             echo '<input class="button" type="submit" name="approve" value="approve">';
+            echo '<input class="button" type="submit" name="afkeuren" value="afkeuren">';
         }
     }
     ?>
