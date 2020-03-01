@@ -45,4 +45,11 @@ try {
 $stmt_sel->bind_result($frm_ID, $frm_datum, $frm_nieuwsheader, $frm_nieuwsbericht);
 $stmt_sel->fetch();
 
+
+
+//==========================================================================================
+// Indien een query binnen een query uitgevoerd moet worden dient volgende statement na execute() uitgevoerd te worden
+//==========================================================================================
+$stmt_sel->store_result();
+
 ?>

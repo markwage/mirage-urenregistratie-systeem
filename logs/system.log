@@ -22,3 +22,17 @@
 20200229 20:28:13;users;mwage;INFO;De query voor updaten user is succesvol uitgevoerd voor user mwage
 20200229 20:28:29;users;mwage;INFO;De query voor updaten user is succesvol uitgevoerd voor user mwage
 20200301 00:08:45;logout;mwage;INFO;User  is succesvol uitgelogd
+20200301 20:32:38;login;mwage;INFO;User mwage is succesvol ingelogd
+20200301 20:32:43;logout;mwage;INFO;User  is succesvol uitgelogd
+20200301 20:32:56;login;mwage;WARN;Er werd geprobeerd om in te loggen met een niet bestaande username: demo2
+20200301 22:14:46;login;mwage;INFO;User mwage is succesvol ingelogd
+20200301 22:15:59;add_user;mwage;INFO;User demo2 is succesvol aangemaakt
+20200301 22:16:00;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar mark.wage@mirage.nl ivm aanmaken userid demo2
+20200301 22:16:13;logout;mwage;INFO;User  is succesvol uitgelogd
+20200301 22:16:44;wijzig_wachtwoord;demo2;INFO;User demo2 heeft succesvol zijn wachtwoord gewijzigd
+20200301 22:16:44;logout;demo2;INFO;User  is succesvol uitgelogd
+20200301 22:16:54;login;demo2;INFO;User demo2 is succesvol ingelogd
+20200301 22:39:08;rpt_uren_urensoort;demo2;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20200301 22:52:56;mijn_verlofuren;demo2;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200301 23:10:53;mijn_verlofuren;demo2;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200301 23:17:13;logout;demo2;INFO;User  is succesvol uitgelogd

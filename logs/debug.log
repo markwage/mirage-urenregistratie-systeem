@@ -1,100 +1,33 @@
 
-20200226 21:41:43;
-20200226 21:42:53;
-20200226 21:47:19;Er is een nieuw urenregistratie systeem ontwikkeld welke de excel sheets vervangt.
-Zorg dat je je uren nauwkeurig invult, zowel de facturabele als de niet facturabele uren.
-Ook je verlofuren dien je correct in te vullen. Er wordt nl. ook bijgehouden hoeveel verlofuren je nog over hebt.
-Heb je vragen en/of opmerkingen of zit er een bepaalde urensoort niet tussen die jij wel verwacht, stuur dan even een mail naar Robert van der Lans en Mark Wage.
-20200226 21:48:52;
-20200227 09:30:08;aantal: 
-20200227 09:31:02;aantal: 0
-20200227 09:35:03;aantal rijen: 0
-20200227 09:56:21;aantal rijen: 2
-20200227 23:12:22;POST
-20200227 23:12:22;maand-jaar: 1-
-20200227 23:22:51;POST
-20200227 23:22:51;maand-jaar: 1-
-20200228 15:06:42;
-20200228 15:07:53;na decryptdemo
-20200228 15:07:53;
-20200228 15:09:51;Username na sql: 
-20200228 15:09:55;na decrypt demo
-20200228 15:09:55;Username na sql: demo
-20200228 15:12:59;na decrypt demo
-20200228 15:13:17;na decrypt demo
-20200228 15:13:17;Username na sql: demo
-20200228 15:14:07;na decrypt demo
-20200228 15:14:07;Username na sql: demo
-20200228 15:15:09;na decrypt demo
-20200228 15:15:09;Username na sql: demo
-20200228 15:15:29;Username na sql: 
-20200228 15:23:09;na decrypt demo
-20200228 15:23:09;Username na sql: demo
-20200228 15:23:40;Username na sql: 
-20200228 15:24:00;na decrypt demo
-20200228 15:24:00;Username na sql: demo
-20200228 15:25:04;na decrypt demo
-20200228 15:25:04;Username na sql: demo
-20200228 15:25:22;na decrypt demo
-20200228 15:25:22;Username na sql: demo
-20200228 15:25:24;Username na sql: 
-20200228 15:25:31;Username na sql: 
-20200228 15:27:22;na decrypt demo
-20200228 15:27:22;Username na sql: demo
-20200228 15:27:25;Form is gesubmit. Emailadres 
-20200228 15:27:25;Username na sql: 
-20200228 15:27:41;Username na sql: 
-20200228 15:27:46;na decrypt demo
-20200228 15:27:46;Username na sql: demo
-20200228 15:28:40;Username na sql: 
-20200228 15:28:44;na decrypt demo
-20200228 15:28:44;Username na sql: demo
-20200228 15:29:32;Username na sql: 
-20200228 15:29:37;na decrypt demo
-20200228 15:29:37;Username na sql: demo
-20200228 15:30:01;Form is gesubmit. Emailadres: demomirage@mirage.nl
-20200228 15:30:02;Username na sql: 
-20200228 15:38:46;na decrypt demo
-20200228 15:38:46;Username na sql: demo
-20200228 15:38:59;Form is gesubmit. Emailadres: demomirage@mirage.nl
-20200228 15:39:00;Username na sql: 
-20200228 15:41:43;na decrypt demo
-20200228 15:41:43;Username na sql: demo
-20200228 15:41:47;Form is gesubmit. Emailadres: demomirage@mirage.nl
-20200228 15:41:48;Username na sql: 
-20200228 22:41:07;approvedbyuser: mwage
-20200228 22:46:53;approvedbyuser: mwage
-20200228 22:56:31;approvedbyuser: mwage
-20200228 22:57:35;approvedbyuser: mwage
-20200228 23:15:30;approvedbyuser: mwage
-20200228 23:32:20;approveddatum: 2020-02-28
-20200228 23:32:20;approvedbyuser: mwage
-20200228 23:32:20;approved: 9
-20200228 23:32:20;user: 
-20200228 23:32:20;maand: 1
-20200228 23:32:20;jaar: 2020
-20200228 23:36:25;approveddatum: 2020-02-28
-20200228 23:36:25;approvedbyuser: mwage
-20200228 23:36:25;approved: 9
-20200228 23:36:25;user: demo
-20200228 23:36:25;maand: 1
-20200228 23:36:25;jaar: 2020
-20200229 00:15:11;approveddatum: 2020-02-29
-20200229 00:15:11;approvedbyuser: mwage
-20200229 00:15:11;approved: 9
-20200229 00:15:11;user: demo
-20200229 00:15:11;maand: 1
-20200229 00:15:11;jaar: 2020
-20200229 00:17:21;approveddatum: 2020-02-29
-20200229 00:17:21;approvedbyuser: mwage
-20200229 00:17:21;approved: 9
-20200229 00:17:21;user: demo
-20200229 00:17:21;maand: 1
-20200229 00:17:21;jaar: 2020
-20200229 00:18:39;approveddatum: 2020-02-29
-20200229 00:18:39;approvedbyuser: mwage
-20200229 00:18:39;approved: 9
-20200229 00:18:39;user: demo
-20200229 00:18:39;maand: 1
-20200229 00:18:39;jaar: 2020
-20200229 19:31:28;inputweeknr decrypted 2020-W03
+20200301 22:24:23;beginsaldo; --
+20200301 22:24:23;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:30:06;beginsaldo; --
+20200301 22:30:06;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:33:23;beginsaldo; --
+20200301 22:33:23;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:33:43;beginsaldo; --
+20200301 22:33:43;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:33:44;beginsaldo; --
+20200301 22:33:44;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:33:44;beginsaldo; --
+20200301 22:33:44;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:33:45;beginsaldo; --
+20200301 22:33:45;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:33:45;beginsaldo; --
+20200301 22:33:45;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:35:09;beginsaldo; --
+20200301 22:35:09;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:35:59;beginsaldo; --
+20200301 22:35:59;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:38:51;beginsaldo; --
+20200301 22:38:51;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:39:13;beginsaldo; --
+20200301 22:39:13;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:44:12;beginsaldo; --
+20200301 22:44:12;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 22:52:56;beginsaldo; --
+20200301 22:52:56;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 23:10:25;beginsaldo; --
+20200301 23:10:25;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
+20200301 23:10:53;beginsaldo; --
+20200301 23:10:53;Beginsaldo wordt opgehaald. Inputjaar - user: 2020 demo2
