@@ -92,7 +92,9 @@ for ($ix1 = 0; $ix1 < 10; $ix1 ++) {
 
         echo "<td>$frm_approveddatum</td>";
         echo "<td>$frm_naam_approver</td>";
-        echo '<td><center><a href="uren.php?edtweek=' . $frm_jaar . "-W" . $frm_week . '"><img class="button" src="./img/icons/view-48.png" alt="Toon uren van deze week" title="Toon uren van deze week" /></a></center></td>';
+        $edtweek = convert_string('encrypt', $frm_jaar."-W".$frm_week);
+        echo '<td><center><a href="uren.php?edtweek=' . $edtweek . '"><img class="button" src="./img/icons/view-48.png" alt="Toon uren van deze week" title="Toon uren van deze week" /></a></center></td>';
+        //echo '<td><center><a href="uren.php?edtweek=' . $frm_jaar . "-W" . $frm_week . '"><img class="button" src="./img/icons/view-48.png" alt="Toon uren van deze week" title="Toon uren van deze week" /></a></center></td>';
         echo '</tr>';
     } else {
         writelog("index", "ERROR", "De select query is fout gegaan - " . mysqli_error($dbconn));

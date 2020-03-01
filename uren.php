@@ -21,7 +21,9 @@ include ("header.php");
 // edtweek wordt doorgegeven via het home-scherm als user op edit-button klikt
 //
 if (isset($_GET['edtweek'])) {
-    $inputweeknr = $_GET['edtweek'];
+    //$inputweeknr = $_GET['edtweek'];
+    $inputweeknr = convert_string('decrypt', $_GET['edtweek']);
+    writedebug("inputweeknr decrypted ".$inputweeknr);
 } else {
     $inputweeknr = date('Y') . "-W" . date('W');
 }

@@ -138,7 +138,9 @@ if ($aktie == 'disp') {
         echo '</tr>';
     }
     echo "</table></center>";
-    echo '<input class="button" type="submit" name="nieuw" value="nieuw">';
+    if ($_SESSION['admin']) {
+        echo '<input class="button" type="submit" name="nieuw" value="nieuw">';
+    }
     echo "</form>";
 }
 

@@ -122,6 +122,11 @@ if (isset($_POST['submit'])) {
         $focus = 'email';
         $formerror = 1;
     }
+    if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) {
+        echo '<blockquote class="error">ERROR: Dit is geen geldig emailadres</blockquote>';
+        $focus = 'email';
+        $formerror = 1;
+    }
 
     // Encrypt password en voeg eventueel slashes toe
     if (! $formerror) {
@@ -211,16 +216,13 @@ if (isset($_POST['submit'])) {
 		<table>
 			<tr>
 				<td><b>Username:</b></td>
-				<td><input type="text" name="username" maxlength="40"
-					value="<?php if (isset($frm_username)) { echo $frm_username; } ?>"></td>
+				<td><input type="text" name="username" maxlength="40" value="<?php if (isset($frm_username)) { echo $frm_username; } ?>"></td>
 			</tr>
 			<tr>
 				<td>Wachtwoord</td>
-				<td><input type="password" name="pass" maxlength="32"
-					value="<?php if (isset($frm_pass)) { echo $frm_pass; } ?>"></td>
+				<td><input type="password" name="pass" maxlength="32" value="<?php if (isset($frm_pass)) { echo $frm_pass; } ?>"></td>
 				<td>Confirm</td>
-				<td><input type="password" name="pass2" maxlength="32"
-					value="<?php if (isset($frm_pass2)) { echo $frm_pass2; } ?>"></td>
+				<td><input type="password" name="pass2" maxlength="32" value="<?php if (isset($frm_pass2)) { echo $frm_pass2; } ?>"></td>
 			</tr>
 			<tr>
 				<td>Admin</td>
@@ -233,22 +235,17 @@ if (isset($_POST['submit'])) {
 			</tr>
 			<tr>
 				<td>Voornaam</td>
-				<td><input type="text" name="voornaam" maxlength="24"
-					value="<?php if (isset($frm_voornaam)) { echo $frm_voornaam; } ?>"></td>
+				<td><input type="text" name="voornaam" maxlength="24" value="<?php if (isset($frm_voornaam)) { echo $frm_voornaam; } ?>"></td>
 			</tr>
 			<tr>
 				<td>Tussenv.</td>
-				<td><input type="text" name="tussenvoegsel" maxlength="10"
-					value="<?php if (isset($frm_tussenvoegsel)) { echo $frm_tussenvoegsel; } ?>"></td>
+				<td><input type="text" name="tussenvoegsel" maxlength="10" value="<?php if (isset($frm_tussenvoegsel)) { echo $frm_tussenvoegsel; } ?>"></td>
 				<td>Achternaam</td>
-				<td><input type="text" name="achternaam" maxlength="40"
-					value="<?php if (isset($frm_achternaam)) { echo $frm_achternaam; } ?>"></td>
+				<td><input type="text" name="achternaam" maxlength="40" value="<?php if (isset($frm_achternaam)) { echo $frm_achternaam; } ?>"></td>
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td colspan="2"><input type="text" name="email" size="40"
-					maxlength="60"
-					value="<?php if (isset($frm_email)) { echo $frm_email; } ?>"></td>
+				<td colspan="2"><input type="email" name="email" size="40" maxlength="60" value="<?php if (isset($frm_email)) { echo $frm_email; } ?>"></td>
 			</tr>
 			<tr>
 				<td>In dienst</td>

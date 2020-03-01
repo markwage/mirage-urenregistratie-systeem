@@ -193,6 +193,11 @@ if ($aktie == 'disp') {
             <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td>Approved</td>
 			</tr>';
+        } elseif ($approved == 9) {
+            echo '<tr class="colored">
+            <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
+			<td style="color:red">AFGEKEURD! <a href="approve.php?aktie=dspuren&user=' . $encrypted_username . '&jaar=' . $jaar . '&maand=' . $maand . '"><img class="button" src="./img/icons/view-48.png" alt="Toon week" title="Toon/approve de uren van deze maand" /></a></td>
+			</tr>';
         }
     }
     echo "</table></center>";
@@ -314,7 +319,7 @@ if ($aktie == 'dspuren') {
     if (! isset($_SESSION['approvenallowed']) || (! $_SESSION['approvenallowed'])) {
         echo '<blockquote>Je hebt geen rechten om te approven</blockquote>';
     } else {
-        if ($approved == 0) {
+        if ($approved == 0 || $approved == 9) {
             echo '<input class="button" type="submit" name="approve" value="approve">';
             echo '<input class="button" type="submit" name="afkeuren" value="afkeuren">';
         }

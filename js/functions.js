@@ -40,13 +40,13 @@ function add_row(js_aantal_dagen_readonly) {
 	$("#uren_table tr:last").after("" +
 		"<tr id='row"+$rowno+"'>" +
 			"<td><select name='soortuur[]' enabled>"+selectSoortUurEnabled+"</select></td>" +
-			"<td><input style='width:3.33vw' type='number' name='dag1[]' min='0' max='24' step='0.25' size='2' "+readonly_dag0+"></td>" +
-			"<td><input style='width:3.33vw' type='number' name='dag2[]' min='0' max='24' step='0.25' size='2' "+readonly_dag1+"></td>" +
-			"<td><input style='width:3.33vw' type='number' name='dag3[]' min='0' max='24' step='0.25' size='2' "+readonly_dag2+"></td>" +
-			"<td><input style='width:3.33vw' type='number' name='dag4[]' min='0' max='24' step='0.25' size='2' "+readonly_dag3+"></td>" +
-			"<td><input style='width:3.33vw' type='number' name='dag5[]' min='0' max='24' step='0.25' size='2' "+readonly_dag4+"></td>" +
-			"<td><input style='width:3.33vw' type='number' name='dag6[]' min='0' max='24' step='0.25' size='2' "+readonly_dag5+"></td>" +
-			"<td><input style='width:3.33vw' type='number' name='dag7[]' min='0' max='24' step='0.25' size='2' "+readonly_dag6+"></td>" +
+			"<td><input style='width:3.33vw;text-align:right' type='number' name='dag1[]' min='0' max='24' step='0.25' size='2' "+readonly_dag0+"></td>" +
+			"<td><input style='width:3.33vw;text-align:right' type='number' name='dag2[]' min='0' max='24' step='0.25' size='2' "+readonly_dag1+"></td>" +
+			"<td><input style='width:3.33vw;text-align:right' type='number' name='dag3[]' min='0' max='24' step='0.25' size='2' "+readonly_dag2+"></td>" +
+			"<td><input style='width:3.33vw;text-align:right' type='number' name='dag4[]' min='0' max='24' step='0.25' size='2' "+readonly_dag3+"></td>" +
+			"<td><input style='width:3.33vw;text-align:right' type='number' name='dag5[]' min='0' max='24' step='0.25' size='2' "+readonly_dag4+"></td>" +
+			"<td><input style='width:3.33vw;text-align:right' type='number' name='dag6[]' min='0' max='24' step='0.25' size='2' "+readonly_dag5+"></td>" +
+			"<td><input style='width:3.33vw;text-align:right' type='number' name='dag7[]' min='0' max='24' step='0.25' size='2' "+readonly_dag6+"></td>" +
 			"<td colspan=2><img class='button' src='./img/icons/add-48.png' alt='add rij' title='add rij' onclick=add_row("+js_aantal_dagen_readonly+");> <img class='button' src='./img/icons/trash-48.png' alt='verwijder rij' title='verwijder rij' onclick=delete_row('row"+$rowno+"')></td>" +
 			"<td></td>" +
 		"</tr>");

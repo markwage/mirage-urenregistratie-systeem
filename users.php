@@ -165,6 +165,11 @@ if (isset($_POST['save'])) {
         $focus = 'email';
         $formerror = 1;
     }
+    if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) {
+        echo '<blockquote class="error">ERROR: Dit is geen geldig emailadres</blockquote>';
+        $focus = 'email';
+        $formerror = 1;
+    }
 
     if (! $formerror) {
         if ($_SESSION['admin']) {
@@ -327,6 +332,7 @@ if ($aktie == 'disp') {
     echo "</table></center>";
     echo '<input class="button" type="submit" name="nieuw" value="nieuw">';
     echo "</form>";
+    
 }
 
 
@@ -419,7 +425,7 @@ if ($aktie == 'edit' || $aktie == 'delete' || $aktie == 'editprof') {
 		</tr>
 		<tr>
 			<td>Email</td>
-			<td colspan="2"><input type="text" name="email" size="40" maxlength="60" value="<?php if (isset($frm_email)) echo $frm_email;?>"></td>
+			<td colspan="2"><input type="email" name="email" size="40" maxlength="60" value="<?php if (isset($frm_email)) echo $frm_email;?>"></td>
 		</tr>
 		<tr>
 			<td>In dienst</td>

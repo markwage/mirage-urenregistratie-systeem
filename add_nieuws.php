@@ -6,6 +6,7 @@ include ("function.php");
 include ("autoload.php");
 
 // Controleren of cookie aanwezig is. Anders login-scherm displayen
+check_admin();
 check_cookies();
 
 include ("header.php");
@@ -83,9 +84,8 @@ if (isset($_POST['submit'])) {
 				<td><textarea id="area1" name="nieuwsbericht"><?php if (isset($frm_nieuwsbericht)) { echo $frm_nieuwsbericht; } ?></textarea></td>
 		
 		</table>
-		<br /> <input class="button" type="submit" name="submit"
-			value="add nieuwsbericht"> <input class="button" type="submit"
-			name="cancel" value="cancel">
+		<br /> <input class="button" type="submit" name="submit" value="add nieuwsbericht"> 
+		<input class="button" type="submit" name="cancel" value="cancel">
 		</p>
 	</form>
 	<br />		
