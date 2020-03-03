@@ -23,14 +23,14 @@ include ("header.php");
 if (isset($_GET['edtweek'])) {
     //$inputweeknr = $_GET['edtweek'];
     $inputweeknr = convert_string('decrypt', $_GET['edtweek']);
-    writedebug("inputweeknr decrypted ".$inputweeknr);
 } else {
     $inputweeknr = date('Y') . "-W" . date('W');
 }
 getWeekdays($inputweeknr);
 
 // ------------------------------------------------------------------------------------------------------
-// Haal alle soorturen op uit de database zodat deze in de dropdown getoond worden
+// Haal alle soorturen op uit de database en zet deze in de variabele $option zodat deze in de 
+// dropdown getoond worden
 // ------------------------------------------------------------------------------------------------------
 $option = "";
 
@@ -46,10 +46,10 @@ while ($sql_rows1 = mysqli_fetch_array($sql_out1)) {
     $option .= "<option value='" . $sql_rows1['code'] . "'>" . $sql_rows1['code'] . " - " . $sql_rows1['omschrijving'] . "</option>";
 }
 
-/**
- * Dit is het begin van de code wat uitgevoerd wordt indien het formulier is gesubmit
- * Welk gedeelte van de code is afhankelijk van de button waarop geclickt is.
- */
+// ------------------------------------------------------------------------------------------------------
+// Dit is het begin van de code wat uitgevoerd wordt indien het formulier is gesubmit
+// Welk gedeelte van de code is afhankelijk van de button waarop geclickt is.
+// ------------------------------------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------------------------------------
 // BUTTON changeWeeknr is op geklikt om een andere week te muteren.
@@ -121,7 +121,6 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
                     // niet de uren inserten die al approved waren en dus in vorige step niet verwijderd zijn
                     // Controleren of de datum van die user/week al in de database aanwezig is. Zou niet
                     // moeten zijn omdat de week verwijderd is. Indien wel dan was deze dus al approved
-
                     $sql_check_datum_approved = "SELECT * FROM uren
                                                  WHERE user='" . $_SESSION['username'] . "' 
                                                  AND datum='" . $datum . "'
@@ -133,7 +132,9 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
                     }
 
                     $rows_check_datum_approved = mysqli_num_rows($check_check_datum_approved);
-
+                    // Make string numeric First change the , in a . (because of decimals)
+                    $uren_temp = str_replace(",",".",$urenarray[$ix2]);
+                    $uren_insert = number_format($uren_temp, 2);
                     if ($rows_check_datum_approved == 0) {
                         $sql_insert_uren = "INSERT INTO uren (jaar, maand, week, dagnummer, soortuur, datum, uren, user)
                                             VALUES('" . $year . "', 
@@ -142,7 +143,7 @@ if (isset($_POST['save']) || isset($_POST['approval'])) {
                                                    '" . $dagnummer . "', 
                                                    '" . $_POST['soortuur'][$ix1] . "', 
                                                    '" . $datum . "', 
-                                                   '" . $urenarray[$ix2] . "', 
+                                                   '" . $uren_insert . "', 
                                                    '" . $_SESSION['username'] . "')";
                         $check_insert_uren = mysqli_query($dbconn, $sql_insert_uren);
 
@@ -182,6 +183,7 @@ echo "<th>Soortuur</th>";
 
 // Tabelheaders aanmaken met datum/afkorting dagnaam
 // En controleren of de maand waarin de dag valt al approved is
+// De variabelem weekDatum em WeekDagNaam worden aangemaakt in de function getWeekDays
 for ($ix6 = 0; $ix6 < 7; $ix6 ++) {
     echo "<th><center>" . $weekDatum[$ix6] . "<br>" . $weekDagNaam[$ix6] . "</center></th>";
 

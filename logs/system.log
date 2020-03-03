@@ -1,38 +1,94 @@
 
-20200229 00:15:11;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar demomirage@mirage.nl
-20200229 00:17:21;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar demomirage@mirage.nl
-20200229 00:18:39;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar demomirage@mirage.nl
-20200229 11:51:31;login;mwage;INFO;User mwage is succesvol ingelogd
-20200229 11:57:53;logout;mwage;INFO;User  is succesvol uitgelogd
-20200229 12:06:04;login;demo;INFO;User demo is succesvol ingelogd
-20200229 12:12:50;logout;demo;INFO;User  is succesvol uitgelogd
-20200229 12:12:58;login;mwage;INFO;User mwage is succesvol ingelogd
-20200229 12:13:14;logout;mwage;INFO;User  is succesvol uitgelogd
-20200229 17:32:13;login;mwage;INFO;User mwage is succesvol ingelogd
-20200229 17:32:24;users;mwage;INFO;De query voor updaten user is succesvol uitgevoerd voor user mwage
-20200229 17:32:56;users;mwage;INFO;De query voor updaten user is succesvol uitgevoerd voor user mwage
-20200229 19:05:32;users;mwage;INFO;De query voor updaten user is succesvol uitgevoerd voor user mwage
-20200229 19:05:40;users;mwage;INFO;De query voor updaten user is succesvol uitgevoerd voor user mwage
-20200229 19:05:56;users;mwage;INFO;De query voor updaten user is succesvol uitgevoerd voor user mwage
-20200229 19:16:47;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
-20200229 19:16:50;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
-20200229 19:17:03;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
-20200229 19:17:07;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
-20200229 19:33:12;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
-20200229 20:28:13;users;mwage;INFO;De query voor updaten user is succesvol uitgevoerd voor user mwage
-20200229 20:28:29;users;mwage;INFO;De query voor updaten user is succesvol uitgevoerd voor user mwage
-20200301 00:08:45;logout;mwage;INFO;User  is succesvol uitgelogd
-20200301 20:32:38;login;mwage;INFO;User mwage is succesvol ingelogd
-20200301 20:32:43;logout;mwage;INFO;User  is succesvol uitgelogd
-20200301 20:32:56;login;mwage;WARN;Er werd geprobeerd om in te loggen met een niet bestaande username: demo2
-20200301 22:14:46;login;mwage;INFO;User mwage is succesvol ingelogd
-20200301 22:15:59;add_user;mwage;INFO;User demo2 is succesvol aangemaakt
-20200301 22:16:00;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar mark.wage@mirage.nl ivm aanmaken userid demo2
-20200301 22:16:13;logout;mwage;INFO;User  is succesvol uitgelogd
-20200301 22:16:44;wijzig_wachtwoord;demo2;INFO;User demo2 heeft succesvol zijn wachtwoord gewijzigd
-20200301 22:16:44;logout;demo2;INFO;User  is succesvol uitgelogd
-20200301 22:16:54;login;demo2;INFO;User demo2 is succesvol ingelogd
-20200301 22:39:08;rpt_uren_urensoort;demo2;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
-20200301 22:52:56;mijn_verlofuren;demo2;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
-20200301 23:10:53;mijn_verlofuren;demo2;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
-20200301 23:17:13;logout;demo2;INFO;User  is succesvol uitgelogd
+20200302 10:48:05;login;onbekend;WARN;User mwage probeerde in te loggen met een foutief wachtwoord (count: 1)
+20200302 10:48:12;login;mwage;INFO;User mwage is succesvol ingelogd
+20200302 12:11:12;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200302 12:28:53;logout;mwage;INFO;User  is succesvol uitgelogd
+20200302 12:29:02;login;demo2;INFO;User demo2 is succesvol ingelogd
+20200302 12:29:23;login;demo2;INFO;User demo2 is succesvol ingelogd
+20200302 12:29:29;mijn_verlofuren;demo2;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200302 16:09:13;login;mwage;INFO;User mwage is succesvol ingelogd
+20200302 16:27:16;rpt_verlofuren_medewerker;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200302 16:27:33;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200302 16:48:24;logout;mwage;INFO;User  is succesvol uitgelogd
+20200302 20:09:09;login;mwage;INFO;User mwage is succesvol ingelogd
+20200302 20:15:18;login;mwage;INFO;User mwage is succesvol ingelogd
+20200302 20:42:57;uren;mwage;INFO;Records zijn verwijderd van week 2020-09 ivm het updaten van de betreffende week
+20200302 20:42:57;uren;mwage;INFO;Records zijn toegevoegd voor week 2020-09 ivm updaten van de betreffende week
+20200302 20:43:12;uren;mwage;INFO;Records zijn verwijderd van week 2020-09 ivm het updaten van de betreffende week
+20200302 20:43:12;uren;mwage;INFO;Records zijn toegevoegd voor week 2020-09 ivm updaten van de betreffende week
+20200302 20:58:04;login;mwage;INFO;User mwage is succesvol ingelogd
+20200302 21:46:22;uren;mwage;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200302 21:46:22;uren;mwage;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200302 22:02:33;uren;mwage;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200302 22:02:33;uren;mwage;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 00:02:00;login;mwage;INFO;User mwage is succesvol ingelogd
+20200303 00:05:09;uren;mwage;INFO;Records zijn verwijderd van week 2020-06 ivm het updaten van de betreffende week
+20200303 00:05:09;uren;mwage;INFO;Records zijn toegevoegd voor week 2020-06 ivm updaten van de betreffende week
+20200303 00:05:26;login;mwage;INFO;User mwage is succesvol ingelogd
+20200303 00:06:06;uren;mwage;INFO;Records zijn verwijderd van week 2020-06 ivm het updaten van de betreffende week
+20200303 00:06:06;uren;mwage;INFO;Records zijn toegevoegd voor week 2020-06 ivm updaten van de betreffende week
+20200303 00:07:01;uren;mwage;INFO;Records zijn verwijderd van week 2020-06 ivm het updaten van de betreffende week
+20200303 00:07:01;uren;mwage;INFO;Records zijn toegevoegd voor week 2020-06 ivm updaten van de betreffende week
+20200303 09:53:44;login;demo2;INFO;User demo2 is succesvol ingelogd
+20200303 09:54:05;login;demo2;INFO;User demo2 is succesvol ingelogd
+20200303 09:54:12;login;demo2;INFO;User demo2 is succesvol ingelogd
+20200303 09:54:44;uren;demo2;ERROR;Er is een fout opgetreden bij het selecteren van uren -> Incorrect decimal value: '8,00' for column 'uren' at row 1
+20200303 09:55:16;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 09:55:27;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 09:55:27;uren;demo2;ERROR;Er is een fout opgetreden bij het selecteren van uren -> Incorrect decimal value: '6,50' for column 'uren' at row 1
+20200303 10:01:49;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:01:49;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:08:02;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:08:02;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:11:53;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:11:53;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:12:31;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:12:31;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:16:45;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:16:45;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:17:05;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:17:05;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:17:15;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:17:15;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:17:34;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:17:34;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:17:46;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:17:46;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:18:16;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:18:16;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:18:29;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:18:29;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:18:53;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:18:53;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:19:00;rpt_uren_urensoort;demo2;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20200303 10:19:03;mijn_verlofuren;demo2;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200303 10:20:52;uren;demo2;INFO;Records zijn verwijderd van week 2020-05 ivm het updaten van de betreffende week
+20200303 10:20:52;uren;demo2;INFO;Records zijn toegevoegd voor week 2020-05 ivm updaten van de betreffende week
+20200303 10:48:05;rpt_uren_urensoort;demo2;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20200303 10:55:01;login;mwage;INFO;User mwage is succesvol ingelogd
+20200303 11:16:14;logout;demo2;INFO;User  is succesvol uitgelogd
+20200303 11:16:19;login;mwage;INFO;User mwage is succesvol ingelogd
+20200303 11:38:50;users;mwage;INFO;De query voor updaten user is succesvol uitgevoerd voor user abredze
+20200303 12:57:45;approve;mwage;INFO;Voor user demo2 is maand 2020-1 approved
+20200303 12:57:45;approve;mwage;INFO;Record succesvol toegevoegd in tabel approvals voor user demo2 periode 2020-1
+20200303 12:57:51;approve;mwage;INFO;Voor user mwage is maand 2019-1 approved
+20200303 12:57:51;approve;mwage;INFO;Record succesvol toegevoegd in tabel approvals voor user mwage periode 2019-1
+20200303 12:58:01;approve;mwage;INFO;Voor user mwage is maand 2019-2 approved
+20200303 12:58:01;approve;mwage;INFO;Record succesvol toegevoegd in tabel approvals voor user mwage periode 2019-2
+20200303 13:03:09;logout;mwage;INFO;User  is succesvol uitgelogd
+20200303 13:03:11;logout;mwage;INFO;User  is succesvol uitgelogd
+20200303 13:03:19;login;demo2;INFO;User demo2 is succesvol ingelogd
+20200303 13:10:43;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20200303 13:11:09;users;mwage;INFO;User demo2 is succesvol verwijderd uit tabel users
+20200303 13:11:09;users;mwage;INFO;User demo2 is succesvol verwijderd uit tabel uren
+20200303 13:11:09;users;mwage;INFO;User demo2 is succesvol verwijderd uit tabel approvals
+20200303 13:11:09;users;mwage;INFO;User demo2 is succesvol verwijderd uit tabel beginsaldo
+20200303 13:11:46;add_user;mwage;INFO;User demo2 is succesvol aangemaakt
+20200303 13:11:47;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar mark.wage@mirage.nl ivm aanmaken userid demo2
+20200303 13:11:53;logout;mwage;INFO;User  is succesvol uitgelogd
+20200303 13:12:07;add_user;demo2;WARN;De ingevoerde wachtwoorden zijn niet gelijk
+20200303 13:12:39;wijzig_wachtwoord;demo2;INFO;User demo2 heeft succesvol zijn wachtwoord gewijzigd
+20200303 13:12:39;logout;demo2;INFO;User  is succesvol uitgelogd
+20200303 13:12:51;login;demo2;INFO;User demo2 is succesvol ingelogd
+20200303 13:22:20;rpt_uren_urensoort;demo2;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20200303 13:22:24;mijn_verlofuren;demo2;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd

@@ -149,16 +149,21 @@ if (isset($_POST['approve'])) {
 // ------------------------------------------------------------------------------------------------------
 if ($aktie == 'disp') {
     ?> <form name="disp" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> <?php 
-    $vorig_jaar = date('Y', strtotime('-1 month', time()));
-    $vorige_maand = date('m', strtotime('-1 month', time()));
-    // $vorig_jaar_tot = date('Y', strtotime('-6 month', time()));
-    // $vorige_maand_tot = date('m', strtotime('-6 month', time()));
+    $vorig_jaar_tot = date('Y', strtotime('-1 month', time()));
+    $vorige_maand_tot = date('m', strtotime('-1 month', time()));
+    $vorig_jaar_vanaf = date('Y', strtotime('-6 month', time()));
+    $vorige_maand_vanaf = date('m', strtotime('-6 month', time()));
 
+    /**
     $sql_code = "SELECT * FROM view_uren_get_full_username
-                WHERE ((approval_jaar BETWEEN " . $vorig_jaar . " AND " . $vorig_jaar . "
-                AND approval_maand BETWEEN " . $vorige_maand . " AND " . $vorige_maand . ")
+                WHERE ((approval_jaar BETWEEN " . $vorig_jaar_tot . " AND " . $vorig_jaar_tot . "
+                AND approval_maand BETWEEN " . $vorige_maand_tot . " AND " . $vorige_maand_tot . ")
                 OR (approval_jaar IS NULL))
                 AND uren_invullen = 1
+                GROUP BY username, approval_jaar, approval_maand
+                ORDER BY fullname;";*/
+    $sql_code = "SELECT * FROM view_uren_get_full_username
+                WHERE uren_invullen = 1
                 GROUP BY username, approval_jaar, approval_maand
                 ORDER BY fullname;";
     $sql_out = mysqli_query($dbconn, $sql_code);
@@ -178,25 +183,29 @@ if ($aktie == 'disp') {
         $jaar = $sql_rows['approval_jaar'];
         $fullname = $sql_rows['fullname'];
 
+        // Maanden die nog niet approved zijn
         if (($jaar != '') && ($approved == 0)) {
             echo '<tr class="colored">
             <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td><a href="approve.php?aktie=dspuren&user=' . $encrypted_username . '&jaar=' . $jaar . '&maand=' . $maand . '"><img class="button" src="./img/icons/view-48.png" alt="Toon week" title="Toon/approve de uren van deze maand" /></a></td>
 			</tr>';
+        // Indien voor afgelopen maand geen uren ingeleverd
         } elseif ($jaar == '') {
             echo '<tr class="colored">
             <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
-			<td>Nog geen gegevens aanwezig</td>
+			<td>Nog geen gegevens over afgelopen maand aanwezig</td>
 			</tr>';
-        } elseif ($approved == 1) {
+        // Uren van afgelopen maand die approved zijn
+        } elseif (($approved == 1) && ($maand == $vorige_maand_tot) && ($jaar == $vorig_jaar_tot)) {
             echo '<tr class="colored">
             <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td>Approved</td>
 			</tr>';
+        // Uren welke afgekeurd zijn ongeacht de maand
         } elseif ($approved == 9) {
             echo '<tr class="colored">
             <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
-			<td style="color:red">AFGEKEURD! <a href="approve.php?aktie=dspuren&user=' . $encrypted_username . '&jaar=' . $jaar . '&maand=' . $maand . '"><img class="button" src="./img/icons/view-48.png" alt="Toon week" title="Toon/approve de uren van deze maand" /></a></td>
+			<td style="color:red"><a href="approve.php?aktie=dspuren&user=' . $encrypted_username . '&jaar=' . $jaar . '&maand=' . $maand . '"><img class="button" src="./img/icons/view-48.png" alt="Toon week" title="Toon/approve de uren van deze maand" /></a> AFGEKEURD! </td>
 			</tr>';
         }
     }

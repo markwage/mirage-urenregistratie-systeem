@@ -30,6 +30,7 @@ include ("header.php");
 <tr>
     <th>Jaar</th>
 	<th>Week</th>
+	<th style='text-align:right;'>Geboekte<br />uren</th>
 	<th>Approved</th>
 	<th>Datum<br />approved</th>
 	<th>Approved door</th>
@@ -83,13 +84,13 @@ for ($ix1 = 0; $ix1 < 10; $ix1 ++) {
         echo '<tr class="colored">';
         echo '<td style="text-align:center;"><b>' . $frm_jaar . '</b></td>';
         echo "<td style='text-align:center;'><b>{$frm_week}</b> ({$week_array['week_start']} t/m {$week_array['week_end']})</td>";
+        echo "<td style='text-align:right;'>{$frm_toturen}</td>";
 
         if ($frm_approved == 1) {
             echo '<td style="text-align:center;"><img class="button" src="./img/icons/checkmark-32.png" alt="1" title="is approved" /></td>';
         } else {
             echo '<td style="text-align:center;"></td>';
         }
-
         echo "<td>$frm_approveddatum</td>";
         echo "<td>$frm_naam_approver</td>";
         $edtweek = convert_string('encrypt', $frm_jaar."-W".$frm_week);

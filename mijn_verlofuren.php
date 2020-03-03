@@ -7,9 +7,6 @@ include ("mysqli_connect.php");
 include ("function.php");
 include ("autoload.php");
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 if (isset($_GET['user'])) {
     // decrypt username
     $username_decrypted = convert_string('decrypt', $_GET['user']);
@@ -110,7 +107,6 @@ try {
     exit($MSGDB001E);
 }
 $stmt_verlof->bind_result($maandnr, $dagnr, $uren, $frm_beginsaldo, $frm_fullname);
-writedebug("beginsaldo; -".$frm_beginsaldo."-");
 
 while($stmt_verlof->fetch()) { 
     $frm_totaal_opgenomen = $frm_totaal_opgenomen + $uren;
@@ -118,7 +114,6 @@ while($stmt_verlof->fetch()) {
     // Onderstaande query is nodig indien de user nog geen vakantie-uren heeft opgenomen. De join tusen uren en beginsaldo lukt dan niet
     // omdat er van die user in dat jaar geen rijen in uren aanwezig zijn
     if(!$frm_beginsaldo || $frm_beginsaldo == "") {
-        writedebug("Beginsaldo wordt opgehaald. Inputjaar - user: ".$inputjaar. " ".$username);
         
         try {
             $stmt_saldo = $mysqli->prepare("SELECT beginsaldo FROM beginsaldo WHERE jaar = ? AND username = ?");
@@ -147,7 +142,6 @@ for($ix3=0; $ix3<12; $ix3++) {
     }
 }
 writelog("mijn_verlofuren", "INFO", "Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd");
-//}
 echo "</table></center>";
 
 echo "<table>";

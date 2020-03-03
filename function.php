@@ -152,6 +152,29 @@ function writedebug($logrecord)
 }
 
 // ------------------------------------------------------------------------
+// Download file vanuit doc directory
+// ------------------------------------------------------------------------
+function downloadPDF($filename)
+{
+    $file = $filename;
+    if (file_exists($file)) {
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header("Content-Type: application/force-download");
+        header('Content-Disposition: attachment; filename=' . urlencode(basename($file)));
+        // header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        ob_clean();
+        flush();
+        readfile($file);
+        exit;
+    }
+}
+
+// ------------------------------------------------------------------------
 // Vullen van de frm_variabelen voor invullen van soort uren-scherm
 // ------------------------------------------------------------------------
 function form_soorturen_fill($aktie)
@@ -287,7 +310,7 @@ function berekenurenpersoort()
     global $option, $totaal_uren_per_soort, $frm_valueDag, $frm_value, $dag_readonly, $js_readonly, $js_aantal_dagen_readonly;
 
     echo '<div id="dropdownSoortUren" data-options="' . $option . '"></div>';
-    $totaal_uren_per_soort = 0;
+    $totaal_uren_per_soort = 0.00;
     for ($ix = 0; $ix < 7; $ix ++) {
         $frm_value = $frm_valueDag[$ix];
         if ($dag_readonly[$ix] == 'readonly') {
@@ -299,12 +322,12 @@ function berekenurenpersoort()
         }
 
         $ixb = $ix + 1;
-        echo "<td title='Geef waarde in decimalen. Hierbij is een kwartier 0.25, half uur 0.5 en 45 minuten is 0.75'><input " . $dag_readonly[$ix] . " style='width:3.33vw; text-align:right' type='number' name='dag" . $ixb . "[]' min='0' max='24' step='0.25' size='2' value='" . $frm_value . "'></td>";
-
+        echo "<td title='Geef waarde in decimalen. Hierbij is een kwartier 0.25, half uur 0.5 en 45 minuten is 0.75'><input " . $dag_readonly[$ix] . " style='width:3.33vw; text-align:right' type='text' name='dag" . $ixb . "[]' min='0' max='24' step='0.25' size='2' value='" . $frm_value . "'></td>";
+        // Onderstaande regel is origineel!!
         $totaal_uren_per_soort = number_format($totaal_uren_per_soort + floatval($frm_value), 2);
 
         if ($ixb == 7) {
-            echo "<td class='totaalkolom'><input readonly style='width:3.33vw; text-align:right' type='number' name='totaalpersoort' min='0' max='24' step='0.25' size='2' value='" . $totaal_uren_per_soort . "'></td>";
+            echo "<td class='totaalkolom'><input readonly style='width:3.33vw; text-align:right' type='text' name='totaalpersoort' size='5' value='" . $totaal_uren_per_soort . "'></td>";
         }
     }
 }
