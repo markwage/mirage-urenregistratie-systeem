@@ -1,4 +1,5 @@
 <?php
+//include ("function.php");
 if (isset($_SESSION['username'])) {
     if (isset($_COOKIE['ID_mus'])) {
     
@@ -22,6 +23,7 @@ if (isset($_SESSION['username'])) {
     		<li><a href="mijn_verlofuren.php">Mijn verlofuren</a></li>
     		<li><a href="rpt_uren_urensoort.php?username=<?php echo $_SESSION["username_encrypted"] ?>">Mijn geboekte uren per maand</a></li>
     		<li><a href="users.php?aktie=editprof&edtuser=<?php echo $_SESSION["username_encrypted"] ?>">Mijn profiel</a></li>
+    		<li><a href="./doc/HandleidingMUS.pdf" download="Handleiding MUS.pdf">Download de handleiding</a>
     	</ul>
         </div>
     
