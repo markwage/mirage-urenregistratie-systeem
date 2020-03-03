@@ -92,3 +92,31 @@
 20200303 13:12:51;login;demo2;INFO;User demo2 is succesvol ingelogd
 20200303 13:22:20;rpt_uren_urensoort;demo2;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
 20200303 13:22:24;mijn_verlofuren;demo2;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200303 14:22:18;mijn_verlofuren;demo2;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200303 14:23:58;logout;demo2;INFO;User  is succesvol uitgelogd
+20200303 14:24:04;login;mwage;INFO;User mwage is succesvol ingelogd
+20200303 14:25:00;logout;demo2;INFO;User  is succesvol uitgelogd
+20200303 14:25:04;login;mwage;INFO;User mwage is succesvol ingelogd
+20200303 14:25:21;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200303 14:26:28;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200303 14:26:39;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200303 14:27:31;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200303 14:27:43;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200303 14:34:12;beginsaldo;mwage;INFO;Records zijn ge-update over jaar 2020
+20200303 14:34:12;beginsaldo;mwage;INFO;Records zijn ge-update over jaar 2020
+20200303 14:34:12;beginsaldo;mwage;INFO;Records zijn ge-update over jaar 2020
+20200303 14:34:12;beginsaldo;mwage;INFO;Records zijn ge-update over jaar 2020
+20200303 14:34:12;beginsaldo;mwage;INFO;Records zijn ge-update over jaar 2020
+20200303 14:34:12;beginsaldo;mwage;INFO;Records zijn ge-update over jaar 2020
+20200303 14:34:12;beginsaldo;mwage;INFO;Records zijn ge-update over jaar 2020
+20200303 14:34:12;beginsaldo;mwage;INFO;Records zijn ge-update over jaar 2020
+20200303 14:34:12;beginsaldo;mwage;INFO;Records zijn ge-update over jaar 2020
+20200303 14:34:12;beginsaldo;mwage;INFO;Records zijn ge-update over jaar 2020
+20200303 14:34:12;beginsaldo;mwage;INFO;Records zijn ge-update over jaar 2020
+20200303 14:45:47;nieuws;mwage;INFO;Het nieuwsbericht met id 37 is verwijderd uit tabel nieuws
+20200303 14:45:52;nieuws;mwage;INFO;Het nieuwsbericht met id 36 is verwijderd uit tabel nieuws
+20200303 15:09:09;uren;mwage;INFO;Records zijn toegevoegd voor week 2020-10 ivm updaten van de betreffende week
+20200303 15:23:13;logout;mwage;INFO;User  is succesvol uitgelogd
+20200303 15:23:20;login;demo2;INFO;User demo2 is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0
+20200303 15:30:22;logout;demo2;INFO;User  is succesvol uitgelogd
+20200303 15:30:41;login;demo2;INFO;User demo2 is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0 Address ::1

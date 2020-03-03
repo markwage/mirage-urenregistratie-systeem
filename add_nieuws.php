@@ -1,6 +1,7 @@
 <?php
 session_start();
 include ("config.php");
+include ("mysqli_connewct.php");
 include ("db.php");
 include ("function.php");
 include ("autoload.php");
@@ -47,22 +48,18 @@ if (isset($_POST['submit'])) {
     // Toevoegen nieuwsbericht in de database
     if (! $formerror) {
         // Record toevoegen in database
-        $sql_code = "INSERT INTO nieuws (nieuwsheader, nieuwsbericht)
-			      VALUES ('" . $_POST['nieuwsheader'] . "', 
-                          '" . $_POST['nieuwsbericht'] . "')";
-        $sql_out = mysqli_query($dbconn, $sql_code);
-
-        if ($sql_out) {
-            writelog("add_nieuws", "INFO", "Nieuwsbericht is succesvol toegevoegd aan de database");
-
-            echo '<p class="infmsg">Het nieuwsbericht is opgenomen</p>.';
-            $frm_nieuwsheader = "";
-            $frm_nieuwsbericht = "";
-            header("location: nieuws.php?aktie=disp");
-        } else {
-            echo '<p class="errmsg">Er is een fout opgetreden bij het toevoegen van nieuwsbericht. Probeer het nogmaals.<br />
-			Indien het probleem zich blijft voordoen neem dan contact op met de webmaster</p>';
+        try {
+            $stmt_ins = $mysqli->prepare("INSERT INTO nieuws (nieuwsheader, nieuwsbericht) VALUES (?, ?)");
+            $stmt_ins->bind_param("ss", $_POST['nieuwsheader'], $_POST['nieuwsbericht']);
+            $stmt_ins->execute();
+        } catch(Exception $e) {
+            writelog("add_nieuws", "ERROR", $e);
+            exit($MSGDB001E);
         }
+        $frm_nieuwsheader = "";
+        $frm_nieuwsbericht = "";
+        writelog("add_nieuws", "INFO", "Nieuwsbericht is succesvol toegevoegd aan de database");
+        header("location: nieuws.php?aktie=disp");
     }
 }
 

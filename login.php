@@ -151,7 +151,8 @@ if (isset($_POST['submit'])) {
                 }
                 $_SESSION['lastloggedin'] = date('Y-m-d H:i:s');
                 header("location: index.php");
-                writelog("login", "INFO", "User " . $_POST['username'] . " is succesvol ingelogd");
+                writelog("login", "INFO", "User " . $_POST['username'] . " is succesvol ingelogd. Maakt gebruik van ".$_SERVER['HTTP_USER_AGENT']." Address ".$_SERVER['REMOTE_ADDR']);
+                
             }
         }
     }

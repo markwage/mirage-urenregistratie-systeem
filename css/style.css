@@ -120,7 +120,7 @@ th {
 	padding-bottom: 10px;
 	color: white;
 	text-align: left;
-	border-left: 1px solid #13C3B7;
+	/* border-left: 1px solid #13C3B7; */
 }
 
 tr.colored:nth-child(odd) {
@@ -186,14 +186,9 @@ input[type="checkbox"] {
 	height: 18px; /*Desired height*/
 }
 
-#verlof {
+#verlof, #approve {
 	font: normal 0.6vw calibri, arial, sans-serif;
 }
-
-#approve {
-	font: normal 0.6vw calibri, arial, sans-serif;
-}
-
 
 /* Normaal werkt readonly niet voor checkboxes echter met onderstaande 
    wordt de checkbox niet aanpasbaar
