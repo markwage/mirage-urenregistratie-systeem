@@ -87,12 +87,6 @@ if (isset($_POST['submit'])) {
     
     $approveddatum = date('Y-m-d');
     $approved = 9;
-    writedebug("approveddatum: ".$approveddatum);
-    writedebug("approvedbyuser: ".$_SESSION['username']);
-    writedebug("approved: ".$approved);
-    writedebug("user: ".$_POST['username']);
-    writedebug("maand: ".$_POST['maand']);
-    writedebug("jaar: ".$_POST['jaar']);
     try {
         $stmt_upd = $mysqli->prepare("UPDATE uren SET approveddatum = ?, approvedbyuser = ?, approved = ? WHERE user = ? AND MONTH(datum) = ? AND YEAR(datum) = ?");
         $stmt_upd->bind_param("ssisii", $approveddatum, $_SESSION['username'], $approved, $_POST['username'], $_POST['maand'], $_POST['jaar']);
