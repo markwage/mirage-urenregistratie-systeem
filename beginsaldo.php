@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 include ("config.php");
 include ("db.php");
@@ -52,24 +54,27 @@ if (isset($_POST['cancel'])) {
 if (isset($_POST['init_verlofuren_ja'])) {
     $inputjaar = $_POST["jaartal"];
     writelog("beginsaldo", "INFO", "De verlofuren worden geinitieerd voor het jaar " . $inputjaar);
-    $sql_users_qry = "SELECT username
-                  FROM users 
-                  WHERE indienst = 1
-                  AND uren_invullen = 1;";
-    $sql_users_out = mysqli_query($dbconn, $sql_users_qry);
-    if (! $sql_users_out) {
-        writelog("beginsaldo", "ERROR", "Er is een fout opgetreden bij het inserten van de beginsaldi verlofuren -> " . mysqli_error($dbconn));
+    try {
+        $stmt_user = $mysqli->prepare("SELECT username FROM users WHERE indienst = 1 AND uren_invullen = 1");
+        //$stmt_user->bind_param("i", $inputjaar);
+        $stmt_user->execute();
+        $stmt_user->store_result();
+    } catch(Exception $e) {
+        writelog("beginsaldo", "ERROR", $e);
         exit($MSGDB001E);
     }
     
-    while ($sql_users_rows = mysqli_fetch_array($sql_users_out)) {
-        $username = $sql_users_rows['username'];
-        $sql_saldo_qry = "INSERT INTO beginsaldo (username, jaar, beginsaldo) 
-                          VALUES('" . $username . "',
-                                 " . $inputjaar . ",
-                                 240)";
-        $sql_saldo_out = mysqli_query($dbconn, $sql_saldo_qry);
-        
+    $stmt_user->bind_result($username);
+    while($stmt_user->fetch()) { 
+        $saldo = 240;
+        try {
+            $stmt_ins = $mysqli->prepare("INSERT INTO beginsaldo (username, jaar, beginsaldo) VALUES (?, ?, ?)");
+            $stmt_ins->bind_param("sii", $username, $inputjaar, $saldo);
+            $stmt_ins->execute();
+        } catch(Exception $e) {
+            writelog("beginsaldo", "ERROR", $e);
+            exit($MSGDB001E);
+        }
     }
     header("location: beginsaldo.php?edtjaar=" . $inputjaar);
 }
@@ -87,19 +92,16 @@ if (isset($_POST['save'])) {
     for ($ix1 = 0; $ix1 < $aantal_rijen; $ix1 ++) {
         $frm_ID = $_POST['ID'][$ix1];
         $frm_beginsaldo = $_POST['beginsaldo'][$ix1];
-        
-        $sql_code = "UPDATE beginsaldo
-                     SET beginsaldo = " . $frm_beginsaldo . "
-                     WHERE ID = " . $frm_ID;
-        $sql_out = mysqli_query($dbconn, $sql_code);
-
-        if (!$sql_out) {
-            writelog("beginsaldo", "ERROR", "Er is een fout opgetreden bij het updaten van de beginsaldi verlofuren -> " . mysqli_error($dbconn));
+        try {
+            $stmt_upd = $mysqli->prepare("UPDATE beginsaldo SET beginsaldo = ? WHERE ID = ?");
+            $stmt_upd->bind_param("ii", $frm_beginsaldo, $frm_ID);
+            $stmt_upd->execute();
+        } catch(Exception $e) {
+            writelog("beginsaldo", "ERROR", $e);
             exit($MSGDB001E);
-        } else {
-            writelog("beginsaldo", "INFO", "Records zijn ge-update over jaar " . $inputjaar);
         }
     }
+    writelog("beginsaldo", "INFO", "Records zijn ge-update over jaar " . $inputjaar);
     $frm_message = '<blockquote>INFO: De gegevens zijn succesvol gesaved</blockquote>';
 }
 
