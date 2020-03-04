@@ -70,7 +70,7 @@ if (isset($_POST['submit'])) {
         // Creeeren van de email message
         mail_message_header();
         $message .= '<h1>Beste ' . $_POST['voornaam'] . '</h1>';
-        $message .= '<p>Je uren betreffende maand <strong>'.$_POST['maand'].' - '.$_POST['jaar'].'</strong>zijn afgekeurd!</p>';
+        $message .= '<p>Je uren betreffende maand <strong>'.$_POST['maand'].' - '.$_POST['jaar'].'</strong> zijn afgekeurd!</p>';
         $message .= '<p>De reden voor de afkeuring:<br />';
         $message .= nl2br($_POST['reden']).'</p>';
         mail_message_footer($message);
