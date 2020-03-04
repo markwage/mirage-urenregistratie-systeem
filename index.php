@@ -16,6 +16,11 @@ if($_SESSION['lastloggedin'] == "1970-01-01 00:00:00") {
     header("location: wijzig_wachtwoord.php");
 }
 
+// Indien user geen uren hoeft in te vullen dan het approval scherm tonen
+if($_SESSION['uren_invullen'] == 0) {
+    header("location: approve.php?aktie=disp");
+}
+
 include ("header.php");
 
 ?>

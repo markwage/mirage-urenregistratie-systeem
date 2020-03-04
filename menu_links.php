@@ -19,9 +19,17 @@ if (isset($_SESSION['username'])) {
         <div class="sidebox">
     	<h1 class="clear">Urenadministratie</h1>
     	<ul class="sidemenu">
-    		<li><a href="uren.php?aktie=toevoegen">Uren boeken</a></li>
-    		<li><a href="mijn_verlofuren.php">Mijn verlofuren</a></li>
-    		<li><a href="rpt_uren_urensoort.php?username=<?php echo $_SESSION["username_encrypted"] ?>">Mijn geboekte uren per maand</a></li>
+        	<?php
+        	writedebug("uren_invullen: ".$_SESSION['uren_invullen']);
+            // Indien user geen uren hoeft in te vullen zijn onderstaande menukeuzes overbodig
+            if ($_SESSION['uren_invullen'] == 1) {
+                ?>
+        		<li><a href="uren.php?aktie=toevoegen">Uren boeken</a></li>
+        		<li><a href="mijn_verlofuren.php">Mijn verlofuren</a></li>
+        		<li><a href="rpt_uren_urensoort.php?username=<?php echo $_SESSION["username_encrypted"] ?>">Mijn geboekte uren per maand</a></li>
+        	<?php 
+            } 
+            ?>	
     		<li><a href="users.php?aktie=editprof&edtuser=<?php echo $_SESSION["username_encrypted"] ?>">Mijn profiel</a></li>
     		<li><a href="./doc/HandleidingMUS.pdf" download="Handleiding MUS.pdf">Download de handleiding</a>
     	</ul>
