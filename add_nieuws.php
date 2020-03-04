@@ -1,7 +1,7 @@
 <?php
 session_start();
 include ("config.php");
-include ("mysqli_connewct.php");
+include ("mysqli_connect.php");
 include ("db.php");
 include ("function.php");
 include ("autoload.php");

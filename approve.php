@@ -154,14 +154,6 @@ if ($aktie == 'disp') {
     $vorig_jaar_vanaf = date('Y', strtotime('-6 month', time()));
     $vorige_maand_vanaf = date('m', strtotime('-6 month', time()));
 
-    /**
-    $sql_code = "SELECT * FROM view_uren_get_full_username
-                WHERE ((approval_jaar BETWEEN " . $vorig_jaar_tot . " AND " . $vorig_jaar_tot . "
-                AND approval_maand BETWEEN " . $vorige_maand_tot . " AND " . $vorige_maand_tot . ")
-                OR (approval_jaar IS NULL))
-                AND uren_invullen = 1
-                GROUP BY username, approval_jaar, approval_maand
-                ORDER BY fullname;";*/
     $sql_code = "SELECT * FROM view_uren_get_full_username
                 WHERE uren_invullen = 1
                 GROUP BY username, approval_jaar, approval_maand
@@ -242,7 +234,6 @@ if ($aktie == 'dspuren') {
     
     echo '<div id="approve">';
     echo "<center><table>";
-    //echo "<tr><th>Datum</th><th>Soortuur</th><th>Uren</th></tr>";
     echo "<tr>";
     echo '<th style="width:10.25vw;">Soortuur</th>';
     for($ix=1; $ix<32; $ix++) {

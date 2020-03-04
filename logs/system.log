@@ -120,3 +120,43 @@
 20200303 15:23:20;login;demo2;INFO;User demo2 is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0
 20200303 15:30:22;logout;demo2;INFO;User  is succesvol uitgelogd
 20200303 15:30:41;login;demo2;INFO;User demo2 is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0 Address ::1
+20200303 15:33:14;logout;mwage;INFO;User  is succesvol uitgelogd
+20200303 15:35:04;logout;demo2;INFO;User  is succesvol uitgelogd
+20200303 15:43:45;login;mwage;INFO;User mwage is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36 Address ::1
+20200303 15:43:59;add_soortuur;mwage;WARN;Er is geprobeerd soortuur MIR000UU aan te maken terwijl deze al bestaat
+20200303 15:51:44;add_soortuur;mwage;WARN;Er is geprobeerd soortuur MIR000UU aan te maken terwijl deze al bestaat
+20200303 15:55:30;add_soortuur;mwage;INFO;Soortuur MIR140OV (Overwerk tegen 140%) is succesvol gecreeerd
+20200304 09:29:52;login;mwage;INFO;User mwage is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36 Address ::1
+20200304 09:30:08;add_soortuur;mwage;WARN;Er is geprobeerd soortuur MIR000UU aan te maken terwijl deze al bestaat
+20200304 10:32:03;users;mwage;INFO;User mwage9 is succesvol verwijderd uit tabel users
+20200304 10:32:03;users;mwage;INFO;User mwage9 is succesvol verwijderd uit tabel uren
+20200304 10:32:03;users;mwage;INFO;User mwage9 is succesvol verwijderd uit tabel approvals
+20200304 10:32:03;users;mwage;INFO;User mwage9 is succesvol verwijderd uit tabel beginsaldo
+20200304 10:32:21;users;mwage;INFO;User mwage2 is succesvol verwijderd uit tabel users
+20200304 10:32:21;users;mwage;INFO;User mwage2 is succesvol verwijderd uit tabel uren
+20200304 10:32:21;users;mwage;INFO;User mwage2 is succesvol verwijderd uit tabel approvals
+20200304 10:32:21;users;mwage;INFO;User mwage2 is succesvol verwijderd uit tabel beginsaldo
+20200304 10:48:02;add_user;mwage;INFO;User demo3 is succesvol aangemaakt
+20200304 10:48:03;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar mark.wage@mirage.nl ivm aanmaken userid demo3
+20200304 10:48:31;users;mwage;INFO;User demo3 is succesvol verwijderd uit tabel users
+20200304 10:48:31;users;mwage;INFO;User demo3 is succesvol verwijderd uit tabel uren
+20200304 10:48:31;users;mwage;INFO;User demo3 is succesvol verwijderd uit tabel approvals
+20200304 10:48:31;users;mwage;INFO;User demo3 is succesvol verwijderd uit tabel beginsaldo
+20200304 11:07:07;add_user;mwage;WARN;Er is geprobeerd user demo aan te maken terwijl deze al bestaat
+20200304 11:07:23;add_user;mwage;ERROR;1136 Column count doesn't match value count at row 1
+20200304 11:07:23;add_user;mwage;INFO;User demo3 is succesvol aangemaakt
+20200304 11:07:24;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar mark.wage@mirage.nl ivm aanmaken userid demo3
+20200304 11:10:29;add_user;mwage;INFO;User demo3 is succesvol aangemaakt
+20200304 11:10:30;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar mark.wage@mirage.nl ivm aanmaken userid demo3
+20200304 11:14:26;add_user;mwage;INFO;User demo3 is succesvol aangemaakt
+20200304 11:14:27;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar mark.wage@mirage.nl ivm aanmaken userid demo3
+20200304 11:34:18;add_user;mwage;INFO;User demo3 is succesvol aangemaakt
+20200304 11:34:19;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar mark.wage@hotmail.com ivm aanmaken userid demo3
+20200304 11:45:58;add_user;mwage;INFO;User demo3 is succesvol aangemaakt
+20200304 11:45:59;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar mark.wage@hotmail.com ivm aanmaken userid demo3
+20200304 11:46:42;users;mwage;INFO;User demo3 is succesvol verwijderd uit tabel users
+20200304 11:46:42;users;mwage;INFO;User demo3 is succesvol verwijderd uit tabel uren
+20200304 11:46:42;users;mwage;INFO;User demo3 is succesvol verwijderd uit tabel approvals
+20200304 11:46:42;users;mwage;INFO;User demo3 is succesvol verwijderd uit tabel beginsaldo
+20200304 11:53:11;add_user;mwage;INFO;User demo3 is succesvol aangemaakt
+20200304 11:53:12;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar mark.wage@hotmail.com ivm aanmaken userid demo3

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include ("config.php");
+include ("mysqli_connect.php");
 include ("db.php");
 include ("function.php");
 include ("autoload.php");
@@ -45,97 +46,74 @@ if (isset($_POST['add_record'])) {
         $focus = 'omschrijving';
         $formerror = 1;
     }
-
-    // Controle of het soort uur al in gebruik is
-    if (! get_magic_quotes_gpc()) {
-        $_POST['code'] = addslashes($_POST['code']);
-    }
-
-    $check_soortuur = $_POST['code'];
-    $sql_code = "SELECT code FROM soorturen 
-                 WHERE code = '$check_soortuur'";
-    $sql_out = mysqli_query($dbconn, $sql_code);
-
-    if (! $sql_out) {
-        writelog("add_soortuur", "ERROR", "Er is een fout opgetreden bij het uitvoeren van een query -> " . mysqli_error($dbconn));
+    
+    try {
+        $stmt_code = $mysqli->prepare("SELECT code FROM soorturen WHERE code = ?");
+        $stmt_code->bind_param("s", $_POST['code']);
+        $stmt_code->execute();
+    } catch(Exception $e) {
+        writelog("beginsaldo", "ERROR", $e);
         exit($MSGDB001E);
+    }
+    $stmt_code->store_result();
+    $aantal_rijen = $stmt_code->num_rows;
+    // Als de soort uur bestaat een error displayen
+    if ($aantal_rijen != 0) {
+        writelog("add_soortuur", "WARN", "Er is geprobeerd soortuur {$_POST['code']} aan te maken terwijl deze al bestaat");
+        echo "<p class='errmsg'> ERROR: Code {$_POST['code']} is al aanwezig.</p>";
         $focus = 'code';
         $formerror = 1;
-    } else {
-        $sql_rows = mysqli_num_rows($sql_out);
-
-        // Als de soort uur bestaat een error displayen
-        if ($sql_rows != 0) {
-            writelog("add_soortuur", "WARN", "Er is geprobeerd soortuur {$_POST['code']} aan te maken terwijl deze al bestaat");
-
-            echo "<p class='errmsg'> ERROR: Code {$_POST['code']} is al aanwezig.</p>";
-            $focus = 'code';
-            $formerror = 1;
-        }
     }
 
-    // Encrypt het wachtwoord en voeg eventueel slashes toe
+    // 
     if (! $formerror) {
-        if (! get_magic_quotes_gpc()) {
-            $_POST['code'] = addslashes($_POST['code']);
-        }
-
         if (! isset($_POST['facturabel'])) {
             $_POST['facturabel'] = 0;
         } else {
             $_POST['facturabel'] = 1;
         }
 
-        // Record toevoegen in database
-        $sql_code = "INSERT INTO soorturen (code, omschrijving, facturabel)
-			         VALUES ('" . $_POST['code'] . "', 
-					         '" . $_POST['omschrijving'] . "',
-                             '" . $_POST['facturabel'] . "')";
-        $sql_out = mysqli_query($dbconn, $sql_code);
-
-        if ($sql_out) {
-            writelog("add_soortuur", "INFO", "Soortuur {$_POST['code']} ({$_POST['omschrijving']}) is succesvol gecreeerd");
-
-            $frm_code = "";
-            $frm_omschrijving = "";
-            header("location: soorturen.php?aktie=disp");
-        } else {
-            writelog("add_soortuur", "ERROR", "De query voor toevoegen soortuur is fout gegaan - " . mysqli_error($dbconn));
+        try {
+            $stmt_ins = $mysqli->prepare("INSERT INTO soorturen (code, omschrijving, facturabel) VALUES (?, ?, ?)");
+            $stmt_ins->bind_param("ssi", $_POST['code'], $_POST['omschrijving'], $_POST['facturabel']);
+            $stmt_ins->execute();
+        } catch(Exception $e) {
+            writelog("add_soortuur", "ERROR", $e);
             exit($MSGDB001E);
         }
+        $frm_code = "";
+        $frm_omschrijving = "";
+        writelog("add_soortuur", "INFO", "Soortuur {$_POST['code']} ({$_POST['omschrijving']}) is succesvol gecreeerd");
+        header("location: soorturen.php?aktie=disp");
     }
 }
 
 ?>
  
-<form name="soorturen" action="<?php echo $_SERVER['PHP_SELF']; ?>"
-		method="post">
-		<p>
-		
-		
-		<table>
-			<tr>
-				<td>Code</td>
-				<td><input style="text-transform: uppercase" type="text" name="code"
-					size="10" maxlength="8"
-					value="<?php if (isset($frm_code)) { echo $frm_code; } ?>"></td>
-			</tr>
-			<tr>
-				<td>Omschrijving</td>
-				<td><input type="text" name="omschrijving" size="60" maxlength="60"
-					value="<?php if (isset($frm_omschrijving)) { echo $frm_omschrijving; } ?>"></td>
-			</tr>
-			<tr>
-				<td>Facturabel</td>
-				<td><input type="checkbox" id="facturabel" name="facturabel"></td>
-			</tr>
-		</table>
-		<br /> <input class="button" type="submit" name="add_record"
-			value="add"> <input class="button" type="submit" name="cancel"
-			value="cancel">
-		</p>
-	</form>
-	<br />	
+<form name="soorturen" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<p>
+<table>
+	<tr>
+		<td>Code</td>
+		<td><input style="text-transform: uppercase" type="text" name="code"
+			size="10" maxlength="8"
+			value="<?php if (isset($frm_code)) { echo $frm_code; } ?>"></td>
+	</tr>
+	<tr>
+		<td>Omschrijving</td>
+		<td><input type="text" name="omschrijving" size="60" maxlength="60"
+			value="<?php if (isset($frm_omschrijving)) { echo $frm_omschrijving; } ?>"></td>
+	</tr>
+	<tr>
+		<td>Facturabel</td>
+		<td><input type="checkbox" id="facturabel" name="facturabel"></td>
+	</tr>
+</table>
+<br /> 
+<input class="button" type="submit" name="add_record" value="add"> <input class="button" type="submit" name="cancel" value="cancel">
+</p>
+</form>
+<br />	
 	
 <?php
 if (! isset($focus)) {
