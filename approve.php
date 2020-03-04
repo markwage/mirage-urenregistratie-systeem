@@ -165,7 +165,7 @@ if ($aktie == 'disp') {
     $sql_code = "SELECT * FROM view_uren_get_full_username
                 WHERE uren_invullen = 1
                 GROUP BY username, approval_jaar, approval_maand
-                ORDER BY fullname;";
+                ORDER BY fullname, approval_jaar, approval_maand;";
     $sql_out = mysqli_query($dbconn, $sql_code);
     if (!$sql_out) {
         writelog("approve", "ERROR", "Selecteren gaat fout: " . $sql_code . " - " . mysqli_error($dbconn));
