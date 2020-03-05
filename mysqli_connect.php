@@ -22,4 +22,9 @@ if($mysqli->connect_error || $mysqli->error) {
 
 $mysqli->set_charset("utf8mb4");
 
+// Voor een betere error reporting
+//$driver = new mysqli_driver();
+//$driver->report_mode = MYSQLI_REPORT_STRICT;
+// Plaats in de code dan na de try de volgende catch
+// } catch (mysqli_sql_exception $e) {
 ?>

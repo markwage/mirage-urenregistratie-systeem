@@ -20,7 +20,6 @@ if (isset($_SESSION['username'])) {
     	<h1 class="clear">Urenadministratie</h1>
     	<ul class="sidemenu">
         	<?php
-        	writedebug("uren_invullen: ".$_SESSION['uren_invullen']);
             // Indien user geen uren hoeft in te vullen zijn onderstaande menukeuzes overbodig
             if ($_SESSION['uren_invullen'] == 1) {
                 ?>
