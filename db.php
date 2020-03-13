@@ -23,12 +23,12 @@ if ($_SERVER['SERVER_NAME'] == 'mus.kermistriathlonbeusichem.nl') {
 // --------------------------------------------------------
 // Instellingen voor remote - tvdebongerd
 // --------------------------------------------------------
-if ($_SERVER['SERVER_NAME'] == 'www.tvdebongerd.nl') {
-    $mysqli = new mysqli("localhost", "mwage", "utreg01", "wp_prod");
-    $dbhost = "localhost";
-    $dbname = "wp_prod";
-    $dbuser = "mwage";
-    $dbpassw = "utreg01";
+if ($_SERVER['SERVER_NAME'] == 'www.mirage-urenregistratie.nl') {
+    $mysqli = new mysqli("mysql-c3.mirage-urenregistratie.nl", "mirageure", "c@PKT8f3x_3A7QsF", "mirageure");
+    $dbhost = "mysql-c3.mirage-urenregistratie.nl";
+    $dbname = "mirageure";
+    $dbuser = "mirageure";
+    $dbpassw = "c@PKT8f3x_3A7QsF";
 }
 
 //global $dbconn;

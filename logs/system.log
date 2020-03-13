@@ -1,6 +1,8 @@
 
-20200305 13:12:32;approve;mwage;ERROR;mysqli_sql_exception: No index used in query/prepared statement SELECT approved, username, approval_maand, approval_jaar, fullname FROM view_uren_get_full_username WHERE uren_invullen = 1 GROUP BY username, approval_jaar, approval_maand ORDER BY fullname, approval_jaar, approval_maand in C:\wamp64\www\mirage-urenregistratie-systeem\approve.php:153
-Stack trace:
-#0 C:\wamp64\www\mirage-urenregistratie-systeem\approve.php(153): mysqli_stmt->execute()
-#1 {main}
-20200305 13:26:38;users;mwage;INFO;De query voor updaten user is succesvol uitgevoerd voor user mwage
+20200305 16:42:02********* De systemlog file is geschoond **********
+20200305 16:42:02;display_systemlog;mwage;INFO;De systemlog file is geschoond. Inhoud is verwijderd.
+20200305 16:46:24;logout;mwage;INFO;User  is succesvol uitgelogd
+20200307 21:10:01;login;mwage;INFO;User mwage is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36 Address ::1
+20200307 21:10:17;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20200307 21:10:20;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20200307 21:12:11;logout;mwage;INFO;User  is succesvol uitgelogd

@@ -16,6 +16,13 @@ if ($_SERVER['SERVER_NAME'] == 'mus.kermistriathlonbeusichem.nl') {
     $mysqli = new mysqli("mysql-c6.argewebhosting.nl", "kermistri", "g%nUCGVu", "kermistri");
 }
 
+// --------------------------------------------------------
+// Instellingen voor remote - mirage-urenregistratie
+// --------------------------------------------------------
+if ($_SERVER['SERVER_NAME'] == 'www.mirage-urenregistratie.nl') {
+    $mysqli = new mysqli("mysql-c3.mirage-urenregistratie.nl", "mirageure", "c@PKT8f3x_3A7QsF", "mirageure");
+}
+
 if($mysqli->connect_error || $mysqli->error) {
     exit($MSGDB001E);
 }
