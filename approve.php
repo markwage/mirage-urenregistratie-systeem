@@ -115,7 +115,6 @@ if (isset($_POST['approve'])) {
 
     $message .= '</table>';
     mail_message_footer($message);
-    writelog("approve", "INFO", $message);
     // Versturen van de email
     if ($_SERVER['SERVER_NAME'] != 'localhost') {
         if (mail($mail_to, $mail_subject, $message, $headers)) {

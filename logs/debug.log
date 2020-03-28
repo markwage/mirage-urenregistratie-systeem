@@ -1,17 +1,13 @@
 
-20200304 12:36:27;mwage
-20200304 12:38:26;mwage 2021 240
-20200304 12:40:00;mwage 2021 240
-20200304 12:42:27;mwage 2021 240
-20200304 12:42:27;demo 2021 240
-20200304 12:42:27;apaters 2021 240
-20200304 12:42:27;rlans 2021 240
-20200304 12:42:27;mjansen 2021 240
-20200304 12:42:27;mklinkenberg 2021 240
-20200304 12:42:27;demo3 2021 240
-20200304 12:42:27;mnotmeijer 2021 240
-20200304 12:42:27;demo2 2021 240
-20200304 13:32:01;uren_invullen: 1
-20200304 13:33:16;uren_invullen: 1
-20200304 13:33:41;uren_invullen: 0
-20200304 13:33:41;uren_invullen: 0
+20200315 20:44:59;Hier worden de uren verwijderd
+20200315 20:44:59;SQL: DELETE FROM uren 
+                            WHERE user='mwage' 
+                            AND week='06' 
+                            AND jaar='2020'
+                            AND approved = 0
+20200315 20:48:26;Hier worden de uren verwijderd
+20200315 20:48:26;SQL: DELETE FROM uren 
+                            WHERE user='mwage' 
+                            AND week='06' 
+                            AND jaar='2020'
+                            AND (approved = 0 OR approved = 9)

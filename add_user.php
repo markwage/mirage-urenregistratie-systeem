@@ -187,7 +187,7 @@ if (isset($_POST['submit'])) {
         $message .= '<tr><td>Username<br />Wachtwoord<br />Volledige naam<br />Emailadres</td><td>' . $frm_username . '<br />'. $decrypted_pass . '<br />'. $frm_voornaam . ' ' . $frm_tussenvoegsel . ' ' . $frm_achternaam .'<br />'. $frm_email .'</td></tr>';
         $message .= '</table>';
         $message .= '<br /><lu>';
-        $message .= 'Het wachtwoord dient aan de volgende eisen te voldoen:';
+        $message .= 'Wanneer je voor de eerste keer inlogt moet je het wachtwoord wijzigen. Deze dient aan de volgende eisen te voldoen:';
         $message .= '<li>Moet minimaal 8 characters lang zijn.</li>';
         $message .= '<li>Moet minimaal 1 lower case character bevatten</li>';
         $message .= '<li>Moet minimaal 1 upper case character bevatten</li>';

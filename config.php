@@ -6,10 +6,11 @@
 
 //---------------------------------------------------------------------------------------------
 // Diverse instellingen
+// administratie@mirage-urenregistratie.nl wordt doorgestuurd naar salarisadministratie en mark.wage
 //---------------------------------------------------------------------------------------------
 // Mail
-$mail_from = 'mark.wage@hotmail.com';
-$mail_CC   = 'mark.wage@outlook.com';
+$mail_from = 'administratie@mirage-urenregistratie.nl';
+$mail_CC   = 'mark.wage@mirage.nl';
 
 //---------------------------------------------------------------------------------------------
 // Algemene messages die op het scherm getoond worden
