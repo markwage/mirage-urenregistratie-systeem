@@ -18,3 +18,9 @@
 20200315 20:48:26;uren;mwage;INFO;Records zijn verwijderd van week 2020-06 ivm het updaten van de betreffende week
 20200315 20:48:26;uren;mwage;INFO;Records zijn toegevoegd voor week 2020-06 ivm updaten van de betreffende week
 20200315 22:29:54;logout;mwage;INFO;User  is succesvol uitgelogd
+20200429 20:57:37;index;onbekend;DEBUG;Start van de index.php
+20200429 20:57:37;index;onbekend;DEBUG;Na session start
+20200429 21:10:45;index;onbekend;DEBUG;Start van de index.php
+20200429 21:10:45;index;onbekend;DEBUG;Na session start
+20200429 21:11:33;index;onbekend;ERROR;De select query is fout gegaan - Table 'mus.uren' doesn't exist
+20200522 21:32:15;login;mwage;INFO;User mwage is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36 Address ::1

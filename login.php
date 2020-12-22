@@ -116,7 +116,7 @@ if (isset($_POST['submit'])) {
             $_POST['username'] = stripslashes($_POST['username']);
 
             if (($_SERVER['HTTP_HOST'] == 'localhost') || ($_POST['admin']) || ($_SERVER['HTTP_HOST'] == 'onedrivehost')) {
-                $hour = time() + 86400; // Cookie is 24 uur geldig
+                $hour = time() + 3600; // Cookie is 24 uur geldig
             } else {
                 $hour = time() + 3600; // cookie is 60 minuten geldig
             }
