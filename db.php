@@ -1,8 +1,9 @@
 <?php
 
 // Database instellingen
-
-if (($_SERVER['SERVER_NAME'] == 'localhost') || ($_SERVER['SERVER_NAME'] == 'onedrivehost')) {
+echo $_SERVER['SERVER_NAME'];
+echo "=========================";
+if (($_SERVER['SERVER_NAME'] == 'localhost') || ($_SERVER['SERVER_NAME'] == 'onedrivehost') || ($_SERVER['SERVER_NAME'] == 'mus')) {
     $mysqli = new mysqli("localhost", "root", "", "mus");
     $dbhost = "localhost";
     $dbname = "mus";

@@ -1,0 +1,13 @@
+ftp host: ftp.mirage-urenregistratie.nl
+Gebruikersnaam: mirageure / c@PKT8f3x_3A7QsF
+
+hoofd emailaccount: mirageure@mirage-urenregistratie.nl
+Server Inkomend (POP3) mail.argewebhosting.nl
+Server uitgaand (SMPT) mail.argewebhosting.nl
+email gebruikersnaam mirageure@mirage-urenregistratie.nl / c@PKT8f3x_3A7QsF
+
+database cluster Mysql 5.5 Cluster 3 (c3)
+gebruikersnaam mirageure / c@PKT8f3x_3A7QsF
+
+Controlpanel https://mirage.controlportal.nl/
+Gebruikersnaam 19947 / #hQH3tdP!#8?#2Gq

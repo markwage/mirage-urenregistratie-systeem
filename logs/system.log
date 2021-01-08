@@ -24,3 +24,9 @@
 20200429 21:10:45;index;onbekend;DEBUG;Na session start
 20200429 21:11:33;index;onbekend;ERROR;De select query is fout gegaan - Table 'mus.uren' doesn't exist
 20200522 21:32:15;login;mwage;INFO;User mwage is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36 Address ::1
+20210107 22:29:14;login;mwage;INFO;User mwage is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Address ::1
+20210107 22:29:25;beginsaldo;mwage;INFO;De verlofuren worden geinitieerd voor het jaar 2021
+20210107 22:29:42;beginsaldo;mwage;INFO;Records zijn ge-update over jaar 2021
+20210107 22:29:47;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20210108 15:48:14;login;mwage;INFO;User mwage is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Address ::1
+20210108 15:48:22;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
