@@ -11,3 +11,14 @@
                             AND week='06' 
                             AND jaar='2020'
                             AND (approved = 0 OR approved = 9)
+20210108 22:30:00;SELECT beginsaldo wordt uitgevoerd
+20210108 22:32:09;SELECT beginsaldo wordt uitgevoerd
+20210108 22:32:48;SELECT beginsaldo wordt uitgevoerd
+20210108 23:06:37;SELECT beginsaldo (1-2) wordt uitgevoerd
+20210108 23:06:37;SELECT beginsaldo (2-2) wordt uitgevoerd
+20210108 23:09:08;SELECT beginsaldo (1-2) wordt uitgevoerd
+20210108 23:09:08;SELECT beginsaldo (2-2) wordt uitgevoerd
+20210112 20:11:03;Hier worden de uren verwijderd
+20210112 20:11:37;Hier worden de uren verwijderd
+20210112 20:12:01;Hier worden de uren verwijderd
+20210112 20:15:38;Hier worden de uren verwijderd

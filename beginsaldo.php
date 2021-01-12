@@ -50,6 +50,8 @@ if (isset($_POST['cancel'])) {
 
 // ------------------------------------------------------------------------------------------------------
 // Initieren van de beginsaldi van de medewerkers voor een nieuw jaar
+// Dit wordt uitgevoerd wanneer op de button "Ja"is geklikt bij de vraag of het jaar met beginsaldi 
+// geinitieerd moet worden.
 // ------------------------------------------------------------------------------------------------------
 if (isset($_POST['init_verlofuren_ja'])) {
     $inputjaar = $_POST["jaartal"];
@@ -75,12 +77,29 @@ if (isset($_POST['init_verlofuren_ja'])) {
             writelog("beginsaldo", "ERROR", $e);
             exit($MSGDB001E);
         }
+        // In tabel uren 1 record toevoegen met 0 uren anders worden bij het overzicht van de verlofuren het 
+        // beginaldo niet getoond
+        writelog("beginsaldo", "DEBUG", "Wegschrijven beginsaldo voor " . $username);
+        $datum_init_saldo = $inputjaar."-01-01";
+        $urencode = "MIR001VL";
+        $saldo_0 = 0;
+        try {
+            $stmt_ins_uur = $mysqli->prepare("INSERT INTO uren (user, jaar, soortuur, uren, datum) VALUES (?, ?, ?, ?, ?)");
+            $stmt_ins_uur->bind_param("sisis", $username, $inputjaar, $urencode, $saldo_0, $datum_init_saldo);
+            $stmt_ins_uur->execute();
+            $resultSet = $stmt_ins_uur->get_result();
+            writelog("beginsaldo", "DEBUG", $username." - ".$inputjaar." - ".$urencode." - ".$saldo_0." - ".$datum_init_saldo);
+            writelog("beginsaldo", "DEBUG", $resultSet);
+        } catch(Exception $e) {
+            writelog("beginsaldo", "ERROR", $e);
+            exit($MSGDB001E);
+        }
     }
     header("location: beginsaldo.php?edtjaar=" . $inputjaar);
 }
 
 // ------------------------------------------------------------------------------------------------------
-// BUTTON Save
+// BUTTON Save - Hiermee kunnen de beginsaldi ge-update worden indien het beginsaldo anders moet zijn dan na initiatie
 // ix1 = loop aantal rijen dat er uren ingevuld zijn
 // ix2 = dagen binnen ix1 (ma t/m zo)
 //

@@ -64,7 +64,10 @@ echo "<th>Medewerker</th>
       <th style='width:4.2vw; text-align:right'>Huidig<br />saldo</th>
       <th style='width:2.85vw; text-align:right'>Aktie</th>";
 echo "</tr>";
- 
+
+// In onderstaande query WHERE (approval_jaar = ".$inputjaar." OR approval_jaar IS NULL)
+// vervangen door WHERE (approval_jaar = ".$inputjaar.")
+
 $sql_code = "SELECT username, fullname, SUM(uren) AS totaal_uren, beginsaldo,
              SUM(CASE WHEN approval_maand = '1' THEN uren END) AS `jan`,
              SUM(CASE WHEN approval_maand = '2' THEN uren END) AS `feb`,
@@ -79,7 +82,7 @@ $sql_code = "SELECT username, fullname, SUM(uren) AS totaal_uren, beginsaldo,
              SUM(CASE WHEN approval_maand = '11' THEN uren END) AS `nov`,
              SUM(CASE WHEN approval_maand = '12' THEN uren END) AS `dec`
              FROM view_verlofuren
-             WHERE (approval_jaar = ".$inputjaar." OR approval_jaar IS NULL)
+             WHERE (approval_jaar = ".$inputjaar.")
              GROUP BY username
              ORDER BY fullname, approval_maand";
 
@@ -94,6 +97,43 @@ if (! $sql_out) {
         $frm_fullname    = $sql_rows['fullname'];
         $frm_beginsaldo  = $sql_rows['beginsaldo'];
         $frm_totaal_uren = $sql_rows['totaal_uren'];
+        //
+        if(!($sql_rows['jan'] > 0)) {
+            $sql_rows['jan'] = " ";
+        }
+        if(!($sql_rows['feb'] > 0)) {
+            $sql_rows['feb'] = " ";
+        }
+        if(!($sql_rows['maa'] > 0)) {
+            $sql_rows['maa'] = " ";
+        }
+        if(!($sql_rows['apr'] > 0)) {
+            $sql_rows['apr'] = " ";
+        }
+        if(!($sql_rows['mei'] > 0)) {
+            $sql_rows['mei'] = " ";
+        }
+        if(!($sql_rows['jun'] > 0)) {
+            $sql_rows['jun'] = " ";
+        }
+        if(!($sql_rows['jul'] > 0)) {
+            $sql_rows['jul'] = " ";
+        }
+        if(!($sql_rows['aug'] > 0)) {
+            $sql_rows['aug'] = " ";
+        }
+        if(!($sql_rows['sep'] > 0)) {
+            $sql_rows['sep'] = " ";
+        }
+        if(!($sql_rows['okt'] > 0)) {
+            $sql_rows['okt'] = " ";
+        }
+        if(!($sql_rows['nov'] > 0)) {
+            $sql_rows['nov'] = " ";
+        }
+        if(!($sql_rows['dec'] > 0)) {
+            $sql_rows['dec'] = " ";
+        }
         $frm_eindsaldo   = $frm_beginsaldo - $frm_totaal_uren;
                
         echo '<tr class="colored">';
@@ -123,7 +163,7 @@ if (! $sql_out) {
         $frm_totaal_uren = 0;
         $frm_eindsaldo = 0;
     }
-    writelog("rpt_verlofuren_medewerker", "INFO", "Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd");
+    writelog("verlofuren_medewerker", "INFO", "Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd");
 }
 echo "</table></center>";
 // This button is needed for when user pushes the ENTER button when changing the yearnumber. Button is not displayed

@@ -1,11 +1,11 @@
 <?php
 
 include ("config.php");
-
+echo $_SERVER['SERVER_NAME'];
 // --------------------------------------------------------
 // Instellingen voor localhost of onedrivehost
 // --------------------------------------------------------
-if (($_SERVER['SERVER_NAME'] == 'localhost') || ($_SERVER['SERVER_NAME'] == 'onedrivehost')) {
+if (($_SERVER['SERVER_NAME'] == 'localhost') || ($_SERVER['SERVER_NAME'] == 'onedrivehost') || ($_SERVER['SERVER_NAME'] == 'mus')) {
     $mysqli = new mysqli("localhost", "root", "", "mus");
 }
 

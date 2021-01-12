@@ -108,28 +108,37 @@ try {
 }
 $stmt_verlof->bind_result($maandnr, $dagnr, $uren, $frm_beginsaldo, $frm_fullname);
 
-while($stmt_verlof->fetch()) { 
+while($stmt_verlof->fetch()) {
     $frm_totaal_opgenomen = $frm_totaal_opgenomen + $uren;
-
-    // Onderstaande query is nodig indien de user nog geen vakantie-uren heeft opgenomen. De join tusen uren en beginsaldo lukt dan niet
-    // omdat er van die user in dat jaar geen rijen in uren aanwezig zijn
-    if(!$frm_beginsaldo || $frm_beginsaldo == "") {
-        
-        try {
-            $stmt_saldo = $mysqli->prepare("SELECT beginsaldo FROM beginsaldo WHERE jaar = ? AND username = ?");
-            $stmt_saldo->bind_param("is", $inputjaar, $username);
-            $stmt_saldo->execute();
-        } catch(Exception $e) {
-            writelog("mijn_verlofuren", "ERROR", $e);
-            exit($MSGDB001E);
-        }
-        $stmt_saldo->bind_result($frm_beginsaldo);
-        $stmt_saldo->fetch(); 
-    }
     $arr_uren[$maandnr - 1][$dagnr] = $uren;
 }
+
+// Onderstaande query is nodig indien de user nog geen vakantie-uren heeft opgenomen. De join tussen uren en beginsaldo lukt dan niet
+// omdat er van die user in dat jaar geen rijen in tabel uren aanwezig zijn
+if(!$frm_beginsaldo || $frm_beginsaldo == "") {
+    try {
+        $stmt_saldo = $mysqli->prepare("SELECT beginsaldo FROM beginsaldo WHERE jaar = ? AND username = ?");
+        $stmt_saldo->bind_param("is", $inputjaar, $username);
+        $stmt_saldo->execute();
+    } catch(Exception $e) {
+        writelog("mijn_verlofuren", "ERROR", $e);
+        exit($MSGDB001E);
+    }
+    $stmt_saldo->bind_result($frm_beginsaldo);
+    $stmt_saldo->fetch();
+    // >>>>> Hier moet het ophalen van de volledige naam komen om in het display te tonen
+}
+//================================================================
+
 for($ix3=0; $ix3<12; $ix3++) {
     for($ix4=0; $ix4<32; $ix4++) {
+        // check zodat niet de naam van de maand geleegd wordt
+        if($ix4>0) {
+            // Legen van de waarde van de uren indien deze 0 is anders staat er 0.00 op het display
+            if(!($arr_uren[$ix3][$ix4] > 0)) {
+                $arr_uren[$ix3][$ix4] = " ";
+            }
+        }
         if($ix4 == 0) {
             echo '<tr class="colored">';
             echo '<td style="width:5.45vw">' . $arr_uren[$ix3][$ix4] . '</td>';
