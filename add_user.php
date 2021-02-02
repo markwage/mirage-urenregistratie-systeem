@@ -154,7 +154,7 @@ if (isset($_POST['submit'])) {
             exit($MSGDB001E);
         }
 
-        // Record toevoegen in database
+        // Record toevoegen in database, tabel users
 
         try {
             $stmt_ins_user = $mysqli->prepare("INSERT INTO users (username, password, admin, voornaam, tussenvoegsel, achternaam, emailadres, indienst, approvenallowed, uren_invullen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -167,6 +167,22 @@ if (isset($_POST['submit'])) {
                     
         writelog("add_user", "INFO", "User {$_POST['username']} is succesvol aangemaakt");
         header("location: users.php?aktie=disp");
+        
+        // In tabel uren 1 record toevoegen met 0 uren anders worden bij het overzicht van de verlofuren het
+        // beginaldo niet getoond
+        writelog("beginsaldo", "DEBUG", "Wegschrijven dummy record voor " . $_POST['username']);
+        $datum_init_saldo = $jaar."-01-01";
+        $urencode = "MIR001VL";
+        $saldo_0 = 0;
+        try {
+            $stmt_ins_uur = $mysqli->prepare("INSERT INTO uren (user, jaar, soortuur, uren, datum) VALUES (?, ?, ?, ?, ?)");
+            $stmt_ins_uur->bind_param("sisis", $_POST['username'], $jaar, $urencode, $saldo_0, $datum_init_saldo);
+            $stmt_ins_uur->execute();
+            writelog("beginsaldo", "DEBUG", $username." - ".$jaar." - ".$urencode." - ".$saldo_0." - ".$datum_init_saldo);
+        } catch(Exception $e) {
+            writelog("beginsaldo", "ERROR", $e);
+            exit($MSGDB001E);
+        }
 
         $mail_to = $frm_email;
         $mail_subject = 'Welkom op Mirage Urenregistratie Systeem';
@@ -192,6 +208,7 @@ if (isset($_POST['submit'])) {
         $message .= '<li>Moet minimaal 1 lower case character bevatten</li>';
         $message .= '<li>Moet minimaal 1 upper case character bevatten</li>';
         $message .= '<li>Moet minimaal 1 special character bevatten</li></lu>';
+        $message .= '<p>Na het wijzigen van je wachtwoord wordt je uatomatisch uitgelogd en dien je opnieuw in te loggen met je nieuwe wachtwoord';
         $message .= '<p>Heb je nog vragen en/of opmerkingen laat het ons weten.</p>';
         mail_message_footer($message);
 

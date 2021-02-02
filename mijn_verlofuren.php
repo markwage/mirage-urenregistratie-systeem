@@ -54,7 +54,7 @@ if (isset($_POST['change_jaar'])) {
 <?php
 
 echo "<table>";
-echo "<tr>";
+echo "<tr style='font-size:0.8vw;'>";
 echo "<td><strong>Jaar</strong></td>";
 echo "<td><input type='number' style='width:3.2vw' name='jaartal' min='2019' max='2300' value='" . $inputjaar . "'>";
 echo "<td><input class='button' type='submit' name='change_jaar' value='refresh'></td>";
@@ -62,7 +62,7 @@ echo "</tr>";
 echo "</table>";
 
 echo '<div id="verlof">';
-echo "<center><table id='verlofuren_mdw'>";
+echo "<center><table id='verlofuren_mdw'  style='font-size:0.8vw;'>";
 echo "<tr>";
 echo '<th style="width:5.45vw;">Maand / dag</th>';
 for($ix=1; $ix<32; $ix++) {
@@ -153,7 +153,7 @@ for($ix3=0; $ix3<12; $ix3++) {
 writelog("mijn_verlofuren", "INFO", "Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd");
 echo "</table></center>";
 
-echo "<table>";
+echo "<table  style='font-size:0.8vw;'>";
 echo '<tr>';
 echo '<td>Gegevens '. $frm_fullname . '</td>';
 echo '<tr>';

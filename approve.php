@@ -161,25 +161,25 @@ if ($aktie == 'disp') {
 
         // Maanden die nog niet approved zijn
         if (($jaar != '') && ($approved == 0) && ($maand != $huidige_maand)) {
-            echo '<tr class="colored">
+            echo '<tr class="colored" style="font-size:0.8vw">
             <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td><a href="approve.php?aktie=dspuren&user=' . $encrypted_username . '&jaar=' . $jaar . '&maand=' . $maand . '"><img class="button" src="./img/icons/view-48.png" alt="Toon week" title="Toon/approve de uren van deze maand" /></a></td>
 			</tr>';
         // Indien voor afgelopen maand geen uren ingeleverd
         } elseif ($jaar == '') {
-            echo '<tr class="colored">
+            echo '<tr class="colored" style="font-size:0.8vw">
             <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td>Nog geen gegevens over afgelopen maand aanwezig</td>
 			</tr>';
         // Uren van afgelopen maand die approved zijn
         } elseif (($approved == 1) && ($maand == $vorige_maand) && ($jaar == $vorig_jaar)) {
-            echo '<tr class="colored">
+            echo '<tr class="colored" style="font-size:0.8vw">
             <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td>Approved</td>
 			</tr>';
         // Uren welke afgekeurd zijn ongeacht de maand
         } elseif ($approved == 9) {
-            echo '<tr class="colored">
+            echo '<tr class="colored" style="font-size:0.8vw">
             <td style="height:1.2vw;"><b>' . $fullname . '</b></td><td style=\'text-align:center\'>' . $jaar . ' ' . $maand . '</td>
 			<td style="color:red"><a href="approve.php?aktie=dspuren&user=' . $encrypted_username . '&jaar=' . $jaar . '&maand=' . $maand . '"><img class="button" src="./img/icons/view-48.png" alt="Toon week" title="Toon/approve de uren van deze maand" /></a> AFGEKEURD! </td>
 			</tr>';
@@ -216,7 +216,7 @@ if ($aktie == 'dspuren') {
     
     echo '<div id="approve">';
     echo "<center><table>";
-    echo "<tr>";
+    echo "<tr style='font-size:0.8vw'>";
     echo '<th style="width:10.25vw;">Soortuur</th>';
     for($ix=1; $ix<32; $ix++) {
         echo '<th style="width:1.25vw; text-align:right">' . $ix . '</th>';
@@ -232,7 +232,7 @@ if ($aktie == 'dspuren') {
     
     $sql_code .= "SUM(CASE WHEN approval_dag = '31' THEN uren END) AS `31` 
                   FROM view_uren_soortuur
-                  WHERE USER = '".$username."' AND approval_maand = '".$maand."' AND approval_jaar = '".$jaar."'
+                  WHERE USER = '".$username."' AND uren > 0 AND approval_maand = '".$maand."' AND approval_jaar = '".$jaar."'
                   GROUP BY soortuur 
                   ORDER BY soortuur, datum"; 
     
@@ -246,7 +246,7 @@ if ($aktie == 'dspuren') {
         $soortuur              = $sql_rows['soortuur'];
         $omschrijving_soortuur = $sql_rows['omschrijving'];
 
-        echo '<tr class="colored">';
+        echo '<tr class="colored" style="font-size:0.8vw">';
 		echo "<td>".$soortuur." - ".$omschrijving_soortuur."</td>";
 		for($ix=1; $ix<32; $ix++) {
 		    echo "<td style='text-align:right'>".$sql_rows[$ix]."</td>";
@@ -259,7 +259,7 @@ if ($aktie == 'dspuren') {
     // Display totaal per soortuur
     echo "<h3>Totaal per urensoort</h3>";
     echo "<center><table>";
-    echo "<tr><th>Soort uur</th><th>Totaal</th></tr>";
+    echo "<tr style='font-size:0.8vw'><th>Soort uur</th><th>Totaal</th></tr>";
     /**
     $sql_code = "SELECT SUM(uren) AS totaal_uren, soortuur, omschrijving, approved FROM view_uren_soortuur
                 WHERE user = '$username'
@@ -278,7 +278,7 @@ if ($aktie == 'dspuren') {
     //$driver = new mysqli_driver();
     //$driver->report_mode = MYSQLI_REPORT_ALL;
     try {
-        $stmt_uren = $mysqli->prepare("SELECT SUM(uren) AS totaal_uren, soortuur, omschrijving, approved FROM view_uren_soortuur WHERE user = ? AND approval_maand = ? AND approval_jaar = ? GROUP BY soortuur ORDER BY soortuur");
+        $stmt_uren = $mysqli->prepare("SELECT SUM(uren) AS totaal_uren, soortuur, omschrijving, approved FROM view_uren_soortuur WHERE user = ? AND approval_maand = ? AND approval_jaar = ? AND uren > 0 GROUP BY soortuur ORDER BY soortuur");
         $stmt_uren->bind_param("sii", $username, $maand, $jaar);
         $stmt_uren->execute();
     } catch(Exception $e) {
@@ -291,7 +291,7 @@ if ($aktie == 'dspuren') {
         //$totaal_uren  = $sql_rows['totaal_uren'];
         //$soortuur     = $sql_rows['soortuur'];
         //$omschrijving = $sql_rows['omschrijving'];
-        echo '<tr class="colored">
+        echo '<tr class="colored" style="font-size:0.8vw">
 			<td>' . $soortuur . ' - ' . $omschrijving . '</td><td style=\'text-align:right\'>' . $totaal_uren . '</td>
             </tr>';
     }

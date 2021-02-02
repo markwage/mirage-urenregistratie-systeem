@@ -22,3 +22,15 @@
 20210112 20:11:37;Hier worden de uren verwijderd
 20210112 20:12:01;Hier worden de uren verwijderd
 20210112 20:15:38;Hier worden de uren verwijderd
+20210113 21:54:44;Hier worden de uren verwijderd
+20210113 21:54:44;SQL: DELETE FROM uren 
+                            WHERE user='mwage' 
+                            AND week='53' 
+                            AND jaar='2020'
+                            AND (approved = 0 OR approved = 9)
+20210113 21:54:57;Hier worden de uren verwijderd
+20210113 21:54:57;SQL: DELETE FROM uren 
+                            WHERE user='mwage' 
+                            AND week='53' 
+                            AND jaar='2020'
+                            AND (approved = 0 OR approved = 9)

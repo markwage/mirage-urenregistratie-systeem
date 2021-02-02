@@ -87,9 +87,7 @@ if (isset($_POST['init_verlofuren_ja'])) {
             $stmt_ins_uur = $mysqli->prepare("INSERT INTO uren (user, jaar, soortuur, uren, datum) VALUES (?, ?, ?, ?, ?)");
             $stmt_ins_uur->bind_param("sisis", $username, $inputjaar, $urencode, $saldo_0, $datum_init_saldo);
             $stmt_ins_uur->execute();
-            $resultSet = $stmt_ins_uur->get_result();
             writelog("beginsaldo", "DEBUG", $username." - ".$inputjaar." - ".$urencode." - ".$saldo_0." - ".$datum_init_saldo);
-            writelog("beginsaldo", "DEBUG", $resultSet);
         } catch(Exception $e) {
             writelog("beginsaldo", "ERROR", $e);
             exit($MSGDB001E);

@@ -14,3 +14,39 @@
 20210112 20:38:56;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
 20210112 20:38:58;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
 20210112 20:39:15;logout;mwage;INFO;User  is succesvol uitgelogd
+20210112 20:54:02;login;mwage;INFO;User mwage is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36 Address ::1
+20210112 20:54:24;verlofuren_medewerker;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20210112 20:55:06;add_user;mwage;INFO;User demo is succesvol aangemaakt
+20210112 20:55:06;beginsaldo;mwage;DEBUG;Wegschrijven dummy record voor demo
+20210112 20:55:06;beginsaldo;mwage;DEBUG; - 2021 - MIR001VL - 0 - 2021-01-01
+20210112 20:55:08;add_user;mwage;ERROR;Het is niet gelukt om een mail te versturen naar mark.wage@outlook.com ivm aanmaken userid demo
+20210112 20:55:19;verlofuren_medewerker;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20210112 21:04:40;users;mwage;INFO;User demo is succesvol verwijderd uit tabel users
+20210112 21:04:40;users;mwage;INFO;User demo is succesvol verwijderd uit tabel uren
+20210112 21:04:40;users;mwage;INFO;User demo is succesvol verwijderd uit tabel approvals
+20210112 21:04:40;users;mwage;INFO;User demo is succesvol verwijderd uit tabel beginsaldo
+20210112 21:06:42;logout;mwage;INFO;User  is succesvol uitgelogd
+20210112 22:00:20;login;mwage;INFO;User mwage is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36 Address ::1
+20210112 22:00:25;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20210112 22:00:32;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20210112 22:00:35;verlofuren_medewerker;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20210112 22:00:42;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20210112 22:11:29;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20210112 22:11:39;verlofuren_medewerker;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20210112 22:11:45;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20210112 22:16:09;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20210112 22:17:34;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20210112 22:30:42;logout;mwage;INFO;User  is succesvol uitgelogd
+20210113 21:50:50;login;mwage;INFO;User mwage is succesvol ingelogd. Maakt gebruik van Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36 Address ::1
+20210113 21:50:53;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20210113 21:54:44;uren;mwage;INFO;Records zijn verwijderd van week 2020-53 ivm het updaten van de betreffende week
+20210113 21:54:44;uren;mwage;INFO;Records zijn toegevoegd voor week 2020-53 ivm updaten van de betreffende week
+20210113 21:54:57;uren;mwage;INFO;Records zijn verwijderd van week 2020-53 ivm het updaten van de betreffende week
+20210113 21:54:57;uren;mwage;INFO;Records zijn toegevoegd voor week 2020-53 ivm updaten van de betreffende week
+20210113 22:24:56;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20210113 22:26:13;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20210113 22:26:39;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20210113 22:26:51;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20210113 22:26:52;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd
+20210113 22:28:55;mijn_verlofuren;mwage;INFO;Overzicht opgenomen verlofuren per medewerker in een jaar is uitgevoerd
+20210113 22:28:57;rpt_uren_urensoort;mwage;INFO;Overzicht totaal aantal uren per urensoort in een jaar is uitgevoerd

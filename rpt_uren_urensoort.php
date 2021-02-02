@@ -72,7 +72,7 @@ echo "</tr>";
 echo "</table>";
 
 echo "<center><table id='uren_soortuur'>";
-echo "<tr>";
+echo "<tr style='font-size:0.8vw'>";
 echo "<th colspan='2'>Soortuur</th>
       <th style='width:3.1vw; text-align:right'>Jan</th>
       <th style='width:3.1vw; text-align:right'>Feb</th>
@@ -120,11 +120,14 @@ while($stmt_uren->fetch()) {
     $frm_maand_totaal = 0;
     if ($row_soortuur != $frm_soortuur) {
         if ($frm_soortuur != 'dummy') {
-            echo '<tr class="colored">';
+            echo '<tr class="colored" style="font-size:0.8vw">';
             echo "<td style='height:1.2vw;'>" . $frm_soortuur . "</td><td>" . $frm_omschrijving . "</td>";
             for ($ix = 0; $ix < 12; $ix ++) {
                 if($frm_maand[$ix] > 0) {
                     $frm_maand_totaal = $frm_maand_totaal + $frm_maand[$ix];
+                }
+                if(!($frm_maand[$ix] > 0)) {
+                    $frm_maand[$ix] = " ";
                 }
                 if($maand_approved[$ix] == 1) {
                     echo "<td style='width:3.1vw; text-align:right;'>" . $frm_maand[$ix] . "</td>";
@@ -150,11 +153,14 @@ if (! isset($row_soortuur)) {
     echo '</table></center><blockquote>INFO: Er zijn geen gegevens aanwezig over dit jaar</blockquote>';
 } else {
     $frm_maand_totaal = 0;
-    echo '<tr class="colored">';
+    echo '<tr class="colored" style="font-size:0.8vw">';
     echo "<td>" . $row_soortuur . "</td><td>" . $row_omschrijving . "</td>";
     for ($ix = 0; $ix < 12; $ix ++) {
         if($frm_maand[$ix] > 0) {
             $frm_maand_totaal = $frm_maand_totaal + $frm_maand[$ix];
+        }
+        if(!($frm_maand[$ix] > 0)) {
+            $frm_maand[$ix] = " ";
         }
         if($maand_approved[$ix] == 1) {
             echo "<td style='width:3.1vw; text-align:right'>" . $frm_maand[$ix] . "</td>";
