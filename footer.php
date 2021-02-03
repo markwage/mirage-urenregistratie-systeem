@@ -8,7 +8,7 @@
 <!-- footer starts here -->
 <div id="footer">
 	<p>
-		&copy; copyright 2020 <strong><a href="http://www.mirage.nl">Mirage
+		&copy; copyright <?php echo date('Y'); ?> <strong><a href="http://www.mirage.nl">Mirage
 				Automatisering BV</a></strong>
 	</p>
 	<!-- footer ends here -->
